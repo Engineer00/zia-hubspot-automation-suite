@@ -19,3 +19,5 @@ zia-automation/front-door.html
 
 # Local logs
 *.log
+
+.vercel
