@@ -1,0 +1,522 @@
+<title>One Lead, End to End</title>
+<style>
+:root{
+  --ground:#EDF1F2; --surface:#FFFFFF; --surface-2:#F6F9F9; --surface-3:#EAF0F1;
+  --hairline:#DBE3E5; --hairline-2:#EAF0F1;
+  --ink:#0E2429; --ink-2:#40595F; --ink-3:#6C858B;
+  --accent:#0A8F86; --accent-soft:#E2F2F0; --accent-line:#9FD5CF;
+  --c2:#A85D00; --c2-soft:#F7EFDD; --c3:#4152A3; --c3-soft:#E7EAF6;
+  --good:#2E7D52; --warning:#9A6B00; --critical:#B0303A;
+  --good-bg:#E6F2EB; --warning-bg:#F7EFDD; --critical-bg:#F8E5E7;
+  --shadow:0 1px 2px rgba(14,36,41,.05), 0 4px 16px rgba(14,36,41,.05);
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --good-bg:#122A20; --warning-bg:#2A2313; --critical-bg:#2C161A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --good-bg:#122A20; --warning-bg:#2A2313; --critical-bg:#2C161A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 90px}
+.wide{max-width:1120px;margin:0 auto;padding:0 24px}
+
+header.top{padding:64px 0 34px;border-bottom:1px solid var(--hairline)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 16px}
+h1{font-size:clamp(32px,5.4vw,50px);line-height:1.05;letter-spacing:-.024em;margin:0 0 18px;
+  font-weight:640;text-wrap:balance}
+.standfirst{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0}
+
+section{padding:46px 0;border-bottom:1px solid var(--hairline)}
+section:last-of-type{border-bottom:0}
+h2{font-size:27px;line-height:1.2;letter-spacing:-.018em;margin:0 0 16px;font-weight:640;text-wrap:balance}
+h3{font-size:19px;margin:30px 0 10px;font-weight:640;letter-spacing:-.01em}
+p{margin:0 0 15px;max-width:66ch;color:var(--ink-2)}
+p:last-child{margin-bottom:0}
+p strong,li strong,td strong{color:var(--ink);font-weight:640}
+code{font-family:var(--mono);font-size:.85em;background:var(--surface-3);
+  border:1px solid var(--hairline-2);border-radius:3px;padding:1px 5px;color:var(--ink)}
+
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--hairline);
+  border-radius:10px;box-shadow:var(--shadow);padding:22px 20px 16px;overflow-x:auto}
+figure svg{display:block;width:100%;max-width:100%;height:auto;min-width:760px;color:var(--ink)}
+figcaption{margin-top:15px;padding-top:13px;border-top:1px solid var(--hairline-2);
+  font-size:14px;line-height:1.6;color:var(--ink-3);max-width:80ch}
+figcaption b{color:var(--ink-2);font-weight:640}
+
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.tier{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  padding:20px;box-shadow:var(--shadow);border-top:3px solid var(--accent)}
+.tier.m{border-top-color:var(--c2)} .tier.s{border-top-color:var(--c3)}
+.tier h4{margin:0 0 3px;font-size:19px;font-weight:660;letter-spacing:-.01em}
+.tier .who{font-size:14px;color:var(--ink-3);margin:0 0 14px}
+.tier dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:0;font-size:14px}
+.tier dt{color:var(--ink-3);font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;padding-top:3px}
+.tier dd{margin:0;font-weight:640;font-variant-numeric:tabular-nums}
+
+.steps{margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps > li{counter-increment:s;position:relative;padding:0 0 0 56px;margin-bottom:30px}
+.steps > li::before{content:counter(s);position:absolute;left:0;top:-2px;
+  width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);
+  border:1px solid var(--accent-line);font-family:var(--mono);font-size:14px;font-weight:700;
+  display:grid;place-items:center}
+.steps h3{margin:0 0 7px;font-size:19px}
+.who{display:inline-flex;font-family:var(--mono);font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;border-radius:3px;padding:3px 8px;margin-bottom:9px;
+  background:var(--surface-3);color:var(--ink-3);border:1px solid var(--hairline)}
+.who.auto{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line)}
+.who.human{background:var(--c2-soft);color:var(--c2);border-color:currentColor}
+.breaks{margin-top:11px;padding:11px 14px;border-radius:6px;background:var(--critical-bg);
+  border:1px solid var(--critical);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:66ch}
+.breaks b{color:var(--critical);font-weight:640}
+
+.note{margin-top:22px;padding:16px 18px;border-radius:8px;background:var(--accent-soft);
+  border:1px solid var(--accent-line);font-size:16px;line-height:1.6;color:var(--ink);max-width:70ch}
+.note b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:7px;font-weight:600}
+.alarm{margin-top:22px;padding:18px 20px;border-radius:8px;background:var(--critical-bg);
+  border:1px solid var(--critical);font-size:16px;line-height:1.62;color:var(--ink);max-width:70ch}
+.alarm b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--critical);margin-bottom:7px;font-weight:600}
+
+.tw{overflow-x:auto;margin:20px 0 0;border:1px solid var(--hairline);border-radius:7px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:480px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--hairline-2);vertical-align:top}
+thead th{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:600;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* SVG */
+.bx{fill:var(--surface);stroke:var(--hairline);stroke-width:1.25}
+.bx-a{fill:var(--accent-soft);stroke:var(--accent-line);stroke-width:1.25}
+.bx-o{fill:var(--c2-soft);stroke:var(--c2);stroke-width:1.1}
+.lane{fill:var(--surface-2);stroke:none}
+.t{fill:var(--ink);font-family:var(--sans);font-size:12.5px;font-weight:640}
+.ts{fill:var(--ink-3);font-family:var(--mono);font-size:10px;letter-spacing:.09em}
+.tm{fill:var(--ink-2);font-family:var(--mono);font-size:10.5px}
+.ln{stroke:var(--ink-3);stroke-width:1.4;fill:none}
+.ln-a{stroke:var(--accent);stroke-width:1.8;fill:none}
+
+footer{padding:34px 0 0;border-top:1px solid var(--hairline);margin-top:40px;
+  font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--ink-3)}
+@media (max-width:640px){.wrap,.wide{padding:0 16px} header.top{padding:44px 0 28px}
+  .steps > li{padding-left:44px} .steps > li::before{width:28px;height:28px;font-size:12.5px}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">ZIA · plain english</p>
+  <h1>One Lead, End to End</h1>
+  <p class="standfirst">
+    Follow a single person — Dana, who fills in a form on the website — all the way through
+    to ZIA getting paid. Every box the system touches, in order, in ordinary words.
+  </p>
+</header>
+</div>
+
+<section>
+<div class="wrap">
+  <h2>First: what ZIA actually sells</h2>
+  <p>
+    ZIA is a consulting company. It helps organizations get better at leadership, teamwork
+    and managing change. It sells that help in <strong>three sizes</strong> — think small,
+    medium and large. That is all Core, Momentum and Summit are: three package sizes.
+  </p>
+</div>
+<div class="wide">
+  <div class="tiers">
+    <div class="tier">
+      <h4>Core</h4>
+      <p class="who">One team. The starter package.</p>
+      <dl>
+        <dt>Sold</dt><dd>522 deals</dd>
+        <dt>Avg price</dt><dd>$14,874</dd>
+        <dt>Running</dt><dd>165 engagements</dd>
+        <dt>Avg health</dt><dd>70.0</dd>
+      </dl>
+    </div>
+    <div class="tier m">
+      <h4>Momentum</h4>
+      <p class="who">Several teams at once. The most popular.</p>
+      <dl>
+        <dt>Sold</dt><dd>768 deals</dd>
+        <dt>Avg price</dt><dd>$18,471</dd>
+        <dt>Running</dt><dd>268 engagements</dd>
+        <dt>Avg health</dt><dd>67.5</dd>
+      </dl>
+    </div>
+    <div class="tier s">
+      <h4>Summit</h4>
+      <p class="who">Whole organization. The enterprise package.</p>
+      <dl>
+        <dt>Sold</dt><dd>210 deals</dd>
+        <dt>Avg price</dt><dd>$26,402</dd>
+        <dt>Running</dt><dd>67 engagements</dd>
+        <dt>Avg health</dt><dd>70.2</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="note">
+    <b>Something the numbers already tell you</b>
+    Summit is the most expensive package and Momentum is the most popular — but Momentum
+    scores <strong>lowest</strong> on delivery health (67.5). The package ZIA sells most of
+    is the one it delivers least well. Nobody could see that before, because the health
+    score was never compared against the tier.
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+  <h2>Now follow Dana</h2>
+  <p>
+    Dana runs learning and development at a logistics company. She has a problem — her team
+    leaders are struggling — so she Googles, lands on ZIA's website, and fills in the contact
+    form. Here is everything that happens next.
+  </p>
+</div>
+
+<div class="wide">
+<figure>
+  <svg viewBox="0 0 1140 470" role="img"
+    aria-label="Swimlane flow: Dana submits a website form; HubSpot creates the contact; the automation engine matches her company, assigns an owner and raises an enquiry ticket; a salesperson creates a deal and quote; on Closed Won the engine raises an onboarding ticket; a consultant is placed and health is monitored; the accounting system issues an invoice and the engine chases it.">
+    <defs>
+      <marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/>
+      </marker>
+      <marker id="fa-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+
+    <!-- lanes -->
+    <rect class="lane" x="118" y="36"  width="1010" height="86" rx="6"/>
+    <rect class="lane" x="118" y="230" width="1010" height="86" rx="6"/>
+
+    <text class="ts" x="10" y="82">DANA /</text>
+    <text class="ts" x="10" y="96">WEBSITE</text>
+    <text class="ts" x="10" y="178">HUBSPOT</text>
+    <text class="ts" x="10" y="276">AUTOMATION</text>
+    <text class="ts" x="10" y="290">ENGINE</text>
+    <text class="ts" x="10" y="372">ACCOUNTING</text>
+
+    <!-- step 1 : website -->
+    <rect class="bx-o" x="130" y="52" width="128" height="54" rx="7"/>
+    <text class="t" x="144" y="76">1 · Submits</text>
+    <text class="tm" x="144" y="93">the form</text>
+
+    <!-- step 2 : hubspot contact -->
+    <rect class="bx-a" x="278" y="146" width="128" height="54" rx="7"/>
+    <text class="t" x="292" y="170">2 · Contact</text>
+    <text class="tm" x="292" y="187">created</text>
+
+    <!-- step 3 : engine -->
+    <rect class="bx" x="278" y="246" width="128" height="54" rx="7"/>
+    <text class="t" x="292" y="270">3 · WF-08</text>
+    <text class="tm" x="292" y="287">match + route</text>
+
+    <!-- step 4 : deal -->
+    <rect class="bx-a" x="426" y="146" width="128" height="54" rx="7"/>
+    <text class="t" x="440" y="170">4 · Deal +</text>
+    <text class="tm" x="440" y="187">quote sent</text>
+
+    <!-- step 5 : won -->
+    <rect class="bx-a" x="574" y="146" width="128" height="54" rx="7"/>
+    <text class="t" x="588" y="170">5 · Closed</text>
+    <text class="tm" x="588" y="187">Won</text>
+
+    <!-- step 6 : onboarding -->
+    <rect class="bx" x="574" y="246" width="128" height="54" rx="7"/>
+    <text class="t" x="588" y="270">6 · WF-03</text>
+    <text class="tm" x="588" y="287">onboarding</text>
+
+    <!-- step 7 : placement -->
+    <rect class="bx-a" x="722" y="146" width="128" height="54" rx="7"/>
+    <text class="t" x="736" y="170">7 · Consultant</text>
+    <text class="tm" x="736" y="187">delivering</text>
+
+    <!-- step 7b : health -->
+    <rect class="bx" x="722" y="246" width="128" height="54" rx="7"/>
+    <text class="t" x="736" y="270">WF-04 / 05</text>
+    <text class="tm" x="736" y="287">health watch</text>
+
+    <!-- step 8 : invoice -->
+    <rect class="bx-o" x="870" y="340" width="128" height="54" rx="7"/>
+    <text class="t" x="884" y="364">8 · Invoice</text>
+    <text class="tm" x="884" y="381">raised</text>
+
+    <!-- 8b mirror -->
+    <rect class="bx-a" x="870" y="146" width="128" height="54" rx="7"/>
+    <text class="t" x="884" y="170">Mirrored</text>
+    <text class="tm" x="884" y="187">onto the deal</text>
+
+    <!-- 8c chase -->
+    <rect class="bx" x="1010" y="246" width="118" height="54" rx="7"/>
+    <text class="t" x="1024" y="270">WF-07</text>
+    <text class="tm" x="1024" y="287">chases it</text>
+
+    <!-- arrows -->
+    <path class="ln" d="M258,79 L338,79 L338,142" marker-end="url(#fa)"/>
+    <path class="ln-a" d="M342,200 L342,242" marker-end="url(#fa-a)"/>
+    <path class="ln-a" d="M406,264 L440,264 L440,204" marker-end="url(#fa-a)"/>
+    <path class="ln" d="M554,173 L570,173" marker-end="url(#fa)"/>
+    <path class="ln-a" d="M638,200 L638,242" marker-end="url(#fa-a)"/>
+    <path class="ln-a" d="M702,272 L744,272 L744,204" marker-end="url(#fa-a)"/>
+    <path class="ln" d="M850,173 L866,173" marker-end="url(#fa)"/>
+    <path class="ln-a" d="M786,200 L786,242" marker-end="url(#fa-a)"/>
+    <path class="ln" d="M934,336 L934,204" marker-end="url(#fa)"/>
+    <path class="ln-a" d="M998,173 L1069,173 L1069,242" marker-end="url(#fa-a)"/>
+
+    <text class="tm" x="266" y="70" style="fill:var(--c2)">web</text>
+    <text class="tm" x="352" y="224">reads</text>
+    <text class="tm" x="946" y="264">writes back</text>
+    <text class="tm" x="880" y="416" style="fill:var(--c2)">QuickBooks / Xero</text>
+
+    <!-- key -->
+    <rect class="bx-a" x="130" y="424" width="15" height="12" rx="2"/>
+    <text class="tm" x="152" y="434">HubSpot record</text>
+    <rect class="bx" x="286" y="424" width="15" height="12" rx="2"/>
+    <text class="tm" x="308" y="434">automation rule</text>
+    <rect class="bx-o" x="452" y="424" width="15" height="12" rx="2"/>
+    <text class="tm" x="474" y="434">outside HubSpot</text>
+  </svg>
+  <figcaption>
+    <b>Read it as a relay.</b> The teal boxes are records sitting in HubSpot. The white boxes
+    are our automation rules — each one wakes up, looks at what is true, and fills in what is
+    missing. The orange boxes are outside HubSpot entirely. Notice how often the flow drops
+    into the automation lane and comes back up: that is the work HubSpot would do itself on a
+    paid plan.
+  </figcaption>
+</figure>
+</div>
+
+<div class="wrap">
+<ol class="steps">
+
+  <li>
+    <span class="who human">Dana</span>
+    <h3>She fills in the form</h3>
+    <p>
+      Name, work email, company, her role, and what she needs help with. She clicks submit
+      and sees "thank you". From her side, that is the whole interaction.
+    </p>
+    <p>
+      Hidden in that form are two fields she never sees. One marks her as a
+      <strong>client</strong> rather than a consultant. The other records that she came from
+      the website rather than a spreadsheet import.
+    </p>
+  </li>
+
+  <li>
+    <span class="who">HubSpot</span>
+    <h3>A contact record appears</h3>
+    <p>
+      HubSpot creates a person record with everything she typed. At this moment she is a name
+      floating on her own — <strong>not connected to any company</strong>, with nobody
+      responsible for her, and nothing telling anyone she exists.
+    </p>
+    <p>This is where most CRMs quietly leak money.</p>
+  </li>
+
+  <li>
+    <span class="who auto">Automation · WF-08</span>
+    <h3>The system works out who she is and tells someone</h3>
+    <p>Four things happen without a human touching anything:</p>
+    <p>
+      <strong>It finds her company.</strong> Her email ends <code>@brightpathlogistics.com</code>,
+      so the system looks for a company with that web address. If it exists, she is attached to
+      it. If not, the company is created first, then she is attached. (It ignores gmail and
+      the like — those tell you nothing about an employer.)
+    </p>
+    <p>
+      <strong>It gives her an owner</strong> so a named person is accountable.
+      <strong>It marks her as a new lead.</strong> And <strong>it raises a high-priority
+      ticket</strong> — a job on someone's list saying "new enquiry, respond within 24 hours."
+    </p>
+    <p>
+      If nobody touches that ticket within 24 hours, the system marks it as an SLA breach so
+      it shows up on the dashboard as a failure rather than quietly ageing.
+    </p>
+    <div class="breaks">
+      <b>Without this step:</b> Dana sits in the database unattached and unassigned. She does
+      not appear on any company report. Nobody is told. She waits, hears nothing, and buys from
+      someone else — and no report anywhere shows that it happened.
+    </div>
+  </li>
+
+  <li>
+    <span class="who human">Salesperson</span>
+    <h3>A conversation, then a deal and a quote</h3>
+    <p>
+      Someone calls Dana. She needs help with team leaders across three departments — that is
+      a <strong>Momentum</strong> sized problem. A deal is created for roughly $18,000, and a
+      quote is built from the price list rather than typed from memory.
+    </p>
+    <p>
+      That last part matters. Because the price comes from actual line items, ZIA can later
+      answer "are we discounting too hard on Momentum?" — 578 of the 1,500 line items in this
+      portal carry a discount between 5% and 20%.
+    </p>
+  </li>
+
+  <li>
+    <span class="who">HubSpot</span>
+    <h3>She says yes — Closed Won</h3>
+    <p>
+      The deal moves to Closed Won. In most CRMs this is where the trail ends: the sale is
+      recorded and everyone moves on. Here it is a starting gun.
+    </p>
+  </li>
+
+  <li>
+    <span class="who auto">Automation · WF-03</span>
+    <h3>Delivery gets told automatically</h3>
+    <p>
+      The system spots a won deal with no onboarding job attached, and creates one — linked to
+      the deal, the company and to Dana. Confirm access, set the schedule, book the week-one
+      checkpoint.
+    </p>
+    <div class="breaks">
+      <b>Without this step:</b> sales celebrates and delivery finds out late. The first
+      experience Dana has after paying is being asked questions she already answered.
+    </div>
+  </li>
+
+  <li>
+    <span class="who auto">Automation · WF-04 and WF-05</span>
+    <h3>A consultant is placed, and the work is watched</h3>
+    <p>
+      A consultant from the network starts working with Dana's teams. The engagement gets a
+      <strong>health score</strong> out of 100 — is it going well? The target is 70.
+    </p>
+    <p>
+      If health drops into the 40s or 50s, the system raises a check-in job. If it falls below
+      40, it raises an urgent escalation and flags it as a breach. Nobody has to notice; the
+      system notices.
+    </p>
+    <div class="breaks">
+      <b>This is the finding.</b> 144 engagements are currently scoring below 60. Only 22 are
+      marked "At Risk". The score was being measured and looked at, but it never changed the
+      status — so the CRM's own warning light was understating the problem roughly sixfold.
+    </div>
+  </li>
+
+  <li>
+    <span class="who">Accounting → HubSpot → Automation · WF-07</span>
+    <h3>The invoice, and chasing it</h3>
+    <p>
+      The actual invoice is raised in the accounting system, not in HubSpot — that is
+      deliberate. A CRM should not pretend to be a ledger.
+    </p>
+    <p>
+      But the <em>state</em> of that invoice is copied back onto the deal: sent, due, paid,
+      how many days outstanding. So anyone in HubSpot can see whether a client has paid,
+      without opening the accounting software.
+    </p>
+    <p>
+      Then the system watches those dates. Anything past due gets a chase job, with urgency
+      scaled by how late it is.
+    </p>
+    <div class="breaks">
+      <b>What that found:</b> 86 of 115 unpaid invoices are more than 90 days overdue — $1.60M.
+      That is not a chasing backlog. That is nobody chasing at all.
+    </div>
+  </li>
+
+</ol>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+  <h2>What the system is, in one sentence</h2>
+  <p>
+    HubSpot stores the facts. Our automation engine is <strong>the thing that notices</strong> —
+    it wakes up, compares what should be true against what is true, and fills in the difference.
+  </p>
+  <p>
+    On a paid HubSpot plan, steps 3, 6, 7 and 8 would be built-in features called workflows.
+    This account is free, so those return an error. We rebuilt them outside — and because ours
+    checks the current state rather than reacting to a moment, missing a run costs nothing. It
+    simply catches up next time.
+  </p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>The rule</th><th>What it watches for</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WF-01</strong></td><td>a contact with no owner</td><td>assigns one</td></tr>
+        <tr><td><strong>WF-02</strong></td><td>deals won or lost at a company</td><td>updates the people there</td></tr>
+        <tr><td><strong>WF-03</strong></td><td>a won deal with no onboarding job</td><td>creates it</td></tr>
+        <tr><td><strong>WF-04</strong></td><td>an engagement scoring 40–69</td><td>raises a check-in</td></tr>
+        <tr><td><strong>WF-05</strong></td><td>an engagement below 40</td><td>raises an urgent escalation</td></tr>
+        <tr><td><strong>WF-06</strong></td><td>a consultant whose certification lapsed</td><td>blocks them from being placed</td></tr>
+        <tr><td><strong>WF-07</strong></td><td>an invoice past its due date</td><td>raises a chase, urgency by age</td></tr>
+        <tr><td><strong>WF-08</strong></td><td>a website enquiry not yet routed</td><td>matches company, assigns, tickets, times the response</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+  <h2>What actually happened when we tested this</h2>
+  <p>
+    Everything above is built. To prove it, a real submission was posted to the live form —
+    exactly what Dana's browser would send.
+  </p>
+  <p>
+    HubSpot returned <strong>success</strong>. It showed the thank-you message. And then
+    <strong>no contact was created.</strong>
+  </p>
+  <div class="alarm">
+    <b>The lead was silently thrown away</b>
+    The portal holds 1,002 contacts. The free plan allows 1,000. Creating another returns
+    <code>402 — cannot create another CONTACT, it has exceeded the limit of 1000</code>.
+    <br><br>
+    The form does not tell the visitor. It does not tell the business. Dana sees "thank you,
+    we'll be in touch", believes she has made contact, and waits for a call that can never
+    come — because her record was never created. There is no error anywhere for anyone to find.
+  </div>
+  <p style="margin-top:20px">
+    This is the most valuable thing the test produced, and it is worth saying in an interview
+    exactly as it is: <strong>a full-looking front door that silently drops every lead is
+    worse than no front door at all</strong>, because the business does not know it is losing
+    anything. A capacity limit had become a silent data-loss bug.
+  </p>
+  <p>
+    The fix is to make room — the portal is 2 records over a hard ceiling — and then to
+    monitor headroom so it can never happen unnoticed again.
+  </p>
+</div>
+</section>
+
+<div class="wrap">
+<footer>
+  HubSpot portal 247000083 · free tier · figures pulled live and verified by <code>node validate.js</code><br>
+  Core 522 deals · Momentum 768 · Summit 210 · 8 automation rules · 39/39 published claims verified
+</footer>
+</div>

@@ -1,0 +1,21 @@
+# Credentials — never commit
+hubspot_service_key.txt
+hubspot_personal_access_key.txt
+*.key
+.env
+.env.*
+hubspot.config.yml
+.hscli/
+
+# Node
+node_modules/
+package-lock.json
+
+# Generated output — rebuildable from the portal, no need to version
+zia-automation/dashboard-data.json
+zia-automation/dist-command-deck.html
+zia-automation/validation-report.md
+zia-automation/front-door.html
+
+# Local logs
+*.log

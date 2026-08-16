@@ -1,0 +1,188 @@
+First Name,Last Name,Email,Phone Number,Contact Type,Talent Tier,Coverage Band,Hours per Week,Cost Rate,Bench Status,Compliance Status,Assessment Profile
+Andres,Baptiste,andres.baptiste@ziaod.com,+13397339346,Talent,Momentum,US Central / Mountain,27,61,Placed,Clear,Structured / process-driven
+Noemi,Zhang,noemi.zhang@ziaod.com,+12192186600,Talent,Core,US Eastern,34,47,Placed,Clear,Relational / client-facing
+Priya,Eriksen,priya.eriksen@ziaod.com,+12707724794,Talent,Momentum,US Pacific,4,61,In Assessment,Lapsed,Autonomous / ownership-oriented
+Nora,Nakamura,nora.nakamura@ziaod.com,+12516335737,Talent,Summit,US Central / Mountain,27,80,Placed,Clear,Structured / process-driven
+Hugo,Obi,hugo.obi@ziaod.com,+12649256061,Talent,Momentum,Overnight / Overflow,23,61,Placed,Clear,Structured / process-driven
+Noemi,Ferreira,noemi.ferreira@ziaod.com,+18062404758,Talent,Momentum,US Central / Mountain,0,61,Placed,Clear,Autonomous / ownership-oriented
+Ada,Novotny,ada.novotny@ziaod.com,+17093089422,Talent,Momentum,US Eastern,31,61,In Assessment,Lapsed,Autonomous / ownership-oriented
+Idris,Jansen,idris.jansen@ziaod.com,+14712527584,Talent,Summit,US Central / Mountain,31,80,Placed,Clear,Structured / process-driven
+Sana,Patel,sana.patel@ziaod.com,+13784607183,Talent,Momentum,US Central / Mountain,3,61,Placed,Clear,Relational / client-facing
+Mikkel,Bergstrom,mikkel.bergstrom@ziaod.com,+18627507994,Talent,Momentum,US Central / Mountain,0,61,In Assessment,Lapsed,Adaptive / cross-functional
+Tomas,Mahmood,tomas.mahmood@ziaod.com,+17862562420,Talent,Momentum,US Central / Mountain,23,61,In Assessment,Not Started,Autonomous / ownership-oriented
+Omar,Kim,omar.kim@ziaod.com,+13775095067,Talent,Momentum,US Central / Mountain,5,61,In Assessment,Lapsed,Adaptive / cross-functional
+Sven,Reyes,sven.reyes@ziaod.com,+14243408282,Talent,Momentum,US Central / Mountain,27,61,In Assessment,Not Started,Relational / client-facing
+Marta,Diallo,marta.diallo@ziaod.com,+15198415522,Talent,Momentum,US Eastern,34,61,Placed,Clear,Relational / client-facing
+Ravi,Ellery,ravi.ellery@ziaod.com,+13658094221,Talent,Core,US Central / Mountain,3,47,Placed,Clear,Relational / client-facing
+Isabel,Bergstrom,isabel.bergstrom@ziaod.com,+14907243335,Talent,Momentum,US Eastern,28,61,In Assessment,Not Started,Adaptive / cross-functional
+Anders,Achebe,anders.achebe@ziaod.com,+16314407455,Talent,Momentum,US Central / Mountain,7,61,Placed,Clear,Adaptive / cross-functional
+Caleb,Yilmaz,caleb.yilmaz@ziaod.com,+13886587116,Talent,Momentum,Overnight / Overflow,2,61,Placed,Clear,Structured / process-driven
+Rosa,Ellery,rosa.ellery@ziaod.com,+18538702959,Talent,Momentum,US Central / Mountain,25,61,Placed,Clear,Structured / process-driven
+Greta,Rossi,greta.rossi@ziaod.com,+13579027480,Talent,Summit,US Central / Mountain,7,80,Placed,Clear,Structured / process-driven
+Rania,Mensah,rania.mensah@ziaod.com,+13155648874,Talent,Momentum,US Central / Mountain,6,61,Placed,Clear,Adaptive / cross-functional
+Rania,Rojas,rania.rojas@ziaod.com,+13092853453,Talent,Core,US Central / Mountain,28,47,In Assessment,Not Started,Autonomous / ownership-oriented
+Pedro,Weiss,pedro.weiss@ziaod.com,+18447191030,Talent,Momentum,US Eastern,1,61,Placed,Clear,Autonomous / ownership-oriented
+Aisha,Petrov,aisha.petrov@ziaod.com,+15664448987,Talent,Core,US Pacific,24,47,In Assessment,Not Started,Autonomous / ownership-oriented
+Alba,Obi,alba.obi@ziaod.com,+18027608160,Talent,Momentum,US Pacific,0,61,Placed,Clear,Structured / process-driven
+Rania,Torres,rania.torres@ziaod.com,+19699041257,Talent,Summit,US Pacific,5,80,Placed,Clear,Relational / client-facing
+Rina,Novotny,rina.novotny@ziaod.com,+16648732449,Talent,Momentum,US Eastern,24,61,Placed,Clear,Relational / client-facing
+Dana,Vasquez,dana.vasquez@ziaod.com,+15974499072,Talent,Core,US Pacific,35,47,In Assessment,Lapsed,Adaptive / cross-functional
+Boris,Ferreira,boris.ferreira@ziaod.com,+16403593754,Talent,Core,US Eastern,2,47,Placed,Clear,Autonomous / ownership-oriented
+Lucia,Raghunathan,lucia.raghunathan@ziaod.com,+18205106722,Talent,Momentum,US Eastern,24,61,Placed,Clear,Relational / client-facing
+Viktor,Obi,viktor.obi@ziaod.com,+18157583457,Talent,Momentum,Overnight / Overflow,0,61,Placed,Clear,Relational / client-facing
+Pavel,Fischer,pavel.fischer@ziaod.com,+18255546996,Talent,Core,US Eastern,23,47,Placed,Clear,Autonomous / ownership-oriented
+Salma,Ellery,salma.ellery@ziaod.com,+18622123998,Talent,Core,US Pacific,28,47,Placed,Clear,Relational / client-facing
+Thandi,Fischer,thandi.fischer@ziaod.com,+16193447690,Talent,Core,US Eastern,30,47,Placed,Clear,Adaptive / cross-functional
+Tomas,Raghunathan,tomas.raghunathan@ziaod.com,+18988865960,Talent,Momentum,US Central / Mountain,4,61,Placed,Expiring Soon,Adaptive / cross-functional
+Marisol,Sharma,marisol.sharma@ziaod.com,+18195094021,Talent,Core,US Pacific,29,47,In Assessment,Not Started,Structured / process-driven
+Elsa,Nasser,elsa.nasser@ziaod.com,+17166552073,Talent,Momentum,US Pacific,7,61,Placed,Clear,Relational / client-facing
+Emeka,Novotny,emeka.novotny@ziaod.com,+13113436278,Talent,Momentum,US Central / Mountain,7,61,In Assessment,Lapsed,Structured / process-driven
+Ingrid,Sultana,ingrid.sultana@ziaod.com,+12466641642,Talent,Core,US Pacific,32,47,Placed,Clear,Relational / client-facing
+Divya,Silva,divya.silva@ziaod.com,+12315988304,Talent,Momentum,US Eastern,3,61,Placed,Clear,Adaptive / cross-functional
+Ada,Sandoval,ada.sandoval@ziaod.com,+15167622882,Talent,Summit,US Pacific,1,80,Placed,Clear,Relational / client-facing
+Fatima,Lindqvist,fatima.lindqvist@ziaod.com,+12174729056,Talent,Core,US Eastern,33,47,Placed,Clear,Adaptive / cross-functional
+Oskar,Kovacs,oskar.kovacs@ziaod.com,+15446773166,Talent,Core,US Eastern,1,47,Placed,Clear,Structured / process-driven
+Lian,Aguilar,lian.aguilar@ziaod.com,+15434947035,Talent,Core,US Eastern,2,47,Placed,Clear,Adaptive / cross-functional
+Yuki,Mahmood,yuki.mahmood@ziaod.com,+17962772335,Talent,Summit,US Eastern,3,80,Placed,Clear,Relational / client-facing
+Marta,Kovacs,marta.kovacs@ziaod.com,+17856314699,Talent,Core,US Central / Mountain,5,47,In Assessment,Lapsed,Autonomous / ownership-oriented
+Wren,Zhang,wren.zhang@ziaod.com,+13425103598,Talent,Core,US Pacific,27,47,Placed,Clear,Adaptive / cross-functional
+Sofia,Zhang,sofia.zhang@ziaod.com,+19239182992,Talent,Core,US Central / Mountain,1,47,Placed,Clear,Structured / process-driven
+Arun,Farah,arun.farah@ziaod.com,+14529284625,Talent,Summit,US Central / Mountain,4,80,Placed,Clear,Adaptive / cross-functional
+Caleb,Adebayo,caleb.adebayo@ziaod.com,+12018018933,Talent,Momentum,US Pacific,39,61,Placed,Clear,Relational / client-facing
+Leila,Farah,leila.farah@ziaod.com,+16296441529,Talent,Core,Overnight / Overflow,35,47,Placed,Clear,Adaptive / cross-functional
+Ada,Novotny,ada.novotny2@ziaod.com,+16893907188,Talent,Core,Overnight / Overflow,34,47,Placed,Clear,Structured / process-driven
+Caleb,Duarte,caleb.duarte@ziaod.com,+14606197402,Talent,Momentum,US Central / Mountain,29,61,Placed,Clear,Autonomous / ownership-oriented
+Rosa,Nasser,rosa.nasser@ziaod.com,+17179431862,Talent,Core,US Eastern,23,47,Placed,Clear,Adaptive / cross-functional
+Kai,Yilmaz,kai.yilmaz@ziaod.com,+16443593698,Talent,Momentum,US Eastern,28,61,Placed,Clear,Autonomous / ownership-oriented
+Yuki,Delgado,yuki.delgado@ziaod.com,+15543735462,Talent,Summit,US Pacific,30,80,Placed,Clear,Adaptive / cross-functional
+Yuki,Petrov,yuki.petrov@ziaod.com,+18878896094,Talent,Summit,US Eastern,33,80,In Assessment,Lapsed,Adaptive / cross-functional
+Rosa,Nyong,rosa.nyong@ziaod.com,+14495363173,Talent,Momentum,US Eastern,2,61,Placed,Clear,Autonomous / ownership-oriented
+Marta,Whitfield,marta.whitfield@ziaod.com,+18825345380,Talent,Momentum,US Eastern,3,61,Placed,Clear,Relational / client-facing
+Nikhil,Malek,nikhil.malek@ziaod.com,+18205172467,Talent,Core,Overnight / Overflow,7,47,Placed,Clear,Structured / process-driven
+Joon,Achebe,joon.achebe@ziaod.com,+19405268215,Talent,Summit,US Central / Mountain,31,80,Placed,Clear,Adaptive / cross-functional
+Fatima,Novak,fatima.novak@ziaod.com,+19485891259,Talent,Momentum,US Pacific,33,61,Placed,Expiring Soon,Structured / process-driven
+Layla,Tanaka,layla.tanaka@ziaod.com,+16954761867,Talent,Momentum,Overnight / Overflow,26,61,Placed,Clear,Adaptive / cross-functional
+Mikkel,Balogun,mikkel.balogun@ziaod.com,+12592779842,Talent,Core,US Central / Mountain,5,47,Placed,Clear,Relational / client-facing
+Aisha,Lindgren,aisha.lindgren@ziaod.com,+13513348119,Talent,Summit,US Pacific,8,80,Placed,Clear,Autonomous / ownership-oriented
+Salma,Achebe,salma.achebe@ziaod.com,+18076223085,Talent,Momentum,US Pacific,0,61,In Assessment,Lapsed,Structured / process-driven
+Rosa,Aguilar,rosa.aguilar@ziaod.com,+16525285046,Talent,Momentum,US Eastern,24,61,Placed,Clear,Structured / process-driven
+Yara,Adebayo,yara.adebayo@ziaod.com,+15732077846,Talent,Momentum,US Central / Mountain,5,61,Placed,Clear,Structured / process-driven
+Nora,Patel,nora.patel@ziaod.com,+13489095857,Talent,Summit,US Eastern,37,80,Placed,Expiring Soon,Structured / process-driven
+Ravi,Petrov,ravi.petrov@ziaod.com,+13426483372,Talent,Core,US Eastern,5,47,In Assessment,Lapsed,Structured / process-driven
+Oskar,Bianchi,oskar.bianchi@ziaod.com,+16075099440,Talent,Core,Overnight / Overflow,2,47,Placed,Clear,Structured / process-driven
+Bilal,Rahman,bilal.rahman@ziaod.com,+14465418227,Talent,Momentum,Overnight / Overflow,0,61,Placed,Clear,Structured / process-driven
+Aisha,Sorensen,aisha.sorensen@ziaod.com,+16405318303,Talent,Momentum,Overnight / Overflow,33,61,Placed,Clear,Structured / process-driven
+Kenji,Achebe,kenji.achebe@ziaod.com,+13919808738,Talent,Momentum,US Central / Mountain,27,61,Placed,Expiring Soon,Relational / client-facing
+Sofia,Osei,sofia.osei@ziaod.com,+19575441529,Talent,Summit,US Eastern,7,80,In Assessment,Lapsed,Structured / process-driven
+Bella,Baptiste,bella.baptiste2@ziaod.com,+14697184698,Talent,Core,US Pacific,25,47,Placed,Expiring Soon,Relational / client-facing
+Tariq,Ellery,tariq.ellery@ziaod.com,+17468215321,Talent,Momentum,Overnight / Overflow,2,61,Placed,Clear,Relational / client-facing
+Rania,Costa,rania.costa@ziaod.com,+13423588117,Talent,Momentum,US Central / Mountain,0,61,Placed,Clear,Autonomous / ownership-oriented
+Priya,Nkemdi,priya.nkemdi@ziaod.com,+16462305310,Talent,Summit,Overnight / Overflow,0,80,In Assessment,Lapsed,Structured / process-driven
+Aisha,Yilmaz,aisha.yilmaz@ziaod.com,+14473091291,Talent,Momentum,US Eastern,7,61,Placed,Clear,Structured / process-driven
+Freya,Andersen,freya.andersen@ziaod.com,+15844232541,Talent,Core,US Eastern,30,47,Placed,Clear,Autonomous / ownership-oriented
+Arun,Yilmaz,arun.yilmaz@ziaod.com,+15492278602,Talent,Summit,US Pacific,6,80,In Assessment,Lapsed,Relational / client-facing
+Layla,Raghunathan,layla.raghunathan@ziaod.com,+19522696340,Talent,Momentum,US Central / Mountain,26,61,In Assessment,Lapsed,Relational / client-facing
+Marisol,Rossi,marisol.rossi@ziaod.com,+12588643574,Talent,Momentum,US Central / Mountain,6,61,Placed,Clear,Adaptive / cross-functional
+Isabel,Weiss,isabel.weiss@ziaod.com,+17797987666,Talent,Core,US Pacific,33,47,In Assessment,Lapsed,Autonomous / ownership-oriented
+Tomas,Rivera,tomas.rivera@ziaod.com,+18982187234,Talent,Core,US Central / Mountain,27,47,Placed,Clear,Autonomous / ownership-oriented
+Thandi,Mahmood,thandi.mahmood@ziaod.com,+19227478191,Talent,Momentum,US Eastern,33,61,Placed,Clear,Adaptive / cross-functional
+Mikkel,Sorensen,mikkel.sorensen@ziaod.com,+15007011423,Talent,Momentum,US Eastern,0,61,Placed,Clear,Adaptive / cross-functional
+Femi,Serrano,femi.serrano@ziaod.com,+18213427880,Talent,Momentum,US Eastern,4,61,Placed,Clear,Autonomous / ownership-oriented
+Astrid,Moreau,astrid.moreau@ziaod.com,+19019044425,Talent,Summit,Overnight / Overflow,7,80,In Assessment,Lapsed,Autonomous / ownership-oriented
+Andres,Klein,andres.klein@ziaod.com,+19999149356,Talent,Momentum,US Eastern,22,61,Placed,Clear,Relational / client-facing
+Diego,Malek,diego.malek@ziaod.com,+19618144288,Talent,Core,US Pacific,8,47,Placed,Clear,Adaptive / cross-functional
+Isabel,Marchetti,isabel.marchetti@ziaod.com,+14475832211,Talent,Momentum,US Pacific,1,61,Placed,Clear,Adaptive / cross-functional
+Malik,Achebe,malik.achebe@ziaod.com,+16183862201,Talent,Summit,US Eastern,5,80,Placed,Clear,Structured / process-driven
+Anika,Osei,anika.osei@ziaod.com,+18187586918,Talent,Core,US Central / Mountain,5,47,Placed,Clear,Autonomous / ownership-oriented
+Kai,Hoffman,kai.hoffman@ziaod.com,+18617826691,Talent,Summit,US Pacific,26,80,Placed,Clear,Autonomous / ownership-oriented
+Oskar,Aguilar,oskar.aguilar@ziaod.com,+19748091962,Talent,Momentum,US Central / Mountain,36,61,Placed,Clear,Structured / process-driven
+Tomas,Moreau,tomas.moreau@ziaod.com,+12667279958,Talent,Core,US Eastern,5,47,Placed,Clear,Relational / client-facing
+Kai,Watanabe,kai.watanabe@ziaod.com,+15212216906,Talent,Core,US Central / Mountain,3,47,Placed,Clear,Relational / client-facing
+Noemi,Torres,noemi.torres@ziaod.com,+16236784532,Talent,Momentum,US Eastern,6,61,Placed,Clear,Autonomous / ownership-oriented
+Rina,Kovacs,rina.kovacs@ziaod.com,+17628854646,Talent,Momentum,US Pacific,4,61,Placed,Clear,Structured / process-driven
+Freya,Bianchi,freya.bianchi@ziaod.com,+18336005841,Talent,Momentum,US Eastern,4,61,Placed,Clear,Relational / client-facing
+Yusuf,Mwangi,yusuf.mwangi@ziaod.com,+15418969676,Talent,Core,US Central / Mountain,2,47,Placed,Clear,Adaptive / cross-functional
+Lucia,Mwangi,lucia.mwangi@ziaod.com,+15279943678,Talent,Core,US Pacific,4,47,Placed,Expiring Soon,Relational / client-facing
+Nikhil,Nyong,nikhil.nyong@ziaod.com,+16432008724,Talent,Summit,US Eastern,27,80,Placed,Clear,Adaptive / cross-functional
+Marcus,Bianchi,marcus.bianchi@ziaod.com,+16484512796,Talent,Core,US Central / Mountain,30,47,Placed,Clear,Adaptive / cross-functional
+Leila,Iqbal,leila.iqbal@ziaod.com,+17437498633,Talent,Core,US Central / Mountain,4,47,Placed,Expiring Soon,Relational / client-facing
+Freya,Bakker,freya.bakker@ziaod.com,+15327695281,Talent,Summit,US Pacific,2,80,In Assessment,Lapsed,Relational / client-facing
+Greta,Castillo,greta.castillo@ziaod.com,+12948534902,Talent,Momentum,US Pacific,33,61,Placed,Clear,Structured / process-driven
+Anders,Santos,anders.santos@ziaod.com,+12402037571,Talent,Momentum,US Eastern,30,61,Placed,Clear,Adaptive / cross-functional
+Priya,Ferreira,priya.ferreira@ziaod.com,+17066707492,Talent,Momentum,US Eastern,4,61,Placed,Clear,Relational / client-facing
+Yuki,Eriksen,yuki.eriksen@ziaod.com,+16583778735,Talent,Core,US Eastern,3,47,Placed,Clear,Autonomous / ownership-oriented
+Luis,Balogun,luis.balogun@ziaod.com,+18005684596,Talent,Core,US Central / Mountain,4,47,Placed,Clear,Structured / process-driven
+Wren,Banda,wren.banda@ziaod.com,+18865214405,Talent,Momentum,US Pacific,6,61,In Assessment,Lapsed,Adaptive / cross-functional
+Rohan,Whitfield,rohan.whitfield@ziaod.com,+19037379344,Talent,Momentum,Overnight / Overflow,36,61,Placed,Expiring Soon,Autonomous / ownership-oriented
+Nasir,Diallo,nasir.diallo@ziaod.com,+17722092903,Talent,Momentum,US Pacific,1,61,Placed,Clear,Structured / process-driven
+Nora,Rossi,nora.rossi@ziaod.com,+12185956863,Talent,Momentum,US Eastern,0,61,Placed,Clear,Relational / client-facing
+Mei,Banda,mei.banda@ziaod.com,+19397288706,Talent,Momentum,US Eastern,26,61,Placed,Clear,Relational / client-facing
+Noemi,Whitfield,noemi.whitfield@ziaod.com,+14785799166,Talent,Momentum,US Eastern,26,61,Placed,Clear,Relational / client-facing
+Rafael,Chen,rafael.chen@ziaod.com,+15894109084,Talent,Core,Overnight / Overflow,32,47,Placed,Clear,Structured / process-driven
+Kai,Sultana,kai.sultana@ziaod.com,+13608019643,Talent,Core,US Eastern,0,47,Placed,Clear,Adaptive / cross-functional
+Yara,Jansen,yara.jansen@ziaod.com,+13079761780,Talent,Momentum,US Eastern,35,61,Placed,Clear,Relational / client-facing
+Marcus,Sandoval,marcus.sandoval@ziaod.com,+14366976579,Talent,Momentum,US Eastern,27,61,Placed,Clear,Relational / client-facing
+Hana,Alvarez,hana.alvarez@ziaod.com,+17365271584,Talent,Core,US Pacific,6,47,Placed,Clear,Adaptive / cross-functional
+Thandi,Ellery,thandi.ellery@ziaod.com,+17507898117,Talent,Summit,US Pacific,4,80,Placed,Clear,Structured / process-driven
+Tariq,Larsen,tariq.larsen@ziaod.com,+14755901877,Talent,Core,US Pacific,33,47,In Assessment,Lapsed,Autonomous / ownership-oriented
+Freya,Jansen,freya.jansen@ziaod.com,+16389921098,Talent,Momentum,US Central / Mountain,0,61,Placed,Clear,Autonomous / ownership-oriented
+Thandi,Yilmaz,thandi.yilmaz@ziaod.com,+12852457591,Talent,Core,US Eastern,1,47,Placed,Clear,Structured / process-driven
+Isabel,Rivera,isabel.rivera@ziaod.com,+18823932664,Talent,Core,US Central / Mountain,37,47,Placed,Clear,Adaptive / cross-functional
+Bilal,Mahmood,bilal.mahmood@ziaod.com,+15905772030,Talent,Summit,US Central / Mountain,0,80,Placed,Clear,Structured / process-driven
+Alba,Castillo,alba.castillo@ziaod.com,+15546488858,Talent,Core,US Central / Mountain,4,47,Placed,Clear,Structured / process-driven
+Arun,Chen,arun.chen@ziaod.com,+13276806130,Talent,Momentum,US Eastern,1,61,Placed,Clear,Autonomous / ownership-oriented
+Aisha,Nkemdi,aisha.nkemdi@ziaod.com,+13844612443,Talent,Core,US Pacific,24,47,Placed,Clear,Adaptive / cross-functional
+Fatima,Moreau,fatima.moreau@ziaod.com,+17605673379,Talent,Momentum,US Pacific,37,61,Placed,Clear,Relational / client-facing
+Pavel,Castillo,pavel.castillo@ziaod.com,+12868784487,Talent,Core,US Eastern,28,47,Placed,Clear,Structured / process-driven
+Tunde,Rahman,tunde.rahman@ziaod.com,+18826372566,Talent,Momentum,US Eastern,4,61,Placed,Clear,Autonomous / ownership-oriented
+Ingrid,Andersen,ingrid.andersen@ziaod.com,+19156413794,Talent,Core,US Pacific,0,47,Placed,Clear,Adaptive / cross-functional
+Noemi,Rivera,noemi.rivera@ziaod.com,+12427391107,Talent,Momentum,US Eastern,32,61,In Assessment,Lapsed,Autonomous / ownership-oriented
+Marisol,Ferreira,marisol.ferreira@ziaod.com,+14966188081,Talent,Momentum,Overnight / Overflow,35,61,Placed,Clear,Autonomous / ownership-oriented
+Marisol,Ibrahim,marisol.ibrahim@ziaod.com,+15567045585,Talent,Momentum,US Central / Mountain,33,61,In Assessment,Lapsed,Relational / client-facing
+Idris,Rivera,idris.rivera@ziaod.com,+18195478505,Talent,Momentum,US Pacific,2,61,Placed,Clear,Structured / process-driven
+Leila,Rojas,leila.rojas@ziaod.com,+14578736046,Talent,Momentum,US Eastern,33,61,Placed,Clear,Structured / process-driven
+Hana,Chen,hana.chen@ziaod.com,+19588381020,Talent,Summit,US Central / Mountain,2,80,Placed,Clear,Autonomous / ownership-oriented
+Caleb,Costa,caleb.costa@ziaod.com,+12499726853,Talent,Momentum,US Eastern,5,61,Placed,Clear,Adaptive / cross-functional
+Rina,Andersen,rina.andersen@ziaod.com,+14794368531,Talent,Momentum,US Pacific,0,61,Placed,Clear,Relational / client-facing
+Zane,Okafor,zane.okafor@ziaod.com,+14876394116,Talent,Momentum,US Pacific,35,61,Placed,Clear,Relational / client-facing
+Ingrid,Adebayo,ingrid.adebayo@ziaod.com,+18374694302,Talent,Summit,US Eastern,6,80,Placed,Expiring Soon,Adaptive / cross-functional
+Diego,Duarte,diego.duarte@ziaod.com,+13468804955,Talent,Core,US Eastern,3,47,Placed,Clear,Structured / process-driven
+Tariq,Mensah,tariq.mensah@ziaod.com,+16797417315,Talent,Core,US Eastern,3,47,Placed,Clear,Adaptive / cross-functional
+Anja,Krishnan,anja.krishnan@ziaod.com,+16104759752,Talent,Momentum,US Eastern,34,61,Placed,Clear,Relational / client-facing
+Hana,Novotny,hana.novotny@ziaod.com,+12282999525,Talent,Core,US Eastern,2,47,Placed,Clear,Relational / client-facing
+Luis,Diallo,luis.diallo@ziaod.com,+17095833307,Talent,Momentum,US Pacific,29,61,Placed,Clear,Autonomous / ownership-oriented
+Yara,Bianchi,yara.bianchi@ziaod.com,+18278386026,Talent,Momentum,US Central / Mountain,7,61,Placed,Expiring Soon,Relational / client-facing
+Hiro,Duarte,hiro.duarte@ziaod.com,+16444296059,Talent,Core,US Central / Mountain,5,47,Placed,Clear,Adaptive / cross-functional
+Femi,Klein,femi.klein@ziaod.com,+18805775452,Talent,Core,US Central / Mountain,2,47,Placed,Clear,Adaptive / cross-functional
+Aisha,Fontaine,aisha.fontaine@ziaod.com,+16735674033,Talent,Momentum,US Eastern,1,61,Placed,Clear,Adaptive / cross-functional
+Elena,Weiss,elena.weiss@ziaod.com,+17793389967,Talent,Momentum,US Central / Mountain,36,61,Placed,Clear,Structured / process-driven
+Elsa,Delgado,elsa.delgado@ziaod.com,+19662908160,Talent,Momentum,US Pacific,0,61,Placed,Clear,Relational / client-facing
+Thandi,Osei,thandi.osei@ziaod.com,+17252706789,Talent,Momentum,US Eastern,0,61,Placed,Clear,Adaptive / cross-functional
+Luis,Chen,luis.chen@ziaod.com,+13079769845,Talent,Momentum,US Eastern,26,61,Placed,Clear,Structured / process-driven
+Wren,Yilmaz,wren.yilmaz@ziaod.com,,Talent,Core,US Central / Mountain,35,47,Bench-Ready,Clear,
+Arjun,Ahmed,arjun.ahmed@ziaod.com,,Talent,Summit,Overnight / Overflow,31,80,Bench-Ready,Clear,
+Rafael,Costa,rafael.costa@ziaod.com,,Talent,Core,US Eastern,30,47,Bench-Ready,Clear,
+Freya,Petrov,freya.petrov@ziaod.com,,Talent,Momentum,US Eastern,36,61,Bench-Ready,Expiring Soon,
+Ingrid,Achebe,ingrid.achebe@ziaod.com,,Talent,Core,US Eastern,30,47,In Assessment,Expiring Soon,
+Tomas,Lindqvist,tomas.lindqvist@ziaod.com,,Talent,Momentum,US Central / Mountain,31,61,In Assessment,Clear,
+Isla,Costa,isla.costa@ziaod.com,,Talent,Core,US Eastern,39,47,Bench-Ready,Clear,
+Dana,Rossi,dana.rossi@ziaod.com,,Talent,Core,US Eastern,35,47,In Assessment,Clear,
+Marcus,Petrov,marcus.petrov@ziaod.com,,Talent,Core,Overnight / Overflow,37,47,Bench-Ready,Expiring Soon,
+Ines,Varga,ines.varga@ziaod.com,,Talent,Momentum,Overnight / Overflow,33,61,Bench-Ready,Clear,
+Greta,Weiss,greta.weiss@ziaod.com,,Talent,Summit,US Eastern,32,80,Bench-Ready,Clear,
+Yuki,Fernandes,yuki.fernandes@ziaod.com,,Talent,Core,US Pacific,30,47,Bench-Ready,Clear,
+Amara,Mwangi,amara.mwangi@ziaod.com,,Talent,Core,US Central / Mountain,40,47,In Assessment,Clear,
+Mei,Diallo,mei.diallo@ziaod.com,,Talent,Summit,US Eastern,40,80,In Assessment,Expiring Soon,
+Idris,Sandoval,idris.sandoval@ziaod.com,,Talent,Momentum,US Pacific,38,61,Bench-Ready,Clear,
+Ines,Nakamura,ines.nakamura@ziaod.com,,Talent,Momentum,Overnight / Overflow,38,61,Bench-Ready,Clear,
+Theo,Vasquez,theo.vasquez@ziaod.com,,Talent,Momentum,US Central / Mountain,36,61,In Assessment,Expiring Soon,
+Elena,Diallo,elena.diallo@ziaod.com,,Talent,Momentum,US Eastern,39,61,Bench-Ready,Expiring Soon,
+Theo,Rahman,theo.rahman@ziaod.com,,Talent,Core,US Eastern,40,47,Bench-Ready,Clear,
+Ines,Adebayo,ines.adebayo@ziaod.com,,Talent,Core,US Eastern,32,47,In Assessment,Clear,
+Marisol,Moreau,marisol.moreau@ziaod.com,,Talent,Momentum,US Pacific,32,61,Bench-Ready,Clear,
+Sana,Farah,sana.farah@ziaod.com,,Talent,Summit,US Central / Mountain,35,80,Bench-Ready,Expiring Soon,
+Zara,Weiss,zara.weiss@ziaod.com,,Talent,Momentum,US Pacific,32,61,Bench-Ready,Clear,
+Ingrid,Costa,ingrid.costa@ziaod.com,,Talent,Momentum,US Eastern,37,61,In Assessment,Not Started,
+Kenji,Lindqvist,kenji.lindqvist@ziaod.com,,Talent,Momentum,US Eastern,38,61,Bench-Ready,Clear,
+Theo,Nakamura,theo.nakamura@ziaod.com,,Talent,Momentum,US Eastern,33,61,In Assessment,Not Started,
+Arjun,Rahman,arjun.rahman@ziaod.com,,Talent,Momentum,Overnight / Overflow,32,61,Bench-Ready,Clear,

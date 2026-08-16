@@ -1,0 +1,432 @@
+Deal,Product,SKU,Unit Price,Quantity,Discount %,List Value,Net Amount
+Engagement — Malik Sorensen @ Dunmore Industries,Consultant Hour — Momentum,ZIA-HR-MOM,110,270,5,29700.00,28215.00
+Engagement — Yuki Raghunathan @ Northwind Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,230,20,25300.00,20240.00
+Engagement — Anja Duarte @ Fairhaven Learning,Consultant Hour — Core,ZIA-HR-CORE,85,2485,5,211225.00,200663.75
+Engagement — Pedro Delgado @ Copperfield Financial,Consultant Hour — Core,ZIA-HR-CORE,85,1224,20,104040.00,83232.00
+Engagement — Hana Kim @ Fairhaven Logistics,Consultant Hour — Core,ZIA-HR-CORE,85,297,5,25245.00,23982.75
+Engagement — Omar Krishnan @ Copperfield Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,2432,10,267520.00,240768.00
+Engagement — Nasir Rossi @ Wayfinder Learning,Consultant Hour — Summit,ZIA-HR-SUM,145,136,0,19720.00,19720.00
+Engagement — Rania Chen @ Dunmore Industries,Consultant Hour — Momentum,ZIA-HR-MOM,110,243,0,26730.00,26730.00
+Engagement — Layla Olsen @ Vestry Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,1750,15,192500.00,163625.00
+Engagement — Rina Krishnan @ Fairhaven Logistics,Consultant Hour — Core,ZIA-HR-CORE,85,165,15,14025.00,11921.25
+Engagement — Sven Petrov @ Copperfield Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,2336,0,256960.00,256960.00
+Engagement — Malik Watanabe @ Vantage Freight,Consultant Hour — Core,ZIA-HR-CORE,85,2268,15,192780.00,163863.00
+Engagement — Sana Lindqvist @ Jarrow Education Group,Consultant Hour — Summit,ZIA-HR-SUM,145,900,5,130500.00,123975.00
+Engagement — Nora Nyong @ Quill Alliance,Consultant Hour — Core,ZIA-HR-CORE,85,2241,0,190485.00,190485.00
+Engagement — Hana Weiss @ Northwind Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,230,5,25300.00,24035.00
+Engagement — Lucia Alvarez @ Hallmark Software,Consultant Hour — Core,ZIA-HR-CORE,85,2075,5,176375.00,167556.25
+Engagement — Nikhil Rossi @ Orchard Alliance,Consultant Hour — Momentum,ZIA-HR-MOM,110,901,15,99110.00,84243.50
+Engagement — Elsa Gupta @ Hallmark Software,Consultant Hour — Core,ZIA-HR-CORE,85,1700,0,144500.00,144500.00
+Engagement — Clara Novotny @ Merrow Consulting,Consultant Hour — Momentum,ZIA-HR-MOM,110,360,0,39600.00,39600.00
+Engagement — Boris Baptiste @ Vantage Freight,Consultant Hour — Core,ZIA-HR-CORE,85,2296,15,195160.00,165886.00
+Engagement — Lucia Petrov @ Winsley Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,1664,0,183040.00,183040.00
+Engagement — Nikhil Castillo @ Vestry Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,1775,0,195250.00,195250.00
+Engagement — Andres Iqbal @ Merrow Consulting,Consultant Hour — Momentum,ZIA-HR-MOM,110,396,0,43560.00,43560.00
+Engagement — Rania Kamau @ Quill Alliance,Consultant Hour — Core,ZIA-HR-CORE,85,2295,0,195075.00,195075.00
+Engagement — Elena Okafor @ Fairhaven Learning,Consultant Hour — Core,ZIA-HR-CORE,85,2485,0,211225.00,211225.00
+Engagement — Mei Eriksen @ Jarrow Education Group,Consultant Hour — Summit,ZIA-HR-SUM,145,1300,20,188500.00,150800.00
+Engagement — Tomas Delgado @ Wayfinder Learning,Consultant Hour — Summit,ZIA-HR-SUM,145,136,0,19720.00,19720.00
+Engagement — Sven Lindqvist @ Copperfield Financial,Consultant Hour — Core,ZIA-HR-CORE,85,756,5,64260.00,61047.00
+Engagement — Marta Banda @ Redwyn Software,Consultant Hour — Summit,ZIA-HR-SUM,145,384,0,55680.00,55680.00
+Engagement — Kenji Sultana @ Redwyn Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,1430,0,157300.00,157300.00
+Engagement — Hana Watanabe @ Northwind Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,207,0,22770.00,22770.00
+Vantage Health — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Winsley Alliance — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,5,38160.00,36252.00
+Linden Consulting — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Hartley Care Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,10,25440.00,22896.00
+Ironwood Health — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Granton Retail Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,10,12720.00,11448.00
+Elmridge Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Pemberton Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,15,54660.00,46461.00
+Tanglewood Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Tilbury Fabrication — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Norbury Goods — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,20,18220.00,14576.00
+Sorrel Medical Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Vestry Consulting — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,20,12720.00,10176.00
+Sable Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Lyndhurst Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Blackstone Advisory — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Tanglewood Learning — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Blackstone Wealth Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Engagement — Tomas Moreau @ Blackstone Brands,Consultant Hour — Core,ZIA-HR-CORE,85,104,0,8840.00,8840.00
+Engagement — Marisol Rossi @ Upton Consulting,Consultant Hour — Core,ZIA-HR-CORE,85,1512,0,128520.00,128520.00
+Engagement — Ravi Ellery @ Lyndhurst Financial,Consultant Hour — Momentum,ZIA-HR-MOM,110,700,0,77000.00,77000.00
+Engagement — Lucia Raghunathan @ Winsley Brands,Consultant Hour — Core,ZIA-HR-CORE,85,1155,10,98175.00,88357.50
+Engagement — Oskar Bianchi @ Cardinal Capital,Consultant Hour — Momentum,ZIA-HR-MOM,110,207,0,22770.00,22770.00
+Engagement — Leila Iqbal @ Vale Goods,Consultant Hour — Momentum,ZIA-HR-MOM,110,2142,10,235620.00,212058.00
+Engagement — Greta Castillo @ Oakfield Freight,Consultant Hour — Momentum,ZIA-HR-MOM,110,952,15,104720.00,89012.00
+Engagement — Nikhil Nyong @ Underhill Partners,Consultant Hour — Core,ZIA-HR-CORE,85,87,15,7395.00,6285.75
+Engagement — Hana Chen @ Winsley Brands,Consultant Hour — Core,ZIA-HR-CORE,85,1533,15,130305.00,110759.25
+Engagement — Dana Vasquez @ Rosemont Group,Consultant Hour — Summit,ZIA-HR-SUM,145,1920,0,278400.00,278400.00
+Engagement — Bilal Mahmood @ Cardinal Capital,Consultant Hour — Momentum,ZIA-HR-MOM,110,161,10,17710.00,15939.00
+Engagement — Sofia Osei @ Rosemont Group,Consultant Hour — Core,ZIA-HR-CORE,85,1450,5,123250.00,117087.50
+Engagement — Thandi Mahmood @ Alder Construction,Consultant Hour — Core,ZIA-HR-CORE,85,108,0,9180.00,9180.00
+Engagement — Hana Alvarez @ Underhill Partners,Consultant Hour — Core,ZIA-HR-CORE,85,87,0,7395.00,7395.00
+Engagement — Hana Novotny @ Blackstone Brands,Consultant Hour — Core,ZIA-HR-CORE,85,52,0,4420.00,4420.00
+Engagement — Rohan Whitfield @ Meridian Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,989,0,108790.00,108790.00
+Engagement — Anders Santos @ Alder Construction,Consultant Hour — Core,ZIA-HR-CORE,85,144,0,12240.00,12240.00
+Engagement — Aisha Sorensen @ Oakfield Freight,Consultant Hour — Momentum,ZIA-HR-MOM,110,1568,15,172480.00,146608.00
+Engagement — Aisha Nkemdi @ Redwyn Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,476,0,52360.00,52360.00
+Engagement — Kai Hoffman @ Norbury Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,260,20,28600.00,22880.00
+Engagement — Yuki Mahmood @ Hallmark Group,Consultant Hour — Core,ZIA-HR-CORE,85,189,0,16065.00,16065.00
+Engagement — Oskar Aguilar @ Winsley Advisory,Consultant Hour — Summit,ZIA-HR-SUM,145,440,0,63800.00,63800.00
+Engagement — Yara Jansen @ Hallmark Group,Consultant Hour — Core,ZIA-HR-CORE,85,378,20,32130.00,25704.00
+Engagement — Freya Andersen @ Kingsford Supply Co,Consultant Hour — Core,ZIA-HR-CORE,85,1460,5,124100.00,117895.00
+Engagement — Sana Patel @ Norbury Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,78,0,8580.00,8580.00
+Engagement — Bilal Rahman @ Keswick Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,630,0,69300.00,69300.00
+Engagement — Nikhil Malek @ Redwyn Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,448,0,49280.00,49280.00
+Engagement — Noemi Rivera @ Larkspur Wealth Partners,Consultant Hour — Core,ZIA-HR-CORE,85,551,5,46835.00,44493.25
+Engagement — Marta Kovacs @ Meridian Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,1035,0,113850.00,113850.00
+Engagement — Yuki Petrov @ Kestrel Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,174,15,19140.00,16269.00
+Engagement — Kai Sultana @ Keswick Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,630,5,69300.00,65835.00
+Engagement — Nora Nakamura @ Oakfield Freight,Consultant Hour — Momentum,ZIA-HR-MOM,110,1624,5,178640.00,169708.00
+Engagement — Anja Krishnan @ Upton Consulting,Consultant Hour — Core,ZIA-HR-CORE,85,1392,20,118320.00,94656.00
+Engagement — Freya Jansen @ Vale Goods,Consultant Hour — Momentum,ZIA-HR-MOM,110,2142,5,235620.00,223839.00
+Engagement — Caleb Yilmaz @ Rosemont Group,Consultant Hour — Core,ZIA-HR-CORE,85,550,0,46750.00,46750.00
+Engagement — Isabel Weiss @ Everton Logistics,Consultant Hour — Momentum,ZIA-HR-MOM,110,980,15,107800.00,91630.00
+Engagement — Lucia Mwangi @ Everton Logistics,Consultant Hour — Momentum,ZIA-HR-MOM,110,780,15,85800.00,72930.00
+Engagement — Rosa Aguilar @ Blackstone Brands,Consultant Hour — Core,ZIA-HR-CORE,85,52,0,4420.00,4420.00
+Thatcham Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Sable Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Merrow Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Cobalt Retail Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Underhill Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Sable Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Verdant Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Underhill Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Quarry Supply Co — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Granton Advisory — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Vantage Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Rosemont Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Linden Consulting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Orchard Alliance — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Norbury Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Copperfield Wealth Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Granton Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Copperfield Education Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Carrow Digital — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Quarry Software — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Thornbury Software — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,15,12720.00,10812.00
+Underhill Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Fairhaven Health — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Cardinal Capital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Meridian Health — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,15,36440.00,30974.00
+Jarrow Goods — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Rosemont Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Everton Logistics — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Dunmore Financial — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Vale Goods — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Pinehill Consulting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Glenmoor Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Tilbury Fabrication — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Winsley Advisory — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Quarry Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Carrow Systems — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,0,53630.00,53630.00
+Dunmore Partners — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Brookline Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Oakfield Industries — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,20,26815.00,21452.00
+Cheswick Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Redwyn Freight — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,15,36440.00,30974.00
+Wayfinder Capital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,20,18220.00,14576.00
+Fairbourne Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Vantage Wealth Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Draperfield Clinical Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,3,0,80445.00,80445.00
+Norbury Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Pemberton Academy — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Vantage Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Kestrel Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Winsley Brands — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Harrowgate Contracting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Vestry Wealth Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,15,36440.00,30974.00
+Underhill Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Newbold Manufacturing — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,15,38160.00,32436.00
+Norbury Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Orchard Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Quill Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Whitlock Foundation — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,10,38160.00,34344.00
+Norbury Goods — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Granton Retail Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Engagement — Salma Whitfield @ Pemberton Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,1596,10,175560.00,158004.00
+Engagement — Dana Whitfield @ Ivywell Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,156,10,13260.00,11934.00
+Engagement — Rina Eriksen @ Tanglewood Medical Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,2187,0,240570.00,240570.00
+Engagement — Zara Nkemdi @ Vantage Health,Consultant Hour — Summit,ZIA-HR-SUM,145,748,15,108460.00,92191.00
+Engagement — Rafael Patel @ Stonebridge Systems,Consultant Hour — Momentum,ZIA-HR-MOM,110,629,0,69190.00,69190.00
+Engagement — Sana Fontaine @ Jarrow Education Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,348,10,38280.00,34452.00
+Engagement — Isabel Achebe @ Kestrel Freight,Consultant Hour — Summit,ZIA-HR-SUM,145,990,20,143550.00,114840.00
+Engagement — Astrid Jansen @ Upton Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,1131,5,96135.00,91328.25
+Engagement — Divya Nasser @ Winsley Alliance,Consultant Hour — Core,ZIA-HR-CORE,85,1440,0,122400.00,122400.00
+Engagement — Mei Torres @ Hartley Care Group,Consultant Hour — Core,ZIA-HR-CORE,85,576,0,48960.00,48960.00
+Engagement — Bella Delgado @ Pemberton Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,1120,0,123200.00,123200.00
+Engagement — Hana Bergstrom @ Alder Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,897,0,98670.00,98670.00
+Engagement — Leila Bakker @ Upton Partners,Consultant Hour — Core,ZIA-HR-CORE,85,2618,15,222530.00,189150.50
+Engagement — Kai Gupta @ Norbury Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,1743,5,148155.00,140747.25
+Engagement — Nasir Hassan @ Hartley Care Group,Consultant Hour — Core,ZIA-HR-CORE,85,744,0,63240.00,63240.00
+Engagement — Diego Gupta @ Elmridge Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,986,0,108460.00,108460.00
+Engagement — Noemi Kovacs @ Tanglewood Learning,Consultant Hour — Momentum,ZIA-HR-MOM,110,779,10,85690.00,77121.00
+Engagement — Camila Iqbal @ Winsley Retail Group,Consultant Hour — Core,ZIA-HR-CORE,85,270,15,22950.00,19507.50
+Engagement — Marta Novak @ Winsley Retail Group,Consultant Hour — Core,ZIA-HR-CORE,85,120,0,10200.00,10200.00
+Engagement — Ingrid Adebayo @ Copperfield Capital,Consultant Hour — Core,ZIA-HR-CORE,85,1472,0,125120.00,125120.00
+Engagement — Omar Patel @ Kestrel Freight,Consultant Hour — Summit,ZIA-HR-SUM,145,1044,0,151380.00,151380.00
+Engagement — Anika Rossi @ Winsley Alliance,Consultant Hour — Core,ZIA-HR-CORE,85,1416,0,120360.00,120360.00
+Engagement — Mikkel Santos @ Stonebridge Systems,Consultant Hour — Momentum,ZIA-HR-MOM,110,740,0,81400.00,81400.00
+Engagement — Yara Rossi @ Winsley Alliance,Consultant Hour — Core,ZIA-HR-CORE,85,1440,0,122400.00,122400.00
+Engagement — Kwame Larsen @ Blackstone Advisory,Consultant Hour — Core,ZIA-HR-CORE,85,675,10,57375.00,51637.50
+Engagement — Zane Klein @ Ironwood Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,2584,0,284240.00,284240.00
+Engagement — Fatima Duarte @ Ivywell Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,78,10,6630.00,5967.00
+Engagement — Arun Sharma @ Blackstone Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,1131,20,124410.00,99528.00
+Engagement — Nasir Novak @ Ridgeline Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,275,0,30250.00,30250.00
+Engagement — Ada Moreau @ Upton Partners,Consultant Hour — Core,ZIA-HR-CORE,85,2142,0,182070.00,182070.00
+Engagement — Mateo Banda @ Norbury Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,1764,5,149940.00,142443.00
+Engagement — Noemi Farah @ Ironwood Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,2788,5,306680.00,291346.00
+Engagement — Leila Nakamura @ Pemberton Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,1064,15,117040.00,99484.00
+Engagement — Omar Nakamura @ Sable Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,352,20,38720.00,30976.00
+Engagement — Layla Adeyemi @ Blackstone Advisory,Consultant Hour — Core,ZIA-HR-CORE,85,675,0,57375.00,57375.00
+Engagement — Hana Kim @ Sable Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,902,0,99220.00,99220.00
+Engagement — Sven Gupta @ Ashgrove Fabrication,Consultant Hour — Momentum,ZIA-HR-MOM,110,1173,0,129030.00,129030.00
+Engagement — Chidi Bianchi @ Vestry Systems,Consultant Hour — Core,ZIA-HR-CORE,85,378,0,32130.00,32130.00
+Engagement — Ingrid Baptiste @ Hartley Wealth Partners,Consultant Hour — Summit,ZIA-HR-SUM,145,1421,15,206045.00,175138.25
+Engagement — Oskar Delgado @ Tanglewood Learning,Consultant Hour — Momentum,ZIA-HR-MOM,110,836,15,91960.00,78166.00
+Engagement — Wren Jansen @ Tanglewood Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,1184,0,130240.00,130240.00
+Engagement — Sana Weiss @ Alder Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,897,10,98670.00,88803.00
+Engagement — Wren Gupta @ Sorrel Medical Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,1368,0,150480.00,150480.00
+Engagement — Layla Rahman @ Ashgrove Fabrication,Consultant Hour — Momentum,ZIA-HR-MOM,110,1156,20,127160.00,101728.00
+Engagement — Kai Costa @ Quarry Health,Consultant Hour — Core,ZIA-HR-CORE,85,165,0,14025.00,14025.00
+Engagement — Kwame Nkemdi @ Tanglewood Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,1792,5,197120.00,187264.00
+Engagement — Arun Rojas @ Norbury Works,Consultant Hour — Core,ZIA-HR-CORE,85,1197,0,101745.00,101745.00
+Engagement — Arun Lindqvist @ Norbury Works,Consultant Hour — Core,ZIA-HR-CORE,85,1155,0,98175.00,98175.00
+Engagement — Anja Bergstrom @ Elmridge Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,2618,15,287980.00,244783.00
+Engagement — Andres Raghunathan @ Lyndhurst Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,320,0,35200.00,35200.00
+Engagement — Zane Fontaine @ Blackstone Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,1160,0,127600.00,127600.00
+Engagement — Anika Tanaka @ Quarry Health,Consultant Hour — Core,ZIA-HR-CORE,85,66,5,5610.00,5329.50
+Engagement — Sana Adeyemi @ Sorrel Medical Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,1406,0,154660.00,154660.00
+Engagement — Zane Aguilar @ Hartley Wealth Partners,Consultant Hour — Summit,ZIA-HR-SUM,145,1450,0,210250.00,210250.00
+Engagement — Kwame Nkemdi @ Upton Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,2204,0,187340.00,187340.00
+Engagement — Sofia Mahmood @ Vantage Medical Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,180,5,19800.00,18810.00
+Engagement — Andres Tanaka @ Ridgeline Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,225,0,24750.00,24750.00
+Engagement — Sofia Okafor @ Lyndhurst Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,260,0,28600.00,28600.00
+Engagement — Nikhil Tanaka @ Tanglewood Medical Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,1053,0,115830.00,115830.00
+Engagement — Bella Baptiste @ Merrow Health,Consultant Hour — Core,ZIA-HR-CORE,85,406,0,34510.00,34510.00
+Engagement — Diego Duarte @ Bright Harbor Academy,Consultant Hour — Momentum,ZIA-HR-MOM,110,1855,0,204050.00,204050.00
+Engagement — Omar Kim @ Chesney Systems,Consultant Hour — Momentum,ZIA-HR-MOM,110,1701,0,187110.00,187110.00
+Engagement — Elsa Nasser @ Yarrow Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,1232,0,135520.00,135520.00
+Engagement — Nora Rossi @ Kingsford Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,816,10,89760.00,80784.00
+Engagement — Tomas Raghunathan @ Hallmark Medical Group,Consultant Hour — Core,ZIA-HR-CORE,85,2520,10,214200.00,192780.00
+Engagement — Aisha Yilmaz @ Yarrow Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,1708,0,187880.00,187880.00
+Engagement — Mikkel Bergstrom @ Draycott Contracting,Consultant Hour — Core,ZIA-HR-CORE,85,390,0,33150.00,33150.00
+Engagement — Femi Klein @ Newbold Consulting,Consultant Hour — Momentum,ZIA-HR-MOM,110,2244,0,246840.00,246840.00
+Engagement — Layla Tanaka @ Kingsford Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,748,0,82280.00,82280.00
+Engagement — Mei Banda @ Meridian Medical Group,Consultant Hour — Core,ZIA-HR-CORE,85,2263,0,192355.00,192355.00
+Engagement — Elsa Delgado @ Yarrow Capital,Consultant Hour — Core,ZIA-HR-CORE,85,330,0,28050.00,28050.00
+Engagement — Tariq Ellery @ Linden Initiative,Consultant Hour — Summit,ZIA-HR-SUM,145,468,0,67860.00,67860.00
+Engagement — Kenji Achebe @ Draycott Contracting,Consultant Hour — Core,ZIA-HR-CORE,85,420,5,35700.00,33915.00
+Engagement — Ravi Petrov @ Draycott Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,832,0,91520.00,91520.00
+Engagement — Noemi Ferreira @ Vantage Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,279,10,30690.00,27621.00
+Engagement — Salma Achebe @ Yarrow Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,1856,5,204160.00,193952.00
+Engagement — Hiro Duarte @ Ironwood Financial,Consultant Hour — Momentum,ZIA-HR-MOM,110,891,0,98010.00,98010.00
+Engagement — Arun Chen @ Brookline Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,1944,0,213840.00,213840.00
+Engagement — Fatima Moreau @ Yarrow Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,1856,15,204160.00,173536.00
+Engagement — Fatima Novak @ Thornbury Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,270,0,29700.00,29700.00
+Engagement — Diego Malek @ Draycott Care Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,896,0,98560.00,98560.00
+Engagement — Mikkel Sorensen @ Beacon Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,980,0,107800.00,107800.00
+Engagement — Yara Adebayo @ Foxglove Builders,Consultant Hour — Summit,ZIA-HR-SUM,145,589,0,85405.00,85405.00
+Engagement — Femi Serrano @ Quarry Manufacturing,Consultant Hour — Momentum,ZIA-HR-MOM,110,364,0,40040.00,40040.00
+Engagement — Kai Yilmaz @ Quarry Manufacturing,Consultant Hour — Momentum,ZIA-HR-MOM,110,308,0,33880.00,33880.00
+Engagement — Thandi Fischer @ Vale Advisory,Consultant Hour — Core,ZIA-HR-CORE,85,1110,0,94350.00,94350.00
+Engagement — Wren Banda @ Beacon Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,1064,0,117040.00,117040.00
+Engagement — Noemi Whitfield @ Quarry Academy,Consultant Hour — Momentum,ZIA-HR-MOM,110,203,0,22330.00,22330.00
+Engagement — Rania Mensah @ Bright Harbor Academy,Consultant Hour — Momentum,ZIA-HR-MOM,110,1155,5,127050.00,120697.50
+Engagement — Aisha Fontaine @ Linden Capital,Consultant Hour — Momentum,ZIA-HR-MOM,110,2304,5,253440.00,240768.00
+Engagement — Kai Watanabe @ Vale Advisory,Consultant Hour — Core,ZIA-HR-CORE,85,1073,0,91205.00,91205.00
+Engagement — Freya Bianchi @ Winsley Builders,Consultant Hour — Summit,ZIA-HR-SUM,145,198,0,28710.00,28710.00
+Engagement — Nora Patel @ Chesney Systems,Consultant Hour — Momentum,ZIA-HR-MOM,110,1755,0,193050.00,193050.00
+Engagement — Thandi Ellery @ Newbold Consulting,Consultant Hour — Momentum,ZIA-HR-MOM,110,510,0,56100.00,56100.00
+Engagement — Thandi Yilmaz @ Linden Capital,Consultant Hour — Momentum,ZIA-HR-MOM,110,2304,10,253440.00,228096.00
+Engagement — Rafael Chen @ Thornbury Software,Consultant Hour — Momentum,ZIA-HR-MOM,110,324,0,35640.00,35640.00
+Engagement — Yara Bianchi @ Linden Initiative,Consultant Hour — Summit,ZIA-HR-SUM,145,1534,10,222430.00,200187.00
+Engagement — Luis Balogun @ Newbold Consulting,Consultant Hour — Momentum,ZIA-HR-MOM,110,2210,0,243100.00,243100.00
+Engagement — Anika Osei @ Ridgeline Health,Consultant Hour — Summit,ZIA-HR-SUM,145,728,5,105560.00,100282.00
+Engagement — Aisha Lindgren @ Linden Initiative,Consultant Hour — Summit,ZIA-HR-SUM,145,1534,0,222430.00,222430.00
+Engagement — Priya Nkemdi @ Meridian Medical Group,Consultant Hour — Core,ZIA-HR-CORE,85,1271,0,108035.00,108035.00
+Engagement — Alba Castillo @ Merrow Health,Consultant Hour — Core,ZIA-HR-CORE,85,464,0,39440.00,39440.00
+Engagement — Rina Kovacs @ Vantage Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,434,20,47740.00,38192.00
+Engagement — Caleb Costa @ Winsley Builders,Consultant Hour — Summit,ZIA-HR-SUM,145,550,0,79750.00,79750.00
+Engagement — Noemi Torres @ Quarry Academy,Consultant Hour — Momentum,ZIA-HR-MOM,110,203,15,22330.00,18980.50
+Engagement — Elena Weiss @ Kingsford Advisory,Consultant Hour — Momentum,ZIA-HR-MOM,110,748,0,82280.00,82280.00
+Engagement — Marcus Bianchi @ Foxglove Builders,Consultant Hour — Summit,ZIA-HR-SUM,145,341,10,49445.00,44500.50
+Engagement — Isabel Marchetti @ Vale Advisory,Consultant Hour — Core,ZIA-HR-CORE,85,1147,10,97495.00,87745.50
+Engagement — Freya Bakker @ Yarrow Capital,Consultant Hour — Core,ZIA-HR-CORE,85,363,5,30855.00,29312.25
+Engagement — Andres Klein @ Ironwood Financial,Consultant Hour — Momentum,ZIA-HR-MOM,110,1242,0,136620.00,136620.00
+Engagement — Priya Ferreira @ Quarry Manufacturing,Consultant Hour — Momentum,ZIA-HR-MOM,110,392,0,43120.00,43120.00
+Engagement — Ingrid Adebayo @ Larkspur Logistics,Consultant Hour — Momentum,ZIA-HR-MOM,110,546,0,60060.00,60060.00
+Engagement — Mikkel Balogun @ Underhill Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,2628,0,289080.00,289080.00
+Engagement — Marisol Ferreira @ Copperfield Education Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,1334,20,146740.00,117392.00
+Engagement — Idris Rivera @ Upton Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,2964,0,326040.00,326040.00
+Engagement — Malik Achebe @ Granton Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,92,0,10120.00,10120.00
+Engagement — Boris Ferreira @ Norbury Manufacturing,Consultant Hour — Momentum,ZIA-HR-MOM,110,540,0,59400.00,59400.00
+Engagement — Marisol Ibrahim @ Fairhaven Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,540,15,59400.00,50490.00
+Engagement — Zane Okafor @ Harrowgate Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,155,0,17050.00,17050.00
+Engagement — Ingrid Andersen @ Copperfield Capital,Consultant Hour — Core,ZIA-HR-CORE,85,1742,15,148070.00,125859.50
+Engagement — Salma Ellery @ Kingsford Supply Co,Consultant Hour — Core,ZIA-HR-CORE,85,1440,10,122400.00,110160.00
+Engagement — Pavel Fischer @ Draperfield Assurance,Consultant Hour — Core,ZIA-HR-CORE,85,540,0,45900.00,45900.00
+Engagement — Yuki Eriksen @ Quill Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,1320,15,145200.00,123420.00
+Engagement — Layla Raghunathan @ Carrow Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,1728,0,190080.00,190080.00
+Engagement — Rania Costa @ Rothwell Technologies,Consultant Hour — Momentum,ZIA-HR-MOM,110,288,0,31680.00,31680.00
+Engagement — Luis Chen @ Rothwell Technologies,Consultant Hour — Momentum,ZIA-HR-MOM,110,288,0,31680.00,31680.00
+Engagement — Luis Diallo @ Granton Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,138,0,15180.00,15180.00
+Engagement — Caleb Duarte @ Cobalt Retail Group,Consultant Hour — Core,ZIA-HR-CORE,85,1085,0,92225.00,92225.00
+Engagement — Viktor Obi @ Vestry Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,1512,10,166320.00,149688.00
+Engagement — Arun Farah @ Orchard Industries,Consultant Hour — Momentum,ZIA-HR-MOM,110,900,0,99000.00,99000.00
+Engagement — Aisha Yilmaz @ Upton Technologies,Consultant Hour — Core,ZIA-HR-CORE,85,2291,0,194735.00,194735.00
+Engagement — Tomas Rivera @ Thatcham Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,2310,0,254100.00,254100.00
+Engagement — Tariq Mensah @ Whitlock Foundation,Consultant Hour — Core,ZIA-HR-CORE,85,1189,5,101065.00,96011.75
+Engagement — Astrid Moreau @ Orchard Industries,Consultant Hour — Momentum,ZIA-HR-MOM,110,300,10,33000.00,29700.00
+Engagement — Greta Rossi @ Ashdown Associates,Consultant Hour — Momentum,ZIA-HR-MOM,110,988,0,108680.00,108680.00
+Engagement — Marcus Sandoval @ Carrow Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,1792,0,197120.00,197120.00
+Engagement — Pavel Castillo @ Ashdown Associates,Consultant Hour — Momentum,ZIA-HR-MOM,110,1014,15,111540.00,94809.00
+Engagement — Nasir Diallo @ Cobalt Retail Group,Consultant Hour — Core,ZIA-HR-CORE,85,1023,0,86955.00,86955.00
+Engagement — Joon Achebe @ Upton Digital,Consultant Hour — Momentum,ZIA-HR-MOM,110,1406,0,154660.00,154660.00
+Engagement — Thandi Osei @ Granton Retail Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,1458,5,160380.00,152361.00
+Engagement — Arun Yilmaz @ Vestry Consulting,Consultant Hour — Core,ZIA-HR-CORE,85,84,0,7140.00,7140.00
+Engagement — Yusuf Mwangi @ Harrowgate Contracting,Consultant Hour — Momentum,ZIA-HR-MOM,110,155,0,17050.00,17050.00
+Engagement — Rania Torres @ Draperfield Assurance,Consultant Hour — Core,ZIA-HR-CORE,85,540,0,45900.00,45900.00
+Engagement — Rina Andersen @ Quill Works,Consultant Hour — Momentum,ZIA-HR-MOM,110,300,5,33000.00,31350.00
+Engagement — Marta Whitfield @ Granton Retail Group,Consultant Hour — Momentum,ZIA-HR-MOM,110,846,0,93060.00,93060.00
+Engagement — Tunde Rahman @ Whitlock Foundation,Consultant Hour — Core,ZIA-HR-CORE,85,1131,15,96135.00,81714.75
+Engagement — Tariq Larsen @ Fairhaven Health,Consultant Hour — Momentum,ZIA-HR-MOM,110,405,0,44550.00,44550.00
+Engagement — Leila Rojas @ Vestry Wealth Partners,Consultant Hour — Momentum,ZIA-HR-MOM,110,756,10,83160.00,74844.00
+Engagement — Isabel Rivera @ Whitlock Foundation,Consultant Hour — Core,ZIA-HR-CORE,85,667,5,56695.00,53860.25
+Winsley Builders — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,15,18220.00,15487.00
+Carrow Contracting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,20,36440.00,29152.00
+Orchard Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,5,36440.00,34618.00
+Copperfield Capital — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Upton Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Ashdown Associates — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Orchard Alliance — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Draperfield Assurance — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,10,25440.00,22896.00
+Rothwell Technologies — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Vestry Consulting — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Kestrel Freight — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,0,53630.00,53630.00
+Norbury Works — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,10,25440.00,22896.00
+Quarry Health — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Hartley Wealth Partners — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,0,53630.00,53630.00
+Jarrow Initiative — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Jarrow Education Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Upton Partners — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,20,25440.00,20352.00
+Winsley Retail Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Juniper Medical Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Alder Contracting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Redwyn Technologies — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Draycott Contracting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Copperfield Capital — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Ridgeline Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Ivywell Technologies — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,10,25440.00,22896.00
+Sable Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,15,18220.00,15487.00
+Cardinal Capital — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,5,26815.00,25474.25
+Norbury Technologies — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Quarry Academy — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Upton Technologies — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,0,38160.00,38160.00
+Tanglewood Medical Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Copperfield Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Vestry Systems — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Ashgrove Fabrication — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Ridgeline Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Tilbury Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Stonebridge Systems — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Harlow Advisory — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Underhill Care Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Whitlock Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Aster Financial — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,5,26815.00,25474.25
+Winsley Builders — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,0,53630.00,53630.00
+Cardinal Medical Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Pemberton Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Orchard Alliance — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Winsley Software — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Quarry Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Meridian Medical Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Lyndhurst Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Blackstone Education Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,10,26815.00,24133.50
+Inglewood Freight — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Pemberton Contracting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Kingsford Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Northwind Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Larkspur Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Orchard Labs — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Ironwood Financial — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Marlow Technologies — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,10,26815.00,24133.50
+Granton Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Yarrow Capital — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,10,25440.00,22896.00
+Beacon Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Larkspur Advisory — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,20,53630.00,42904.00
+Merrow Financial — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Chesney Systems — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,20,36440.00,29152.00
+Ridgeline Health — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Juniper Education Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Merrow Health — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Upton Works — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Blackstone Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Linden Capital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Copperfield Care Group — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,15,26815.00,22792.75
+Harrowgate Manufacturing — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Ridgeline Health — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,10,12720.00,11448.00
+Lattice Works — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,15,38160.00,32436.00
+Winsley Financial — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,15,12720.00,10812.00
+Hallmark Medical Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Brookline Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Norbury Works — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Draycott Contracting — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,20,25440.00,20352.00
+Glenmoor Initiative — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,5,12720.00,12084.00
+Pemberton Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,20,36440.00,29152.00
+Vale Advisory — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,0,38160.00,38160.00
+Newbold Consulting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Glenmoor Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,0,54660.00,54660.00
+Bright Harbor Academy — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Stonebridge Industries — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Stonebridge Education Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Thornbury Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Beacon Brands — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,15,38160.00,32436.00
+Whitlock Medical Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Hallmark Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Stonebridge Labs — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Wexford Goods — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Yarrow Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Draycott Care Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Jarrow Capital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,15,18220.00,15487.00
+Linden Initiative — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,3,0,80445.00,80445.00
+Larkspur Logistics — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Foxglove Builders — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,2,15,53630.00,45585.50
+Quarry Academy — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,20,36440.00,29152.00
+Dunmore Financial — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Larkspur Industries — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,5,18220.00,17309.00
+Sable Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Ironwood Health — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Fairhaven Capital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Redwyn Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,5,36440.00,34618.00
+Larkspur Wealth Partners — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,1,0,12720.00,12720.00
+Fenwick Trust — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Meridian Works — Summit program,ZIA Summit Program — Enterprise,ZIA-EMB-SUM,26815,1,0,26815.00,26815.00
+Upton Consulting — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Alder Construction — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Blackstone Brands — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,3,0,38160.00,38160.00
+Keswick Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Orchard Brands — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Beacon Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Bramble Brands — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,10,54660.00,49194.00
+Hallmark Group — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Quarry Supply Co — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Vantry Labs — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,0,36440.00,36440.00
+Ridgeline Group — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,15,18220.00,15487.00
+Underhill Partners — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,15,25440.00,21624.00
+Cheswick Digital — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,20,25440.00,20352.00
+Elmridge Supply Co — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Oakfield Freight — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,3,15,54660.00,46461.00
+Inglewood Digital — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,15,18220.00,15487.00
+Kestrel Freight — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Tilbury Works — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Winsley Advisory — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Yarrow Partners — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Orchard Alliance — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,0,18220.00,18220.00
+Redwyn Software — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,1,10,18220.00,16398.00
+Norbury Goods — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,5,25440.00,24168.00
+Quill Alliance — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00
+Merrow Consulting — Momentum program,ZIA Momentum Program — Multi-Team,ZIA-EMB-MOM,18220,2,10,36440.00,32796.00
+Vantage Freight — Core program,ZIA Core Program — Single Team,ZIA-EMB-CORE,12720,2,0,25440.00,25440.00

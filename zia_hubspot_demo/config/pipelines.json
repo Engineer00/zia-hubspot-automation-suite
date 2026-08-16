@@ -1,0 +1,52 @@
+{
+  "$comment": "Deal pipelines for the Lumen portal. Stage labels use Lumen's own delivery process vocabulary (Align, Define, Match, Embed) rather than generic CRM stages. Probabilities are strings 0-1 as required by the HubSpot pipelines API.",
+
+  "deals": [
+    {
+      "label": "Lumen — Client Acquisition",
+      "displayOrder": 0,
+      "$process": "Mirrors Lumen's four-step delivery process: Align -> Define -> Match -> Embed.",
+      "stages": [
+        { "label": "Alignment Call Booked",  "displayOrder": 0, "metadata": { "isClosed": "false", "probability": "0.10" } },
+        { "label": "Role Defined",           "displayOrder": 1, "metadata": { "isClosed": "false", "probability": "0.25" },
+          "$gate": ["lmn_tier_requested", "lmn_hours_per_week", "lmn_role_defined"] },
+        { "label": "Showcase Scheduled",     "displayOrder": 2, "metadata": { "isClosed": "false", "probability": "0.45" } },
+        { "label": "Showcase Delivered",     "displayOrder": 3, "metadata": { "isClosed": "false", "probability": "0.65" } },
+        { "label": "Agreement Sent",         "displayOrder": 4, "metadata": { "isClosed": "false", "probability": "0.85" } },
+        { "label": "Closed Won",             "displayOrder": 5, "metadata": { "isClosed": "true",  "probability": "1.0" } },
+        { "label": "Closed Lost",            "displayOrder": 6, "metadata": { "isClosed": "true",  "probability": "0.0" },
+          "$gate": ["lmn_disqualifier_reason"] }
+      ]
+    },
+    {
+      "label": "Lumen — Placements (Delivery)",
+      "displayOrder": 1,
+      "$process": "Stands in for the Placement custom object on non-Enterprise portals. One record = one embedded person. Probabilities stay at 0 until Steady State so this pipeline never pollutes sales forecasting.",
+      "stages": [
+        { "label": "Awaiting Match",   "displayOrder": 0, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "Showcasing",       "displayOrder": 1, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "Kickoff Scheduled","displayOrder": 2, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "Systems Access",   "displayOrder": 3, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "Week-1 Check-in",  "displayOrder": 4, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "30-Day Review",    "displayOrder": 5, "metadata": { "isClosed": "false", "probability": "0.0" } },
+        { "label": "Steady State",     "displayOrder": 6, "metadata": { "isClosed": "true",  "probability": "1.0" },
+          "$gate": ["lmn_documentation_current"] },
+        { "label": "Ended",            "displayOrder": 7, "metadata": { "isClosed": "true",  "probability": "0.0" } }
+      ]
+    },
+    {
+      "label": "Lumen — Talent Sourcing",
+      "displayOrder": 2,
+      "$process": "Supply-side funnel. Feeds the bench that the matching workflow queries.",
+      "stages": [
+        { "label": "Applied",        "displayOrder": 0, "metadata": { "isClosed": "false", "probability": "0.10" } },
+        { "label": "Screened",       "displayOrder": 1, "metadata": { "isClosed": "false", "probability": "0.30" } },
+        { "label": "I/O Assessment", "displayOrder": 2, "metadata": { "isClosed": "false", "probability": "0.50" } },
+        { "label": "Bench-Ready",    "displayOrder": 3, "metadata": { "isClosed": "false", "probability": "0.75" },
+          "$gate": ["lmn_tier_certified", "lmn_timezone_band", "lmn_availability_hrs"] },
+        { "label": "In Showcase",    "displayOrder": 4, "metadata": { "isClosed": "false", "probability": "0.90" } },
+        { "label": "Placed",         "displayOrder": 5, "metadata": { "isClosed": "true",  "probability": "1.0" } }
+      ]
+    }
+  ]
+}

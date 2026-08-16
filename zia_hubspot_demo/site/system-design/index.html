@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen Talent Group — Complete HubSpot System Design</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  /* Minimal reset — the fragment supplies its own design system on top. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --ground:#F2F3F0; --surface:#FBFBF9; --sunk:#E8EAE5;
+    --ink:#171A19; --ink-2:#5D6560; --ink-3:#878F89;
+    --rule:#D6D9D3; --rule-firm:#B9BEB7;
+    --accent:#1D5D57; --accent-soft:#DDE8E5;
+    --signal:#B4471C; --signal-soft:#F3E2D8;
+    --shadow: 0 1px 2px rgba(23,26,25,.06), 0 8px 24px -16px rgba(23,26,25,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E;
+      --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+      --rule:#2C312E; --rule-firm:#404742;
+      --accent:#6FBBB1; --accent-soft:#1B2E2B;
+      --signal:#E2895B; --signal-soft:#2E1F18;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E;
+    --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+    --rule:#2C312E; --rule-firm:#404742;
+    --accent:#6FBBB1; --accent-soft:#1B2E2B;
+    --signal:#E2895B; --signal-soft:#2E1F18;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+  :root {
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 16.5px; line-height: 1.62; margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px 120px; }
+  .col { max-width: 66ch; }
+
+  .masthead { padding: 84px 0 40px; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 22px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.4rem, 5.6vw, 3.9rem); line-height: 1.06;
+    letter-spacing: -.015em; text-wrap: balance; margin: 0 0 20px;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .standfirst {
+    font-family: var(--serif); font-size: 1.24rem; line-height: 1.5;
+    color: var(--ink-2); max-width: 54ch; margin: 0 0 34px;
+  }
+  .credit {
+    display: flex; flex-wrap: wrap; gap: 10px 30px;
+    font-family: var(--mono); font-size: 12px; color: var(--ink-3); letter-spacing: .02em;
+  }
+  .credit b { color: var(--ink-2); font-weight: 500; }
+
+  .runsheet {
+    margin: 40px 0 0; padding: 24px 26px;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .runsheet h2 {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; font-weight: 500;
+  }
+  .runsheet ol {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(238px, 1fr)); gap: 2px 26px;
+  }
+  .runsheet li {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 14.5px; padding: 5px 0; border-bottom: 1px solid var(--rule);
+  }
+  .runsheet a { color: var(--ink); text-decoration: none; }
+  .runsheet a:hover { color: var(--accent); }
+  .runsheet .n { font-family: var(--mono); font-size: 11px; color: var(--accent); min-width: 20px; }
+  .runsheet .t {
+    margin-left: auto; font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); font-variant-numeric: tabular-nums;
+  }
+  .shortpath {
+    margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--rule-firm);
+    font-size: 14px; color: var(--ink-2);
+  }
+  .shortpath b { color: var(--ink); }
+
+  section { padding-top: 76px; scroll-margin-top: 20px; }
+  .sechead {
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 14px;
+  }
+  .sechead .num {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: .06em; flex-shrink: 0;
+  }
+  .sechead h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.14;
+    letter-spacing: -.012em; margin: 0; text-wrap: balance;
+  }
+  .sechead .clock {
+    margin-left: auto; flex-shrink: 0; font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .jdtag {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    margin: 0 0 28px; padding-left: 30px;
+  }
+
+  p { margin: 0 0 1.05em; }
+  .lede { font-size: 1.08rem; color: var(--ink-2); }
+  strong { font-weight: 600; }
+  a { color: var(--accent); }
+
+  code, .obj, .prop { font-family: var(--mono); font-size: .855em; letter-spacing: -.01em; }
+  .obj {
+    color: var(--accent); background: var(--accent-soft);
+    padding: 1px 6px; border-radius: 2px; white-space: nowrap;
+  }
+  .prop {
+    color: var(--ink-2); background: var(--sunk);
+    padding: 1px 5px; border-radius: 2px; white-space: nowrap;
+  }
+
+  h3 {
+    font-family: var(--sans); font-size: 1.02rem; font-weight: 650;
+    letter-spacing: -.005em; margin: 2.1em 0 .5em;
+  }
+  h3:first-child { margin-top: 0; }
+  ul.body { padding-left: 1.1em; margin: 0 0 1.05em; }
+  ul.body li { margin-bottom: .42em; }
+
+  .tiers {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 30px 0;
+  }
+  .tier { background: var(--surface); padding: 20px 18px; }
+  .tier .tk { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; color: var(--ink-3); margin: 0 0 8px; }
+  .tier .tn { font-family: var(--serif); font-size: 1.4rem; margin: 0 0 2px; }
+  .tier .tr {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    font-variant-numeric: tabular-nums; margin: 0 0 12px;
+  }
+  .tier .td { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+  .breaks { display: grid; gap: 34px; margin: 34px 0 0; }
+  .brk-tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--signal);
+    padding-bottom: 7px; border-bottom: 1px solid var(--signal); margin-bottom: 14px;
+  }
+  .brk h3 { margin: 0 0 .45em; font-size: 1.06rem; }
+  .brk p { margin: 0 0 .7em; max-width: 66ch; }
+  .brk .felt {
+    font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--ink-2);
+    padding-left: 16px; border-left: 2px solid var(--rule-firm); max-width: 60ch; margin: 0;
+  }
+
+  figure { margin: 42px 0; padding: 0; }
+  .figbox {
+    background: var(--surface); border: 1px solid var(--rule);
+    padding: 26px 20px 20px; overflow-x: auto; box-shadow: var(--shadow);
+  }
+  figure svg {
+    display: block; width: 100%; min-width: 620px; max-width: 100%;
+    height: auto; color: var(--ink);
+  }
+  figcaption {
+    font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
+    margin-top: 12px; max-width: 72ch;
+  }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  .s-fill-surface { fill: var(--surface); }
+  .s-fill-sunk    { fill: var(--sunk); }
+  .s-fill-accent  { fill: var(--accent-soft); }
+  .s-fill-signal  { fill: var(--signal-soft); }
+  .s-stroke       { stroke: var(--rule-firm); }
+  .s-stroke-ink   { stroke: var(--ink); }
+  .s-stroke-accent{ stroke: var(--accent); }
+  .s-stroke-signal{ stroke: var(--signal); }
+  .s-txt   { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; }
+  .s-txt-b { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; font-weight: 650; }
+  .s-mono  { fill: var(--ink-2); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-mono-a{ fill: var(--accent); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-mono-s{ fill: var(--signal); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-lbl   { fill: var(--ink-3); font-family: var(--mono); font-size: 10px; letter-spacing: .06em; }
+
+  .tablewrap { overflow-x: auto; margin: 26px 0 30px; }
+  table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14.5px; }
+  caption {
+    text-align: left; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 10px;
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule-firm);
+  }
+  td {
+    padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule);
+    vertical-align: top; color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  td.pos { color: var(--accent); font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  td.neg { color: var(--signal); font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  td.sec { font-family: var(--mono); font-size: 12px; color: var(--accent); white-space: nowrap; }
+
+  .pipe { margin: 0 0 36px; }
+  .pipe-name { font-family: var(--sans); font-weight: 650; font-size: 1.02rem; margin: 0 0 4px; }
+  .pipe-sub { font-size: 14px; color: var(--ink-2); margin: 0 0 14px; }
+  .stages { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .stage {
+    font-family: var(--mono); font-size: 11px; padding: 6px 10px;
+    background: var(--sunk); color: var(--ink-2);
+    border: 1px solid var(--rule); border-radius: 2px; white-space: nowrap;
+  }
+  .stage.gate { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .gatenote { font-size: 13.5px; color: var(--ink-2); margin: 0; max-width: 68ch; }
+  .gatenote b { color: var(--ink); }
+
+  .tiles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 26px 0 32px;
+  }
+  .tile { background: var(--surface); padding: 20px 18px; }
+  .tile .tname { font-family: var(--sans); font-weight: 650; font-size: 15px; margin: 0 0 10px; color: var(--ink); }
+  .tile .tdef { font-family: var(--mono); font-size: 11px; line-height: 1.55; color: var(--accent); margin: 0 0 10px; }
+  .tile .twhy { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+  .phases { display: grid; gap: 0; margin: 30px 0; border-top: 1px solid var(--rule-firm); }
+  .phase {
+    display: grid; grid-template-columns: 128px minmax(0,1fr); gap: 26px;
+    padding: 24px 0; border-bottom: 1px solid var(--rule);
+  }
+  .phase-when { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .04em; padding-top: 3px; }
+  .phase-when span { display: block; color: var(--ink-3); font-size: 10.5px; margin-top: 5px; letter-spacing: .06em; }
+  .phase h3 { margin: 0 0 .5em; }
+  .phase ul { margin: 0; padding-left: 1.1em; }
+  .phase li { margin-bottom: .35em; color: var(--ink-2); font-size: 15px; }
+  .phase li b { color: var(--ink); font-weight: 600; }
+
+  .qs { counter-reset: q; display: grid; gap: 22px; margin: 30px 0; }
+  .q { display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 14px; }
+  .q::before {
+    counter-increment: q; content: counter(q, decimal-leading-zero);
+    font-family: var(--mono); font-size: 11px; color: var(--accent); padding-top: 5px;
+  }
+  .q .ask { font-family: var(--serif); font-size: 1.12rem; line-height: 1.42; color: var(--ink); margin: 0 0 .4em; }
+  .q .why { font-size: 13.5px; color: var(--ink-2); margin: 0; }
+  .q .why b { color: var(--ink); font-weight: 600; }
+
+  .closer {
+    margin-top: 80px; padding: 34px 30px;
+    background: var(--surface); border: 1px solid var(--rule-firm); box-shadow: var(--shadow);
+  }
+  .closer p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.5; margin: 0; max-width: 58ch; }
+  .closer .sig { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: .06em; margin-top: 20px; }
+
+  .note {
+    font-size: 13.5px; color: var(--ink-2); background: var(--sunk);
+    border: 1px solid var(--rule); padding: 14px 16px; margin: 26px 0; max-width: 70ch;
+  }
+  .note b { color: var(--ink); }
+  .note.warn { border-color: var(--signal); background: var(--signal-soft); }
+  .note.warn b { color: var(--signal); }
+
+  blockquote.pull {
+    font-family: var(--serif); font-size: 1.3rem; line-height: 1.42;
+    font-style: italic; color: var(--ink); margin: 34px 0;
+    padding-left: 22px; border-left: 3px solid var(--accent); max-width: 56ch;
+  }
+  blockquote.pull cite {
+    display: block; font-family: var(--mono); font-style: normal;
+    font-size: 11px; letter-spacing: .1em; color: var(--ink-3); margin-top: 12px;
+  }
+
+  a:focus-visible, .runsheet a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media (max-width: 620px) {
+    .wrap { padding: 0 20px 80px; }
+    .masthead { padding-top: 52px; }
+    .phase { grid-template-columns: 1fr; gap: 10px; }
+    .sechead { flex-wrap: wrap; }
+    .sechead .clock { margin-left: 0; width: 100%; }
+    .jdtag { padding-left: 0; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">HubSpot Architect · Complete system design</p>
+    <h1>Talent in motion,<br><em>and the system that keeps it moving</em></h1>
+    <p class="standfirst">A full HubSpot architecture for Lumen Talent Group — a talent-solutions firm that sells to two audiences and delivers to one of them every week for a year afterward.</p>
+    <div class="credit">
+      <span><b>Case study</b> &nbsp;Lumen Talent Group</span>
+      <span><b>Presenter</b> &nbsp;Salman K.</span>
+      <span><b>Run time</b> &nbsp;~45 min full · 20 min short path</span>
+    </div>
+  </header>
+
+  <section id="s0" style="padding-top:54px">
+    <div class="sechead">
+      <span class="num">00</span>
+      <h2>Executive summary</h2>
+    </div>
+    <p class="jdtag">What this is · why it exists · how it was built · what it delivers</p>
+
+    <div class="col">
+      <h3>What this document is</h3>
+      <p>A complete system design for a HubSpot CRM, covering the data model, sales and delivery pipelines, automation, marketing operations, customer experience and reporting. It is written for Lumen Talent Group, a talent-solutions firm that places embedded remote professionals with client organizations and runs a leadership education program alongside it.</p>
+      <p>This is a design document rather than a sales proposal. Every significant decision is stated with the reasoning behind it, the constraints are named openly, and anything that needs confirming against a live portal before it can be built is marked as such.</p>
+
+      <h3>Why this work was undertaken</h3>
+      <p>Lumen's revenue is almost entirely recurring. Clients pay hourly for people embedded in their teams, month after month, often for a year or more. A standard CRM records the moment a contract is signed and very little afterward — one deal, one amount, one close date.</p>
+      <p>The consequence is that the largest part of the business is invisible to the system meant to manage it. Current recurring revenue cannot be stated without building a spreadsheet. Margin per engagement cannot be calculated at all. And an engagement that is quietly deteriorating produces no signal until the client cancels, by which point the revenue has already gone.</p>
+      <p>A second problem sits alongside it. Lumen sells to client organizations and separately recruits the talent it places — two entirely different audiences sharing one contact database with nothing structural separating them. Without a fix, candidates receive client marketing, lead counts are inflated by applicants, and the team stops trusting the data.</p>
+
+      <h3>How the design was approached</h3>
+      <p>The method was to begin with how the business actually operates rather than with what the software happens to offer. Three questions shaped everything that followed: what does the company actually sell, what does it deliver afterward, and which of those two does the current system fail to record?</p>
+      <p>The work then ran in a deliberate order. <strong>The object model came first</strong>, because pipelines and automation built on the wrong data model have to be torn down and rebuilt. Then <strong>the pipelines and the entry requirements at each stage</strong>, since those determine what data ever reaches the system at all. Then <strong>the automation</strong>, and only afterward <strong>the reporting</strong> — a dashboard can never be better than the model underneath it.</p>
+      <p>Where the company already had established vocabulary and a defined process, that language was adopted rather than replaced. A CRM that speaks the team's own words gets used. One that imposes unfamiliar terminology gets worked around, and then quietly abandoned.</p>
+
+      <h3>What the design delivers</h3>
+      <ul class="body">
+        <li><strong>A Placement record</strong> that exists independently of the deal that created it, carrying its own rate, hours, start and end dates, and health score. This single change is what makes recurring revenue, gross margin and churn reportable.</li>
+        <li><strong>A contact type discriminator</strong> separating clients from talent at record level, so the two audiences cannot contaminate each other's lists, campaigns or reports.</li>
+        <li><strong>Three purpose-built pipelines</strong> — client acquisition, delivery, and talent sourcing — each with required fields at the stages where that information matters, so data is captured at the moment people are motivated to provide it.</li>
+        <li><strong>Nine automated workflows</strong>, the central one replacing roughly a day of manual coordination at every new placement with a single trigger that moves six departments at once.</li>
+        <li><strong>An attribution model</strong> that traces marketing spend through to recurring placement revenue rather than stopping at the booking amount, which for this business understates channel return by a wide margin.</li>
+        <li><strong>A reporting layer</strong> in which every executive metric states the formula behind it, so disagreements happen over definitions before anything is built rather than over numbers afterward.</li>
+      </ul>
+
+      <h3>How it helps</h3>
+      <p>Four things become possible that are not possible today.</p>
+      <p><strong>Leadership can see the business.</strong> Recurring revenue, margin by tier and by client segment, and the total value of the live book become standing figures on a dashboard rather than a monthly reconstruction exercise.</p>
+      <p><strong>Deteriorating engagements surface early.</strong> A nightly health score built from check-in recency, satisfaction trend, escalation volume and scope drift produces a ranked list of the placements needing attention this week — weeks before a cancellation would otherwise arrive.</p>
+      <p><strong>The team stops doing work the system can do.</strong> The coordination chain at each new placement runs automatically and identically every time, including the steps people currently forget under pressure.</p>
+      <p><strong>Decisions get better inputs.</strong> Qualification runs against explicit weighted criteria rather than individual judgment. Marketing spend is measured against revenue actually delivered. Forecasting reports both new bookings and the existing recurring base, which is the question leadership is really asking.</p>
+
+      <h3>How to read this document</h3>
+      <p>Sections 01 and 02 establish the business context and the specific failures this design addresses. Sections 03 through 11 are the design itself, ordered to match the functional areas the role owns. Section 12 sets out a ninety-day implementation sequence. Section 13 lists the questions whose answers would confirm or change parts of this design — it was built from publicly available information, and several assumptions need testing against the real portal before they are committed to a plan.</p>
+    </div>
+  </section>
+
+  <nav class="runsheet" aria-label="Run sheet" style="margin-top:60px">
+    <h2>Run sheet — mapped to the role's seven areas of ownership</h2>
+    <ol>
+      <li><span class="n">00</span><a href="#s0">Executive summary</a><span class="t">2′</span></li>
+      <li><span class="n">01</span><a href="#s1">The business</a><span class="t">3′</span></li>
+      <li><span class="n">02</span><a href="#s2">Where a standard build breaks</a><span class="t">4′</span></li>
+      <li><span class="n">03</span><a href="#s3">CRM architecture</a><span class="t">6′</span></li>
+      <li><span class="n">04</span><a href="#s4">Pipelines &amp; lifecycle</a><span class="t">4′</span></li>
+      <li><span class="n">05</span><a href="#s5">Automation &amp; operations</a><span class="t">6′</span></li>
+      <li><span class="n">06</span><a href="#s6">Marketing operations</a><span class="t">6′</span></li>
+      <li><span class="n">07</span><a href="#s7">Sales operations</a><span class="t">4′</span></li>
+      <li><span class="n">08</span><a href="#s8">Customer experience</a><span class="t">4′</span></li>
+      <li><span class="n">09</span><a href="#s9">Reporting &amp; analytics</a><span class="t">4′</span></li>
+      <li><span class="n">10</span><a href="#s10">Continuous improvement</a><span class="t">3′</span></li>
+      <li><span class="n">11</span><a href="#s11">Where AI earns a place</a><span class="t">1′</span></li>
+      <li><span class="n">12</span><a href="#s12">First 90 days</a><span class="t">2′</span></li>
+      <li><span class="n">13</span><a href="#s13">What I'd ask you</a><span class="t">2′</span></li>
+    </ol>
+    <p class="shortpath"><b>If we only have 20 minutes:</b> run 01 → 03 → 05 → 06 → 09 → 12. That path carries the whole argument; everything else is supporting detail this page holds for you afterward.</p>
+  </nav>
+
+  <!-- ══════════════ 01 ══════════════ -->
+  <section id="s1">
+    <div class="sechead">
+      <span class="num">01</span>
+      <h2>The business, before any architecture</h2>
+      <span class="clock">3 min</span>
+    </div>
+    <p class="jdtag">Context — everything downstream is a consequence of this</p>
+
+    <div class="col">
+      <p class="lede">Lumen sells embedded remote talent in three tiers, runs a leadership education arm, and does organizational-development consulting around both. That shape is unusual, and it is the reason an off-the-shelf HubSpot build won't hold.</p>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <p class="tk">TIER 01</p>
+        <p class="tn">Core</p>
+        <p class="tr">$12/hr starting</p>
+        <p class="td">Focused execution — coordinators, scheduling, customer service, records, billing support.</p>
+      </div>
+      <div class="tier">
+        <p class="tk">TIER 02 · MOST COMMON</p>
+        <p class="tn">Momentum</p>
+        <p class="tr">$16/hr starting</p>
+        <p class="td">Cross-functional contributor — marketing, HR ops, sales support, senior EA. Driving outcomes in 30–60 days.</p>
+      </div>
+      <div class="tier">
+        <p class="tk">TIER 03</p>
+        <p class="tn">Summit</p>
+        <p class="tr">$22/hr starting</p>
+        <p class="td">Strategic operator — talent acquisition lead, director-level ops, chief of staff, org development lead.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <p>Three structural facts drive every decision that follows.</p>
+      <p><strong>One — two-sided business.</strong> Clients are one audience. The talent placed is a completely different audience with its own funnel, vetting and qualification. Both live in one CRM.</p>
+      <p><strong>Two — the sale is a moment, the delivery is a subscription.</strong> A client signs once. The embed then runs for months, bills hourly against a weekly commitment, and can end without the deal record ever changing.</p>
+      <p><strong>Three — the relationship doesn't end at placement.</strong> Ongoing check-ins, continuity planning, LumenU access for placed talent. That's a post-sale process with its own cadence and its own failure modes.</p>
+      <p>One more thing the client list makes obvious: Lumen's book is concentrated in <strong>private-practice healthcare</strong> — dental groups, DSOs, physical therapy — with speakers and professional services at the edges. That's a segmentation dimension the CRM should carry as a first-class property, not something you reconstruct by reading company names.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 340" role="img" aria-label="Two supply lines — client demand and talent supply — converge at a showcase, after which a placement runs as a multi-month recurring bar that can end at renewal or churn long after the deal closed.">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <text x="0" y="26" class="s-lbl">DEMAND SIDE — CLIENTS</text>
+          <text x="0" y="234" class="s-lbl">SUPPLY SIDE — TALENT</text>
+
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="0" y="40" width="118" height="42" class="s-fill-surface"/>
+            <rect x="146" y="40" width="118" height="42" class="s-fill-surface"/>
+            <rect x="292" y="40" width="118" height="42" class="s-fill-surface"/>
+          </g>
+          <text x="59" y="66" class="s-txt" text-anchor="middle">Alignment call</text>
+          <text x="205" y="66" class="s-txt" text-anchor="middle">Role defined</text>
+          <text x="351" y="61" class="s-txt-b" text-anchor="middle">Closed Won</text>
+          <text x="351" y="75" class="s-mono" text-anchor="middle">tier + hours agreed</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#ar)">
+            <line x1="118" y1="61" x2="140" y2="61"/>
+            <line x1="264" y1="61" x2="286" y2="61"/>
+            <path d="M410,61 L452,61 L452,140"/>
+          </g>
+
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="0" y="248" width="118" height="42" class="s-fill-surface"/>
+            <rect x="146" y="248" width="118" height="42" class="s-fill-surface"/>
+            <rect x="292" y="248" width="118" height="42" class="s-fill-surface"/>
+          </g>
+          <text x="59" y="274" class="s-txt" text-anchor="middle">Applicant</text>
+          <text x="205" y="269" class="s-txt" text-anchor="middle">Screened +</text>
+          <text x="205" y="283" class="s-txt" text-anchor="middle">assessed</text>
+          <text x="351" y="269" class="s-txt-b" text-anchor="middle">Bench-ready</text>
+          <text x="351" y="283" class="s-mono" text-anchor="middle">tier certified</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#ar)">
+            <line x1="118" y1="269" x2="140" y2="269"/>
+            <line x1="264" y1="269" x2="286" y2="269"/>
+            <path d="M410,269 L452,269 L452,190"/>
+          </g>
+
+          <rect x="404" y="140" width="96" height="50" class="s-fill-accent s-stroke-accent" stroke-width="1.5"/>
+          <text x="452" y="162" class="s-txt-b" text-anchor="middle">SHOWCASE</text>
+          <text x="452" y="178" class="s-mono-a" text-anchor="middle">tier + fit</text>
+
+          <line x1="500" y1="165" x2="546" y2="165" stroke="currentColor" stroke-width="1.2" marker-end="url(#ar)"/>
+
+          <rect x="552" y="146" width="330" height="38" class="s-fill-accent s-stroke-accent" stroke-width="1.5"/>
+          <text x="566" y="170" class="s-txt-b">Placement — recurring hourly revenue</text>
+
+          <g class="s-stroke" stroke-width="1">
+            <line x1="608" y1="184" x2="608" y2="196"/><line x1="664" y1="184" x2="664" y2="196"/>
+            <line x1="720" y1="184" x2="720" y2="196"/><line x1="776" y1="184" x2="776" y2="196"/>
+            <line x1="832" y1="184" x2="832" y2="196"/>
+          </g>
+          <g class="s-mono" text-anchor="middle">
+            <text x="608" y="210">M1</text><text x="664" y="210">M2</text><text x="720" y="210">M3</text>
+            <text x="776" y="210">M4</text><text x="832" y="210">…</text>
+          </g>
+
+          <line x1="882" y1="128" x2="882" y2="202" class="s-stroke-signal" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="876" y="122" class="s-mono-s" text-anchor="end">renewal / churn</text>
+
+          <line x1="410" y1="100" x2="882" y2="100" class="s-stroke-signal" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="646" y="94" class="s-mono-s" text-anchor="middle">everything to the right of the sale is invisible in a standard build</text>
+        </svg>
+      </div>
+      <figcaption><b>The mechanism the architecture has to serve.</b> Two independent funnels converge at the showcase, and the revenue lives in the bar that runs afterward — not in the deal that created it.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ══════════════ 02 ══════════════ -->
+  <section id="s2">
+    <div class="sechead">
+      <span class="num">02</span>
+      <h2>Where a standard HubSpot build breaks</h2>
+      <span class="clock">4 min</span>
+    </div>
+    <p class="jdtag">The audit findings this design answers</p>
+
+    <div class="breaks">
+      <div class="brk">
+        <div class="brk-tag">Break 01 — One contact table, two audiences</div>
+        <h3>Candidates and clients share a database with nothing separating them</h3>
+        <p>HubSpot gives you one <span class="obj">Contact</span> object. Without a hard type discriminator, a placed coordinator and a prospective dental group owner sit side by side in every list, workflow and report.</p>
+        <p class="felt">What you feel: a candidate receives a "book a 15-minute alignment call" nurture. Lead counts inflated by applicants. Nobody trusts the database enough to send from it.</p>
+      </div>
+
+      <div class="brk">
+        <div class="brk-tag">Break 02 — The deal closes once, the revenue recurs</div>
+        <h3>Forecasting reports a signature, not a book of business</h3>
+        <p>A <span class="obj">Deal</span> carries one amount and one close date. A Momentum embed at $16/hr for 40 hours over fourteen months is fifty-plus billing periods, and a mid-engagement tier upgrade is a change to a live thing — not a new sale.</p>
+        <p class="felt">What you feel: the pipeline report and the bank account disagree. Nobody can state current recurring revenue without a spreadsheet.</p>
+      </div>
+
+      <div class="brk">
+        <div class="brk-tag">Break 03 — Delivery has no home in the CRM</div>
+        <h3>The most important record in the business doesn't exist</h3>
+        <p>The placement — <em>this person, embedded with that practice, at Momentum tier, 30 hours a week, since March</em> — is the unit actually delivered. In most builds it lives in a project tool or a sheet, and is therefore absent from every leadership dashboard.</p>
+        <p class="felt">What you feel: you know how many deals closed. You cannot say how many people are embedded, at what utilization, at what margin, or which engagements are wobbling.</p>
+      </div>
+
+      <div class="brk">
+        <div class="brk-tag">Break 04 — No attribution, so marketing spend is a guess</div>
+        <h3>You can count leads but not what produced revenue</h3>
+        <p>Without UTM discipline, a defined conversion event and a contact-to-deal attribution path, marketing reports on form fills while leadership asks about closed revenue. The two never meet.</p>
+        <p class="felt">What you feel: "which channel should we spend more on?" is answered by intuition, and the answer changes depending on who you ask.</p>
+      </div>
+
+      <div class="brk">
+        <div class="brk-tag">Break 05 — Education doesn't fit the sales shape</div>
+        <h3>LumenU gets forced into deals, or abandoned entirely</h3>
+        <p>A cohort has seats, dates, a facilitator and a completion rate, and enrollment is many-to-many. None of that is a pipeline stage — so it ends up in a spreadsheet and drops out of the customer picture.</p>
+        <p class="felt">What you feel: you can't see that a LumenU graduate at a client practice is the warmest talent lead you have.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>Framing note:</b> none of these are HubSpot's fault, and none require leaving HubSpot. Four are data-model problems and one is a measurement-discipline problem. All five are fixable inside the platform.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 03 ══════════════ -->
+  <section id="s3">
+    <div class="sechead">
+      <span class="num">03</span>
+      <h2>CRM architecture</h2>
+      <span class="clock">6 min</span>
+    </div>
+    <p class="jdtag">Custom objects · properties · standardized data · adoption</p>
+
+    <div class="col">
+      <p class="lede">Get the objects right and the workflows, pipelines and dashboards become obvious. Get them wrong and no amount of automation rescues it.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 560" role="img" aria-label="Entity relationship diagram: Company relates to Contact and Deal; a Deal spawns one or more Placement records; each Placement links to one Talent Profile which links to a Contact typed as talent; Cohort links many-to-many to Contacts; Placement owns onboarding and check-in Tickets.">
+          <defs>
+            <marker id="er" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <text x="0" y="16" class="s-lbl">STANDARD OBJECTS</text>
+          <text x="516" y="16" class="s-lbl">CUSTOM OBJECTS</text>
+          <line x1="486" y1="26" x2="486" y2="548" class="s-stroke" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="0" y="34" width="196" height="92" class="s-fill-surface"/></g>
+          <rect x="0" y="34" width="196" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="10" y="51" class="s-txt-b">Company</text>
+          <text x="10" y="76" class="s-mono">practice_type</text>
+          <text x="10" y="93" class="s-mono">org_stage</text>
+          <text x="10" y="110" class="s-mono">tiers_engaged</text>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="0" y="182" width="196" height="126" class="s-fill-surface"/></g>
+          <rect x="0" y="182" width="196" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="10" y="199" class="s-txt-b">Contact</text>
+          <text x="10" y="224" class="s-mono-a">contact_type ◆</text>
+          <text x="10" y="241" class="s-mono">lifecycle_stage</text>
+          <text x="10" y="258" class="s-mono">practice_role</text>
+          <text x="10" y="275" class="s-mono">source_line</text>
+          <text x="10" y="295" class="s-lbl">◆ THE DISCRIMINATOR</text>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="0" y="366" width="196" height="92" class="s-fill-surface"/></g>
+          <rect x="0" y="366" width="196" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="10" y="383" class="s-txt-b">Deal</text>
+          <text x="10" y="408" class="s-mono">tier_requested</text>
+          <text x="10" y="425" class="s-mono">seats_committed</text>
+          <text x="10" y="442" class="s-mono">fit_score</text>
+
+          <rect x="546" y="182" width="220" height="150" class="s-fill-accent s-stroke-accent" stroke-width="1.6"/>
+          <rect x="546" y="182" width="220" height="26" class="s-stroke-accent" stroke-width="1.6" fill="none"/>
+          <text x="558" y="200" class="s-txt-b">Placement</text>
+          <text x="756" y="200" class="s-mono-a" text-anchor="end">custom</text>
+          <text x="558" y="226" class="s-mono">tier · hourly_rate</text>
+          <text x="558" y="243" class="s-mono">hours_per_week</text>
+          <text x="558" y="260" class="s-mono">start_date / end_date</text>
+          <text x="558" y="277" class="s-mono">status · margin</text>
+          <text x="558" y="294" class="s-mono">health_score</text>
+          <text x="558" y="318" class="s-mono-a">the unit of delivery</text>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="546" y="386" width="220" height="126" class="s-fill-surface"/></g>
+          <rect x="546" y="386" width="220" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="556" y="403" class="s-txt-b">Talent Profile</text>
+          <text x="756" y="403" class="s-mono" text-anchor="end">custom</text>
+          <text x="556" y="428" class="s-mono">skills / function</text>
+          <text x="556" y="445" class="s-mono">tier_certified</text>
+          <text x="556" y="462" class="s-mono">timezone_band</text>
+          <text x="556" y="479" class="s-mono">availability_hrs</text>
+          <text x="556" y="496" class="s-mono">cost_rate</text>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="546" y="34" width="220" height="108" class="s-fill-surface"/></g>
+          <rect x="546" y="34" width="220" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="556" y="51" class="s-txt-b">Cohort</text>
+          <text x="756" y="51" class="s-mono" text-anchor="end">custom</text>
+          <text x="556" y="76" class="s-mono">session_dates</text>
+          <text x="556" y="93" class="s-mono">facilitator</text>
+          <text x="556" y="110" class="s-mono">seats / filled</text>
+          <text x="556" y="127" class="s-mono">completion_rate</text>
+
+          <g class="s-stroke" stroke-width="1" fill="none"><rect x="806" y="182" width="94" height="150" class="s-fill-surface"/></g>
+          <rect x="806" y="182" width="94" height="24" class="s-fill-sunk s-stroke" stroke-width="1"/>
+          <text x="814" y="199" class="s-txt-b">Ticket</text>
+          <text x="814" y="224" class="s-mono">onboarding</text>
+          <text x="814" y="241" class="s-mono">check-in</text>
+          <text x="814" y="258" class="s-mono">escalation</text>
+          <text x="814" y="275" class="s-mono">continuity</text>
+
+          <g stroke="currentColor" stroke-width="1.1" fill="none" marker-end="url(#er)">
+            <path d="M98,126 L98,182"/><path d="M98,308 L98,366"/>
+          </g>
+          <text x="106" y="158" class="s-mono">1 : n  employs</text>
+          <text x="106" y="342" class="s-mono">1 : n  buys</text>
+
+          <path d="M196,400 L360,400 L360,300 L546,300" class="s-stroke-accent" stroke-width="1.8" fill="none" marker-end="url(#er)"/>
+          <text x="368" y="292" class="s-mono-a">1 : n  spawns on Closed Won</text>
+
+          <path d="M656,332 L656,386" class="s-stroke-accent" stroke-width="1.4" fill="none" marker-end="url(#er)"/>
+          <text x="664" y="362" class="s-mono-a">n : 1  staffed by</text>
+
+          <path d="M546,449 L340,449 L340,270 L196,270" stroke="currentColor" stroke-width="1.1" fill="none" marker-end="url(#er)"/>
+          <text x="204" y="262" class="s-mono">1 : 1  where contact_type = Talent</text>
+
+          <path d="M546,88 L300,88 L300,216 L196,216" stroke="currentColor" stroke-width="1.1" fill="none" marker-end="url(#er)"/>
+          <text x="204" y="208" class="s-mono">n : m  enrols · learners and placed talent</text>
+
+          <path d="M766,257 L806,257" stroke="currentColor" stroke-width="1.1" fill="none" marker-end="url(#er)"/>
+          <text x="772" y="248" class="s-mono">1 : n</text>
+
+          <path d="M196,60 L420,60 L420,196 L546,196" stroke="currentColor" stroke-width="1" fill="none" stroke-dasharray="4 3" marker-end="url(#er)"/>
+          <text x="428" y="52" class="s-mono">reporting association — client roll-up</text>
+        </svg>
+      </div>
+      <figcaption><b>The object model.</b> Two edges carry the whole design: <span class="obj">contact_type</span> splits the two audiences, and <span class="obj">Deal → Placement</span> separates the sale from the delivery.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>The one distinction to say out loud: Deal ≠ Placement</h3>
+      <p><strong>A Deal is the sale. A Placement is the delivery.</strong> Different lifespans, different owners, different metrics.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 880 230" role="img" aria-label="One deal closed in January spawns three placements with different start and end dates; one is upgraded in April and another churns in June.">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="150" y1="196" x2="866" y2="196" class="s-stroke" stroke-width="1"/>
+          <g class="s-mono" text-anchor="middle">
+            <text x="170" y="214">JAN</text><text x="270" y="214">FEB</text><text x="370" y="214">MAR</text>
+            <text x="470" y="214">APR</text><text x="570" y="214">MAY</text><text x="670" y="214">JUN</text>
+            <text x="770" y="214">JUL</text><text x="850" y="214">AUG</text>
+          </g>
+          <line x1="170" y1="26" x2="170" y2="196" class="s-stroke" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="170" cy="40" r="6" class="s-fill-surface s-stroke-ink" stroke-width="1.6"/>
+          <text x="0" y="44" class="s-txt-b">Deal · Closed Won</text>
+          <text x="0" y="60" class="s-mono">one event, one amount</text>
+
+          <rect x="200" y="74" width="580" height="26" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="212" y="92" class="s-txt">Placement A · Momentum · 40 hrs/wk</text>
+
+          <rect x="300" y="112" width="380" height="26" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="312" y="130" class="s-txt">Placement B · Core · 20 hrs/wk</text>
+          <line x1="680" y1="106" x2="680" y2="146" class="s-stroke-signal" stroke-width="1.5"/>
+          <text x="688" y="130" class="s-mono-s">ended — churn</text>
+
+          <rect x="470" y="150" width="310" height="26" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="482" y="168" class="s-txt">Placement C · upgraded to Summit</text>
+          <line x1="470" y1="144" x2="470" y2="182" class="s-stroke-accent" stroke-width="1.5"/>
+
+          <g stroke="currentColor" stroke-width="1.1" fill="none" marker-end="url(#ar2)">
+            <path d="M170,52 L170,87 L194,87"/><path d="M170,87 L170,125 L294,125"/><path d="M170,125 L170,163 L464,163"/>
+          </g>
+        </svg>
+      </div>
+      <figcaption><b>Why one object cannot do both jobs.</b> One January deal produces three placements on different clocks. On a Deal-only model, June looks flat and the churn stays invisible until the invoice changes.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Standardizing data across departments</h3>
+      <p>Every field that will ever appear in a report is a dropdown, never free text. Given a book concentrated in dental and physical therapy, <span class="prop">practice_type</span> is exactly where free text would bite — "Dental", "dental", "DSO" and "Dental Group" become four rows in every chart, and the segment analysis quietly becomes useless.</p>
+      <p>Lifecycle stage is <strong>workflow-owned, not human-owned</strong>: manual editing locked, stages move on evidence. That single setting is the difference between a funnel report that means something and one that reflects whoever last remembered to update a dropdown.</p>
+
+      <h3>Adoption, which is the part most builds skip</h3>
+      <p>A CRM nobody uses correctly is a very tidy database. Three things drive adoption more than training does: record layouts that put the five fields a rep actually needs at the top of the sidebar; stage gates that ask for data at the moment the rep is motivated to give it; and vocabulary drawn from how the team already speaks — Align, Define, Match, Embed rather than Qualified Lead and Proposal Sent.</p>
+
+      <h3>Margin, which only exists once Placement does</h3>
+      <p>With <span class="prop">hourly_rate</span> on the Placement and <span class="prop">cost_rate</span> on the Talent Profile, gross margin per embed becomes a calculated property — and so does margin by tier, by practice type, by consultant. No Deal-based model can answer that, and it's usually what a founder wants to know most.</p>
+
+      <div class="note warn"><b>The constraint I'd raise rather than hide:</b> custom objects require an <strong>Enterprise</strong> subscription on at least one Hub. On Professional, build Placement as a <strong>second Deal pipeline</strong> — roughly 80% of this design survives, and the migration path stays clean.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 04 ══════════════ -->
+  <section id="s4">
+    <div class="sechead">
+      <span class="num">04</span>
+      <h2>Pipelines and lifecycle stages</h2>
+      <span class="clock">4 min</span>
+    </div>
+    <p class="jdtag">Pipelines · lifecycle stages · stage gates</p>
+
+    <div class="col">
+      <p class="lede">One generic pipeline forces three different processes into one set of stages, and none of them can then be measured. Three pipelines, each with entry requirements rather than decorative labels.</p>
+    </div>
+
+    <div class="pipe">
+      <p class="pipe-name">Client Acquisition — <span style="font-family:var(--mono);font-size:12px;color:var(--accent)">ALIGN → DEFINE → MATCH</span></p>
+      <p class="pipe-sub">Owned by sales. Measures conversion and velocity.</p>
+      <div class="stages">
+        <span class="stage">Alignment Call Booked</span><span class="stage gate">Role Defined ⚑</span>
+        <span class="stage">Showcase Scheduled</span><span class="stage">Showcase Delivered</span>
+        <span class="stage">Agreement Sent</span><span class="stage">Closed Won</span><span class="stage">Closed Lost ⚑</span>
+      </div>
+      <p class="gatenote"><b>Stage gate ⚑</b> — cannot leave <em>Role Defined</em> without <span class="prop">tier_requested</span>, <span class="prop">hours_per_week</span>, <span class="prop">practice_type</span> and <span class="prop">fit_score</span>. Closed Lost requires <span class="prop">disqualifier_reason</span>. This is the highest-leverage control in the build: it collects the data the whole downstream system depends on, at the one moment the rep is motivated to provide it.</p>
+    </div>
+
+    <div class="pipe">
+      <p class="pipe-name">Placements (Delivery) — <span style="font-family:var(--mono);font-size:12px;color:var(--accent)">EMBED</span></p>
+      <p class="pipe-sub">Owned by customer success. Measures how fast a signature becomes real revenue.</p>
+      <div class="stages">
+        <span class="stage">Awaiting Match</span><span class="stage">Showcasing</span><span class="stage">Kickoff Scheduled</span>
+        <span class="stage">Systems Access</span><span class="stage">Week-1 Check-in</span><span class="stage">30-Day Review</span>
+        <span class="stage gate">Steady State ⚑</span><span class="stage">Ended</span>
+      </div>
+      <p class="gatenote"><b>Stage gate ⚑</b> — <em>Steady State</em> requires <span class="prop">documentation_current</span> and a first CSAT response. Stage probabilities stay at zero until Steady State, so this pipeline never pollutes the sales forecast — a small setting that prevents a large reporting problem.</p>
+    </div>
+
+    <div class="pipe">
+      <p class="pipe-name">Talent Sourcing</p>
+      <p class="pipe-sub">Owned by talent ops. Measures bench depth and time-to-ready.</p>
+      <div class="stages">
+        <span class="stage">Applied</span><span class="stage">Screened</span><span class="stage">Assessment</span>
+        <span class="stage gate">Bench-Ready ⚑</span><span class="stage">In Showcase</span><span class="stage">Placed</span>
+      </div>
+      <p class="gatenote"><b>Stage gate ⚑</b> — <em>Bench-Ready</em> requires <span class="prop">tier_certified</span>, <span class="prop">timezone_band</span> and <span class="prop">availability_hrs</span>. Nothing enters the matching pool without them, which is what makes automated matching possible at all.</p>
+    </div>
+
+    <div class="col">
+      <h3>Lifecycle stages, defined once</h3>
+      <p>Lifecycle is a property on the contact, distinct from pipeline stage on the deal — conflating the two is one of the most common build errors. The definitions here are deliberately narrow so that everyone means the same thing: <strong>Subscriber</strong> (opted in, no intent), <strong>Lead</strong> (any conversion), <strong>MQL</strong> (fit criteria known and positive), <strong>SQL</strong> (alignment call booked), <strong>Opportunity</strong> (deal past Role Defined), <strong>Customer</strong> (at least one active placement), <strong>Evangelist</strong> (referred someone, tracked as such).</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 05 ══════════════ -->
+  <section id="s5">
+    <div class="sechead">
+      <span class="num">05</span>
+      <h2>Automation &amp; operations</h2>
+      <span class="clock">6 min · live demo</span>
+    </div>
+    <p class="jdtag">Sophisticated workflows · lead routing · onboarding journeys · internal processes</p>
+
+    <div class="col">
+      <p class="lede">The signature automation first, then the routing logic underneath it.</p>
+      <p>Today a Closed Won starts a chain of messages: a lookup for who's available, a manual project task, someone remembering the welcome email, someone else remembering the check-in. Here is that chain as one workflow.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 430" role="img" aria-label="A workflow triggered by a deal reaching Closed Won creates a placement record, then fans out to six parallel actions across six departments.">
+          <defs>
+            <marker id="wf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <text x="0" y="14" class="s-lbl">TRIGGER</text>
+          <text x="216" y="14" class="s-lbl">CREATE</text>
+          <text x="452" y="14" class="s-lbl">FAN-OUT — PARALLEL BRANCHES</text>
+
+          <rect x="0" y="176" width="164" height="66" class="s-fill-signal s-stroke-signal" stroke-width="1.6"/>
+          <text x="12" y="200" class="s-txt-b">Deal stage =</text>
+          <text x="12" y="217" class="s-txt-b">Closed Won</text>
+          <text x="12" y="233" class="s-mono-s">Client Acquisition pipeline</text>
+
+          <line x1="164" y1="209" x2="212" y2="209" stroke="currentColor" stroke-width="1.4" marker-end="url(#wf)"/>
+
+          <rect x="212" y="168" width="180" height="82" class="s-fill-accent s-stroke-accent" stroke-width="1.6"/>
+          <text x="224" y="192" class="s-txt-b">Create Placement</text>
+          <text x="224" y="211" class="s-mono">copy tier, rate, hours</text>
+          <text x="224" y="228" class="s-mono">associate Company + Deal</text>
+          <text x="224" y="245" class="s-mono">status = Awaiting Match</text>
+
+          <line x1="392" y1="209" x2="424" y2="209" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="424" y1="46" x2="424" y2="382" stroke="currentColor" stroke-width="1.4"/>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#wf)">
+            <line x1="424" y1="46"  x2="492" y2="46"/><line x1="424" y1="113" x2="492" y2="113"/>
+            <line x1="424" y1="180" x2="492" y2="180"/><line x1="424" y1="247" x2="492" y2="247"/>
+            <line x1="424" y1="314" x2="492" y2="314"/><line x1="424" y1="382" x2="492" y2="382"/>
+          </g>
+
+          <g class="s-stroke" stroke-width="1" fill="none">
+            <rect x="498" y="26"  width="402" height="42" class="s-fill-surface"/>
+            <rect x="498" y="93"  width="402" height="42" class="s-fill-surface"/>
+            <rect x="498" y="160" width="402" height="42" class="s-fill-surface"/>
+            <rect x="498" y="227" width="402" height="42" class="s-fill-surface"/>
+            <rect x="498" y="294" width="402" height="42" class="s-fill-surface"/>
+            <rect x="498" y="361" width="402" height="42" class="s-fill-surface"/>
+          </g>
+
+          <text x="510" y="43"  class="s-txt-b">Build the showcase shortlist</text>
+          <text x="510" y="59"  class="s-mono">bench-ready talent ranked on tier + function + timezone → notify talent ops</text>
+          <text x="510" y="110" class="s-txt-b">Open the embed record</text>
+          <text x="510" y="126" class="s-mono">Placements pipeline at Kickoff Scheduled, owner = CSM round-robin</text>
+          <text x="510" y="177" class="s-txt-b">Create the onboarding ticket set</text>
+          <text x="510" y="193" class="s-mono">systems access · comms channels · payroll setup — assigned and dated</text>
+          <text x="510" y="244" class="s-txt-b">Enrol client contacts in the welcome sequence</text>
+          <text x="510" y="260" class="s-mono">filtered to contact_type = Client Contact — candidates never receive it</text>
+          <text x="510" y="311" class="s-txt-b">Webhook → project tool</text>
+          <text x="510" y="327" class="s-mono">create onboarding task, write record id back for two-way traceability</text>
+          <text x="510" y="378" class="s-txt-b">Start the check-in cadence</text>
+          <text x="510" y="394" class="s-mono">day 7 · 30 · 90 tasks + CSAT survey → writes to placement health_score</text>
+
+          <rect x="498" y="227" width="402" height="42" class="s-stroke-accent" stroke-width="1.6" fill="none"/>
+        </svg>
+      </div>
+      <figcaption><b>Match &amp; Embed.</b> The highlighted branch is where the <span class="obj">contact_type</span> discriminator pays for itself — the welcome sequence is filtered at enrollment, so Break 01 cannot happen by accident.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Lead routing — three rules, in priority order</h3>
+      <p>Routing is not one rule, it's a cascade. Speed matters more than perfect assignment: a lead answered in five minutes converts at a multiple of one answered the next day, so the design optimizes for time-to-first-touch and corrects ownership afterward if needed.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 400" role="img" aria-label="Lead routing decision cascade: an inbound conversion is checked for existing ownership, then routed by named-account rule, then by practice-type territory, then round-robin among available reps, with a five minute unaccepted escalation loop.">
+          <defs>
+            <marker id="lr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <rect x="0" y="24" width="150" height="46" class="s-fill-signal s-stroke-signal" stroke-width="1.5"/>
+          <text x="12" y="44" class="s-txt-b">Conversion</text>
+          <text x="12" y="60" class="s-mono-s">form · meeting · chat</text>
+
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="196" y="24" width="196" height="46" class="s-fill-surface"/>
+            <rect x="196" y="104" width="196" height="46" class="s-fill-surface"/>
+            <rect x="196" y="184" width="196" height="46" class="s-fill-surface"/>
+            <rect x="196" y="264" width="196" height="46" class="s-fill-surface"/>
+          </g>
+          <text x="208" y="43" class="s-txt-b">1 · Existing owner?</text>
+          <text x="208" y="59" class="s-mono">company already has an owner → route there</text>
+          <text x="208" y="123" class="s-txt-b">2 · Named account?</text>
+          <text x="208" y="139" class="s-mono">DSO / multi-location list → senior rep</text>
+          <text x="208" y="203" class="s-txt-b">3 · Territory</text>
+          <text x="208" y="219" class="s-mono">practice_type + timezone_band</text>
+          <text x="208" y="283" class="s-txt-b">4 · Round robin</text>
+          <text x="208" y="299" class="s-mono">among reps marked available today</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#lr)">
+            <line x1="150" y1="47" x2="190" y2="47"/>
+            <path d="M294,70 L294,98"/>
+            <path d="M294,150 L294,178"/>
+            <path d="M294,230 L294,258"/>
+          </g>
+          <g class="s-mono" fill="var(--ink-3)">
+            <text x="302" y="90">no</text><text x="302" y="170">no</text><text x="302" y="250">no</text>
+          </g>
+
+          <rect x="452" y="140" width="180" height="76" class="s-fill-accent s-stroke-accent" stroke-width="1.6"/>
+          <text x="464" y="164" class="s-txt-b">Assign + task</text>
+          <text x="464" y="182" class="s-mono">owner set</text>
+          <text x="464" y="199" class="s-mono">"first touch within 5 min"</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#lr)">
+            <path d="M392,47 L422,47 L422,172 L446,172"/>
+            <path d="M392,127 L422,127"/>
+            <path d="M392,207 L422,207"/>
+            <path d="M392,287 L422,287 L422,178"/>
+          </g>
+
+          <line x1="632" y1="178" x2="676" y2="178" stroke="currentColor" stroke-width="1.2" marker-end="url(#lr)"/>
+
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="682" y="106" width="218" height="46" class="s-fill-surface"/>
+          </g>
+          <text x="694" y="125" class="s-txt-b">Touched in 5 min</text>
+          <text x="694" y="141" class="s-mono">→ normal follow-up sequence</text>
+
+          <rect x="682" y="204" width="218" height="60" class="s-fill-signal s-stroke-signal" stroke-width="1.5"/>
+          <text x="694" y="224" class="s-txt-b">Not touched</text>
+          <text x="694" y="240" class="s-mono-s">reassign to next available rep,</text>
+          <text x="694" y="256" class="s-mono-s">notify manager, log the miss</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#lr)">
+            <path d="M676,178 L676,129 L678,129"/>
+            <path d="M676,178 L676,234 L678,234"/>
+          </g>
+
+          <path d="M790,264 L790,320 L294,320 L294,310" class="s-stroke-signal" stroke-width="1.2" fill="none" stroke-dasharray="4 3" marker-end="url(#lr)"/>
+          <text x="540" y="340" class="s-mono-s" text-anchor="middle">escalation returns to round robin — the loop that stops leads going cold in someone's queue</text>
+        </svg>
+      </div>
+      <figcaption><b>Routing as a cascade, not a rule.</b> Ownership continuity wins over territory, territory wins over round-robin, and an untouched lead re-enters the pool rather than sitting unworked. <b>The dashed return path is the part most builds omit</b> — without it, "assigned" quietly becomes "forgotten".</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>The other five workflows</h3>
+      <ul class="body">
+        <li><strong>Contact type enforcement</strong> — sets <span class="prop">contact_type</span> from form source at creation. Anything ambiguous becomes Unclassified and raises a task, so the gap is visible rather than silently defaulting.</li>
+        <li><strong>Fit score routing</strong> — high scores skip to showcase, mid scores enter a nurture built around their two weakest criteria, low scores get a disqualify task with a reason required.</li>
+        <li><strong>Check-in cadence</strong> — dated tasks at day 7, 30, 90 then quarterly, with CSAT at 30 and 180 days, and escalation when a check-in goes 14 days overdue.</li>
+        <li><strong>Placement health scoring</strong> — nightly, across all active placements. Detail in §08.</li>
+        <li><strong>LumenU enrollment</strong> — a placement reaching Steady State enrols the talent in the current cohort, closing the loop on the development promise.</li>
+      </ul>
+      <div class="note"><b>A detail worth mentioning aloud:</b> re-enrollment is off on the Match &amp; Embed workflow. Without that, editing a won deal spawns duplicate placements. Catching it before it happens is the difference between a workflow and an architecture.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 06 ══════════════ -->
+  <section id="s6">
+    <div class="sechead">
+      <span class="num">06</span>
+      <h2>Marketing operations</h2>
+      <span class="clock">6 min</span>
+    </div>
+    <p class="jdtag">Campaigns · landing pages · forms · nurture · attribution</p>
+
+    <div class="col">
+      <p class="lede">As the architect I don't write the campaigns — I build the infrastructure that lets marketing run them at speed and prove what they returned. Attribution is the part that turns marketing from a cost line into a decision tool, so it gets the most space here.</p>
+
+      <h3>Campaign architecture and naming</h3>
+      <p>Every asset — email, landing page, form, list, workflow — carries a naming convention: <span class="prop">TEAM | TYPE | SEGMENT | DATE | NAME</span>. It reads as bureaucracy until the day someone asks which assets belong to the Q3 DSO push and the answer takes four seconds instead of an afternoon. Everything is attached to a HubSpot Campaign so spend, assets and influenced revenue roll up in one place.</p>
+
+      <h3>Landing pages and forms</h3>
+      <ul class="body">
+        <li><strong>One page template per segment</strong>, not per campaign — dental group, solo practice, physical therapy, professional services. Content varies; structure doesn't. Marketing ships a new page in an hour rather than a week.</li>
+        <li><strong>Three form types, deliberately different.</strong> The alignment-call booking asks qualification questions so the rep arrives half-informed. The showcase request is gated harder — tier interest and hours required, because that's a real buying signal. The talent application writes <span class="prop">contact_type = Talent</span> directly, so the two audiences separate at the point of entry rather than by cleanup later.</li>
+        <li><strong>Progressive profiling</strong> so a returning visitor is asked something new instead of the same four fields. Fit criteria get collected across visits rather than in one intimidating form.</li>
+        <li><strong>Hidden UTM fields on every form</strong>, mapped to first-touch and last-touch properties. This is the foundation attribution stands on, and it must exist before the first campaign runs — retrofitting it means the historical data is simply gone.</li>
+      </ul>
+
+      <h3>Nurture that responds to why someone isn't ready</h3>
+      <p>Generic drip sequences perform poorly because they answer no specific objection. The fit scorecard gives us something better: we already know which criteria a prospect failed. If they haven't defined the role, they enter the role-definition track. If leadership isn't aligned on hybrid teams, they enter the change-management track. <strong>The nurture addresses the actual blocker</strong>, which is both more effective and more honest.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 400" role="img" aria-label="Attribution model: multiple touchpoints across channels feed a first-touch and last-touch record on the contact, which associates to a deal, which associates to placements carrying the recurring revenue — showing that channel spend must be judged against placement revenue, not deal amount.">
+          <defs>
+            <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <text x="0" y="14" class="s-lbl">TOUCHPOINTS</text>
+          <text x="300" y="14" class="s-lbl">CONTACT RECORD</text>
+          <text x="560" y="14" class="s-lbl">DEAL</text>
+          <text x="716" y="14" class="s-lbl">REVENUE THAT ACTUALLY LANDS</text>
+
+          <!-- touchpoints -->
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="0" y="34" width="168" height="38" class="s-fill-surface"/>
+            <rect x="0" y="88" width="168" height="38" class="s-fill-surface"/>
+            <rect x="0" y="142" width="168" height="38" class="s-fill-surface"/>
+            <rect x="0" y="196" width="168" height="38" class="s-fill-surface"/>
+            <rect x="0" y="250" width="168" height="38" class="s-fill-surface"/>
+          </g>
+          <text x="12" y="52" class="s-txt">Organic — blog</text>
+          <text x="12" y="66" class="s-mono">day 0 · first touch</text>
+          <text x="12" y="106" class="s-txt">Paid — LinkedIn</text>
+          <text x="12" y="120" class="s-mono">day 12</text>
+          <text x="12" y="160" class="s-txt">Email — nurture</text>
+          <text x="12" y="174" class="s-mono">day 26</text>
+          <text x="12" y="214" class="s-txt">Referral</text>
+          <text x="12" y="228" class="s-mono">day 31</text>
+          <text x="12" y="268" class="s-txt">Direct — showcase form</text>
+          <text x="12" y="282" class="s-mono">day 33 · last touch</text>
+
+          <!-- contact -->
+          <rect x="266" y="88" width="200" height="146" class="s-fill-accent s-stroke-accent" stroke-width="1.6"/>
+          <text x="278" y="110" class="s-txt-b">Contact</text>
+          <text x="278" y="134" class="s-mono">first_touch_source</text>
+          <text x="278" y="151" class="s-mono">first_touch_campaign</text>
+          <text x="278" y="168" class="s-mono">last_touch_source</text>
+          <text x="278" y="185" class="s-mono">last_touch_campaign</text>
+          <text x="278" y="202" class="s-mono">touch_count</text>
+          <text x="278" y="224" class="s-mono-a">set once, never overwritten</text>
+
+          <g stroke="currentColor" stroke-width="1" fill="none" marker-end="url(#at)">
+            <path d="M168,53 L216,53 L216,140 L260,140"/>
+            <path d="M168,107 L260,107"/>
+            <path d="M168,161 L216,161 L216,161 L260,161"/>
+            <path d="M168,215 L216,215 L216,190 L260,190"/>
+            <path d="M168,269 L216,269 L216,212 L260,212"/>
+          </g>
+
+          <!-- deal -->
+          <g class="s-stroke" fill="none" stroke-width="1">
+            <rect x="530" y="112" width="150" height="98" class="s-fill-surface"/>
+          </g>
+          <text x="542" y="134" class="s-txt-b">Deal</text>
+          <text x="542" y="156" class="s-mono">amount: $27,706</text>
+          <text x="542" y="173" class="s-mono">one-time booking</text>
+          <text x="542" y="196" class="s-mono-s">← where most</text>
+          <text x="542" y="206" class="s-mono-s">attribution stops</text>
+
+          <line x1="466" y1="161" x2="524" y2="161" stroke="currentColor" stroke-width="1.2" marker-end="url(#at)"/>
+
+          <!-- placements -->
+          <rect x="744" y="88" width="156" height="34" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="754" y="110" class="s-txt">Placement · $2,773/mo</text>
+          <rect x="744" y="132" width="156" height="34" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="754" y="154" class="s-txt">Placement · $2,773/mo</text>
+          <rect x="744" y="176" width="156" height="34" class="s-fill-accent s-stroke-accent" stroke-width="1.4"/>
+          <text x="754" y="198" class="s-txt">Placement · $3,813/mo</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#at)">
+            <path d="M680,150 L712,150 L712,105 L738,105"/>
+            <path d="M712,150 L738,150"/>
+            <path d="M712,150 L712,193 L738,193"/>
+          </g>
+
+          <!-- the point -->
+          <line x1="744" y1="236" x2="900" y2="236" class="s-stroke-accent" stroke-width="1.2"/>
+          <text x="744" y="256" class="s-txt-b">$9,359/mo recurring</text>
+          <text x="744" y="274" class="s-mono-a">and still running 14 months later</text>
+
+          <line x1="0" y1="316" x2="900" y2="316" class="s-stroke" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="0" y="340" class="s-txt-b">The question attribution has to answer:</text>
+          <text x="0" y="360" class="s-txt">what did organic-blog-first-touch return — the $27,706 booking, or the $131,000 of placement revenue it actually produced?</text>
+          <text x="0" y="382" class="s-mono-a">both, reported separately. Bookings judge the campaign; placement revenue judges the channel.</text>
+        </svg>
+      </div>
+      <figcaption><b>Attribution has to reach past the deal.</b> Standard HubSpot attribution stops at deal amount. For a recurring-delivery business that undercounts a channel's real return by an order of magnitude — which is why the placement association is what makes marketing measurable here.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>The attribution model, stated plainly</h3>
+      <ul class="body">
+        <li><strong>First touch</strong> answers "what makes people aware of us" — write it once at contact creation and never overwrite it. Judges top-of-funnel content and brand spend.</li>
+        <li><strong>Last touch</strong> answers "what converts" — the source on the conversion that created the deal. Judges bottom-of-funnel offers.</li>
+        <li><strong>Multi-touch</strong> answers "what contributed" — every interaction between, weighted. Useful for judging the middle, and the place to be most careful about over-claiming.</li>
+        <li><strong>Placement-revenue attribution</strong> — the layer standard reporting misses. Roll recurring placement value back to the originating campaign so a channel is judged on the revenue it actually produced over fourteen months, not on one booking amount.</li>
+      </ul>
+      <p><strong>The honest limit, which I'd say out loud:</strong> attribution is directional, not accounting. Dark social, word of mouth in a tight dental community, and a conference conversation six months earlier will never appear in a UTM. The model is for deciding where the next marketing dollar goes — not for proving what caused a sale. Presenting it as certainty is how RevOps loses credibility with a founder who knows the real story behind a given client.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 07 ══════════════ -->
+  <section id="s7">
+    <div class="sechead">
+      <span class="num">07</span>
+      <h2>Sales operations</h2>
+      <span class="clock">4 min</span>
+    </div>
+    <p class="jdtag">Pipeline optimization · forecasting · enablement · less admin</p>
+
+    <div class="col">
+      <h3>Forecasting, which needs two numbers not one</h3>
+      <p>Most forecasts show weighted pipeline and stop. For a recurring-delivery business that's half the picture and the less important half. The forecast here has two components:</p>
+      <ul class="body">
+        <li><strong>New bookings</strong> — weighted pipeline from the acquisition pipeline, using stage probabilities that were set from actual historical conversion rather than from optimism.</li>
+        <li><strong>Existing recurring</strong> — the sum of active placement monthly value, minus a churn allowance derived from placements currently scored At Risk.</li>
+      </ul>
+      <p>Reported together, they answer the question a founder actually has: <em>if we sold nothing next quarter, what would we make — and what would put that at risk?</em> No Deal-only model can produce that number.</p>
+
+      <h3>Sales enablement, built as assets rather than advice</h3>
+      <ul class="body">
+        <li><strong>Playbooks per tier</strong> surfaced on the deal record — discovery questions for Core versus Summit are genuinely different conversations, and the rep shouldn't have to remember which.</li>
+        <li><strong>Objection cards for the six disqualifiers.</strong> Every "not a fit" reason is a predictable objection with a known best answer. "We just need someone cheap" and "we only need cover for three months" each deserve a written, tested response rather than improvisation.</li>
+        <li><strong>A snippet and template library</strong> so the twentieth follow-up email is as good as the first.</li>
+        <li><strong>Documents with engagement tracking</strong> — knowing a proposal was opened four times by three people is a real buying signal and it costs nothing to capture.</li>
+      </ul>
+
+      <h3>Reducing admin, which is where reps get their time back</h3>
+      <p>Meeting links replace scheduling threads. Quotes generate from deal properties rather than a Word template. Email and call logging is automatic. Required fields are collected by stage gates instead of by nagging. The measurable goal: <strong>a rep should be able to move a deal from alignment call to agreement without typing anything twice.</strong></p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 08 ══════════════ -->
+  <section id="s8">
+    <div class="sechead">
+      <span class="num">08</span>
+      <h2>Customer experience</h2>
+      <span class="clock">4 min</span>
+    </div>
+    <p class="jdtag">Onboarding · CS automation · feedback · tickets · client journeys</p>
+
+    <div class="col">
+      <h3>Onboarding, instrumented</h3>
+      <p>The onboarding ticket set fires automatically at Closed Won: systems access, communication channels, payroll setup, role documentation. Each assigned, each dated relative to the embed start. The pipeline stage tracks progress and the elapsed time to Steady State becomes the Time-to-Value metric.</p>
+
+      <h3>Support tickets with real SLAs</h3>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Ticket types, routing and response targets</caption>
+        <thead><tr><th style="width:22%">Type</th><th style="width:20%">Routes to</th><th style="width:16%">First response</th><th>Escalates when</th></tr></thead>
+        <tbody>
+          <tr><td>Onboarding</td><td>Assigned CSM</td><td class="sec">4 hours</td><td>Any task overdue by 24h — a stalled onboarding is the strongest early churn signal there is</td></tr>
+          <tr><td>Scheduled check-in</td><td>Assigned CSM</td><td class="sec">Same day</td><td>14 days overdue → notify the CSM's manager</td></tr>
+          <tr><td>Escalation — client</td><td>CSM + ops lead</td><td class="sec">1 hour</td><td>Unresolved at 24h → leadership, and the placement health score drops</td></tr>
+          <tr><td>Escalation — talent</td><td>Talent ops</td><td class="sec">2 hours</td><td>Unresolved at 48h. Tracked separately because the talent is the product, and their friction predicts client friction</td></tr>
+          <tr><td>Continuity / handover</td><td>Ops lead</td><td class="sec">Next business day</td><td>Documentation missing at handover — blocks closure</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <h3>Placement health — where the money actually leaks</h3>
+      <p>Placements don't churn on a date; they degrade for weeks first. A <span class="prop">health_score</span> recalculated nightly from four signals already sitting in the CRM:</p>
+      <ul class="body">
+        <li><strong>Check-in recency</strong> — nobody has spoken to this practice in five weeks.</li>
+        <li><strong>CSAT trend</strong> — satisfaction falling, not merely low.</li>
+        <li><strong>Escalation volume</strong> — friction rising in delivery.</li>
+        <li><strong>Scope drift</strong> — hours logged versus contracted; under-served, or ready for an upgrade.</li>
+      </ul>
+      <p>Two thresholds, two automations. Below the floor: alert the CSM, task dated tomorrow, escalate to leadership if still red after seven days. Above the ceiling with positive scope drift: flag a <strong>tier-upgrade opportunity</strong> — Core at $12 moving to Momentum at $16 is the cheapest revenue in the business.</p>
+      <div class="note"><b>The claim I'd make carefully:</b> this doesn't predict churn. It surfaces the placements a human should look at this week, ranked. A smaller promise than "AI churn prediction", and one the system can keep on day one.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 09 ══════════════ -->
+  <section id="s9">
+    <div class="sechead">
+      <span class="num">09</span>
+      <h2>Reporting &amp; analytics</h2>
+      <span class="clock">4 min</span>
+    </div>
+    <p class="jdtag">Executive dashboards · department reporting · CRM health · trends</p>
+
+    <div class="col">
+      <p class="lede">Confidence in reporting comes from agreed definitions, not prettier charts. Each tile below states what it computes from — if we disagree about a definition, that's a productive conversation to have before anything is built.</p>
+    </div>
+
+    <div class="tiles">
+      <div class="tile">
+        <p class="tname">Recurring Placement Revenue</p>
+        <p class="tdef">Σ (hourly_rate × hours_per_week × 4.33) across active Placements, by tier</p>
+        <p class="twhy">The number a Deal-based forecast cannot produce. Month over month it also gives net revenue retention.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Gross Margin per Embed</p>
+        <p class="tdef">(hourly_rate − cost_rate) × hours, by tier and practice type</p>
+        <p class="twhy">Which tier and which segment actually pays. Impossible without the Talent Profile object.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Bench Utilization</p>
+        <p class="tdef">Talent with an active Placement ÷ all bench-ready, by tier</p>
+        <p class="twhy">Idle certified talent is the largest carrying cost. Too high is also a warning — the next client waits.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Time to Placement</p>
+        <p class="tdef">Median days, Closed Won → Placement status = Active</p>
+        <p class="twhy">The clearest proxy for how well sales, talent ops and CS are connected.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Time to Value</p>
+        <p class="tdef">Median days, Closed Won → Steady State</p>
+        <p class="twhy">Directly predicts first-90-day churn, and evidences the "outcomes in 30–60 days" promise.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Placements at Risk</p>
+        <p class="tdef">Active Placements with health_score below floor</p>
+        <p class="twhy">A worklist, not a chart. Every row needs an owner and a next action.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Channel Return</p>
+        <p class="tdef">Placement revenue rolled to first-touch campaign ÷ campaign spend</p>
+        <p class="twhy">The attribution tile. Judges channels on revenue delivered, not bookings signed.</p>
+      </div>
+      <div class="tile">
+        <p class="tname">Fit Score Distribution</p>
+        <p class="tdef">Won and lost deals bucketed by fit_score, with disqualifier_reason</p>
+        <p class="twhy">Shows whether marketing attracts the organizations the model is built for — or the ones it isn't.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Department dashboards</h3>
+      <ul class="body">
+        <li><strong>Sales</strong> — velocity by stage, conversion by practice type, showcase-to-close rate, speed-to-first-touch, stage-gate compliance.</li>
+        <li><strong>Marketing</strong> — conversions by channel and campaign, form completion rates, nurture-track progression, first-touch to MQL.</li>
+        <li><strong>Talent Ops</strong> — bench depth by tier and timezone, time-to-ready, showcase acceptance rate.</li>
+        <li><strong>Customer Success</strong> — placements by health band, check-in compliance, SLA attainment, CSAT by consultant, documentation currency.</li>
+      </ul>
+
+      <h3>CRM health — the dashboard nobody looks at until something is wrong</h3>
+      <p>Records missing required fields, workflows erroring in the last seven days, unassigned records, duplicate rate, properties with zero fill. This is the standing monitor that keeps the system from decaying quietly — and it's the same set of checks the audit tool runs, so week one and week fifty use the same definition of healthy.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 10 ══════════════ -->
+  <section id="s10">
+    <div class="sechead">
+      <span class="num">10</span>
+      <h2>Continuous improvement</h2>
+      <span class="clock">3 min</span>
+    </div>
+    <p class="jdtag">Proactively find efficiency gains · reduce friction · recommend better ways</p>
+
+    <div class="col">
+      <p class="lede">"Continuous improvement" is the one JD line that usually means nothing in practice, because nobody attaches a mechanism to it. Here's the mechanism.</p>
+
+      <h3>A cadence, not an intention</h3>
+      <ul class="body">
+        <li><strong>Weekly</strong> — check the CRM health dashboard. Workflow errors and unassigned records get fixed the same week, not discovered in a quarterly review.</li>
+        <li><strong>Monthly</strong> — one process review with one team. Rotate. The question is always the same: <em>what did you do manually this month that you resented?</em> That question has produced more good automation than any roadmap I've written.</li>
+        <li><strong>Quarterly</strong> — re-run the portal audit and compare against the last one. Property fill rates trending down means a process is being skipped; stage stagnation moving means the pipeline no longer matches reality.</li>
+        <li><strong>Annually</strong> — revisit the object model itself. Businesses change shape, and an architecture that isn't revisited becomes the thing people work around.</li>
+      </ul>
+
+      <h3>A visible backlog</h3>
+      <p>Improvement requests go in one place with an owner, an estimate and an impact note — not into a Slack thread. Two consequences: the team can see their request wasn't ignored, and leadership can see the trade-offs being made rather than wondering what the CRM person does all week.</p>
+
+      <h3>The audit, as a tool rather than an event</h3>
+      <p>The portal audit that produces the week-one findings is a script, not a manual review — so re-running it costs minutes. That turns "audit the instance" from a one-off onboarding task into a quarterly health check, which is the difference between a system that's improved and one that was improved once.</p>
+
+      <blockquote class="pull">Most teams don't fail because of effort. They fail because roles blur, decisions stall, and leaders carry too much.</blockquote>
+      <p>That's true of CRMs too. A system where ownership is ambiguous and required fields are optional produces exactly that failure. Every stage gate, every routing rule and every named owner in this design exists to prevent it.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 11 ══════════════ -->
+  <section id="s11">
+    <div class="sechead">
+      <span class="num">11</span>
+      <h2>Where AI earns a place — and where it doesn't</h2>
+      <span class="clock">1 min</span>
+    </div>
+    <p class="jdtag">AI workflow automation</p>
+
+    <div class="col">
+      <p><strong>Worth doing:</strong> ranking bench candidates for a showcase and drafting the <em>reasoning</em> for the top three, so talent ops reviews a shortlist instead of assembling one. Summarising a placement's activity into a check-in brief before a client call. Turning open-text CSAT responses into themes that feed the health score.</p>
+      <p><strong>Not worth doing:</strong> letting a model set lifecycle stages, score fit unsupervised, or write anything a client receives without review. That's exactly where a confident wrong answer quietly corrupts the reporting the whole system exists to produce.</p>
+      <p>The pattern throughout: <strong>AI proposes, a human commits, the CRM records who committed it.</strong></p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 12 ══════════════ -->
+  <section id="s12">
+    <div class="sechead">
+      <span class="num">12</span>
+      <h2>First 90 days</h2>
+      <span class="clock">2 min</span>
+    </div>
+    <p class="jdtag">Audit · recommend · implement · dashboards · reduce manual work</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-when">Days 1–30<span>AUDIT</span></div>
+        <div>
+          <h3>Find out what's actually there</h3>
+          <ul>
+            <li><b>Run the portal audit</b> — property fill rates, free-text fields that should be constrained, unowned records, stalled deals, workflow errors. Findings by day two, not week four.</li>
+            <li><b>Stakeholder interviews</b> across sales, marketing, talent ops, CS and education: what do you do manually every week that you resent?</li>
+            <li><b>Read the existing playbook</b> and build against your spec first, then say what it doesn't yet cover.</li>
+            <li><b>Ship two quick wins anyway</b>, so month one produces something you can feel.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Days 31–60<span>ARCHITECT</span></div>
+        <div>
+          <h3>Agree the model, then build it</h3>
+          <ul>
+            <li><b>Present findings and a prioritized roadmap</b>, including what I recommend <em>not</em> doing.</li>
+            <li><b>Build the object model</b> and back-fill existing records cleanly.</li>
+            <li><b>Rebuild the pipelines</b> with stage gates; lock lifecycle stage to workflows.</li>
+            <li><b>Fit scorecard and lead routing live</b>, with speed-to-lead measured from day one.</li>
+            <li><b>UTM and attribution plumbing</b> — this has to exist before the next campaign, because it can't be retrofitted.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-when">Days 61–90<span>AUTOMATE</span></div>
+        <div>
+          <h3>Turn on the engine and hand over the keys</h3>
+          <ul>
+            <li><b>Match &amp; Embed live</b>, plus the integration and onboarding ticket set.</li>
+            <li><b>Check-in cadence and health scoring</b> running nightly with alerts routed to named owners.</li>
+            <li><b>Executive dashboard</b> plus four department dashboards, every definition written down and agreed.</li>
+            <li><b>Documentation and enablement</b> — a session per team, because adoption is the difference between a system and a very tidy database.</li>
+            <li><b>Set the improvement cadence</b> from §10 so this doesn't decay the moment the build finishes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 13 ══════════════ -->
+  <section id="s13">
+    <div class="sechead">
+      <span class="num">13</span>
+      <h2>What I'd need to ask you</h2>
+      <span class="clock">2 min</span>
+    </div>
+    <p class="jdtag">The diagnostic questions behind the design</p>
+
+    <div class="col">
+      <p class="lede">This design is built from public materials and a job description. Six answers would confirm it or change it, and I'd rather find out now than in week three.</p>
+    </div>
+
+    <div class="qs">
+      <div class="q"><div>
+        <p class="ask">Which HubSpot subscription are you on today?</p>
+        <p class="why"><b>Why it matters:</b> custom objects need Enterprise. On Professional the model becomes a second-pipeline interim — better to say that up front than design something unbuildable.</p>
+      </div></div>
+      <div class="q"><div>
+        <p class="ask">Where does a placement live right now — a project tool, a sheet, or somebody's head?</p>
+        <p class="why"><b>Why it matters:</b> sets migration scope, and tells me whether that tool is something I integrate with or replace.</p>
+      </div></div>
+      <div class="q"><div>
+        <p class="ask">What's in the priority automations playbook the JD mentions?</p>
+        <p class="why"><b>Why it matters:</b> you already know what hurts. I'd rather build your list first and earn the right to propose mine.</p>
+      </div></div>
+      <div class="q"><div>
+        <p class="ask">Are candidates in HubSpot today, or in a separate ATS?</p>
+        <p class="why"><b>Why it matters:</b> the single biggest fork in the data model. Both are workable; they're different builds.</p>
+      </div></div>
+      <div class="q"><div>
+        <p class="ask">Do forms currently capture UTM parameters?</p>
+        <p class="why"><b>Why it matters:</b> attribution can only start from the day this exists. If it doesn't, that's day-one work and the historical data is unrecoverable.</p>
+      </div></div>
+      <div class="q"><div>
+        <p class="ask">What is the one number leadership currently cannot get without asking a person?</p>
+        <p class="why"><b>Why it matters:</b> that's the first dashboard tile I build, whatever the rest of the roadmap says.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>Talent on its own is static. What matters is talent in motion — aligned to the right structure, integrated into the right system, accountable to real outcomes. That's also a fair description of a CRM architecture. This is the same argument, applied to operations.</p>
+    <p class="sig">COMPLETE SYSTEM DESIGN · LUMEN TALENT GROUP · HUBSPOT ARCHITECT</p>
+  </div>
+
+</div>
+</body>
+</html>

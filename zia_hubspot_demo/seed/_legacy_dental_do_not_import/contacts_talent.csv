@@ -1,0 +1,401 @@
+First Name,Last Name,Email,Phone Number,zia_contact_type,zia_tier,zia_coverage_band,zia_hours_per_week,zia_cost_rate,zia_bench_status,zia_assessment_profile,zia_compliance_status,zia_source,Create Date
+Mateo,Bianchi,talent0@lumentalent.com,+19505658386,talent,Momentum,US Pacific,24,7.02,Bench-Ready,Structured / process-driven,Clear,organic,2025-07-03
+Noemi,Jansen,talent1@lumentalent.com,+19347098691,talent,Momentum,US Pacific,37,6.81,Bench-Ready,Structured / process-driven,Clear,organic,2025-08-21
+Mei,Banda,talent2@lumentalent.com,+19397288706,talent,Momentum,US Eastern,26,7.05,Bench-Ready,Relational / patient-facing,Clear,referral,2025-05-17
+Marisol,Tanaka,talent3@lumentalent.com,+18165766875,talent,Core,Overnight / Overflow,26,5.21,In Assessment,Adaptive / cross-functional,Not Started,referral,2025-09-21
+Priya,Nkemdi,talent4@lumentalent.com,+16462305310,talent,Summit,Overnight / Overflow,0,9.9,Placed,Structured / process-driven,Lapsed,referral,2025-02-13
+Lian,Moreau,talent5@lumentalent.com,+15403311310,talent,Momentum,US Pacific,7,8.77,Placed,Structured / process-driven,Clear,referral,2026-02-13
+Bella,Baptiste,talent6@lumentalent.com,+14697184698,talent,Core,US Pacific,25,6.32,Bench-Ready,Structured / process-driven,Expiring Soon,referral,2024-12-30
+Alba,Castillo,talent7@lumentalent.com,+15546488858,talent,Core,US Central / Mountain,4,6.32,Placed,Relational / patient-facing,Clear,referral,2026-01-10
+Anja,Nakamura,talent8@lumentalent.com,+14424623373,talent,Momentum,US Central / Mountain,3,7.18,Placed,Adaptive / cross-functional,Clear,referral,2024-08-12
+Ada,Novotny,talent9@lumentalent.com,+17093089422,talent,Momentum,US Eastern,31,6.92,Bench-Ready,Structured / process-driven,Lapsed,referral,2025-01-20
+Salma,Rojas,talent10@lumentalent.com,+14353651789,talent,Momentum,US Eastern,30,6.88,Inactive,Relational / patient-facing,Clear,referral,2025-11-17
+Isabel,Fontaine,talent11@lumentalent.com,+17822782620,talent,Core,US Central / Mountain,1,5.1,Placed,Structured / process-driven,Clear,organic,2024-02-28
+Priya,Eriksen,talent12@lumentalent.com,+12707724794,talent,Momentum,US Pacific,4,8.77,Placed,Relational / patient-facing,Lapsed,referral,2025-02-26
+Thandi,Kim,talent13@lumentalent.com,+16244632357,talent,Summit,US Central / Mountain,8,11.59,Placed,Autonomous / ownership-oriented,Clear,referral,2026-07-30
+Omar,Kim,talent14@lumentalent.com,+13775095067,talent,Momentum,US Central / Mountain,5,7.1,Placed,Adaptive / cross-functional,Lapsed,referral,2025-11-12
+Nora,Patel,talent15@lumentalent.com,+13489095857,talent,Summit,US Eastern,37,12.08,Bench-Ready,Relational / patient-facing,Expiring Soon,referral,2025-04-14
+Bilal,Eriksen,talent16@lumentalent.com,+12473805035,talent,Summit,US Eastern,31,11.81,In Assessment,Adaptive / cross-functional,Clear,referral,2026-06-12
+Viktor,Moreau,talent17@lumentalent.com,+18756198189,talent,Momentum,US Pacific,34,8.76,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2026-02-08
+Kwame,Sandoval,talent18@lumentalent.com,+12308566477,talent,Momentum,US Pacific,24,7.76,Inactive,Structured / process-driven,Expiring Soon,referral,2024-03-29
+Alba,Petrov,talent19@lumentalent.com,+18728599827,talent,Momentum,US Central / Mountain,7,7.22,Placed,Structured / process-driven,Clear,referral,2026-07-15
+Salma,Ibrahim,talent20@lumentalent.com,+19442221638,talent,Summit,US Pacific,0,11.98,Placed,Relational / patient-facing,Clear,referral,2025-04-01
+Freya,Ellery,talent21@lumentalent.com,+18199324793,talent,Momentum,US Eastern,3,6.73,Placed,Structured / process-driven,Lapsed,referral,2026-05-21
+Sven,Weiss,talent22@lumentalent.com,+14692159805,talent,Summit,US Eastern,27,10.24,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-10-30
+Lucia,Olsen,talent23@lumentalent.com,+13636739824,talent,Momentum,US Central / Mountain,31,6.75,In Assessment,Autonomous / ownership-oriented,Not Started,referral,2024-04-07
+Emeka,Rossi,talent24@lumentalent.com,+15547262525,talent,Momentum,Overnight / Overflow,33,7.54,Bench-Ready,Structured / process-driven,Expiring Soon,organic,2024-03-05
+Joon,Sorensen,talent25@lumentalent.com,+13183559511,talent,Momentum,Overnight / Overflow,33,7.65,In Assessment,Relational / patient-facing,Not Started,referral,2026-04-02
+Yara,Ibrahim,talent26@lumentalent.com,+13943982026,talent,Summit,US Pacific,35,11.85,Bench-Ready,Autonomous / ownership-oriented,Expiring Soon,referral,2025-03-05
+Rina,Novotny,talent27@lumentalent.com,+16648732449,talent,Momentum,US Eastern,24,7.88,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-02-18
+Lucia,Jansen,talent28@lumentalent.com,+19975601302,talent,Momentum,US Central / Mountain,30,8.22,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-10-11
+Sofia,Zhang,talent29@lumentalent.com,+19239182992,talent,Core,US Central / Mountain,1,6.25,Placed,Adaptive / cross-functional,Clear,referral,2024-08-21
+Wren,Banda,talent30@lumentalent.com,+18865214405,talent,Momentum,US Pacific,6,8.21,Placed,Structured / process-driven,Lapsed,referral,2024-03-02
+Divya,Andersen,talent31@lumentalent.com,+18408303247,talent,Momentum,US Pacific,38,7.34,In Assessment,Adaptive / cross-functional,Clear,organic,2025-03-30
+Ada,Novak,talent32@lumentalent.com,+18746614407,talent,Momentum,Overnight / Overflow,30,6.78,In Assessment,Adaptive / cross-functional,Clear,referral,2025-11-05
+Mikkel,Sorensen,talent33@lumentalent.com,+15007011423,talent,Momentum,US Eastern,0,7.68,Placed,Relational / patient-facing,Clear,referral,2025-01-27
+Fatima,Moreau,talent34@lumentalent.com,+17605673379,talent,Momentum,US Pacific,37,7.05,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2025-07-13
+Yuki,Ellery,talent35@lumentalent.com,+17837375394,talent,Core,US Pacific,36,6.61,In Assessment,Structured / process-driven,Not Started,referral,2025-04-20
+Salma,Achebe,talent36@lumentalent.com,+18076223085,talent,Momentum,US Pacific,0,8.46,Placed,Autonomous / ownership-oriented,Lapsed,referral,2026-07-19
+Tariq,Rossi,talent37@lumentalent.com,+16838186295,talent,Core,US Central / Mountain,4,6.46,Placed,Structured / process-driven,Clear,referral,2025-11-18
+Leila,Sultana,talent38@lumentalent.com,+15835388040,talent,Summit,US Eastern,35,9.27,Bench-Ready,Adaptive / cross-functional,Clear,referral,2026-08-04
+Hiro,Duarte,talent39@lumentalent.com,+16444296059,talent,Core,US Central / Mountain,5,6.72,Placed,Structured / process-driven,Clear,organic,2026-08-06
+Andres,Klein,talent40@lumentalent.com,+19999149356,talent,Momentum,US Eastern,22,8.32,Bench-Ready,Structured / process-driven,Clear,referral,2026-01-03
+Caleb,Moreau,talent41@lumentalent.com,+14552489991,talent,Core,US Central / Mountain,5,5.12,Placed,Relational / patient-facing,Lapsed,referral,2026-07-30
+Ingrid,Nasser,talent42@lumentalent.com,+17508493566,talent,Core,US Central / Mountain,28,5.65,In Assessment,Relational / patient-facing,Not Started,referral,2024-07-05
+Layla,Tanaka,talent43@lumentalent.com,+16954761867,talent,Momentum,Overnight / Overflow,26,7.33,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2025-05-05
+Elena,Weiss,talent44@lumentalent.com,+17793389967,talent,Momentum,US Central / Mountain,36,8.79,Bench-Ready,Structured / process-driven,Clear,referral,2025-05-02
+Hiro,Costa,talent45@lumentalent.com,+15349545294,talent,Momentum,US Pacific,37,7.42,In Assessment,Adaptive / cross-functional,Not Started,referral,2025-10-11
+Nora,Rossi,talent46@lumentalent.com,+12185956863,talent,Momentum,US Eastern,0,7.06,Placed,Autonomous / ownership-oriented,Clear,referral,2026-04-11
+Anika,Osei,talent47@lumentalent.com,+18187586918,talent,Core,US Central / Mountain,5,5.68,Placed,Adaptive / cross-functional,Clear,referral,2024-11-08
+Caleb,Costa,talent48@lumentalent.com,+12499726853,talent,Momentum,US Eastern,5,6.73,Placed,Structured / process-driven,Clear,organic,2026-02-26
+Freya,Bianchi,talent49@lumentalent.com,+18336005841,talent,Momentum,US Eastern,4,8.65,Placed,Autonomous / ownership-oriented,Clear,referral,2025-12-08
+Freya,Bakker,talent50@lumentalent.com,+15327695281,talent,Summit,US Pacific,2,9.96,Placed,Relational / patient-facing,Lapsed,referral,2025-11-22
+Tariq,Ndiaye,talent51@lumentalent.com,+17662351911,talent,Momentum,Overnight / Overflow,22,7.37,In Assessment,Relational / patient-facing,Not Started,referral,2025-08-15
+Elsa,Delgado,talent52@lumentalent.com,+19662908160,talent,Momentum,US Pacific,0,7.13,Placed,Relational / patient-facing,Clear,referral,2026-02-21
+Rosa,Ellery,talent53@lumentalent.com,+18538702959,talent,Momentum,US Central / Mountain,25,8.26,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2025-06-18
+Omar,Hassan,talent54@lumentalent.com,+12534866662,talent,Momentum,US Eastern,3,8.39,Placed,Structured / process-driven,Clear,referral,2025-05-26
+Kai,Yilmaz,talent55@lumentalent.com,+16443593698,talent,Momentum,US Eastern,28,7.84,Bench-Ready,Structured / process-driven,Clear,organic,2025-05-12
+Nikhil,Kovacs,talent56@lumentalent.com,+18742457635,talent,Core,US Eastern,34,6.04,In Assessment,Adaptive / cross-functional,Clear,referral,2025-10-16
+Femi,Serrano,talent57@lumentalent.com,+18213427880,talent,Momentum,US Eastern,4,6.88,Placed,Structured / process-driven,Clear,referral,2024-07-19
+Priya,Ferreira,talent58@lumentalent.com,+17066707492,talent,Momentum,US Eastern,4,8.42,Placed,Relational / patient-facing,Clear,organic,2025-06-30
+Kenji,Bakker,talent59@lumentalent.com,+17627247895,talent,Core,US Pacific,31,5.06,Bench-Ready,Structured / process-driven,Clear,organic,2024-11-27
+Rania,Mensah,talent60@lumentalent.com,+13155648874,talent,Momentum,US Central / Mountain,6,8.38,Placed,Structured / process-driven,Clear,referral,2025-07-25
+Joon,Adeyemi,talent61@lumentalent.com,+17343592101,talent,Core,US Eastern,31,5.81,In Assessment,Structured / process-driven,Not Started,referral,2025-05-16
+Diego,Duarte,talent62@lumentalent.com,+13468804955,talent,Core,US Eastern,3,5.27,Placed,Structured / process-driven,Clear,organic,2025-09-01
+Aisha,Fontaine,talent63@lumentalent.com,+16735674033,talent,Momentum,US Eastern,1,8.08,Placed,Adaptive / cross-functional,Clear,organic,2026-03-15
+Thandi,Yilmaz,talent64@lumentalent.com,+12852457591,talent,Core,US Eastern,1,5.69,Placed,Adaptive / cross-functional,Clear,referral,2026-06-30
+Kenji,Achebe,talent65@lumentalent.com,+13919808738,talent,Momentum,US Central / Mountain,27,7.56,Bench-Ready,Relational / patient-facing,Expiring Soon,referral,2025-11-11
+Mikkel,Bergstrom,talent66@lumentalent.com,+18627507994,talent,Momentum,US Central / Mountain,0,6.74,Placed,Relational / patient-facing,Lapsed,referral,2024-03-18
+Marta,Novotny,talent67@lumentalent.com,+16303874857,talent,Summit,US Eastern,32,10.68,In Assessment,Structured / process-driven,Clear,organic,2024-05-06
+Diego,Gupta,talent68@lumentalent.com,+12465451539,talent,Core,Overnight / Overflow,27,6.05,Inactive,Adaptive / cross-functional,Clear,referral,2024-12-17
+Kai,Watanabe,talent69@lumentalent.com,+15212216906,talent,Core,US Central / Mountain,3,5.16,Placed,Relational / patient-facing,Clear,referral,2025-09-28
+Thandi,Fischer,talent70@lumentalent.com,+16193447690,talent,Core,US Eastern,30,5.21,Bench-Ready,Structured / process-driven,Clear,referral,2025-07-24
+Isabel,Marchetti,talent71@lumentalent.com,+14475832211,talent,Momentum,US Pacific,1,8.31,Placed,Adaptive / cross-functional,Clear,referral,2026-05-11
+Ravi,Petrov,talent72@lumentalent.com,+13426483372,talent,Core,US Eastern,5,5.99,Placed,Structured / process-driven,Lapsed,organic,2025-10-19
+Layla,Vasquez,talent73@lumentalent.com,+13218391012,talent,Momentum,US Pacific,29,8.51,In Assessment,Relational / patient-facing,Not Started,referral,2025-07-22
+Diego,Malek,talent74@lumentalent.com,+19618144288,talent,Core,US Pacific,8,5.73,Placed,Relational / patient-facing,Clear,referral,2024-04-18
+Anders,Banda,talent75@lumentalent.com,+14708875667,talent,Momentum,US Eastern,35,6.85,In Assessment,Autonomous / ownership-oriented,Not Started,organic,2026-05-29
+Elena,Iqbal,talent76@lumentalent.com,+16588076901,talent,Summit,Overnight / Overflow,28,9.64,Bench-Ready,Structured / process-driven,Clear,referral,2025-02-18
+Anders,Sandoval,talent77@lumentalent.com,+15657382639,talent,Core,US Pacific,23,5.99,In Assessment,Structured / process-driven,Clear,referral,2024-05-15
+Elsa,Nasser,talent78@lumentalent.com,+17166552073,talent,Momentum,US Pacific,7,7.89,Placed,Autonomous / ownership-oriented,Clear,referral,2025-12-01
+Bella,Patel,talent79@lumentalent.com,+13144182628,talent,Summit,US Pacific,31,9.52,Inactive,Structured / process-driven,Clear,referral,2026-08-06
+Aisha,Yilmaz,talent80@lumentalent.com,+14473091291,talent,Momentum,US Eastern,7,7.56,Placed,Structured / process-driven,Clear,referral,2026-03-29
+Diego,Lindqvist,talent81@lumentalent.com,+18959348087,talent,Momentum,US Eastern,1,8.67,Placed,Structured / process-driven,Clear,organic,2025-09-14
+Rohan,Torres,talent82@lumentalent.com,+19136276144,talent,Core,US Eastern,4,6.54,Placed,Structured / process-driven,Clear,referral,2024-11-12
+Nasir,Aguilar,talent83@lumentalent.com,+18702454368,talent,Core,US Eastern,3,5.94,Placed,Relational / patient-facing,Clear,referral,2025-03-10
+Oskar,Adebayo,talent84@lumentalent.com,+14127426543,talent,Momentum,US Eastern,6,8.18,Placed,Autonomous / ownership-oriented,Lapsed,organic,2024-05-26
+Arun,Ibrahim,talent85@lumentalent.com,+13296622270,talent,Momentum,US Eastern,1,8.79,Placed,Relational / patient-facing,Clear,referral,2024-10-02
+Anika,Okonjo,talent86@lumentalent.com,+17492255025,talent,Momentum,US Central / Mountain,30,6.91,Bench-Ready,Autonomous / ownership-oriented,Clear,organic,2025-02-01
+Arun,Chen,talent87@lumentalent.com,+13276806130,talent,Momentum,US Eastern,1,7.2,Placed,Adaptive / cross-functional,Clear,referral,2026-02-07
+Rosa,Sharma,talent88@lumentalent.com,+13002298588,talent,Momentum,US Central / Mountain,5,8.52,Placed,Structured / process-driven,Clear,referral,2026-07-30
+Mateo,Kovacs,talent89@lumentalent.com,+15696516739,talent,Core,US Central / Mountain,4,6.05,Placed,Structured / process-driven,Clear,referral,2026-06-20
+Zane,Gupta,talent90@lumentalent.com,+15117103872,talent,Momentum,US Central / Mountain,26,7.5,Bench-Ready,Autonomous / ownership-oriented,Clear,organic,2026-01-26
+Zane,Mahmood,talent91@lumentalent.com,+12662922036,talent,Core,Overnight / Overflow,3,5.54,Placed,Relational / patient-facing,Lapsed,referral,2024-03-21
+Alba,Raghunathan,talent92@lumentalent.com,+14663232923,talent,Momentum,US Pacific,28,7.55,In Assessment,Adaptive / cross-functional,Clear,referral,2026-08-06
+Wren,Zhang,talent93@lumentalent.com,+13425103598,talent,Core,US Pacific,27,6.61,Inactive,Relational / patient-facing,Clear,referral,2024-05-13
+Fatima,Novak,talent94@lumentalent.com,+19485891259,talent,Momentum,US Pacific,33,8.75,Bench-Ready,Autonomous / ownership-oriented,Expiring Soon,referral,2024-09-28
+Rafael,Chen,talent95@lumentalent.com,+15894109084,talent,Core,Overnight / Overflow,32,5.47,Bench-Ready,Adaptive / cross-functional,Clear,referral,2026-04-20
+Leila,Hoffman,talent96@lumentalent.com,+12088723257,talent,Momentum,US Central / Mountain,4,8.02,Placed,Autonomous / ownership-oriented,Clear,referral,2024-09-07
+Hugo,Jansen,talent97@lumentalent.com,+13382234211,talent,Core,US Pacific,2,6.41,Placed,Adaptive / cross-functional,Clear,organic,2025-08-25
+Fatima,Jansen,talent98@lumentalent.com,+15903488503,talent,Summit,US Eastern,1,10.26,Placed,Adaptive / cross-functional,Clear,referral,2026-03-19
+Hiro,Sultana,talent99@lumentalent.com,+14945819357,talent,Momentum,US Eastern,35,7.52,Inactive,Structured / process-driven,Clear,referral,2025-01-12
+Alba,Diallo,talent100@lumentalent.com,+15654356158,talent,Momentum,US Central / Mountain,27,7.97,In Assessment,Structured / process-driven,Not Started,referral,2024-04-24
+Bella,Andersen,talent101@lumentalent.com,+13387959766,talent,Momentum,US Eastern,5,7.61,Placed,Adaptive / cross-functional,Expiring Soon,referral,2024-07-19
+Ingrid,Adebayo,talent102@lumentalent.com,+18374694302,talent,Summit,US Eastern,6,11.16,Placed,Relational / patient-facing,Expiring Soon,referral,2026-04-06
+Tunde,Diallo,talent103@lumentalent.com,+14054912266,talent,Momentum,US Pacific,4,8.11,Placed,Structured / process-driven,Clear,referral,2025-12-29
+Yara,Adebayo,talent104@lumentalent.com,+15732077846,talent,Momentum,US Central / Mountain,5,8.77,Placed,Structured / process-driven,Clear,organic,2024-10-04
+Nikhil,Rahman,talent105@lumentalent.com,+19732718355,talent,Momentum,US Eastern,27,8.9,In Assessment,Relational / patient-facing,Not Started,organic,2026-06-07
+Marcus,Bianchi,talent106@lumentalent.com,+16484512796,talent,Core,US Central / Mountain,30,6.38,Bench-Ready,Relational / patient-facing,Clear,referral,2026-05-12
+Yara,Bianchi,talent107@lumentalent.com,+18278386026,talent,Momentum,US Central / Mountain,7,8.49,Placed,Structured / process-driven,Expiring Soon,organic,2025-07-05
+Aisha,Lindgren,talent108@lumentalent.com,+13513348119,talent,Summit,US Pacific,8,11.95,Placed,Autonomous / ownership-oriented,Clear,referral,2025-07-07
+Tariq,Ellery,talent109@lumentalent.com,+17468215321,talent,Momentum,Overnight / Overflow,2,6.83,Placed,Adaptive / cross-functional,Clear,referral,2026-01-10
+Astrid,Bakker,talent110@lumentalent.com,+15189081639,talent,Core,US Central / Mountain,8,6.38,Placed,Structured / process-driven,Clear,referral,2024-08-28
+Elsa,Patel,talent111@lumentalent.com,+17142702278,talent,Momentum,US Eastern,29,6.77,Bench-Ready,Structured / process-driven,Clear,organic,2026-01-30
+Noemi,Whitfield,talent112@lumentalent.com,+14785799166,talent,Momentum,US Eastern,26,7.15,Bench-Ready,Structured / process-driven,Clear,referral,2025-08-04
+Noemi,Torres,talent113@lumentalent.com,+16236784532,talent,Momentum,US Eastern,6,7.09,Placed,Adaptive / cross-functional,Clear,referral,2024-10-30
+Luis,Balogun,talent114@lumentalent.com,+18005684596,talent,Core,US Central / Mountain,4,5.75,Placed,Adaptive / cross-functional,Clear,referral,2024-08-22
+Femi,Klein,talent115@lumentalent.com,+18805775452,talent,Core,US Central / Mountain,2,6.33,Placed,Structured / process-driven,Clear,referral,2026-03-20
+Tariq,Sorensen,talent116@lumentalent.com,+13303394217,talent,Summit,Overnight / Overflow,29,10.07,In Assessment,Autonomous / ownership-oriented,Not Started,organic,2025-05-18
+Thandi,Ellery,talent117@lumentalent.com,+17507898117,talent,Summit,US Pacific,4,9.38,Placed,Autonomous / ownership-oriented,Clear,organic,2025-12-05
+Mei,Eriksen,talent118@lumentalent.com,+15584959407,talent,Momentum,US Eastern,2,6.82,Placed,Relational / patient-facing,Clear,organic,2024-10-25
+Sofia,Hassan,talent119@lumentalent.com,+12396595226,talent,Core,US Pacific,30,5.64,In Assessment,Structured / process-driven,Not Started,referral,2025-03-04
+Bella,Baptiste,talent120@lumentalent.com,+12359748480,talent,Momentum,US Central / Mountain,25,7.5,Inactive,Relational / patient-facing,Clear,referral,2024-12-19
+Pavel,Duarte,talent121@lumentalent.com,+15099385212,talent,Core,US Eastern,8,5.58,Placed,Structured / process-driven,Clear,referral,2026-07-22
+Kai,Kovacs,talent122@lumentalent.com,+15295708417,talent,Momentum,US Central / Mountain,3,7.21,Placed,Adaptive / cross-functional,Clear,referral,2025-12-18
+Tomas,Raghunathan,talent123@lumentalent.com,+18988865960,talent,Momentum,US Central / Mountain,4,7.9,Placed,Structured / process-driven,Expiring Soon,referral,2026-06-29
+Tomas,Osei,talent124@lumentalent.com,+14213089636,talent,Momentum,US Central / Mountain,26,8.41,In Assessment,Structured / process-driven,Clear,referral,2024-04-30
+Mateo,Diallo,talent125@lumentalent.com,+18819103968,talent,Momentum,US Eastern,7,8.03,Placed,Structured / process-driven,Lapsed,referral,2025-10-01
+Joon,Raghunathan,talent126@lumentalent.com,+15296402535,talent,Core,US Eastern,38,6.51,In Assessment,Adaptive / cross-functional,Not Started,organic,2024-09-08
+Ingrid,Ferreira,talent127@lumentalent.com,+19999103623,talent,Core,US Central / Mountain,2,5.73,Placed,Adaptive / cross-functional,Lapsed,referral,2025-05-04
+Elena,Adebayo,talent128@lumentalent.com,+15503203028,talent,Momentum,US Eastern,28,7.34,Bench-Ready,Structured / process-driven,Clear,referral,2026-06-04
+Noemi,Ferreira,talent129@lumentalent.com,+18062404758,talent,Momentum,US Central / Mountain,0,8.52,Placed,Structured / process-driven,Clear,referral,2026-05-23
+Rina,Kovacs,talent130@lumentalent.com,+17628854646,talent,Momentum,US Pacific,4,7.11,Placed,Relational / patient-facing,Clear,referral,2024-04-10
+Sven,Torres,talent131@lumentalent.com,+16498439499,talent,Momentum,US Eastern,27,8.63,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-05-07
+Ingrid,Hoffman,talent132@lumentalent.com,+15336885196,talent,Momentum,Overnight / Overflow,23,8.45,In Assessment,Structured / process-driven,Lapsed,referral,2025-03-14
+Yuki,Delgado,talent133@lumentalent.com,+15543735462,talent,Summit,US Pacific,30,11.49,Inactive,Relational / patient-facing,Clear,referral,2024-07-31
+Isabel,Bergstrom,talent134@lumentalent.com,+14907243335,talent,Momentum,US Eastern,28,7.39,In Assessment,Autonomous / ownership-oriented,Not Started,referral,2024-09-24
+Bella,Chen,talent135@lumentalent.com,+19558109317,talent,Momentum,US Central / Mountain,7,7.21,Placed,Structured / process-driven,Clear,organic,2024-04-30
+Rohan,Watanabe,talent136@lumentalent.com,+15122731081,talent,Momentum,US Eastern,30,8.28,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2026-04-17
+Bilal,Okafor,talent137@lumentalent.com,+15547754279,talent,Core,US Central / Mountain,32,6.1,Bench-Ready,Adaptive / cross-functional,Clear,organic,2026-06-11
+Ingrid,Ellery,talent138@lumentalent.com,+17505334454,talent,Momentum,US Eastern,6,8.71,Placed,Relational / patient-facing,Lapsed,referral,2025-09-29
+Chidi,Rivera,talent139@lumentalent.com,+15317054918,talent,Summit,US Eastern,31,9.5,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-07-29
+Lucia,Raghunathan,talent140@lumentalent.com,+18205106722,talent,Momentum,US Eastern,24,8.22,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2024-03-21
+Priya,Iqbal,talent141@lumentalent.com,+12753857887,talent,Momentum,US Pacific,33,7.23,In Assessment,Relational / patient-facing,Clear,referral,2024-02-25
+Hana,Chen,talent142@lumentalent.com,+19588381020,talent,Summit,US Central / Mountain,2,11.01,Placed,Structured / process-driven,Clear,referral,2025-07-20
+Rania,Patel,talent143@lumentalent.com,+14335831749,talent,Core,US Central / Mountain,31,5.63,Inactive,Adaptive / cross-functional,Lapsed,organic,2025-09-29
+Amara,Rossi,talent144@lumentalent.com,+14007665159,talent,Summit,US Central / Mountain,24,11.7,Bench-Ready,Adaptive / cross-functional,Expiring Soon,referral,2025-04-06
+Zane,Rossi,talent145@lumentalent.com,+16379484804,talent,Momentum,US Central / Mountain,26,7.47,Bench-Ready,Relational / patient-facing,Clear,organic,2026-08-06
+Marisol,Sharma,talent146@lumentalent.com,+18195094021,talent,Core,US Pacific,29,6.37,In Assessment,Relational / patient-facing,Not Started,referral,2025-11-15
+Leila,Iqbal,talent147@lumentalent.com,+17437498633,talent,Core,US Central / Mountain,4,5.73,Placed,Relational / patient-facing,Expiring Soon,referral,2026-04-21
+Freya,Jansen,talent148@lumentalent.com,+16389921098,talent,Momentum,US Central / Mountain,0,8.22,Placed,Relational / patient-facing,Clear,referral,2026-06-01
+Zane,Kovacs,talent149@lumentalent.com,+19375463189,talent,Momentum,Overnight / Overflow,30,8.37,In Assessment,Adaptive / cross-functional,Not Started,referral,2024-06-01
+Ada,Raghunathan,talent150@lumentalent.com,+16589069196,talent,Momentum,US Eastern,27,8.69,Bench-Ready,Relational / patient-facing,Expiring Soon,organic,2024-02-29
+Isabel,Weiss,talent151@lumentalent.com,+17797987666,talent,Core,US Pacific,33,6.29,Bench-Ready,Structured / process-driven,Lapsed,referral,2025-10-30
+Leila,Rahman,talent152@lumentalent.com,+16218067394,talent,Summit,US Pacific,33,9.52,In Assessment,Autonomous / ownership-oriented,Not Started,referral,2024-06-26
+Lucia,Mwangi,talent153@lumentalent.com,+15279943678,talent,Core,US Pacific,4,5.76,Placed,Adaptive / cross-functional,Expiring Soon,organic,2025-07-28
+Sana,Iqbal,talent154@lumentalent.com,+15907567922,talent,Momentum,Overnight / Overflow,28,8.69,Bench-Ready,Structured / process-driven,Clear,referral,2026-07-12
+Ingrid,Ferreira,talent155@lumentalent.com,+15172656244,talent,Momentum,US Central / Mountain,8,8.23,Placed,Structured / process-driven,Clear,organic,2024-10-07
+Rina,Rivera,talent156@lumentalent.com,+12645064137,talent,Momentum,US Eastern,26,8.08,Bench-Ready,Structured / process-driven,Clear,referral,2026-05-05
+Mateo,Farah,talent157@lumentalent.com,+16652809736,talent,Core,US Pacific,6,6.45,Placed,Relational / patient-facing,Expiring Soon,referral,2026-04-28
+Yuki,Petrov,talent158@lumentalent.com,+18878896094,talent,Summit,US Eastern,33,11.16,Bench-Ready,Relational / patient-facing,Lapsed,organic,2025-01-02
+Idris,Castillo,talent159@lumentalent.com,+12139214286,talent,Core,US Pacific,24,5.74,Bench-Ready,Autonomous / ownership-oriented,Clear,organic,2024-06-20
+Leila,Farah,talent160@lumentalent.com,+16296441529,talent,Core,Overnight / Overflow,35,5.91,Bench-Ready,Relational / patient-facing,Clear,referral,2025-02-14
+Mei,Lindqvist,talent161@lumentalent.com,+15606681430,talent,Core,US Eastern,36,6.33,Bench-Ready,Adaptive / cross-functional,Lapsed,organic,2024-03-07
+Wren,Novotny,talent162@lumentalent.com,+12019795811,talent,Momentum,Overnight / Overflow,23,8.83,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-08-22
+Anders,Achebe,talent163@lumentalent.com,+16314407455,talent,Momentum,US Central / Mountain,7,7.29,Placed,Relational / patient-facing,Clear,referral,2024-12-26
+Tomas,Mahmood,talent164@lumentalent.com,+17862562420,talent,Momentum,US Central / Mountain,23,7.74,In Assessment,Adaptive / cross-functional,Not Started,organic,2024-12-02
+Diego,Nyong,talent165@lumentalent.com,+15628726730,talent,Core,US Central / Mountain,35,5.42,In Assessment,Structured / process-driven,Not Started,referral,2024-05-22
+Ada,Adebayo,talent166@lumentalent.com,+18336028454,talent,Core,US Central / Mountain,0,5.92,Placed,Adaptive / cross-functional,Clear,referral,2025-05-06
+Idris,Jansen,talent167@lumentalent.com,+14712527584,talent,Summit,US Central / Mountain,31,10.72,Bench-Ready,Structured / process-driven,Clear,referral,2025-08-09
+Amara,Andersen,talent168@lumentalent.com,+13495729171,talent,Core,US Eastern,26,5.93,In Assessment,Structured / process-driven,Clear,referral,2026-01-29
+Tunde,Haddad,talent169@lumentalent.com,+16876439482,talent,Momentum,US Pacific,1,6.76,Placed,Autonomous / ownership-oriented,Expiring Soon,referral,2024-06-30
+Nora,Bianchi,talent170@lumentalent.com,+14779182202,talent,Momentum,US Pacific,3,6.77,Placed,Relational / patient-facing,Clear,referral,2025-02-03
+Kai,Hoffman,talent171@lumentalent.com,+18617826691,talent,Summit,US Pacific,26,11.23,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-03-22
+Sana,Patel,talent172@lumentalent.com,+13784607183,talent,Momentum,US Central / Mountain,3,8.94,Placed,Structured / process-driven,Clear,referral,2024-09-01
+Ingrid,Bergstrom,talent173@lumentalent.com,+15072279666,talent,Core,US Central / Mountain,8,5.71,Placed,Relational / patient-facing,Clear,referral,2026-02-24
+Ravi,Ellery,talent174@lumentalent.com,+13658094221,talent,Core,US Central / Mountain,3,6.41,Placed,Structured / process-driven,Clear,organic,2026-07-18
+Yara,Fischer,talent175@lumentalent.com,+17039273654,talent,Momentum,US Pacific,30,8.44,In Assessment,Structured / process-driven,Not Started,referral,2024-07-24
+Salma,Bergstrom,talent176@lumentalent.com,+15577051168,talent,Summit,US Central / Mountain,8,10.21,Placed,Relational / patient-facing,Clear,referral,2024-03-29
+Amara,Lindgren,talent177@lumentalent.com,+15325392751,talent,Core,US Central / Mountain,30,6.33,In Assessment,Relational / patient-facing,Clear,organic,2024-08-06
+Caleb,Yilmaz,talent178@lumentalent.com,+13886587116,talent,Momentum,Overnight / Overflow,2,7.04,Placed,Relational / patient-facing,Clear,referral,2024-11-17
+Amara,Malek,talent179@lumentalent.com,+13415805750,talent,Momentum,US Pacific,31,7.51,In Assessment,Relational / patient-facing,Not Started,referral,2026-06-16
+Sofia,Osei,talent180@lumentalent.com,+19575441529,talent,Summit,US Eastern,7,9.46,Placed,Structured / process-driven,Lapsed,referral,2025-03-04
+Oskar,Aguilar,talent181@lumentalent.com,+19748091962,talent,Momentum,US Central / Mountain,36,7.4,Bench-Ready,Structured / process-driven,Clear,referral,2025-04-24
+Oskar,Kovacs,talent182@lumentalent.com,+15446773166,talent,Core,US Eastern,1,6.55,Placed,Structured / process-driven,Clear,organic,2025-08-04
+Kai,Sultana,talent183@lumentalent.com,+13608019643,talent,Core,US Eastern,0,5.6,Placed,Structured / process-driven,Clear,referral,2024-09-12
+Bilal,Rahman,talent184@lumentalent.com,+14465418227,talent,Momentum,Overnight / Overflow,0,7.7,Placed,Structured / process-driven,Clear,referral,2025-02-18
+Noemi,Zhang,talent185@lumentalent.com,+12192186600,talent,Core,US Eastern,34,6.17,Inactive,Relational / patient-facing,Clear,organic,2024-10-25
+Andres,Baptiste,talent186@lumentalent.com,+13397339346,talent,Momentum,US Central / Mountain,27,7.36,Bench-Ready,Relational / patient-facing,Clear,referral,2026-02-24
+Marcus,Osei,talent187@lumentalent.com,+19235979271,talent,Core,US Central / Mountain,33,5.59,In Assessment,Structured / process-driven,Not Started,referral,2026-03-14
+Marta,Sharma,talent188@lumentalent.com,+18015125514,talent,Summit,US Eastern,4,11.86,Placed,Autonomous / ownership-oriented,Clear,organic,2025-10-10
+Sven,Novotny,talent189@lumentalent.com,+17163914625,talent,Momentum,US Pacific,33,8.3,In Assessment,Structured / process-driven,Clear,organic,2024-10-21
+Sven,Reyes,talent190@lumentalent.com,+14243408282,talent,Momentum,US Central / Mountain,27,8.77,In Assessment,Structured / process-driven,Not Started,referral,2025-08-24
+Noemi,Duarte,talent191@lumentalent.com,+15203874615,talent,Core,US Central / Mountain,22,6.29,In Assessment,Adaptive / cross-functional,Clear,referral,2025-02-24
+Luis,Olsen,talent192@lumentalent.com,+17942008691,talent,Summit,US Central / Mountain,33,11.38,Bench-Ready,Adaptive / cross-functional,Lapsed,organic,2024-10-20
+Joon,Alvarez,talent193@lumentalent.com,+13349244050,talent,Momentum,US Central / Mountain,28,8.19,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-02-23
+Rosa,Nyong,talent194@lumentalent.com,+14495363173,talent,Momentum,US Eastern,2,8.35,Placed,Adaptive / cross-functional,Clear,referral,2026-06-18
+Noemi,Sandoval,talent195@lumentalent.com,+18603026133,talent,Core,US Eastern,38,5.69,Bench-Ready,Structured / process-driven,Lapsed,referral,2024-06-02
+Ada,Vasquez,talent196@lumentalent.com,+13252078740,talent,Momentum,US Pacific,1,7.26,Placed,Adaptive / cross-functional,Clear,referral,2024-08-03
+Layla,Lindgren,talent197@lumentalent.com,+13917166645,talent,Core,US Central / Mountain,2,5.69,Placed,Adaptive / cross-functional,Clear,referral,2026-06-29
+Pavel,Rivera,talent198@lumentalent.com,+15612151167,talent,Momentum,US Central / Mountain,31,8.09,In Assessment,Relational / patient-facing,Not Started,referral,2026-04-10
+Aisha,Sorensen,talent199@lumentalent.com,+16405318303,talent,Momentum,Overnight / Overflow,33,7.08,Bench-Ready,Structured / process-driven,Clear,referral,2025-04-14
+Greta,Castillo,talent200@lumentalent.com,+12948534902,talent,Momentum,US Pacific,33,7.67,Bench-Ready,Relational / patient-facing,Clear,referral,2024-08-21
+Nora,Nakamura,talent201@lumentalent.com,+12516335737,talent,Summit,US Central / Mountain,27,10.57,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2025-07-24
+Anja,Krishnan,talent202@lumentalent.com,+16104759752,talent,Momentum,US Eastern,34,8.54,Bench-Ready,Adaptive / cross-functional,Clear,referral,2026-07-04
+Marisol,Rossi,talent203@lumentalent.com,+12588643574,talent,Momentum,US Central / Mountain,6,7.32,Placed,Relational / patient-facing,Clear,organic,2026-07-30
+Rosa,Nasser,talent204@lumentalent.com,+17179431862,talent,Core,US Eastern,23,6.54,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-11-27
+Tomas,Diallo,talent205@lumentalent.com,+19353018772,talent,Core,US Central / Mountain,38,5.95,Bench-Ready,Relational / patient-facing,Clear,referral,2025-06-15
+Tomas,Moreau,talent206@lumentalent.com,+12667279958,talent,Core,US Eastern,5,5.76,Placed,Structured / process-driven,Clear,organic,2024-11-08
+Rosa,Aguilar,talent207@lumentalent.com,+16525285046,talent,Momentum,US Eastern,24,8.81,Bench-Ready,Structured / process-driven,Clear,organic,2024-12-31
+Hana,Novotny,talent208@lumentalent.com,+12282999525,talent,Core,US Eastern,2,6.47,Placed,Relational / patient-facing,Clear,referral,2025-11-25
+Marta,Diallo,talent209@lumentalent.com,+15198415522,talent,Momentum,US Eastern,34,7.15,Bench-Ready,Relational / patient-facing,Clear,referral,2024-04-01
+Clara,Patel,talent210@lumentalent.com,+12545496440,talent,Momentum,US Eastern,27,6.92,In Assessment,Structured / process-driven,Clear,referral,2024-04-17
+Lian,Kovacs,talent211@lumentalent.com,+12747441007,talent,Core,Overnight / Overflow,24,5.14,Inactive,Adaptive / cross-functional,Expiring Soon,referral,2026-01-07
+Bilal,Ndiaye,talent212@lumentalent.com,+16213739097,talent,Core,US Eastern,30,5.43,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2024-08-06
+Sven,Diallo,talent213@lumentalent.com,+14306849811,talent,Momentum,US Pacific,4,8.04,Placed,Structured / process-driven,Clear,organic,2026-03-11
+Pavel,Bergstrom,talent214@lumentalent.com,+14447855797,talent,Core,US Central / Mountain,29,5.95,Bench-Ready,Adaptive / cross-functional,Clear,referral,2026-01-17
+Ada,Nkemdi,talent215@lumentalent.com,+16435275596,talent,Core,US Central / Mountain,30,5.81,Inactive,Structured / process-driven,Clear,organic,2025-11-13
+Priya,Iqbal,talent216@lumentalent.com,+13523172126,talent,Momentum,US Eastern,30,8.07,In Assessment,Adaptive / cross-functional,Not Started,referral,2025-12-07
+Aisha,Nkemdi,talent217@lumentalent.com,+13844612443,talent,Core,US Pacific,24,6.18,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-01-22
+Nikhil,Malek,talent218@lumentalent.com,+18205172467,talent,Core,Overnight / Overflow,7,6.4,Placed,Adaptive / cross-functional,Clear,referral,2026-04-16
+Hiro,Larsen,talent219@lumentalent.com,+17193131215,talent,Momentum,US Eastern,31,7.27,Bench-Ready,Relational / patient-facing,Clear,referral,2024-03-02
+Noemi,Rivera,talent220@lumentalent.com,+12427391107,talent,Momentum,US Eastern,32,7.43,Bench-Ready,Adaptive / cross-functional,Lapsed,referral,2025-06-18
+Kai,Tanaka,talent221@lumentalent.com,+18985022049,talent,Momentum,Overnight / Overflow,27,8.48,Bench-Ready,Relational / patient-facing,Clear,referral,2024-10-05
+Caleb,Adebayo,talent222@lumentalent.com,+12018018933,talent,Momentum,US Pacific,39,8.73,Bench-Ready,Relational / patient-facing,Clear,referral,2024-06-17
+Ines,Alvarez,talent223@lumentalent.com,+15108718653,talent,Momentum,Overnight / Overflow,28,7.89,In Assessment,Adaptive / cross-functional,Expiring Soon,referral,2026-02-25
+Noemi,Duarte,talent224@lumentalent.com,+16838512989,talent,Core,US Central / Mountain,29,6.05,Inactive,Autonomous / ownership-oriented,Lapsed,referral,2025-11-04
+Ada,Novotny,talent225@lumentalent.com,+16893907188,talent,Core,Overnight / Overflow,34,5.28,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-06-21
+Elsa,Rahman,talent226@lumentalent.com,+15982364269,talent,Core,US Central / Mountain,28,5.66,In Assessment,Adaptive / cross-functional,Clear,referral,2025-10-20
+Nikhil,Petrov,talent227@lumentalent.com,+14362114138,talent,Core,US Central / Mountain,30,6.34,Inactive,Autonomous / ownership-oriented,Clear,referral,2025-12-26
+Femi,Moreau,talent228@lumentalent.com,+19034372689,talent,Summit,Overnight / Overflow,4,11.97,Placed,Adaptive / cross-functional,Clear,referral,2024-08-01
+Nikhil,Nyong,talent229@lumentalent.com,+16432008724,talent,Summit,US Eastern,27,9.82,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-06-23
+Hana,Alvarez,talent230@lumentalent.com,+17365271584,talent,Core,US Pacific,6,5.76,Placed,Relational / patient-facing,Clear,referral,2024-09-20
+Dana,Alvarez,talent231@lumentalent.com,+19866351778,talent,Momentum,US Central / Mountain,27,8.07,In Assessment,Autonomous / ownership-oriented,Lapsed,referral,2026-04-10
+Dana,Mensah,talent232@lumentalent.com,+19752675566,talent,Core,US Pacific,23,5.31,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2026-06-11
+Yuki,Moreau,talent233@lumentalent.com,+18817961138,talent,Core,US Eastern,0,6.1,Placed,Structured / process-driven,Lapsed,referral,2024-03-22
+Rina,Kamau,talent234@lumentalent.com,+12232894513,talent,Momentum,US Eastern,8,7.29,Placed,Adaptive / cross-functional,Clear,referral,2024-06-09
+Lian,Krishnan,talent235@lumentalent.com,+13146525505,talent,Momentum,US Central / Mountain,29,8.6,Inactive,Structured / process-driven,Clear,organic,2024-11-29
+Ines,Larsen,talent236@lumentalent.com,+14573294781,talent,Momentum,US Pacific,29,7.31,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-01-25
+Thandi,Mahmood,talent237@lumentalent.com,+19227478191,talent,Momentum,US Eastern,33,7.99,Bench-Ready,Structured / process-driven,Clear,referral,2026-07-23
+Anders,Santos,talent238@lumentalent.com,+12402037571,talent,Momentum,US Eastern,30,8.18,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-02-25
+Hugo,Patel,talent239@lumentalent.com,+19645468160,talent,Core,Overnight / Overflow,27,6.14,In Assessment,Structured / process-driven,Not Started,referral,2025-03-21
+Fatima,Lindqvist,talent240@lumentalent.com,+12174729056,talent,Core,US Eastern,33,5.41,Bench-Ready,Relational / patient-facing,Clear,organic,2024-07-10
+Arun,Torres,talent241@lumentalent.com,+19523261705,talent,Core,Overnight / Overflow,4,6.31,Placed,Relational / patient-facing,Clear,referral,2024-05-06
+Wren,Mwangi,talent242@lumentalent.com,+14687214524,talent,Summit,US Eastern,3,10.04,Placed,Adaptive / cross-functional,Clear,organic,2025-04-20
+Nasir,Jansen,talent243@lumentalent.com,+15729613943,talent,Core,US Eastern,6,5.78,Placed,Structured / process-driven,Clear,referral,2024-07-01
+Yara,Jansen,talent244@lumentalent.com,+13079761780,talent,Momentum,US Eastern,35,7.11,Bench-Ready,Relational / patient-facing,Clear,organic,2025-12-09
+Yuki,Mahmood,talent245@lumentalent.com,+17962772335,talent,Summit,US Eastern,3,9.99,Placed,Structured / process-driven,Clear,referral,2026-04-17
+Ines,Torres,talent246@lumentalent.com,+16935064514,talent,Momentum,US Central / Mountain,35,8.04,Bench-Ready,Relational / patient-facing,Clear,referral,2025-06-09
+Tunde,Aguilar,talent247@lumentalent.com,+13638147906,talent,Core,US Eastern,1,5.53,Placed,Adaptive / cross-functional,Clear,referral,2026-04-09
+Sven,Chen,talent248@lumentalent.com,+19835893477,talent,Core,US Eastern,27,5.91,Bench-Ready,Structured / process-driven,Clear,referral,2024-06-24
+Oskar,Bianchi,talent249@lumentalent.com,+16075099440,talent,Core,Overnight / Overflow,2,6.72,Placed,Structured / process-driven,Clear,referral,2025-08-30
+Bilal,Mahmood,talent250@lumentalent.com,+15905772030,talent,Summit,US Central / Mountain,0,10.69,Placed,Structured / process-driven,Clear,referral,2026-04-08
+Chidi,Balogun,talent251@lumentalent.com,+16955226356,talent,Core,US Pacific,21,5.36,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2024-07-31
+Bella,Fontaine,talent252@lumentalent.com,+18495411545,talent,Momentum,US Pacific,31,7.73,Bench-Ready,Structured / process-driven,Clear,organic,2024-08-19
+Marta,Kovacs,talent253@lumentalent.com,+17856314699,talent,Core,US Central / Mountain,5,5.92,Placed,Adaptive / cross-functional,Lapsed,referral,2026-02-22
+Rohan,Whitfield,talent254@lumentalent.com,+19037379344,talent,Momentum,Overnight / Overflow,36,8.55,Bench-Ready,Structured / process-driven,Expiring Soon,organic,2025-10-17
+Omar,Haddad,talent255@lumentalent.com,+16383131828,talent,Summit,US Eastern,3,11.72,Placed,Adaptive / cross-functional,Clear,referral,2026-06-11
+Dana,Vasquez,talent256@lumentalent.com,+15974499072,talent,Core,US Pacific,35,5.57,Bench-Ready,Structured / process-driven,Lapsed,referral,2024-08-17
+Nadia,Olsen,talent257@lumentalent.com,+14434176853,talent,Momentum,US Pacific,8,8.8,Placed,Structured / process-driven,Clear,referral,2025-08-15
+Isabel,Aguilar,talent258@lumentalent.com,+15485151883,talent,Core,US Pacific,31,5.88,Inactive,Structured / process-driven,Expiring Soon,referral,2025-05-23
+Ines,Kim,talent259@lumentalent.com,+19362046930,talent,Core,US Pacific,5,5.49,Placed,Relational / patient-facing,Expiring Soon,referral,2024-12-16
+Thandi,Rivera,talent260@lumentalent.com,+16304448662,talent,Momentum,US Eastern,0,7.01,Placed,Structured / process-driven,Lapsed,referral,2025-03-12
+Marta,Silva,talent261@lumentalent.com,+19512116327,talent,Summit,US Pacific,33,9.28,Bench-Ready,Adaptive / cross-functional,Clear,organic,2024-03-06
+Ingrid,Raghunathan,talent262@lumentalent.com,+15169609208,talent,Momentum,US Central / Mountain,4,7.44,Placed,Adaptive / cross-functional,Lapsed,referral,2024-07-21
+Fatima,Lindgren,talent263@lumentalent.com,+16657167470,talent,Core,US Pacific,35,5.45,Bench-Ready,Structured / process-driven,Clear,referral,2026-02-25
+Kai,Chen,talent264@lumentalent.com,+15064388449,talent,Summit,US Central / Mountain,31,10.92,Inactive,Adaptive / cross-functional,Expiring Soon,referral,2025-08-25
+Zane,Osei,talent265@lumentalent.com,+15066098301,talent,Momentum,US Eastern,8,6.77,Placed,Relational / patient-facing,Clear,referral,2025-08-24
+Caleb,Novotny,talent266@lumentalent.com,+12003315806,talent,Momentum,US Central / Mountain,4,8.47,Placed,Relational / patient-facing,Clear,referral,2025-08-23
+Bella,Moreau,talent267@lumentalent.com,+15112024872,talent,Momentum,US Eastern,34,8.45,In Assessment,Structured / process-driven,Not Started,referral,2026-03-06
+Rania,Hassan,talent268@lumentalent.com,+15699365367,talent,Core,US Central / Mountain,7,5.36,Placed,Relational / patient-facing,Clear,organic,2024-05-09
+Freya,Andersen,talent269@lumentalent.com,+15844232541,talent,Core,US Eastern,30,6.1,Bench-Ready,Structured / process-driven,Clear,organic,2026-05-05
+Salma,Ellery,talent270@lumentalent.com,+18622123998,talent,Core,US Pacific,28,6.47,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-06-19
+Boris,Tanaka,talent271@lumentalent.com,+19913266035,talent,Core,US Eastern,31,6.34,Inactive,Adaptive / cross-functional,Clear,referral,2025-10-15
+Joon,Ferreira,talent272@lumentalent.com,+12854512327,talent,Core,US Eastern,3,6.46,Placed,Structured / process-driven,Clear,referral,2026-07-19
+Divya,Kovacs,talent273@lumentalent.com,+16683429342,talent,Momentum,US Pacific,33,7.64,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-07-11
+Tariq,Marchetti,talent274@lumentalent.com,+14432238812,talent,Core,US Central / Mountain,30,5.53,Bench-Ready,Structured / process-driven,Clear,referral,2026-04-09
+Tunde,Achebe,talent275@lumentalent.com,+18169392678,talent,Momentum,US Eastern,3,8.4,Placed,Adaptive / cross-functional,Clear,organic,2024-08-05
+Marisol,Ibrahim,talent276@lumentalent.com,+15567045585,talent,Momentum,US Central / Mountain,33,6.88,Bench-Ready,Relational / patient-facing,Lapsed,referral,2024-04-17
+Malik,Ndiaye,talent277@lumentalent.com,+14554232871,talent,Momentum,US Pacific,32,8.22,In Assessment,Structured / process-driven,Not Started,referral,2024-09-12
+Noemi,Klein,talent278@lumentalent.com,+14415159036,talent,Momentum,US Eastern,31,7.37,In Assessment,Autonomous / ownership-oriented,Not Started,referral,2026-04-23
+Tariq,Larsen,talent279@lumentalent.com,+14755901877,talent,Core,US Pacific,33,5.25,Bench-Ready,Structured / process-driven,Lapsed,referral,2024-05-06
+Salma,Nasser,talent280@lumentalent.com,+19035812969,talent,Core,US Eastern,34,5.73,Bench-Ready,Structured / process-driven,Clear,referral,2026-05-08
+Nasir,Diallo,talent281@lumentalent.com,+17722092903,talent,Momentum,US Pacific,1,8.78,Placed,Relational / patient-facing,Clear,organic,2025-03-09
+Caleb,Duarte,talent282@lumentalent.com,+14606197402,talent,Momentum,US Central / Mountain,29,7.78,Bench-Ready,Relational / patient-facing,Clear,referral,2025-05-04
+Dana,Okafor,talent283@lumentalent.com,+18687895540,talent,Core,US Central / Mountain,27,5.95,Inactive,Structured / process-driven,Clear,referral,2025-04-09
+Malik,Andersen,talent284@lumentalent.com,+15898383248,talent,Core,US Central / Mountain,5,5.92,Placed,Relational / patient-facing,Clear,organic,2025-03-31
+Rina,Iqbal,talent285@lumentalent.com,+18142104882,talent,Core,US Eastern,24,6.34,In Assessment,Relational / patient-facing,Lapsed,referral,2024-06-19
+Diego,Malek,talent286@lumentalent.com,+19342694029,talent,Core,US Eastern,27,5.49,Bench-Ready,Structured / process-driven,Lapsed,referral,2026-04-24
+Salma,Reyes,talent287@lumentalent.com,+16867208336,talent,Momentum,US Central / Mountain,27,7.21,Inactive,Structured / process-driven,Clear,referral,2025-05-13
+Idris,Chen,talent288@lumentalent.com,+15658283564,talent,Momentum,US Central / Mountain,31,6.99,Bench-Ready,Structured / process-driven,Clear,referral,2024-09-08
+Yusuf,Adebayo,talent289@lumentalent.com,+18667564180,talent,Momentum,US Pacific,1,7.93,Placed,Autonomous / ownership-oriented,Clear,referral,2025-03-26
+Sven,Nyong,talent290@lumentalent.com,+14135705722,talent,Summit,US Pacific,6,11.45,Placed,Structured / process-driven,Clear,organic,2025-11-20
+Hana,Osei,talent291@lumentalent.com,+16678229497,talent,Core,US Pacific,27,5.55,Inactive,Autonomous / ownership-oriented,Clear,referral,2025-05-03
+Marisol,Ferreira,talent292@lumentalent.com,+14966188081,talent,Momentum,Overnight / Overflow,35,8.38,Bench-Ready,Relational / patient-facing,Clear,referral,2025-08-12
+Mikkel,Balogun,talent293@lumentalent.com,+12592779842,talent,Core,US Central / Mountain,5,6.51,Placed,Structured / process-driven,Clear,referral,2024-08-17
+Luis,Diallo,talent294@lumentalent.com,+17095833307,talent,Momentum,US Pacific,29,7.48,Bench-Ready,Relational / patient-facing,Clear,referral,2024-04-02
+Malik,Achebe,talent295@lumentalent.com,+16183862201,talent,Summit,US Eastern,5,9.98,Placed,Structured / process-driven,Clear,referral,2026-04-03
+Divya,Mahmood,talent296@lumentalent.com,+12178412425,talent,Momentum,US Eastern,29,7.39,In Assessment,Structured / process-driven,Clear,referral,2026-03-29
+Tomas,Rivera,talent297@lumentalent.com,+18982187234,talent,Core,US Central / Mountain,27,5.55,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2026-03-25
+Anika,Raghunathan,talent298@lumentalent.com,+18612629656,talent,Core,US Eastern,27,5.76,Inactive,Relational / patient-facing,Clear,organic,2024-11-05
+Leila,Sorensen,talent299@lumentalent.com,+13903327209,talent,Core,US Central / Mountain,6,5.64,Placed,Relational / patient-facing,Clear,referral,2025-09-02
+Kai,Ferreira,talent300@lumentalent.com,+18719834979,talent,Momentum,US Pacific,31,8.61,Inactive,Relational / patient-facing,Clear,referral,2024-10-18
+Thandi,Adebayo,talent301@lumentalent.com,+13928753503,talent,Core,US Eastern,38,5.39,In Assessment,Relational / patient-facing,Not Started,referral,2024-04-17
+Chidi,Vasquez,talent302@lumentalent.com,+19554067038,talent,Summit,US Central / Mountain,34,9.77,Bench-Ready,Relational / patient-facing,Clear,referral,2025-07-16
+Rania,Rojas,talent303@lumentalent.com,+13092853453,talent,Core,US Central / Mountain,28,5.99,In Assessment,Structured / process-driven,Not Started,organic,2026-07-22
+Lucia,Bianchi,talent304@lumentalent.com,+13826193038,talent,Summit,Overnight / Overflow,32,9.72,Bench-Ready,Structured / process-driven,Clear,referral,2025-06-02
+Hana,Osei,talent305@lumentalent.com,+17874887245,talent,Momentum,US Eastern,38,6.83,In Assessment,Structured / process-driven,Not Started,organic,2024-05-22
+Yusuf,Mwangi,talent306@lumentalent.com,+15418969676,talent,Core,US Central / Mountain,2,6.25,Placed,Relational / patient-facing,Clear,organic,2024-07-02
+Zane,Okafor,talent307@lumentalent.com,+14876394116,talent,Momentum,US Pacific,35,7.53,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-05-23
+Tariq,Tanaka,talent308@lumentalent.com,+13159221785,talent,Core,US Pacific,21,6.38,Bench-Ready,Adaptive / cross-functional,Clear,organic,2025-08-19
+Luis,Sorensen,talent309@lumentalent.com,+15504427599,talent,Summit,US Pacific,7,9.58,Placed,Relational / patient-facing,Clear,organic,2026-08-04
+Fatima,Osei,talent310@lumentalent.com,+12982294121,talent,Momentum,US Central / Mountain,5,7.66,Placed,Structured / process-driven,Clear,organic,2025-07-16
+Boris,Ferreira,talent311@lumentalent.com,+16403593754,talent,Core,US Eastern,2,6.07,Placed,Autonomous / ownership-oriented,Clear,referral,2025-03-06
+Isabel,Rivera,talent312@lumentalent.com,+18823932664,talent,Core,US Central / Mountain,37,5.6,Bench-Ready,Structured / process-driven,Clear,referral,2024-07-15
+Tariq,Mensah,talent313@lumentalent.com,+16797417315,talent,Core,US Eastern,3,6.11,Placed,Structured / process-driven,Clear,referral,2024-08-26
+Tunde,Rahman,talent314@lumentalent.com,+18826372566,talent,Momentum,US Eastern,4,7.4,Placed,Autonomous / ownership-oriented,Clear,referral,2026-02-25
+Marta,Whitfield,talent315@lumentalent.com,+18825345380,talent,Momentum,US Eastern,3,8.68,Placed,Adaptive / cross-functional,Clear,referral,2025-07-17
+Thandi,Osei,talent316@lumentalent.com,+17252706789,talent,Momentum,US Eastern,0,8.41,Placed,Relational / patient-facing,Clear,organic,2024-11-06
+Marisol,Nasser,talent317@lumentalent.com,+19359945850,talent,Momentum,US Central / Mountain,30,7.51,Bench-Ready,Structured / process-driven,Clear,referral,2025-08-27
+Aisha,Petrov,talent318@lumentalent.com,+15664448987,talent,Core,US Pacific,24,5.86,In Assessment,Relational / patient-facing,Not Started,referral,2024-04-17
+Emeka,Novotny,talent319@lumentalent.com,+13113436278,talent,Momentum,US Central / Mountain,7,6.75,Placed,Structured / process-driven,Lapsed,referral,2025-06-04
+Astrid,Serrano,talent320@lumentalent.com,+13906558434,talent,Momentum,US Central / Mountain,28,6.84,Bench-Ready,Autonomous / ownership-oriented,Clear,organic,2026-03-20
+Greta,Eriksen,talent321@lumentalent.com,+16598084660,talent,Momentum,US Pacific,6,7.39,Placed,Structured / process-driven,Clear,referral,2026-05-10
+Tomas,Hassan,talent322@lumentalent.com,+16409814337,talent,Core,US Pacific,2,5.53,Placed,Structured / process-driven,Lapsed,referral,2024-06-04
+Oskar,Nyong,talent323@lumentalent.com,+15018024621,talent,Momentum,US Pacific,32,7.49,Bench-Ready,Structured / process-driven,Clear,referral,2026-05-24
+Rina,Andersen,talent324@lumentalent.com,+14794368531,talent,Momentum,US Pacific,0,8.74,Placed,Adaptive / cross-functional,Clear,referral,2026-04-26
+Yuki,Eriksen,talent325@lumentalent.com,+16583778735,talent,Core,US Eastern,3,5.99,Placed,Structured / process-driven,Clear,referral,2024-04-13
+Pedro,Weiss,talent326@lumentalent.com,+18447191030,talent,Momentum,US Eastern,1,6.77,Placed,Structured / process-driven,Clear,referral,2026-02-14
+Idris,Obi,talent327@lumentalent.com,+19758583803,talent,Momentum,US Central / Mountain,4,7.77,Placed,Structured / process-driven,Clear,referral,2026-01-14
+Kenji,Iqbal,talent328@lumentalent.com,+17427666624,talent,Momentum,US Pacific,38,7.49,Bench-Ready,Adaptive / cross-functional,Clear,referral,2024-10-24
+Salma,Ndiaye,talent329@lumentalent.com,+12203564670,talent,Momentum,Overnight / Overflow,24,7.75,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-03-22
+Kai,Osei,talent330@lumentalent.com,+17983894825,talent,Momentum,US Eastern,6,7.7,Placed,Relational / patient-facing,Clear,referral,2024-06-17
+Ingrid,Sultana,talent331@lumentalent.com,+12466641642,talent,Core,US Pacific,32,6.48,In Assessment,Relational / patient-facing,Clear,referral,2026-01-10
+Ada,Sandoval,talent332@lumentalent.com,+15167622882,talent,Summit,US Pacific,1,11,Placed,Structured / process-driven,Clear,referral,2025-03-27
+Malik,Eriksen,talent333@lumentalent.com,+17586886865,talent,Momentum,Overnight / Overflow,23,7.89,In Assessment,Relational / patient-facing,Lapsed,referral,2025-02-28
+Rafael,Marchetti,talent334@lumentalent.com,+12963166145,talent,Momentum,US Eastern,39,8.41,Bench-Ready,Relational / patient-facing,Clear,referral,2026-01-14
+Isabel,Baptiste,talent335@lumentalent.com,+16949215653,talent,Momentum,US Eastern,1,7.37,Placed,Adaptive / cross-functional,Clear,referral,2026-07-23
+Sana,Ellery,talent336@lumentalent.com,+19446555904,talent,Core,US Pacific,25,6.08,Bench-Ready,Structured / process-driven,Clear,referral,2025-02-05
+Viktor,Obi,talent337@lumentalent.com,+18157583457,talent,Momentum,Overnight / Overflow,0,8.01,Placed,Structured / process-driven,Clear,organic,2024-12-07
+Dana,Iqbal,talent338@lumentalent.com,+13499162276,talent,Momentum,US Eastern,30,7.32,In Assessment,Structured / process-driven,Clear,organic,2025-09-15
+Leila,Rojas,talent339@lumentalent.com,+14578736046,talent,Momentum,US Eastern,33,6.9,Bench-Ready,Adaptive / cross-functional,Clear,organic,2026-07-09
+Rania,Castillo,talent340@lumentalent.com,+12712347937,talent,Momentum,US Central / Mountain,3,8.48,Placed,Autonomous / ownership-oriented,Lapsed,referral,2025-04-14
+Omar,Baptiste,talent341@lumentalent.com,+19893378257,talent,Momentum,US Pacific,28,7.58,In Assessment,Relational / patient-facing,Clear,referral,2026-05-10
+Divya,Silva,talent342@lumentalent.com,+12315988304,talent,Momentum,US Eastern,3,8.33,Placed,Relational / patient-facing,Clear,referral,2026-02-24
+Sofia,Krishnan,talent343@lumentalent.com,+14535083057,talent,Summit,US Pacific,8,11.11,Placed,Structured / process-driven,Clear,referral,2025-03-28
+Tariq,Rivera,talent344@lumentalent.com,+19977933507,talent,Momentum,US Central / Mountain,6,7.11,Placed,Adaptive / cross-functional,Expiring Soon,referral,2024-07-17
+Bilal,Bakker,talent345@lumentalent.com,+18127894492,talent,Core,US Eastern,32,6.02,Bench-Ready,Structured / process-driven,Clear,organic,2025-04-20
+Joon,Nakamura,talent346@lumentalent.com,+15194975839,talent,Momentum,US Central / Mountain,5,8.89,Placed,Relational / patient-facing,Expiring Soon,referral,2025-08-18
+Layla,Raghunathan,talent347@lumentalent.com,+19522696340,talent,Momentum,US Central / Mountain,26,7.23,Bench-Ready,Autonomous / ownership-oriented,Lapsed,referral,2025-07-24
+Marcus,Sandoval,talent348@lumentalent.com,+14366976579,talent,Momentum,US Eastern,27,7.24,Bench-Ready,Autonomous / ownership-oriented,Clear,referral,2025-03-16
+Greta,Kim,talent349@lumentalent.com,+12912574477,talent,Core,US Pacific,3,5.43,Placed,Structured / process-driven,Expiring Soon,referral,2024-08-14
+Clara,Iqbal,talent350@lumentalent.com,+14538892516,talent,Momentum,US Central / Mountain,3,7.02,Placed,Autonomous / ownership-oriented,Clear,referral,2024-11-11
+Sofia,Adeyemi,talent351@lumentalent.com,+18952017816,talent,Core,US Central / Mountain,30,5.38,In Assessment,Autonomous / ownership-oriented,Not Started,referral,2026-05-27
+Divya,Weiss,talent352@lumentalent.com,+15147356634,talent,Core,US Central / Mountain,3,6.39,Placed,Adaptive / cross-functional,Clear,organic,2025-03-18
+Pavel,Sharma,talent353@lumentalent.com,+16296592914,talent,Summit,US Central / Mountain,3,10.72,Placed,Structured / process-driven,Clear,organic,2025-11-12
+Leila,Ndiaye,talent354@lumentalent.com,+16119849439,talent,Summit,Overnight / Overflow,35,9.97,Inactive,Adaptive / cross-functional,Clear,organic,2025-08-29
+Clara,Mahmood,talent355@lumentalent.com,+19859802518,talent,Momentum,US Eastern,1,6.75,Placed,Adaptive / cross-functional,Clear,referral,2024-10-29
+Rohan,Adeyemi,talent356@lumentalent.com,+17913493121,talent,Momentum,US Eastern,1,7.71,Placed,Relational / patient-facing,Clear,referral,2025-04-12
+Pavel,Fischer,talent357@lumentalent.com,+18255546996,talent,Core,US Eastern,23,5.63,Bench-Ready,Structured / process-driven,Clear,referral,2024-06-15
+Rania,Torres,talent358@lumentalent.com,+19699041257,talent,Summit,US Pacific,5,11.83,Placed,Adaptive / cross-functional,Clear,referral,2026-01-17
+Sana,Sharma,talent359@lumentalent.com,+14454662851,talent,Momentum,US Central / Mountain,2,8.33,Placed,Adaptive / cross-functional,Lapsed,referral,2025-03-11
+Ingrid,Andersen,talent360@lumentalent.com,+19156413794,talent,Core,US Pacific,0,5.53,Placed,Relational / patient-facing,Clear,referral,2026-03-02
+Sven,Nkemdi,talent361@lumentalent.com,+13299094948,talent,Momentum,US Eastern,31,8.13,Inactive,Adaptive / cross-functional,Clear,referral,2025-12-27
+Marisol,Sandoval,talent362@lumentalent.com,+19887207965,talent,Core,US Central / Mountain,29,5.71,In Assessment,Adaptive / cross-functional,Clear,referral,2024-03-30
+Astrid,Moreau,talent363@lumentalent.com,+19019044425,talent,Summit,Overnight / Overflow,7,9.93,Placed,Relational / patient-facing,Lapsed,referral,2026-02-21
+Arun,Farah,talent364@lumentalent.com,+14529284625,talent,Summit,US Central / Mountain,4,9.25,Placed,Adaptive / cross-functional,Clear,referral,2026-04-20
+Andres,Raghunathan,talent365@lumentalent.com,+16422165216,talent,Momentum,US Eastern,7,8.61,Placed,Adaptive / cross-functional,Clear,referral,2024-08-03
+Zane,Ndiaye,talent366@lumentalent.com,+19435654969,talent,Core,US Pacific,0,6.59,Placed,Structured / process-driven,Clear,referral,2024-08-07
+Caleb,Castillo,talent367@lumentalent.com,+17587191065,talent,Core,US Pacific,29,6.31,In Assessment,Structured / process-driven,Not Started,referral,2025-12-21
+Joon,Achebe,talent368@lumentalent.com,+19405268215,talent,Summit,US Central / Mountain,31,11.23,Bench-Ready,Structured / process-driven,Clear,referral,2025-03-18
+Idris,Rivera,talent369@lumentalent.com,+18195478505,talent,Momentum,US Pacific,2,8.18,Placed,Adaptive / cross-functional,Clear,referral,2024-09-27
+Greta,Rossi,talent370@lumentalent.com,+13579027480,talent,Summit,US Central / Mountain,7,10.86,Placed,Structured / process-driven,Clear,referral,2026-05-05
+Pavel,Castillo,talent371@lumentalent.com,+12868784487,talent,Core,US Eastern,28,5.49,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-07-25
+Mei,Sultana,talent372@lumentalent.com,+18687519468,talent,Momentum,US Pacific,4,7.22,Placed,Adaptive / cross-functional,Clear,referral,2024-03-19
+Fatima,Chen,talent373@lumentalent.com,+14412194192,talent,Core,US Central / Mountain,32,5.65,Bench-Ready,Adaptive / cross-functional,Clear,referral,2026-01-04
+Alba,Torres,talent374@lumentalent.com,+13029529319,talent,Core,US Central / Mountain,32,5.53,In Assessment,Structured / process-driven,Not Started,referral,2024-03-11
+Ravi,Ibrahim,talent375@lumentalent.com,+12159765360,talent,Core,US Eastern,6,6.2,Placed,Adaptive / cross-functional,Clear,referral,2025-08-15
+Marta,Sultana,talent376@lumentalent.com,+18143206085,talent,Core,US Eastern,26,5.15,Bench-Ready,Relational / patient-facing,Lapsed,referral,2025-03-14
+Lian,Novak,talent377@lumentalent.com,+13855283273,talent,Momentum,US Eastern,4,8.36,Placed,Adaptive / cross-functional,Clear,organic,2024-11-01
+Pedro,Klein,talent378@lumentalent.com,+19544621078,talent,Core,US Central / Mountain,8,5.44,Placed,Relational / patient-facing,Clear,organic,2024-11-16
+Pavel,Larsen,talent379@lumentalent.com,+16405863951,talent,Momentum,US Pacific,6,8.18,Placed,Structured / process-driven,Lapsed,referral,2026-06-06
+Ines,Serrano,talent380@lumentalent.com,+12683398134,talent,Momentum,US Eastern,1,8.71,Placed,Relational / patient-facing,Clear,referral,2024-10-11
+Alba,Obi,talent381@lumentalent.com,+18027608160,talent,Momentum,US Pacific,0,6.91,Placed,Adaptive / cross-functional,Clear,organic,2024-04-07
+Ada,Krishnan,talent382@lumentalent.com,+15655903298,talent,Momentum,US Central / Mountain,31,7.43,In Assessment,Relational / patient-facing,Not Started,referral,2024-10-15
+Rania,Costa,talent383@lumentalent.com,+13423588117,talent,Momentum,US Central / Mountain,0,7.61,Placed,Structured / process-driven,Clear,organic,2026-05-27
+Pavel,Olsen,talent384@lumentalent.com,+18378638627,talent,Momentum,Overnight / Overflow,33,6.94,In Assessment,Structured / process-driven,Not Started,organic,2024-07-17
+Luis,Chen,talent385@lumentalent.com,+13079769845,talent,Momentum,US Eastern,26,8.27,Bench-Ready,Adaptive / cross-functional,Clear,referral,2025-09-24
+Hiro,Banda,talent386@lumentalent.com,+13713041871,talent,Momentum,US Eastern,29,8.85,Bench-Ready,Structured / process-driven,Clear,organic,2024-10-07
+Thandi,Nkemdi,talent387@lumentalent.com,+12838219040,talent,Core,US Eastern,30,5.34,Inactive,Relational / patient-facing,Clear,referral,2026-07-24
+Arun,Yilmaz,talent388@lumentalent.com,+15492278602,talent,Summit,US Pacific,6,11.94,Placed,Adaptive / cross-functional,Lapsed,referral,2024-09-25
+Rohan,Watanabe,talent389@lumentalent.com,+18794684954,talent,Core,US Eastern,5,6.24,Placed,Adaptive / cross-functional,Clear,referral,2026-03-28
+Boris,Ndiaye,talent390@lumentalent.com,+18917154468,talent,Core,US Central / Mountain,8,5.89,Placed,Adaptive / cross-functional,Clear,referral,2024-04-04
+Hana,Aguilar,talent391@lumentalent.com,+14392909165,talent,Momentum,US Central / Mountain,29,7.68,Bench-Ready,Relational / patient-facing,Clear,referral,2024-08-08
+Sven,Patel,talent392@lumentalent.com,+14277802916,talent,Core,US Central / Mountain,5,5.54,Placed,Relational / patient-facing,Lapsed,referral,2025-04-29
+Elena,Kamau,talent393@lumentalent.com,+12849989654,talent,Core,Overnight / Overflow,7,5.2,Placed,Structured / process-driven,Clear,organic,2025-01-06
+Arun,Fischer,talent394@lumentalent.com,+17015398537,talent,Core,US Pacific,8,5.43,Placed,Relational / patient-facing,Lapsed,referral,2025-11-09
+Sana,Banda,talent395@lumentalent.com,+13995921681,talent,Momentum,US Eastern,7,7.93,Placed,Adaptive / cross-functional,Clear,referral,2025-12-27
+Rina,Tanaka,talent396@lumentalent.com,+12456714326,talent,Momentum,US Eastern,5,7.79,Placed,Adaptive / cross-functional,Clear,referral,2025-06-15
+Hugo,Obi,talent397@lumentalent.com,+12649256061,talent,Momentum,Overnight / Overflow,23,7.16,Inactive,Structured / process-driven,Clear,organic,2024-12-06
+Lian,Aguilar,talent398@lumentalent.com,+15434947035,talent,Core,US Eastern,2,5.68,Placed,Structured / process-driven,Clear,referral,2026-05-21
+Luis,Silva,talent399@lumentalent.com,+15052957447,talent,Core,US Pacific,32,5.83,Inactive,Relational / patient-facing,Lapsed,referral,2025-07-31

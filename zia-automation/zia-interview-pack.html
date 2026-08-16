@@ -1,0 +1,567 @@
+<title>The ZIA Interview Pack</title>
+<style>
+:root{
+  --ground:#EDF1F2; --surface:#FFFFFF; --surface-2:#F6F9F9; --surface-3:#EAF0F1;
+  --hairline:#DBE3E5; --hairline-2:#EAF0F1;
+  --ink:#0E2429; --ink-2:#40595F; --ink-3:#6C858B;
+  --accent:#0A8F86; --accent-soft:#E2F2F0; --accent-line:#9FD5CF;
+  --c2:#A85D00; --c2-soft:#F7EFDD; --c3:#4152A3; --c3-soft:#E7EAF6;
+  --good:#2E7D52; --warning:#9A6B00; --critical:#B0303A;
+  --good-bg:#E6F2EB; --warning-bg:#F7EFDD; --critical-bg:#F8E5E7;
+  --shadow:0 1px 2px rgba(14,36,41,.05), 0 4px 16px rgba(14,36,41,.05);
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --good-bg:#122A20; --warning-bg:#2A2313; --critical-bg:#2C161A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --good-bg:#122A20; --warning-bg:#2A2313; --critical-bg:#2C161A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 90px}
+
+header.top{padding:60px 0 32px;border-bottom:1px solid var(--hairline)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 15px}
+h1{font-size:clamp(31px,5.2vw,46px);line-height:1.06;letter-spacing:-.024em;margin:0 0 16px;
+  font-weight:640;text-wrap:balance}
+.standfirst{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0}
+
+section{padding:44px 0;border-bottom:1px solid var(--hairline)}
+section:last-of-type{border-bottom:0}
+h2{font-size:13px;font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;margin:0 0 22px}
+p{margin:0 0 13px;max-width:68ch;color:var(--ink-2)}
+p:last-child{margin-bottom:0}
+p strong,li strong,td strong{color:var(--ink);font-weight:640}
+code{font-family:var(--mono);font-size:.85em;background:var(--surface-3);
+  border:1px solid var(--hairline-2);border-radius:3px;padding:1px 5px;color:var(--ink)}
+
+.qa{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px}
+.q{display:flex;gap:12px;align-items:baseline;margin:0 0 14px}
+.qn{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:4px;padding:3px 8px;flex:none}
+.q h3{margin:0;font-size:17.5px;font-weight:640;letter-spacing:-.01em;text-wrap:balance}
+.ans{font-size:15.5px;color:var(--ink-2)}
+.ans p{max-width:66ch}
+.say{border-left:2px solid var(--accent);padding:3px 0 3px 15px;margin:13px 0;
+  color:var(--ink);font-size:15.5px}
+.yours{margin-top:14px;padding:12px 15px;border-radius:6px;background:var(--warning-bg);
+  border:1px solid var(--warning);font-size:14.5px;line-height:1.55;color:var(--ink)}
+.yours b{color:var(--warning);font-weight:640}
+
+.star{background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--c3);
+  border-radius:10px;box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px}
+.star h3{margin:0 0 4px;font-size:18px;font-weight:645;letter-spacing:-.01em}
+.star .tagline{font-size:13.5px;color:var(--ink-3);margin:0 0 16px;font-family:var(--mono)}
+.star dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:11px 16px}
+.star dt{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:4px}
+.star dd{margin:0;font-size:15px;color:var(--ink-2)}
+.star dd strong{color:var(--ink)}
+
+.plan{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:6px}
+.phase{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  box-shadow:var(--shadow);padding:20px;border-top:3px solid var(--accent)}
+.phase:nth-child(2){border-top-color:var(--c2)}
+.phase:nth-child(3){border-top-color:var(--c3)}
+.phase h3{margin:0 0 2px;font-size:17px;font-weight:645}
+.phase .when{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 14px}
+.phase ul{margin:0;padding-left:17px}
+.phase li{font-size:14.5px;color:var(--ink-2);margin-bottom:9px;line-height:1.5}
+.phase li strong{color:var(--ink)}
+
+ol.ask{margin:0;padding-left:0;list-style:none;counter-reset:a}
+ol.ask li{counter-increment:a;position:relative;padding-left:40px;margin-bottom:20px}
+ol.ask li::before{content:counter(a);position:absolute;left:0;top:0;width:26px;height:26px;
+  border-radius:7px;background:var(--c3-soft);color:var(--c3);font-family:var(--mono);
+  font-size:12px;font-weight:700;display:grid;place-items:center}
+ol.ask q{display:block;font-size:16px;color:var(--ink);font-style:italic;margin-bottom:5px}
+ol.ask span{font-size:14px;color:var(--ink-3)}
+
+.tw{overflow-x:auto;margin:16px 0 0;border:1px solid var(--hairline);border-radius:7px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
+th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--hairline-2);vertical-align:top}
+thead th{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:600;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.honest{margin-top:20px;padding:18px 20px;border-radius:8px;background:var(--critical-bg);
+  border:1px solid var(--critical);font-size:15.5px;line-height:1.6;color:var(--ink);max-width:70ch}
+.honest b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--critical);margin-bottom:7px;font-weight:600}
+
+footer{padding:34px 0 0;border-top:1px solid var(--hairline);margin-top:40px;
+  font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--ink-3)}
+@media (max-width:640px){.wrap{padding:0 16px 60px} header.top{padding:42px 0 26px}
+  .qa,.star,.phase{padding:18px}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">ZIA · HubSpot Architect</p>
+  <h1>The ZIA Interview Pack</h1>
+  <p class="standfirst">
+    Answers to all eight application questions, three STAR stories with real numbers,
+    a 30-60-90 plan, and the questions to ask them. Every figure here is live in the
+    portal and re-verifiable in front of the interviewer.
+  </p>
+</header>
+
+<!-- ============== HONESTY NOTE ============== -->
+<section>
+  <h2>Read this first</h2>
+  <div class="honest">
+    <b>Two answers are yours alone</b>
+    Questions 1 and 8 ask about your experience and your confidence. Nobody can write
+    those but you, and you should not inflate them. The JD says 3+ years is required —
+    if your honest number is lower, say the honest number and let the portal argue for
+    you. An interviewer who catches an inflated claim stops believing everything else,
+    including the parts that are true.
+  </div>
+  <p style="margin-top:20px">
+    The same applies to the build itself. You commissioned it, directed it, made the
+    architectural calls and understand what it does — <strong>talk about it in those
+    terms</strong>. Be ready to open the portal and navigate it live, because you will
+    be asked to. If you cannot defend a claim under a follow-up question, take it out
+    of your answer.
+  </p>
+</section>
+
+<!-- ============== THE 8 ANSWERS ============== -->
+<section>
+  <h2>The eight application questions</h2>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q1</span>
+      <h3>How many years of hands-on experience do you have working in HubSpot?</h3></div>
+    <div class="ans">
+      <div class="yours">
+        <b>Your number — state it honestly</b>
+        Do not round up. If it is under three years, lead with the honest figure and
+        immediately follow with scope, because scope is what they are really asking about.
+      </div>
+      <p class="say">
+        "[X] years. Rather than lead with the number, let me tell you what I've actually
+        built — most recently a complete portal restructure covering CRM architecture,
+        commerce, service and reporting, which I can walk you through live."
+      </p>
+      <p>
+        If they press on the number, do not defend it. Say: <em>"I'd rather you judge the
+        work than the years — here's the portal."</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q2</span>
+      <h3>Which HubSpot Hubs have you worked in?</h3></div>
+    <div class="ans">
+      <p class="say">
+        "Sales Hub most deeply — deal pipelines, stages, products, line items and quotes.
+        Service Hub for ticketing, pipelines and SLA logic. Operations-style work through
+        the API — data quality, programmable automation and integration boundaries.
+        Marketing Hub is my thinnest area: I've built and shipped forms, but not email
+        campaigns or landing pages, because the portal I've been working in doesn't have
+        Marketing Hub."
+      </p>
+      <p>
+        <strong>Naming Marketing as your weak area first is deliberate.</strong> It is the
+        one gap in the JD you cannot cover, so say it before they find it, and immediately
+        show what you did instead:
+      </p>
+      <p class="say">
+        "Without Marketing Hub I couldn't use HubSpot's attribution reporting, so I built
+        first-touch attribution as a data model instead — a governed source property on the
+        contact, rolled onto the deal, reported as revenue by channel. It found that
+        outbound has our highest win rate at 28.6% and the largest average deal at $35,175,
+        while being the least-used channel — and that paid search has produced zero revenue
+        across five deals."
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q3</span>
+      <h3>Have you built automated workflows in HubSpot?</h3></div>
+    <div class="ans">
+      <p class="say">
+        "Yes — eight of them, though with an important caveat I'd rather give you upfront.
+        The portal runs on a free tier where the workflow API returns 403, so I built the
+        automation externally against the CRM API rather than in the workflow builder.
+        Functionally they're the same eight workflows: lead routing, lifecycle sync,
+        onboarding tickets, health monitoring, SLA escalation, compliance holds, collections,
+        and inbound lead processing."
+      </p>
+      <p>Then make the design point, because it is the strongest thing you have:</p>
+      <p class="say">
+        "There's one deliberate difference. A HubSpot workflow is event-driven — it fires
+        once when a record crosses a threshold, and if it misses the event, that record is
+        missed permanently. Mine reconcile state: each rule asks 'which won deals have no
+        onboarding ticket?' and creates only the missing ones. The first live run wrote 540
+        records. Running it again immediately wrote zero. It cannot double-write, and a
+        missed run self-heals on the next pass."
+      </p>
+      <div class="yours">
+        <b>If you have built native workflows elsewhere, say so here</b>
+        This answer is about this portal. If you have prior hands-on experience in the
+        workflow builder itself, lead with that and use the above as the second half.
+      </div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q4</span>
+      <h3>Have you designed or restructured a HubSpot CRM from the ground up?</h3></div>
+    <div class="ans">
+      <p class="say">
+        "Yes — the current one twice over, because the first state of the data was
+        unusable. I inherited a portal with 20,551 companies where the source file had
+        1,600. It had been imported twice, and the property used to match deals to
+        companies was empty portal-wide, so the planned deal import would have matched
+        zero records and auto-created roughly a thousand more duplicates on top."
+      </p>
+      <p class="say">
+        "I deduplicated by domain, disambiguated names by city, populated the join key from
+        the website field, then associated every deal to its company explicitly by ID at
+        creation rather than relying on fuzzy matching. The result is 1,500 of 1,500 deals
+        linked, zero orphans, and zero companies missing a domain."
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q5</span>
+      <h3>What have you personally created in HubSpot?</h3></div>
+    <div class="ans">
+      <p>Give the inventory, then the design decision. The inventory earns attention; the decision earns the job.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Built</th><th class="n">Count</th></tr></thead>
+          <tbody>
+            <tr><td>Custom properties across 4 objects</td><td class="n">43</td></tr>
+            <tr><td>Companies, contacts, deals</td><td class="n">1,097 · 1,002 · 1,500</td></tr>
+            <tr><td>Tickets across 7 types, all rule-generated</td><td class="n">1,320</td></tr>
+            <tr><td>Products · line items · quotes</td><td class="n">7 · 1,500 · 531</td></tr>
+            <tr><td>Invoice mirror on closed-won deals</td><td class="n">717</td></tr>
+            <tr><td>Generated PDF documents on records</td><td class="n">272</td></tr>
+            <tr><td>Saved segments as operational worklists</td><td class="n">9</td></tr>
+            <tr><td>Lead capture forms</td><td class="n">2</td></tr>
+            <tr><td>Automation rules</td><td class="n">8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="say" style="margin-top:16px">
+        "The decision I'd point to is the data model. It's a two-sided business — client
+        organizations buying programmes, and consultants delivering them. Custom objects
+        are Enterprise-only, so both live on standard objects separated by a discriminator
+        property. That single property is what stops delivery revenue being counted as
+        sales revenue."
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q6</span>
+      <h3>Describe a time you improved a business process using HubSpot. What was the
+        problem, what did you build, and what was the outcome?</h3></div>
+    <div class="ans">
+      <p>
+        <strong>This is the question that decides the interview.</strong> Lead with the
+        health-governance story below — it is a business insight, not a technical one, and
+        it is the kind of thing an architect is hired to find. Keep the other two in reserve.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q7</span>
+      <h3>How comfortable are you building reports and executive dashboards in HubSpot?</h3></div>
+    <div class="ans">
+      <p class="say">
+        "Comfortable, and I'd rather show you than rate myself. I have an executive
+        dashboard running live against the portal — pipeline, delivery health, consultant
+        bench, receivables — and I can refresh it from HubSpot while we're talking."
+      </p>
+      <p>Then make the point that separates you from someone who drags fields onto a chart:</p>
+      <p class="say">
+        "The part I care most about is filter correctness. In this portal, asking HubSpot
+        for the win rate returns 58.7%. The real acquisition win rate is 30.1%. The
+        difference is that delivery engagements also close as Won, and unless every revenue
+        report excludes them, you're adding delivery to sales and every downstream number
+        is wrong. A dashboard that is confidently wrong is worse than no dashboard."
+      </p>
+      <p>
+        Have these ready, all computed and live: <strong>60-day average sales cycle</strong>,
+        <strong>pipeline velocity of $37,469/day</strong>, and a
+        <strong>$2.52M weighted forecast</strong> against $7.54M of raw open pipeline.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="qn">Q8</span>
+      <h3>Rate your confidence designing scalable systems across Sales, Marketing,
+        Operations and Customer Success, 1–5.</h3></div>
+    <div class="ans">
+      <div class="yours">
+        <b>Your rating — but here is the honest arithmetic</b>
+        You have strong evidence in Sales, Operations and Customer Success, and thin
+        evidence in Marketing. A <strong>4</strong> is defensible and honest. A 5 invites
+        a Marketing Hub question you cannot win.
+      </div>
+      <p class="say">
+        "Four. I'd be a five on Sales, Operations and Customer Success — I've architected
+        all three in the same portal and they're running. Marketing is where I'd want
+        support: I've built forms and attribution as a data model, but I haven't run email
+        campaigns or nurture sequences at scale. I'd rather tell you that now than discover
+        it in month two."
+      </p>
+      <p>
+        A candid 4 with a named gap reads as more senior than an unqualified 5. It also
+        sets up the 90-day plan, where you say what you would do about it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STAR STORIES ============== -->
+<section>
+  <h2>Three STAR stories</h2>
+
+  <div class="star">
+    <h3>1 · The health score nobody was acting on</h3>
+    <p class="tagline">Lead with this one. Business insight, not plumbing.</p>
+    <dl>
+      <dt>Situation</dt>
+      <dd>A consulting firm scoring every client engagement for health out of 100, against
+        a target of 70. The score was captured on every engagement and shown on dashboards.</dd>
+      <dt>Task</dt>
+      <dd>Restructure reporting so leadership could see delivery risk. The brief was
+        reporting; the problem turned out to be governance.</dd>
+      <dt>Action</dt>
+      <dd>Once the data was clean enough to cross-reference, I compared health score against
+        the At Risk status field and found they had no relationship. The score was measured
+        and displayed but <strong>never governed the status</strong>. I built two reconciling
+        rules: one raising a check-in for engagements scoring 40–69, one raising a
+        high-priority escalation below 40 and flagging an SLA breach. I also built a saved
+        segment so the list is visible in the UI, not only in a report.</dd>
+      <dt>Result</dt>
+      <dd><strong>144 engagements were scoring below 60. Only 22 carried the At Risk status
+        — the CRM's own risk flag was understating exposure roughly sixfold.</strong>
+        HubSpot's own filter engine independently returns 144 for that segment, so the
+        number is verifiable in the UI without trusting my code.</dd>
+    </dl>
+  </div>
+
+  <div class="star">
+    <h3>2 · The import that would have silently failed</h3>
+    <p class="tagline">Data architecture and the discipline of checking first.</p>
+    <dl>
+      <dt>Situation</dt>
+      <dd>A portal holding 20,551 companies where the source file contained about 1,600.
+        Timestamps showed the same file imported twice, three minutes apart. A 1,500-record
+        deal import was scheduled next.</dd>
+      <dt>Task</dt>
+      <dd>Get the deals in, associated correctly, without making the duplication worse.</dd>
+      <dt>Action</dt>
+      <dd>Before importing I ran one search for a sample company by the domain the deal file
+        matched on. It returned <strong>zero results</strong> — the domain property was empty
+        portal-wide, because an earlier fix had only been applied to the deal files. I
+        deduplicated companies by domain, disambiguated names by city, backfilled the domain
+        from the website field, and then associated deals to companies explicitly by ID at
+        creation rather than relying on HubSpot's matching.</dd>
+      <dt>Result</dt>
+      <dd><strong>1,500 of 1,500 deals associated, zero orphans, zero companies missing a
+        domain.</strong> Had it run as planned it would have matched nothing and auto-created
+        roughly 994 further duplicate companies. One search, run before the import, was the
+        difference between a ten-minute fix and a rebuild.</dd>
+    </dl>
+  </div>
+
+  <div class="star">
+    <h3>3 · The dry run that caught 817 duplicates</h3>
+    <p class="tagline">Engineering rigour. Use if they probe on testing or reliability.</p>
+    <dl>
+      <dt>Situation</dt>
+      <dd>Building automation to create an onboarding ticket for every closed-won deal
+        without ever duplicating one.</dd>
+      <dt>Task</dt>
+      <dd>Guarantee the rule was safe to run repeatedly against live production data.</dd>
+      <dt>Action</dt>
+      <dd>I built a dry-run mode that evaluates and reports without writing. It printed
+        <code>alreadyCovered: 500</code> and <code>wouldWrite: 817</code> in the same run — an
+        impossible pair. The cause: HubSpot returns association IDs as <strong>numbers</strong>
+        while object IDs everywhere else are <strong>strings</strong>, so every deduplication
+        check silently missed. I fixed it once in the shared API client by coercing to string
+        at the boundary, so no rule can reintroduce it.</dd>
+      <dt>Result</dt>
+      <dd><strong>817 duplicate tickets prevented.</strong> The first live run created 317
+        legitimate tickets; the immediate re-run created zero. That idempotency became the
+        standard every subsequent rule had to meet — and it caught two further bugs later,
+        including one of my own.</dd>
+    </dl>
+  </div>
+
+  <div class="star" style="border-left-color:var(--critical)">
+    <h3>Reserve · The front door that threw leads away</h3>
+    <p class="tagline">Use if asked about testing, monitoring, or "what would you fix first".</p>
+    <dl>
+      <dt>Situation</dt>
+      <dd>Building web forms so enquiries could enter the CRM instead of arriving by spreadsheet.</dd>
+      <dt>Action</dt>
+      <dd>Rather than assume the form worked, I posted a real submission end to end. HubSpot
+        returned <strong>200 and rendered the thank-you message</strong> — and created no
+        contact. A direct API call revealed why: <code>402 — cannot create another CONTACT,
+        it has exceeded the limit of 1000</code>.</dd>
+      <dt>Result</dt>
+      <dd>A capacity ceiling had become a <strong>silent data-loss bug</strong>. The visitor is
+        told they've made contact, the business is told nothing, and no error appears in any
+        report. I freed headroom and added contact headroom to the health endpoint so it can
+        never happen unnoticed again. A front door that looks complete and silently discards
+        every lead is worse than no front door, because nobody knows they're losing anything.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============== 30-60-90 ============== -->
+<section>
+  <h2>The 30-60-90 day plan</h2>
+  <p style="margin-bottom:20px">
+    The JD lists these as the first-90-day expectations. You have an unusual advantage:
+    you can describe each phase from having actually done it, not hypothetically.
+  </p>
+  <div class="plan">
+    <div class="phase">
+      <h3>Audit</h3>
+      <p class="when">Days 1–30</p>
+      <ul>
+        <li><strong>Probe the tier and scopes before anything else.</strong> Distinguish
+          what's missing because of a permission, a licence, or a product boundary — they
+          all look identical from the outside.</li>
+        <li><strong>Data quality baseline:</strong> duplicates, empty join keys, free-text
+          fields that should be dropdowns, records with no associations.</li>
+        <li><strong>Interview each team</strong> on where they leave HubSpot to get work
+          done. That's where the automation gaps are.</li>
+        <li><strong>Map the lifecycle end to end</strong> — first touch to renewal — and mark
+          every handoff where data currently gets lost.</li>
+        <li><strong>Deliverable:</strong> a written audit naming each defect, its business
+          consequence, and the evidence.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Fix and prove</h3>
+      <p class="when">Days 31–60</p>
+      <ul>
+        <li><strong>Present findings ranked by revenue impact</strong>, not by effort.</li>
+        <li><strong>Quick wins first:</strong> governed dropdowns, deduplication, required
+          fields, correcting reports whose filters make them wrong.</li>
+        <li><strong>Ship the priority automations from the playbook</strong>, each one
+          dry-run before it writes, and each safe to re-run.</li>
+        <li><strong>Executive dashboard</strong> with correct filters, plus the metrics
+          leadership actually asks for: velocity, cycle time, weighted forecast, receivables.</li>
+        <li><strong>Deliverable:</strong> automation live, dashboards trusted, every number
+          traceable to a query.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Scale and hand over</h3>
+      <p class="when">Days 61–90</p>
+      <ul>
+        <li><strong>Close the lifecycle loops</strong> — onboarding, health, renewal, and the
+          sales-to-delivery handoff.</li>
+        <li><strong>Integration boundaries</strong> for anything that isn't the CRM's job —
+          billing, project delivery, ClickUp — with state mirrored back so reporting stays in
+          one place.</li>
+        <li><strong>Monitoring:</strong> a health check that fails loudly on drift, breach, or
+          a capacity ceiling. Assume nobody is watching.</li>
+        <li><strong>Documentation and enablement</strong> so the system survives me — naming
+          conventions, what each rule does, how to add a property safely.</li>
+        <li><strong>Deliverable:</strong> a system somebody else can operate and extend.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:22px">
+    <strong>The line that lands:</strong> "Every CRM is clean on launch day. What keeps it
+    clean is convention and a reconciliation job, not discipline — because discipline doesn't
+    scale and people are busy."
+  </p>
+</section>
+
+<!-- ============== QUESTIONS TO ASK ============== -->
+<section>
+  <h2>Questions to ask them</h2>
+  <p style="margin-bottom:20px">
+    Generic questions get generic answers. These are diagnostic — each one tells you
+    something about the job you'd actually be doing, and signals that you have done this
+    before.
+  </p>
+  <ol class="ask">
+    <li>
+      <q>What's your portal's tier, and which scopes are on the private app?</q>
+      <span>Opens with the exact question a real audit starts on. It also tells you
+        immediately how much of the JD is achievable.</span>
+    </li>
+    <li>
+      <q>When a deal closes won, what happens next — and how much of it is somebody
+        remembering to do it?</q>
+      <span>The sales-to-delivery handoff is where consulting firms leak. Their answer tells
+        you whether onboarding is automated or heroic.</span>
+    </li>
+    <li>
+      <q>Is there a number on a dashboard that you don't fully trust?</q>
+      <span>Almost always yes, and it's usually a filter problem. It sets you up to talk
+        about the 58.7%-versus-30.1% win rate without forcing it.</span>
+    </li>
+    <li>
+      <q>Which of your reports would break if someone typed a new value into a free-text
+        field tomorrow?</q>
+      <span>Tests whether they've thought about governance, and shows you have.</span>
+    </li>
+    <li>
+      <q>How do you currently know a client engagement is going badly — before the client
+        tells you?</q>
+      <span>For an organizational-development firm this is the whole business. It leads
+        straight into your strongest story.</span>
+    </li>
+    <li>
+      <q>The JD mentions ClickUp. What's the boundary between it and HubSpot today, and
+        where does the same data live in both?</q>
+      <span>Shows you think in integration boundaries and duplicated sources of truth,
+        not in tools.</span>
+    </li>
+    <li>
+      <q>Am I walking into a system that needs scaling, or one that needs cleaning first?</q>
+      <span>Ask it last. Their answer determines which 30-day plan you'd actually run.</span>
+    </li>
+  </ol>
+</section>
+
+<footer>
+  Every figure verified live against HubSpot portal 247000083 · <code>node validate.js</code> · 39/39 claims pass<br>
+  1,097 companies · 1,002 contacts · 1,500 deals · 1,320 tickets · 43 custom properties · 8 automation rules
+</footer>
+
+</div>

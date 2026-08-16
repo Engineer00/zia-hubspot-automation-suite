@@ -1,0 +1,611 @@
+<title>How the ZIA Portal Is Wired</title>
+<style>
+:root{
+  --ground:#EDF1F2; --surface:#FFFFFF; --surface-2:#F6F9F9; --surface-3:#EAF0F1;
+  --hairline:#DBE3E5; --hairline-2:#EAF0F1;
+  --ink:#0E2429; --ink-2:#40595F; --ink-3:#6C858B;
+  --accent:#0A8F86; --accent-soft:#E2F2F0; --accent-line:#9FD5CF;
+  --c2:#A85D00; --c2-soft:#F7EFDD; --c3:#4152A3; --c3-soft:#E7EAF6;
+  --good:#2E7D52; --warning:#9A6B00; --critical:#B0303A;
+  --warning-bg:#F7EFDD; --critical-bg:#F8E5E7; --good-bg:#E6F2EB;
+  --shadow:0 1px 2px rgba(14,36,41,.05), 0 4px 16px rgba(14,36,41,.05);
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --warning-bg:#2A2313; --critical-bg:#2C161A; --good-bg:#122A20;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B; --surface-3:#1B2E32;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1F5A54;
+  --c2:#B87B26; --c2-soft:#2A2313; --c3:#6A7CCB; --c3-soft:#1B2140;
+  --good:#4FA97A; --warning:#C79A3A; --critical:#D9636D;
+  --warning-bg:#2A2313; --critical-bg:#2C161A; --good-bg:#122A20;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 88px}
+
+header.top{padding:68px 0 36px; border-bottom:1px solid var(--hairline)}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 16px}
+h1{font-size:clamp(32px,5.4vw,50px); line-height:1.05; letter-spacing:-.024em; margin:0 0 18px;
+  font-weight:640; text-wrap:balance}
+.standfirst{font-size:18.5px; line-height:1.55; color:var(--ink-2); max-width:64ch; margin:0}
+
+section{padding:52px 0; border-bottom:1px solid var(--hairline)}
+section:last-of-type{border-bottom:0}
+h2{font-size:13px; font-family:var(--mono); letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; margin:0 0 8px}
+h3{font-size:23px; line-height:1.25; letter-spacing:-.015em; margin:0 0 14px; font-weight:640;
+  text-wrap:balance}
+p{margin:0 0 14px; max-width:70ch; color:var(--ink-2)}
+p:last-child{margin-bottom:0}
+p strong,li strong{color:var(--ink); font-weight:640}
+code{font-family:var(--mono); font-size:.86em; background:var(--surface-3);
+  border:1px solid var(--hairline-2); border-radius:3px; padding:1px 5px; color:var(--ink)}
+a{color:var(--accent); text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px}
+
+figure{margin:26px 0 0; background:var(--surface); border:1px solid var(--hairline);
+  border-radius:10px; box-shadow:var(--shadow); padding:24px 22px 18px; overflow-x:auto}
+figure svg{display:block; width:100%; max-width:100%; height:auto; min-width:520px; color:var(--ink)}
+figcaption{margin-top:16px; padding-top:14px; border-top:1px solid var(--hairline-2);
+  font-size:14px; line-height:1.6; color:var(--ink-3); max-width:78ch}
+figcaption b{color:var(--ink-2); font-weight:640}
+
+.note{margin-top:22px; padding:15px 17px; border-radius:7px; background:var(--accent-soft);
+  border:1px solid var(--accent-line); font-size:15px; line-height:1.6; color:var(--ink); max-width:74ch}
+.note b{display:block; font-family:var(--mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:6px; font-weight:600}
+
+.tw{overflow-x:auto; margin:22px 0 0; border:1px solid var(--hairline); border-radius:7px}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:480px}
+th,td{padding:9px 13px; text-align:left; border-bottom:1px solid var(--hairline-2); vertical-align:top}
+thead th{background:var(--surface-2); font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:600; white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.mono{font-family:var(--mono); font-size:12.5px; white-space:nowrap}
+td.n{text-align:right; font-variant-numeric:tabular-nums}
+
+/* SVG shared */
+.bx{fill:var(--surface-2); stroke:var(--hairline); stroke-width:1.25}
+.bx-a{fill:var(--accent-soft); stroke:var(--accent-line); stroke-width:1.25}
+.bx-w{fill:var(--surface); stroke:var(--hairline); stroke-width:1.25}
+.grp{fill:none; stroke:var(--hairline); stroke-width:1.25; stroke-dasharray:5 4}
+.t{fill:var(--ink); font-family:var(--sans); font-size:13px; font-weight:600}
+.ts{fill:var(--ink-3); font-family:var(--mono); font-size:10.5px; letter-spacing:.08em}
+.tm{fill:var(--ink-2); font-family:var(--mono); font-size:11px}
+.ln{stroke:var(--ink-3); stroke-width:1.4; fill:none}
+.ln-a{stroke:var(--accent); stroke-width:1.9; fill:none}
+.ln-d{stroke:var(--ink-3); stroke-width:1.4; fill:none; stroke-dasharray:5 4}
+.lbl{fill:var(--ink-3); font-family:var(--mono); font-size:10px; letter-spacing:.04em}
+.lbl-a{fill:var(--accent); font-family:var(--mono); font-size:10px; letter-spacing:.04em; font-weight:600}
+
+footer{padding:38px 0 0; border-top:1px solid var(--hairline); margin-top:42px;
+  font-family:var(--mono); font-size:12px; line-height:1.9; color:var(--ink-3)}
+@media (max-width:640px){.wrap{padding:0 16px 60px} header.top{padding:46px 0 30px} figure{padding:16px 12px 14px}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">ZIA · HubSpot system design</p>
+  <h1>How the ZIA Portal Is Wired</h1>
+  <p class="standfirst">
+    Four drawings of the parts that carry weight: where records come from and go, how one
+    contact object holds two opposite kinds of person, why the automation reads before it
+    writes, and where the CRM deliberately stops.
+  </p>
+</header>
+
+<!-- ============ 1. ARCHITECTURE ============ -->
+<section>
+  <h2>Figure 01</h2>
+  <h3>The whole system, and which side of the line each part sits on</h3>
+  <p>
+    HubSpot is the system of record. Everything to its right exists because the free tier
+    will not run it — and every one of those arrows is a REST call, not an integration
+    HubSpot knows about.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 1100 620" role="img"
+      aria-label="Architecture: sources feed the HubSpot CRM, which the external automation engine reads, reconciles and writes back to, producing a dashboard, an audit log and a validation report.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/>
+        </marker>
+        <marker id="ar-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <!-- column headings -->
+      <text class="ts" x="16" y="22">INGRESS</text>
+      <text class="ts" x="252" y="22">SYSTEM OF RECORD</text>
+      <text class="ts" x="576" y="22">MIDDLEWARE — EXTERNAL</text>
+      <text class="ts" x="944" y="22">CONSUMED BY</text>
+
+      <!-- ---- ingress ---- -->
+      <rect class="bx-w" x="16" y="40" width="180" height="52" rx="6"/>
+      <text class="t" x="30" y="63">CSV import</text>
+      <text class="tm" x="30" y="80">5,800 seed records</text>
+
+      <rect class="bx-a" x="16" y="104" width="180" height="52" rx="6"/>
+      <text class="t" x="30" y="127">Forms · chat</text>
+      <text class="tm" x="30" y="144">2 forms · 2 inboxes — live</text>
+
+      <rect class="bx-w" x="16" y="168" width="180" height="52" rx="6"/>
+      <text class="t" x="30" y="191">Private app API</text>
+      <text class="tm" x="30" y="208">pat- token, scoped</text>
+
+      <!-- ---- HubSpot ---- -->
+      <rect class="grp" x="248" y="40" width="252" height="440" rx="10"/>
+      <text class="ts" x="264" y="64" style="fill:var(--accent)">HUBSPOT · FREE TIER</text>
+
+      <rect class="bx-a" x="264" y="78" width="220" height="46" rx="6"/>
+      <text class="t" x="278" y="99">Companies</text>
+      <text class="tm" x="278" y="115">1,097</text>
+
+      <rect class="bx-a" x="264" y="132" width="220" height="46" rx="6"/>
+      <text class="t" x="278" y="153">Contacts</text>
+      <text class="tm" x="278" y="169">1,002 — clients + consultants</text>
+
+      <rect class="bx-a" x="264" y="186" width="220" height="46" rx="6"/>
+      <text class="t" x="278" y="207">Deals</text>
+      <text class="tm" x="278" y="223">1,500 — sales + delivery</text>
+
+      <rect class="bx-a" x="264" y="240" width="220" height="46" rx="6"/>
+      <text class="t" x="278" y="261">Tickets</text>
+      <text class="tm" x="278" y="277">1,320 — 6 types</text>
+
+      <rect class="bx-a" x="264" y="294" width="220" height="46" rx="6"/>
+      <text class="t" x="278" y="315">Quotes · line items</text>
+      <text class="tm" x="278" y="331">531 · 1,500</text>
+
+      <rect class="bx" x="264" y="358" width="220" height="46" rx="6" stroke-dasharray="5 4"/>
+      <text class="t" x="278" y="379" style="fill:var(--ink-3)">Workflows</text>
+      <text class="tm" x="278" y="395" style="fill:var(--critical)">403 — Professional only</text>
+
+      <rect class="bx" x="264" y="412" width="220" height="46" rx="6" stroke-dasharray="5 4"/>
+      <text class="t" x="278" y="433" style="fill:var(--ink-3)">Custom objects</text>
+      <text class="tm" x="278" y="449" style="fill:var(--critical)">403 — Enterprise only</text>
+
+      <!-- ---- middleware ---- -->
+      <rect class="grp" x="572" y="40" width="330" height="440" rx="10" style="stroke:var(--accent-line)"/>
+      <text class="ts" x="588" y="64" style="fill:var(--accent)">zia-automation/</text>
+
+      <rect class="bx-w" x="588" y="78" width="298" height="58" rx="6"/>
+      <text class="t" x="602" y="100">lib/hubspot.js</text>
+      <text class="tm" x="602" y="118">retry · paging · batching · id coercion</text>
+
+      <rect class="bx-w" x="588" y="146" width="298" height="86" rx="6"/>
+      <text class="t" x="602" y="168">rules/ WF-01 … WF-07</text>
+      <text class="tm" x="602" y="186">read current state → diff → write</text>
+      <text class="tm" x="602" y="203">idempotent · dry-run first</text>
+      <text class="tm" x="602" y="220">routing · onboarding · health · collections</text>
+
+      <rect class="bx-w" x="588" y="242" width="298" height="58" rx="6"/>
+      <text class="t" x="602" y="264">snapshot.js</text>
+      <text class="tm" x="602" y="282">pulls every figure the pages show</text>
+
+      <rect class="bx-w" x="588" y="310" width="298" height="58" rx="6"/>
+      <text class="t" x="602" y="332">validate.js</text>
+      <text class="tm" x="602" y="350">re-derives 36 claims · fails on drift</text>
+
+      <rect class="bx-w" x="588" y="378" width="298" height="58" rx="6" stroke-dasharray="5 4"/>
+      <text class="t" x="602" y="400" style="fill:var(--ink-3)">realism/ p0–p10</text>
+      <text class="tm" x="602" y="418">one-shot data shaping · deterministic</text>
+
+      <!-- ---- outputs ---- -->
+      <rect class="bx-w" x="940" y="146" width="146" height="56" rx="6"/>
+      <text class="t" x="954" y="168">Command Deck</text>
+      <text class="tm" x="954" y="186">live dashboard</text>
+
+      <rect class="bx-w" x="940" y="242" width="146" height="56" rx="6"/>
+      <text class="t" x="954" y="264">run-log.jsonl</text>
+      <text class="tm" x="954" y="282">audit trail</text>
+
+      <rect class="bx-w" x="940" y="310" width="146" height="56" rx="6"/>
+      <text class="t" x="954" y="332">validation</text>
+      <text class="tm" x="954" y="350">report · exit code</text>
+
+      <!-- ---- arrows: ingress -> hubspot ---- -->
+      <path class="ln" d="M196,66 L240,66 L240,101 L258,101" marker-end="url(#ar)"/>
+      <path class="ln-d" d="M196,130 L226,130 L226,155 L258,155" marker-end="url(#ar)"/>
+      <path class="ln" d="M196,194 L226,194 L226,209 L258,209" marker-end="url(#ar)"/>
+
+      <!-- ---- hubspot <-> middleware ---- -->
+      <path class="ln-a" d="M500,150 L536,150 L536,104 L582,104" marker-end="url(#ar-a)"/>
+      <text class="lbl-a" x="506" y="96">read</text>
+
+      <path class="ln-a" d="M582,196 L536,196 L536,232 L500,232" marker-end="url(#ar-a)"/>
+      <text class="lbl-a" x="506" y="250">write back</text>
+
+      <path class="ln" d="M500,300 L536,300 L536,268 L582,268" marker-end="url(#ar)"/>
+      <text class="lbl" x="506" y="292">pull</text>
+
+      <path class="ln" d="M500,330 L520,330 L520,340 L582,340" marker-end="url(#ar)"/>
+      <text class="lbl" x="506" y="358">verify</text>
+
+      <!-- ---- middleware -> outputs ---- -->
+      <path class="ln" d="M886,270 L912,270 L912,174 L934,174" marker-end="url(#ar)"/>
+      <path class="ln" d="M886,190 L900,190 L900,264 L934,264" marker-end="url(#ar)"/>
+      <path class="ln" d="M886,338 L934,338" marker-end="url(#ar)"/>
+
+      <!-- ---- accounting boundary ---- -->
+      <rect class="bx" x="588" y="520" width="298" height="62" rx="6" stroke-dasharray="5 4"
+        style="fill:var(--c2-soft); stroke:var(--c2)"/>
+      <text class="t" x="602" y="544" style="fill:var(--c2)">Accounting system</text>
+      <text class="tm" x="602" y="562" style="fill:var(--c2)">owns the ledger · out of scope</text>
+
+      <path class="ln-d" d="M500,300 L536,300 L536,551 L582,551" marker-end="url(#ar)" style="stroke:var(--c2)"/>
+      <text class="lbl" x="392" y="545" style="fill:var(--c2)">invoice state mirrored onto deals</text>
+
+      <text class="ts" x="16" y="551">RUNS ON DEMAND</text>
+      <text class="tm" x="16" y="572">node engine.js</text>
+      <text class="tm" x="16" y="590">--dry-run first, always</text>
+    </svg>
+    <figcaption>
+      <b>The claim:</b> nothing in the middleware column is a preference. Each box exists
+      because the box opposite it inside HubSpot returns 403 on this tier — and the two
+      accent arrows are the entire integration surface: read current state, write back the
+      difference.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============ 2. DATA MODEL ============ -->
+<section>
+  <h2>Figure 02</h2>
+  <h3>One object, two opposite populations</h3>
+  <p>
+    A talent business is two-sided: organizations that buy programmes, and consultants who
+    deliver them. HubSpot gives you one Contact object and one Deal object. Custom objects
+    are Enterprise-only, so both sides share the same objects and are separated by a
+    <strong>discriminator property</strong> — which is what makes every report either correct
+    or quietly wrong.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 1100 560" role="img"
+      aria-label="Data model: contacts split by contact type into client buyers and consultants; deals split by placement status into acquisition and delivery; associations between company, contact, deal, ticket, quote and line item with HubSpot association type ids.">
+      <defs>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/>
+        </marker>
+      </defs>
+
+      <!-- COMPANY -->
+      <rect class="bx-a" x="452" y="30" width="200" height="66" rx="7"/>
+      <text class="t" x="470" y="55">Company</text>
+      <text class="tm" x="470" y="73">1,097 · client organizations</text>
+      <text class="tm" x="470" y="89">sector · size · health</text>
+
+      <!-- CONTACT split -->
+      <rect class="grp" x="60" y="160" width="420" height="168" rx="10"/>
+      <text class="ts" x="76" y="184">CONTACT — 1,002 records, one object</text>
+      <text class="tm" x="76" y="202" style="fill:var(--accent)">discriminator: zia_contact_type</text>
+
+      <rect class="bx-w" x="76" y="216" width="190" height="96" rx="6"/>
+      <text class="t" x="90" y="238">Client buyer</text>
+      <text class="tm" x="90" y="256">600 · zia_role</text>
+      <text class="tm" x="90" y="273">lifecycle stage</text>
+      <text class="tm" x="90" y="290">lead status</text>
+      <text class="tm" x="90" y="305">HR · L&amp;D · CEO · COO</text>
+
+      <rect class="bx-w" x="278" y="216" width="188" height="96" rx="6"/>
+      <text class="t" x="292" y="238">Consultant</text>
+      <text class="tm" x="292" y="256">400 · zia_tier</text>
+      <text class="tm" x="292" y="273">bench status</text>
+      <text class="tm" x="292" y="290">compliance status</text>
+      <text class="tm" x="292" y="305">coverage band</text>
+
+      <!-- DEAL split -->
+      <rect class="grp" x="620" y="160" width="420" height="168" rx="10"/>
+      <text class="ts" x="636" y="184">DEAL — 1,500 records, one pipeline</text>
+      <text class="tm" x="636" y="202" style="fill:var(--accent)">discriminator: zia_placement_status</text>
+
+      <rect class="bx-w" x="636" y="216" width="190" height="96" rx="6"/>
+      <text class="t" x="650" y="238">Acquisition</text>
+      <text class="tm" x="650" y="256">1,000 · new business</text>
+      <text class="tm" x="650" y="273">status is empty</text>
+      <text class="tm" x="650" y="290">win rate 30.1%</text>
+      <text class="tm" x="650" y="305">$5.83M won</text>
+
+      <rect class="bx-w" x="838" y="216" width="188" height="96" rx="6"/>
+      <text class="t" x="852" y="238">Delivery</text>
+      <text class="tm" x="852" y="256">500 · placements</text>
+      <text class="tm" x="852" y="273">active / ended / at risk</text>
+      <text class="tm" x="852" y="290">health score</text>
+      <text class="tm" x="852" y="305">$7.31M delivered</text>
+
+      <!-- TICKET -->
+      <rect class="bx-a" x="452" y="392" width="200" height="66" rx="7"/>
+      <text class="t" x="470" y="417">Ticket</text>
+      <text class="tm" x="470" y="435">1,320 · 6 types</text>
+      <text class="tm" x="470" y="451">created by rules, not people</text>
+
+      <!-- QUOTE / LINE ITEM -->
+      <rect class="bx-w" x="838" y="392" width="188" height="66" rx="7"/>
+      <text class="t" x="852" y="417">Quote · line item</text>
+      <text class="tm" x="852" y="435">531 · 1,500</text>
+      <text class="tm" x="852" y="451">priced from 7 products</text>
+
+      <!-- associations -->
+      <path class="ln" d="M452,72 L200,72 L200,212" marker-end="url(#ar2)"/>
+      <text class="lbl" x="216" y="64">contact → company · primary · type 1</text>
+
+      <path class="ln" d="M652,72 L900,72 L900,212" marker-end="url(#ar2)"/>
+      <text class="lbl" x="700" y="64">deal → company · primary · type 5</text>
+
+      <path class="ln" d="M466,266 L620,266" marker-end="url(#ar2)"/>
+      <text class="lbl" x="492" y="258">deal → contact · type 3</text>
+
+      <path class="ln" d="M552,328 L552,388" marker-end="url(#ar2)"/>
+      <text class="lbl" x="562" y="356">ticket → deal · 28</text>
+
+      <path class="ln" d="M932,328 L932,388" marker-end="url(#ar2)"/>
+      <text class="lbl" x="942" y="356">line item → deal · 20</text>
+
+      <path class="ln" d="M452,425 L300,425 L300,328" marker-end="url(#ar2)"/>
+      <text class="lbl" x="196" y="418">ticket → contact · 16</text>
+
+      <!-- footnote -->
+      <text class="tm" x="60" y="500" style="fill:var(--critical)">Every deal is associated to a company by id at create time — 1,500 of 1,500, zero orphans.</text>
+      <text class="tm" x="60" y="522">203 of 500 placements have no consultant link: they reference talent beyond the 400-contact import, capped by the free tier at 1,000 contacts.</text>
+    </svg>
+    <figcaption>
+      <b>The claim:</b> the two discriminator properties do the work custom objects and a
+      second pipeline would have done on a paid tier. Every report that touches revenue must
+      filter on <code>zia_placement_status</code> — omit it and delivery revenue is counted
+      as new sales, which is exactly how a 30.1% win rate is reported as 58.7%.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============ 3. RECONCILE VS EVENT ============ -->
+<section>
+  <h2>Figure 03</h2>
+  <h3>Why the automation reads before it writes</h3>
+  <p>
+    This is the load-bearing decision in the build. A HubSpot workflow is event-driven: a
+    record crosses a threshold, the action fires once. Our engine is state-reconciling: it
+    asks what is true now, compares it to what should be true, and writes only the difference.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 1100 470" role="img"
+      aria-label="Comparison: an event-driven workflow fires once per event and permanently loses any event missed during an outage, while a reconciling engine compares desired to actual state on every run and therefore self-heals.">
+      <defs>
+        <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"/>
+        </marker>
+        <marker id="ar3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+        </marker>
+        <marker id="ar3x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--critical)"/>
+        </marker>
+      </defs>
+
+      <!-- LEFT: event driven -->
+      <rect class="grp" x="24" y="30" width="500" height="404" rx="10" style="stroke:var(--critical)"/>
+      <text class="ts" x="42" y="56" style="fill:var(--critical)">EVENT-DRIVEN — WHAT A WORKFLOW DOES</text>
+
+      <rect class="bx-w" x="42" y="76" width="150" height="46" rx="6"/>
+      <text class="t" x="56" y="104">Deal closes won</text>
+
+      <path class="ln" d="M192,99 L246,99" marker-end="url(#ar3)"/>
+      <text class="lbl" x="196" y="91">fires</text>
+
+      <rect class="bx-w" x="250" y="76" width="150" height="46" rx="6"/>
+      <text class="t" x="264" y="104">Create ticket</text>
+
+      <text class="tm" x="42" y="156">Run 1 — the event happens, the action fires. Correct.</text>
+
+      <!-- outage -->
+      <rect class="bx-w" x="42" y="182" width="150" height="46" rx="6" style="stroke:var(--critical)"/>
+      <text class="t" x="56" y="210">Deal closes won</text>
+
+      <path class="ln-d" d="M192,205 L246,205" marker-end="url(#ar3x)" style="stroke:var(--critical)"/>
+      <text class="lbl" x="196" y="197" style="fill:var(--critical)">missed</text>
+
+      <rect class="bx" x="250" y="182" width="150" height="46" rx="6"
+        style="fill:var(--critical-bg); stroke:var(--critical); stroke-dasharray:5 4"/>
+      <text class="t" x="264" y="210" style="fill:var(--critical)">nothing happens</text>
+
+      <text class="tm" x="42" y="262" style="fill:var(--critical)">Run 2 — outage, rate limit, or a rule deployed late.</text>
+      <text class="tm" x="42" y="282" style="fill:var(--critical)">The event is gone. It will never fire again.</text>
+
+      <rect class="bx" x="42" y="306" width="358" height="66" rx="6"
+        style="fill:var(--critical-bg); stroke:var(--critical)"/>
+      <text class="t" x="58" y="330" style="fill:var(--critical)">Recovery requires a human</text>
+      <text class="tm" x="58" y="348" style="fill:var(--critical)">find the gap, build a one-off list,</text>
+      <text class="tm" x="58" y="364" style="fill:var(--critical)">re-trigger by hand — and hope for no duplicates</text>
+
+      <!-- RIGHT: reconciling -->
+      <rect class="grp" x="576" y="30" width="500" height="404" rx="10" style="stroke:var(--accent-line)"/>
+      <text class="ts" x="594" y="56" style="fill:var(--accent)">RECONCILING — WHAT THIS ENGINE DOES</text>
+
+      <rect class="bx-a" x="594" y="76" width="196" height="52" rx="6"/>
+      <text class="t" x="608" y="98">Desired state</text>
+      <text class="tm" x="608" y="116">every won deal has a ticket</text>
+
+      <rect class="bx-w" x="594" y="152" width="196" height="52" rx="6"/>
+      <text class="t" x="608" y="174">Actual state</text>
+      <text class="tm" x="608" y="192">read live from the API</text>
+
+      <path class="ln-a" d="M790,102 L850,102 L850,152" marker-end="url(#ar3a)"/>
+      <path class="ln-a" d="M790,178 L850,178" marker-end="url(#ar3a)"/>
+
+      <rect class="bx-a" x="854" y="120" width="196" height="52" rx="6"/>
+      <text class="t" x="868" y="142">Difference only</text>
+      <text class="tm" x="868" y="160">317 missing → create</text>
+
+      <path class="ln-a" d="M952,172 L952,222" marker-end="url(#ar3a)"/>
+      <text class="lbl-a" x="962" y="200">write</text>
+
+      <rect class="bx-w" x="854" y="226" width="196" height="46" rx="6"/>
+      <text class="t" x="868" y="254">Write back</text>
+
+      <!-- loop -->
+      <path class="ln-a" d="M854,249 L820,249 L820,300 L692,300 L692,208" marker-end="url(#ar3a)"/>
+      <text class="lbl-a" x="700" y="318">next run re-reads — nothing left to do</text>
+
+      <rect class="bx" x="594" y="336" width="456" height="76" rx="6"
+        style="fill:var(--good-bg); stroke:var(--good)"/>
+      <text class="t" x="610" y="360" style="fill:var(--good)">A missed run costs nothing</text>
+      <text class="tm" x="610" y="379" style="fill:var(--good)">First live run: 317 onboarding + 115 compliance + 108 collections tickets.</text>
+      <text class="tm" x="610" y="396" style="fill:var(--good)">Immediate re-run: zero writes. Idempotency demonstrated, not asserted.</text>
+    </svg>
+    <figcaption>
+      <b>The claim:</b> the reconciling shape is what makes the loss of native workflows
+      survivable. It also makes the system safe to re-run at any time, which is what allows a
+      dry run to be trustworthy — and the dry run is what caught the association-id bug that
+      would have created 817 duplicate tickets.
+    </figcaption>
+  </figure>
+
+  <div class="note">
+    <b>The bug the dry run caught</b>
+    HubSpot returns association <code>toObjectId</code> as a <strong>number</strong> while
+    object ids everywhere else are <strong>strings</strong>. Every dedupe
+    <code>Set.has(deal.id)</code> silently missed. The dry run printed
+    <code>alreadyCovered: 500</code> and <code>wouldWrite: 817</code> together — an impossible
+    pair. Coerced once in <code>lib/hubspot.js</code>, so no rule can reintroduce it.
+  </div>
+</section>
+
+<!-- ============ 4. BOUNDARY ============ -->
+<section>
+  <h2>Figure 04</h2>
+  <h3>Where the CRM stops</h3>
+  <p>
+    HubSpot Payments needs a US entity and a bank connection; Stripe needs a merchant account.
+    Neither exists — and a general ledger does not belong in a CRM regardless. So billing is
+    modelled at the boundary: seven properties on the deal mirror invoice state back from
+    wherever the ledger actually lives.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 1100 400" role="img"
+      aria-label="Integration boundary: the CRM owns relationship and contract value, the accounting system owns the ledger, and seven mirror properties on the deal carry invoice state back into HubSpot for reporting.">
+      <defs>
+        <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <!-- CRM side -->
+      <rect class="grp" x="30" y="40" width="380" height="240" rx="10" style="stroke:var(--accent-line)"/>
+      <text class="ts" x="48" y="66" style="fill:var(--accent)">HUBSPOT OWNS</text>
+      <text class="t" x="48" y="98">The relationship</text>
+      <text class="tm" x="48" y="120">who the client is, who decided,</text>
+      <text class="tm" x="48" y="138">what was promised, what it is worth</text>
+      <text class="t" x="48" y="176">Contract value</text>
+      <text class="tm" x="48" y="198">priced from line items, not typed</text>
+      <text class="t" x="48" y="236">Delivery state</text>
+      <text class="tm" x="48" y="258">health, hours, placement status</text>
+
+      <!-- boundary -->
+      <line x1="550" y1="30" x2="550" y2="330" stroke="var(--c2)" stroke-width="1.6" stroke-dasharray="6 5"/>
+      <text class="ts" x="474" y="24" style="fill:var(--c2)">INTEGRATION BOUNDARY</text>
+
+      <!-- accounting side -->
+      <rect class="grp" x="690" y="40" width="380" height="240" rx="10" style="stroke:var(--c2)"/>
+      <text class="ts" x="708" y="66" style="fill:var(--c2)">ACCOUNTING OWNS</text>
+      <text class="t" x="708" y="98" style="fill:var(--c2)">The ledger</text>
+      <text class="tm" x="708" y="120" style="fill:var(--c2)">invoices issued, payments received,</text>
+      <text class="tm" x="708" y="138" style="fill:var(--c2)">tax, credit notes, write-offs</text>
+      <text class="t" x="708" y="176" style="fill:var(--c2)">Compliance</text>
+      <text class="tm" x="708" y="198" style="fill:var(--c2)">audit trail, revenue recognition</text>
+      <text class="t" x="708" y="236" style="fill:var(--c2)">Truth about money</text>
+      <text class="tm" x="708" y="258" style="fill:var(--c2)">QuickBooks · Xero · NetSuite</text>
+
+      <!-- mirror -->
+      <rect class="bx-a" x="418" y="130" width="264" height="76" rx="7"/>
+      <text class="t" x="434" y="154">7 mirror properties</text>
+      <text class="tm" x="434" y="172">invoice number · status · sent · due</text>
+      <text class="tm" x="434" y="189">paid · terms · days outstanding</text>
+
+      <path class="ln-a" d="M690,168 L686,168" marker-end="url(#ar4)"/>
+      <path class="ln-a" d="M760,206 L760,240 L560,240 L560,190 L686,190" marker-end="url(#ar4)"/>
+      <text class="lbl-a" x="576" y="258">invoice state written back onto the deal</text>
+
+      <path class="ln-a" d="M414,168 L410,168" marker-end="url(#ar4)"/>
+      <text class="lbl-a" x="300" y="120">RevOps reports on collections without leaving HubSpot</text>
+
+      <!-- results -->
+      <rect class="bx-w" x="30" y="310" width="248" height="62" rx="6"/>
+      <text class="t" x="46" y="334">717 invoices mirrored</text>
+      <text class="tm" x="46" y="354">426 paid · 108 overdue · 26 written off</text>
+
+      <rect class="bx-w" x="292" y="310" width="248" height="62" rx="6"/>
+      <text class="t" x="308" y="334">$6.91M collected</text>
+      <text class="tm" x="308" y="354">$1.76M outstanding · 37.2 days to pay</text>
+
+      <rect class="bx-w" x="554" y="310" width="248" height="62" rx="6"
+        style="fill:var(--warning-bg); stroke:var(--warning)"/>
+      <text class="t" x="570" y="334" style="fill:var(--warning)">86 of 115 unpaid</text>
+      <text class="tm" x="570" y="354" style="fill:var(--warning)">are 90+ days overdue — $1.60M</text>
+
+      <rect class="bx-w" x="816" y="310" width="254" height="62" rx="6"/>
+      <text class="t" x="832" y="334">WF-07 Collections</text>
+      <text class="tm" x="832" y="354">one ticket per past-due invoice, by age</text>
+    </svg>
+    <figcaption>
+      <b>The claim:</b> deciding not to build something is an architecture decision. The mirror
+      properties are the actual integration contract — if Commerce Hub or a QuickBooks sync were
+      bought tomorrow, these are the fields it populates, and no report would need to change.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============ tier table ============ -->
+<section>
+  <h2>Constraints</h2>
+  <h3>Every wall in the design, and which kind it is</h3>
+  <p>
+    Each of these came from a live API response, not documentation. Distinguishing a scope
+    gap from a tier limit from a product boundary is most of the skill — the first is a
+    checkbox, the second is a purchase order, the third is an architecture decision.
+  </p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Capability</th><th class="mono">Status</th><th>Wall</th><th>What the design does instead</th></tr></thead>
+      <tbody>
+        <tr><td>Workflows</td><td class="mono">403</td><td>Tier — Professional+</td><td>External reconciling engine (Fig. 03)</td></tr>
+        <tr><td>Lists · segments</td><td class="mono">403</td><td>Scope — <b>not</b> tier</td><td>Needs <code>crm.lists.read</code>; free tier does include lists</td></tr>
+        <tr><td>Custom objects</td><td class="mono">403</td><td>Tier — Enterprise only</td><td>Discriminator properties (Fig. 02)</td></tr>
+        <tr><td>Second deal pipeline</td><td class="mono">400</td><td>Tier</td><td>One pipeline, two motions, isolated by filter</td></tr>
+        <tr><td>Dashboard create API</td><td class="mono">404</td><td>No public API, any tier</td><td>Snapshot + rendered deck; spec for the UI build</td></tr>
+        <tr><td>Products · line items · quotes</td><td class="mono">✅</td><td>Was a scope, not the tier</td><td>Enabled — 7 products, 1,500 line items, 531 quotes</td></tr>
+        <tr><td>Invoices · payments</td><td class="mono">403</td><td>Product boundary</td><td>Mirror properties (Fig. 04)</td></tr>
+        <tr><td>Files · attachments</td><td class="mono">✅</td><td>Was a scope</td><td>Enabled — 272 documents on 236 records</td></tr>
+        <tr><td>Forms · conversations</td><td class="mono">✅</td><td>Was a scope</td><td>Enabled — 2 capture forms, 2 inboxes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  HubSpot portal 247000083 · free tier · 43 custom properties across 4 objects<br>
+  1,097 companies · 1,002 contacts · 1,500 deals · 531 quotes · 1,500 line items · 717 invoices · 1,320 tickets<br>
+  7 automation rules · 36/36 published claims re-derived live · <code>node validate.js</code>
+</footer>
+
+</div>

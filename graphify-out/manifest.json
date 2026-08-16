@@ -1,0 +1,277 @@
+{
+  "hubspot_setup/hubspot_full_setup.js": {
+    "mtime": 1786795572.4461272,
+    "ast_hash": "5da7922a5ae7236d1f8aebb8dfcfa422",
+    "semantic_hash": "5da7922a5ae7236d1f8aebb8dfcfa422"
+  },
+  "hubspot_setup/hubspot_setup_properties.js": {
+    "mtime": 1786795572.4461272,
+    "ast_hash": "6bded4471c7c8177ac16fd4669e7c0cc",
+    "semantic_hash": "6bded4471c7c8177ac16fd4669e7c0cc"
+  },
+  "hubspot_setup/hubspot_validate_key.js": {
+    "mtime": 1786794725.3423293,
+    "ast_hash": "a57ac5e3ef2379e9e6dbe4fcd93e7946",
+    "semantic_hash": "a57ac5e3ef2379e9e6dbe4fcd93e7946"
+  },
+  "hubspot_setup/import_seed_batches.js": {
+    "mtime": 1786795680.0255392,
+    "ast_hash": "c867096fb396f3e98098c4ced56a9bde",
+    "semantic_hash": "c867096fb396f3e98098c4ced56a9bde"
+  },
+  "zia-automation/.delete-candidates.json": {
+    "mtime": 1786842666.4261892,
+    "ast_hash": "0541074f12b2e5a9fcf0a067d5e627f5",
+    "semantic_hash": "0541074f12b2e5a9fcf0a067d5e627f5"
+  },
+  "zia-automation/Start-Dashboard.ps1": {
+    "mtime": 1786882672.1413698,
+    "ast_hash": "045f224500a0658b763f0034f61f864f",
+    "semantic_hash": "045f224500a0658b763f0034f61f864f"
+  },
+  "zia-automation/build-dashboard.js": {
+    "mtime": 1786807441.4031043,
+    "ast_hash": "a8070c1f4b28340eb135ed4e85baace1",
+    "semantic_hash": "a8070c1f4b28340eb135ed4e85baace1"
+  },
+  "zia-automation/engine.js": {
+    "mtime": 1786882619.017725,
+    "ast_hash": "4e325ad410036db1ad785361eb03df70",
+    "semantic_hash": "4e325ad410036db1ad785361eb03df70"
+  },
+  "zia-automation/forms.js": {
+    "mtime": 1786828655.2326913,
+    "ast_hash": "0d4aac9da672e54ce465a69a804216fc",
+    "semantic_hash": "0d4aac9da672e54ce465a69a804216fc"
+  },
+  "zia-automation/free-contact-headroom.js": {
+    "mtime": 1786882639.7575293,
+    "ast_hash": "9996a5e506abe164d9553540cb135516",
+    "semantic_hash": "9996a5e506abe164d9553540cb135516"
+  },
+  "zia-automation/lib/hubspot.js": {
+    "mtime": 1786882500.0015998,
+    "ast_hash": "c4cf83cf4a058886e9cc8cbf09427864",
+    "semantic_hash": "c4cf83cf4a058886e9cc8cbf09427864"
+  },
+  "zia-automation/lib/pdf.js": {
+    "mtime": 1786827034.676836,
+    "ast_hash": "b6facddc821c5d1c5d82b62c79133f79",
+    "semantic_hash": "b6facddc821c5d1c5d82b62c79133f79"
+  },
+  "zia-automation/realism/lib.js": {
+    "mtime": 1786809117.9188726,
+    "ast_hash": "f972fa2c09aee0e142837f374cd843bf",
+    "semantic_hash": "f972fa2c09aee0e142837f374cd843bf"
+  },
+  "zia-automation/realism/p0-reskin.js": {
+    "mtime": 1786809547.0251973,
+    "ast_hash": "65dd9a9d941e7f057368d7d8eaaf8ad8",
+    "semantic_hash": "65dd9a9d941e7f057368d7d8eaaf8ad8"
+  },
+  "zia-automation/realism/p1-timeline.js": {
+    "mtime": 1786809188.8195336,
+    "ast_hash": "096eb27b2a57bbfcccc049b04d2afc28",
+    "semantic_hash": "096eb27b2a57bbfcccc049b04d2afc28"
+  },
+  "zia-automation/realism/p10-attachments.js": {
+    "mtime": 1786883215.070925,
+    "ast_hash": "3d12ac748b75cd1464902664c66528de",
+    "semantic_hash": "3d12ac748b75cd1464902664c66528de"
+  },
+  "zia-automation/realism/p11-employer.js": {
+    "mtime": 1786829062.9243174,
+    "ast_hash": "510ce6cab0a303ceae57c0c060445257",
+    "semantic_hash": "510ce6cab0a303ceae57c0c060445257"
+  },
+  "zia-automation/realism/p12-rebrand-emails.js": {
+    "mtime": 1786829416.6070347,
+    "ast_hash": "d5fb94f1d2f84eee9be88accd783c4b7",
+    "semantic_hash": "d5fb94f1d2f84eee9be88accd783c4b7"
+  },
+  "zia-automation/realism/p13-attribution.js": {
+    "mtime": 1786844976.7164288,
+    "ast_hash": "af65a9d8046bac0cefd118dc36c6ba36",
+    "semantic_hash": "af65a9d8046bac0cefd118dc36c6ba36"
+  },
+  "zia-automation/realism/p14-nps.js": {
+    "mtime": 1786846258.2136514,
+    "ast_hash": "f23f34b008095b60d1f7d417969b9d16",
+    "semantic_hash": "f23f34b008095b60d1f7d417969b9d16"
+  },
+  "zia-automation/realism/p15-company-names.js": {
+    "mtime": 1786883828.4546928,
+    "ast_hash": "0d285125604b69b7dc35ca3d7a656aa9",
+    "semantic_hash": "0d285125604b69b7dc35ca3d7a656aa9"
+  },
+  "zia-automation/realism/p16-amount-coherence.js": {
+    "mtime": 1786885257.6298478,
+    "ast_hash": "e601f403b6b047739fc7ff3b238cdf7c",
+    "semantic_hash": "e601f403b6b047739fc7ff3b238cdf7c"
+  },
+  "zia-automation/realism/p2-winrate.js": {
+    "mtime": 1786809131.8543699,
+    "ast_hash": "9f255b95d5d90840fda551be531f0078",
+    "semantic_hash": "9f255b95d5d90840fda551be531f0078"
+  },
+  "zia-automation/realism/p3-health.js": {
+    "mtime": 1786809146.203792,
+    "ast_hash": "9abbfc1cb041a5e840bbd55fc2926889",
+    "semantic_hash": "9abbfc1cb041a5e840bbd55fc2926889"
+  },
+  "zia-automation/realism/p4-identities.js": {
+    "mtime": 1786809161.6618054,
+    "ast_hash": "96fd5bcc29eea2c270b0f22ba750faeb",
+    "semantic_hash": "96fd5bcc29eea2c270b0f22ba750faeb"
+  },
+  "zia-automation/realism/p5-engagements.js": {
+    "mtime": 1786883215.070925,
+    "ast_hash": "6a1abe668d4da04e764283f9e19eb41c",
+    "semantic_hash": "6a1abe668d4da04e764283f9e19eb41c"
+  },
+  "zia-automation/realism/p6-coherence.js": {
+    "mtime": 1786812346.851126,
+    "ast_hash": "00c2c6396931e07a6b9ea0aaf8c1f30f",
+    "semantic_hash": "00c2c6396931e07a6b9ea0aaf8c1f30f"
+  },
+  "zia-automation/realism/p7-prune.js": {
+    "mtime": 1786814295.3585172,
+    "ast_hash": "d8a577c20011e51b26d56f56ce48057c",
+    "semantic_hash": "d8a577c20011e51b26d56f56ce48057c"
+  },
+  "zia-automation/realism/p8-invoicing.js": {
+    "mtime": 1786818340.9674923,
+    "ast_hash": "43546a73afc8f4907b74009488596a3d",
+    "semantic_hash": "43546a73afc8f4907b74009488596a3d"
+  },
+  "zia-automation/realism/p9-quotes.js": {
+    "mtime": 1786819436.6062622,
+    "ast_hash": "95f6207ef16825ffb83148ddcfa4d58a",
+    "semantic_hash": "95f6207ef16825ffb83148ddcfa4d58a"
+  },
+  "zia-automation/realism/run-all.js": {
+    "mtime": 1786809597.2304099,
+    "ast_hash": "dd9a08f3b43eb0358f11ecf494f03603",
+    "semantic_hash": "dd9a08f3b43eb0358f11ecf494f03603"
+  },
+  "zia-automation/realism/timeline.json": {
+    "mtime": 1786812023.1505697,
+    "ast_hash": "62b04685cc7e2fbef5830c177040d7b5",
+    "semantic_hash": "62b04685cc7e2fbef5830c177040d7b5"
+  },
+  "zia-automation/rules/01-lead-routing.js": {
+    "mtime": 1786806267.9749663,
+    "ast_hash": "f1624f6f5352a400b69f04e359621930",
+    "semantic_hash": "f1624f6f5352a400b69f04e359621930"
+  },
+  "zia-automation/rules/02-opportunity-lifecycle.js": {
+    "mtime": 1786880574.110895,
+    "ast_hash": "4e1c9b71221dc469fd87498e9fb8d06c",
+    "semantic_hash": "4e1c9b71221dc469fd87498e9fb8d06c"
+  },
+  "zia-automation/rules/03-onboarding.js": {
+    "mtime": 1786806499.9992042,
+    "ast_hash": "24c802d1f4c42faf23a2b14949bf654f",
+    "semantic_hash": "24c802d1f4c42faf23a2b14949bf654f"
+  },
+  "zia-automation/rules/04-health-monitoring.js": {
+    "mtime": 1786806518.08159,
+    "ast_hash": "62bcf38ebe90c2756509bc0486a18dda",
+    "semantic_hash": "62bcf38ebe90c2756509bc0486a18dda"
+  },
+  "zia-automation/rules/05-sla-escalation.js": {
+    "mtime": 1786806535.5543573,
+    "ast_hash": "d43ed689e2c757a5dd2a4fbc3cb42900",
+    "semantic_hash": "d43ed689e2c757a5dd2a4fbc3cb42900"
+  },
+  "zia-automation/rules/06-compliance.js": {
+    "mtime": 1786806359.5184171,
+    "ast_hash": "4c0191582088e523378952d60635b7ba",
+    "semantic_hash": "4c0191582088e523378952d60635b7ba"
+  },
+  "zia-automation/rules/07-collections.js": {
+    "mtime": 1786882289.6863072,
+    "ast_hash": "1f840748a08d91a5e663ed5adf58298b",
+    "semantic_hash": "1f840748a08d91a5e663ed5adf58298b"
+  },
+  "zia-automation/rules/08-inbound.js": {
+    "mtime": 1786848466.4794195,
+    "ast_hash": "06eab6fa595865c532553b5378799ef0",
+    "semantic_hash": "06eab6fa595865c532553b5378799ef0"
+  },
+  "zia-automation/rules/09-lead-scoring.js": {
+    "mtime": 1786882321.5582817,
+    "ast_hash": "e7935ac5406f132a1afd30a39ee01bff",
+    "semantic_hash": "e7935ac5406f132a1afd30a39ee01bff"
+  },
+  "zia-automation/rules/10-feedback.js": {
+    "mtime": 1786846399.899266,
+    "ast_hash": "ff6222fa3cfa90b458381c95ecec5ab2",
+    "semantic_hash": "ff6222fa3cfa90b458381c95ecec5ab2"
+  },
+  "zia-automation/rules/11-health-model.js": {
+    "mtime": 1786886244.1945646,
+    "ast_hash": "4c6951d2295ad76f045ef9202fe48dc5",
+    "semantic_hash": "4c6951d2295ad76f045ef9202fe48dc5"
+  },
+  "zia-automation/segments.js": {
+    "mtime": 1786828270.3931918,
+    "ast_hash": "74f55343bd62644189941f183af46184",
+    "semantic_hash": "74f55343bd62644189941f183af46184"
+  },
+  "zia-automation/server.js": {
+    "mtime": 1786882653.9060974,
+    "ast_hash": "9be0451bb4e5d18775bae55b68e7d622",
+    "semantic_hash": "9be0451bb4e5d18775bae55b68e7d622"
+  },
+  "zia-automation/snapshot.js": {
+    "mtime": 1786883419.7050104,
+    "ast_hash": "06e31e73069c82555ad6077f31674f74",
+    "semantic_hash": "06e31e73069c82555ad6077f31674f74"
+  },
+  "zia-automation/validate.js": {
+    "mtime": 1786885594.1560514,
+    "ast_hash": "c6f4807481990fb54560137d8d11cab1",
+    "semantic_hash": "c6f4807481990fb54560137d8d11cab1"
+  },
+  "zia_hubspot_demo/audit.js": {
+    "mtime": 1786291476.0505123,
+    "ast_hash": "fad84a9e58ab5812d93e7478bca92f99",
+    "semantic_hash": "fad84a9e58ab5812d93e7478bca92f99"
+  },
+  "zia_hubspot_demo/build-site.js": {
+    "mtime": 1786292156.8983703,
+    "ast_hash": "d8688f75db3991e4e1d2f13ba309f449",
+    "semantic_hash": "d8688f75db3991e4e1d2f13ba309f449"
+  },
+  "zia_hubspot_demo/config/pipelines.json": {
+    "mtime": 1786286608.8695133,
+    "ast_hash": "cd66386c5d56a61e63780293f5dd815f",
+    "semantic_hash": "cd66386c5d56a61e63780293f5dd815f"
+  },
+  "zia_hubspot_demo/config/schema.json": {
+    "mtime": 1786293398.3463843,
+    "ast_hash": "40e21ed17eec2f1a703605eee4e214bb",
+    "semantic_hash": "40e21ed17eec2f1a703605eee4e214bb"
+  },
+  "zia_hubspot_demo/generate-seed.js": {
+    "mtime": 1786293905.1813424,
+    "ast_hash": "4e111e8fb22ed27aa3a4c5e70db9b956",
+    "semantic_hash": "4e111e8fb22ed27aa3a4c5e70db9b956"
+  },
+  "zia_hubspot_demo/provision.js": {
+    "mtime": 1786286608.8770607,
+    "ast_hash": "d802347ff713627566852b18516fdb53",
+    "semantic_hash": "d802347ff713627566852b18516fdb53"
+  },
+  "zia_hubspot_demo/site/vercel.json": {
+    "mtime": 1786292169.68172,
+    "ast_hash": "d0e3a72c84bbcfeb145dfa042ed5e884",
+    "semantic_hash": "d0e3a72c84bbcfeb145dfa042ed5e884"
+  },
+  "zia_hubspot_demo/workflows/match-shortlist.js": {
+    "mtime": 1786286608.8791118,
+    "ast_hash": "3b586d493fb1e610af26c6739c179227",
+    "semantic_hash": "3b586d493fb1e610af26c6739c179227"
+  }
+}

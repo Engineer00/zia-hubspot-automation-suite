@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen Demo Portal — HubSpot Trial Build Sheet</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  /* Minimal reset — the fragment supplies its own design system on top. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --ground:#F2F3F0; --surface:#FBFBF9; --sunk:#E8EAE5;
+    --ink:#171A19; --ink-2:#5D6560; --ink-3:#878F89;
+    --rule:#D6D9D3; --rule-firm:#B9BEB7;
+    --accent:#1D5D57; --accent-soft:#DDE8E5;
+    --signal:#B4471C; --signal-soft:#F3E2D8;
+    --shadow: 0 1px 2px rgba(23,26,25,.06), 0 8px 24px -16px rgba(23,26,25,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E;
+      --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+      --rule:#2C312E; --rule-firm:#404742;
+      --accent:#6FBBB1; --accent-soft:#1B2E2B;
+      --signal:#E2895B; --signal-soft:#2E1F18;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E;
+    --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+    --rule:#2C312E; --rule-firm:#404742;
+    --accent:#6FBBB1; --accent-soft:#1B2E2B;
+    --signal:#E2895B; --signal-soft:#2E1F18;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+  :root {
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6; margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px 120px; }
+  .col { max-width: 68ch; }
+
+  .masthead { padding: 72px 0 34px; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.1rem, 4.8vw, 3.2rem); line-height: 1.08;
+    letter-spacing: -.015em; margin: 0 0 18px; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--serif); font-size: 1.16rem; line-height: 1.5;
+    color: var(--ink-2); max-width: 56ch; margin: 0;
+  }
+
+  section { padding-top: 68px; scroll-margin-top: 20px; }
+  .sechead {
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 26px;
+  }
+  .sechead .num {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: .06em; flex-shrink: 0;
+  }
+  .sechead h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.15;
+    letter-spacing: -.012em; margin: 0; text-wrap: balance;
+  }
+  .sechead .est {
+    margin-left: auto; flex-shrink: 0; font-family: var(--mono);
+    font-size: 11px; color: var(--ink-3); white-space: nowrap;
+  }
+
+  p { margin: 0 0 1em; }
+  .lede { font-size: 1.05rem; color: var(--ink-2); }
+  h3 { font-size: 1rem; font-weight: 650; margin: 2em 0 .5em; }
+  h3:first-child { margin-top: 0; }
+  ul.body { padding-left: 1.1em; margin: 0 0 1em; }
+  ul.body li { margin-bottom: .38em; }
+  a { color: var(--accent); }
+
+  code {
+    font-family: var(--mono); font-size: .86em;
+    background: var(--sunk); padding: 1px 5px; border-radius: 2px; color: var(--ink-2);
+  }
+  .path {
+    font-family: var(--mono); font-size: 12px; color: var(--accent);
+    background: var(--accent-soft); padding: 3px 8px; border-radius: 2px;
+    display: inline-block; margin-bottom: 10px;
+  }
+
+  .tablewrap { overflow-x: auto; margin: 22px 0 28px; }
+  table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; }
+  caption {
+    text-align: left; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-3); padding-bottom: 10px;
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule-firm);
+  }
+  td {
+    padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule);
+    vertical-align: top; color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  td.m, .m { font-family: var(--mono); font-size: 12.5px; }
+  td.acc { color: var(--accent); font-family: var(--mono); font-size: 12.5px; }
+
+  .stages { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .stage {
+    font-family: var(--mono); font-size: 11px; padding: 6px 10px;
+    background: var(--sunk); color: var(--ink-2);
+    border: 1px solid var(--rule); border-radius: 2px; white-space: nowrap;
+  }
+  .stage.gate { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+  .wf {
+    background: var(--surface); border: 1px solid var(--rule);
+    padding: 20px 22px; margin: 0 0 20px; box-shadow: var(--shadow);
+  }
+  .wf .wfname {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 4px;
+  }
+  .wf h3 { margin: 0 0 12px; font-size: 1.02rem; }
+  .wf dl { margin: 0; display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 8px 16px; }
+  .wf dt {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); padding-top: 3px;
+  }
+  .wf dd { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+  .wf dd ol { margin: 0; padding-left: 1.2em; }
+  .wf dd li { margin-bottom: .3em; }
+  .wf dd b { color: var(--ink); font-weight: 600; }
+
+  .note {
+    font-size: 13.5px; color: var(--ink-2); background: var(--sunk);
+    border: 1px solid var(--rule); padding: 14px 16px; margin: 22px 0; max-width: 72ch;
+  }
+  .note b { color: var(--ink); }
+  .note.warn { border-color: var(--signal); background: var(--signal-soft); }
+  .note.warn b { color: var(--signal); }
+
+  ol.script { counter-reset: st; list-style: none; padding: 0; margin: 24px 0; }
+  ol.script li {
+    counter-increment: st; display: grid;
+    grid-template-columns: 36px minmax(0,1fr); gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+  }
+  ol.script li::before {
+    content: counter(st, decimal-leading-zero);
+    grid-column: 1; grid-row: 1;
+    font-family: var(--mono); font-size: 11px; color: var(--accent); padding-top: 4px;
+  }
+  /* Both text children live in column 2 and stack — without this they flow into
+     the 36px counter column and wrap one word per line. */
+  ol.script li > b,
+  ol.script li > span { grid-column: 2; }
+  ol.script b { color: var(--ink); font-weight: 650; margin-bottom: 2px; }
+  ol.script span { font-size: 14.5px; color: var(--ink-2); }
+
+  .closer {
+    margin-top: 72px; padding: 30px;
+    background: var(--surface); border: 1px solid var(--rule-firm); box-shadow: var(--shadow);
+  }
+  .closer p { font-family: var(--serif); font-size: 1.14rem; line-height: 1.5; margin: 0; max-width: 60ch; }
+
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media (max-width: 620px) {
+    .wrap { padding: 0 20px 80px; }
+    .wf dl { grid-template-columns: 1fr; gap: 4px; }
+    .sechead { flex-wrap: wrap; }
+    .sechead .est { margin-left: 0; width: 100%; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Working document · build order for the trial portal</p>
+    <h1>Lumen demo portal — build sheet</h1>
+    <p class="standfirst">Everything to configure in a HubSpot trial so the system design in the walkthrough can be demonstrated live, in roughly a working day.</p>
+  </header>
+
+  <!-- ═══ 00 ═══ -->
+  <section id="b0">
+    <div class="sechead">
+      <span class="num">00</span>
+      <h2>Before anything: what the trial can and can't do</h2>
+      <span class="est">read first</span>
+    </div>
+
+    <div class="col">
+      <p class="lede">One capability gate shapes the entire build, so settle it before you configure a single property.</p>
+      <div class="note warn"><b>Custom objects require Enterprise.</b> HubSpot gates <code>Placement</code>, <code>Talent Profile</code> and <code>Cohort</code> as custom objects behind an Enterprise subscription on at least one Hub, and that gating has not changed in 2026. A standard trial is Professional. <b>So build the trial portal with standard objects, and present the custom-object model as the target architecture.</b></div>
+      <p>This is not a weakness in the demo. Showing a working Professional-tier build <em>and</em> naming the Enterprise target is exactly what a senior architect does — it proves you cost the design before you propose it. Say it in one line during §03 and move on.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Target architecture → trial substitute</caption>
+        <thead>
+          <tr><th style="width:24%">Target (Enterprise)</th><th style="width:34%">Build in the trial as</th><th>What survives the swap</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="acc">Placement</td>
+            <td>A <b>second Deal pipeline</b> named "Placements — Delivery". One deal record = one embedded person.</td>
+            <td>Everything: stages, properties, automation, recurring-revenue reporting, health score. This is the strongest substitute.</td>
+          </tr>
+          <tr>
+            <td class="acc">Talent Profile</td>
+            <td><b>Contacts</b> where <code>contact_type = Talent</code>, plus a talent property group.</td>
+            <td>Matching, bench reporting, availability. Loses the clean 1:1 separation, which is the honest trade to name.</td>
+          </tr>
+          <tr>
+            <td class="acc">Cohort</td>
+            <td>A <b>static list per cohort</b> plus <code>cohort_name</code> / <code>cohort_status</code> contact properties.</td>
+            <td>Fill and completion reporting. Loses many-to-many across multiple cohorts per person.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>Also verify in your own portal rather than trusting a guide:</b> whether the workflow <em>webhook</em> action and <em>custom coded</em> action are enabled — both are Operations Hub features and their availability differs by trial. If webhooks aren't there, demo the ClickUp step as a task-creation action and say what it would be in production. Never demo a step you had to fake.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 01 ═══ -->
+  <section id="b1">
+    <div class="sechead">
+      <span class="num">01</span>
+      <h2>Properties</h2>
+      <span class="est">~90 min</span>
+    </div>
+
+    <div class="col">
+      <span class="path">Settings → Properties → Create property</span>
+      <p>Create a property group per object first (<code>Lumen — Talent</code>, <code>Lumen — Engagement</code>, <code>Lumen — Fit</code>) so the record layouts look deliberate rather than accumulated. Every reportable field is a dropdown, never free text.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Contact properties</caption>
+        <thead><tr><th style="width:24%">Internal name</th><th style="width:16%">Type</th><th>Options / notes</th></tr></thead>
+        <tbody>
+          <tr><td class="m">contact_type</td><td>Dropdown</td><td><b>The most important property in the build.</b> Client Contact · Talent · Learner · Partner. Required on create.</td></tr>
+          <tr><td class="m">practice_role</td><td>Dropdown</td><td>Owner/Doctor · COO/Practice Admin · Office Manager · HR/People Ops · Marketing · Other</td></tr>
+          <tr><td class="m">source_line</td><td>Dropdown</td><td>Virtual Talent · LumenU · Org Development · Referral · Partner</td></tr>
+          <tr><td class="m">talent_tier_certified</td><td>Dropdown</td><td>Core · Momentum · Summit. Only used where contact_type = Talent.</td></tr>
+          <tr><td class="m">talent_function</td><td>Multi-checkbox</td><td>Admin/Scheduling · Customer Service · Billing · Marketing · HR Ops · Sales/CRM · Project Ops · Exec Assistant · Leadership</td></tr>
+          <tr><td class="m">timezone_band</td><td>Dropdown</td><td>Americas · EMEA · APAC — matches the 11+ country distributed model</td></tr>
+          <tr><td class="m">availability_hrs</td><td>Number</td><td>Hours per week currently unallocated</td></tr>
+          <tr><td class="m">cost_rate</td><td>Number</td><td>Internal hourly cost. Restrict field-level visibility.</td></tr>
+          <tr><td class="m">cohort_name / cohort_status</td><td>Dropdown</td><td>LumenU substitute for the Cohort object. Status: Enrolled · In Progress · Completed · Withdrew</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Company properties</caption>
+        <thead><tr><th style="width:24%">Internal name</th><th style="width:16%">Type</th><th>Options / notes</th></tr></thead>
+        <tbody>
+          <tr><td class="m">practice_type</td><td>Dropdown</td><td>Dental — Solo · Dental — Group/DSO · Physical Therapy · Medical — Other · Speaker/KOL · Professional Services · Other. <b>Drawn from Lumen’s actual reference base.</b></td></tr>
+          <tr><td class="m">org_stage</td><td>Dropdown</td><td>Scaling · Restructuring · Post-acquisition · Stable</td></tr>
+          <tr><td class="m">tiers_engaged</td><td>Multi-checkbox</td><td>Core · Momentum · Summit · LumenU</td></tr>
+          <tr><td class="m">active_placements</td><td>Number (rollup)</td><td>Maintained by workflow — count of live placement deals</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Deal properties — Client Acquisition pipeline</caption>
+        <thead><tr><th style="width:24%">Internal name</th><th style="width:16%">Type</th><th>Options / notes</th></tr></thead>
+        <tbody>
+          <tr><td class="m">tier_requested</td><td>Dropdown</td><td>Core ($12/hr) · Momentum ($16/hr) · Summit ($22/hr)</td></tr>
+          <tr><td class="m">seats_committed</td><td>Number</td><td>How many people the client is contracting for</td></tr>
+          <tr><td class="m">hours_per_week</td><td>Number</td><td>Per seat</td></tr>
+          <tr><td class="m">target_embed_date</td><td>Date</td><td>Feeds Time-to-Placement</td></tr>
+          <tr><td class="m">role_defined</td><td>Single checkbox</td><td>Gate for leaving the Role Defined stage</td></tr>
+          <tr><td class="m">fit_score</td><td>Number (calculated)</td><td>Sum of the twelve fit fields below</td></tr>
+          <tr><td class="m">disqualifier_reason</td><td>Dropdown</td><td>Price shopping · Temp need · No ownership intent · Role undefined · No culture investment · No onboarding investment</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Deal properties — Placements pipeline (the Placement object substitute)</caption>
+        <thead><tr><th style="width:24%">Internal name</th><th style="width:16%">Type</th><th>Options / notes</th></tr></thead>
+        <tbody>
+          <tr><td class="m">placement_tier</td><td>Dropdown</td><td>Copied from the parent deal at creation</td></tr>
+          <tr><td class="m">hourly_rate</td><td>Number</td><td>12 / 16 / 22 default by tier, editable</td></tr>
+          <tr><td class="m">hours_per_week</td><td>Number</td><td>Contracted hours</td></tr>
+          <tr><td class="m">monthly_value</td><td class="acc">Calculated</td><td><code>hourly_rate × hours_per_week × 4.33</code> — this single property is what makes recurring-revenue reporting possible</td></tr>
+          <tr><td class="m">gross_margin</td><td class="acc">Calculated</td><td><code>(hourly_rate − cost_rate) × hours_per_week × 4.33</code></td></tr>
+          <tr><td class="m">placement_status</td><td>Dropdown</td><td>Awaiting Match · Showcasing · Active · At Risk · Ended</td></tr>
+          <tr><td class="m">embed_start_date / end_date</td><td>Date</td><td>End date empty while active</td></tr>
+          <tr><td class="m">health_score</td><td>Number</td><td>Written by the nightly scoring workflow</td></tr>
+          <tr><td class="m">last_checkin_date</td><td>Date</td><td>Stamped by the check-in workflow</td></tr>
+          <tr><td class="m">documentation_current</td><td>Single checkbox</td><td>Gate for Steady State — instruments the continuity promise</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>The fit scorecard fields.</b> Create twelve Yes/No dropdowns in a <code>Lumen — Fit</code> group named after Lumen’s own published criteria, then a calculated <code>fit_score</code> summing them at the weights in §05 of the walkthrough. Group them onto the deal record's left sidebar so the alignment call has a visible checklist. This is the detail interviewers remember, because it proves you read their site rather than their job ad.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section id="b2">
+    <div class="sechead">
+      <span class="num">02</span>
+      <h2>Pipelines</h2>
+      <span class="est">~30 min</span>
+    </div>
+
+    <div class="col">
+      <span class="path">Settings → Objects → Deals → Pipelines</span>
+      <p>Three pipelines. Delete or rename HubSpot's default — do not leave "Qualified Lead / Proposal Sent" sitting next to your work, because it advertises that the build is half-done.</p>
+
+      <h3>Pipeline 1 — Client Acquisition</h3>
+      <div class="stages">
+        <span class="stage">Alignment Call Booked</span><span class="stage gate">Role Defined ⚑</span>
+        <span class="stage">Showcase Scheduled</span><span class="stage">Showcase Delivered</span>
+        <span class="stage">Agreement Sent</span><span class="stage">Closed Won</span><span class="stage">Closed Lost</span>
+      </div>
+      <p><b>⚑ Required to leave Role Defined:</b> <code>tier_requested</code>, <code>hours_per_week</code>, <code>practice_type</code>, <code>role_defined</code> = true. Set these under stage properties, not as a policy nobody enforces.</p>
+
+      <h3>Pipeline 2 — Placements (Delivery)</h3>
+      <div class="stages">
+        <span class="stage">Awaiting Match</span><span class="stage">Showcasing</span>
+        <span class="stage">Kickoff Scheduled</span><span class="stage">Systems Access</span>
+        <span class="stage">Week-1 Check-in</span><span class="stage">30-Day Review</span>
+        <span class="stage gate">Steady State ⚑</span><span class="stage">Ended</span>
+      </div>
+      <p><b>⚑ Required for Steady State:</b> <code>documentation_current</code> = true and a logged CSAT response. Set stage probabilities to 100% only at Steady State so this pipeline never pollutes sales forecasting.</p>
+
+      <h3>Pipeline 3 — Talent Sourcing</h3>
+      <div class="stages">
+        <span class="stage">Applied</span><span class="stage">Screened</span>
+        <span class="stage">I/O Assessment</span><span class="stage gate">Bench-Ready ⚑</span>
+        <span class="stage">In Showcase</span><span class="stage">Placed</span>
+      </div>
+      <p><b>⚑ Required for Bench-Ready:</b> <code>talent_tier_certified</code>, <code>timezone_band</code>, <code>availability_hrs</code>. Without these the matching workflow in §04 has nothing to query.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section id="b3">
+    <div class="sechead">
+      <span class="num">03</span>
+      <h2>Seed data</h2>
+      <span class="est">~45 min</span>
+    </div>
+
+    <div class="col">
+      <p class="lede">A demo dies on empty dashboards. Load enough realistic data that every report has shape — but use clearly fictional practice names, never real clinics.</p>
+      <p><b>Volume that reads as real:</b> 10 companies, 20 client contacts, 15 talent contacts, 12 acquisition deals across all stages, 9 placement records (6 active, 1 at risk, 1 ended, 1 awaiting match), 2 cohort lists. Spread <code>createdate</code> and close dates across the last six months so trend charts have a line to draw.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Seed companies — mirror Lumen’s real reference base</caption>
+        <thead><tr><th style="width:30%">Company</th><th style="width:26%">practice_type</th><th>Scenario it demonstrates</th></tr></thead>
+        <tbody>
+          <tr><td>Northline Dental Partners</td><td>Dental — Group/DSO</td><td>Multi-seat client: one deal, three placements, one upgraded tier</td></tr>
+          <tr><td>Harbour Physical Therapy</td><td>Physical Therapy</td><td>Healthy single Momentum embed, high CSAT</td></tr>
+          <tr><td>Ridgeway Family Dental</td><td>Dental — Solo</td><td>Core embed, at-risk health score — the alert demo</td></tr>
+          <tr><td>Cedar &amp; Co. Speaking</td><td>Speaker/KOL</td><td>Part-time hours, shows monthly_value maths on 20 hrs/wk</td></tr>
+          <tr><td>Meridian Ortho Group</td><td>Medical — Other</td><td>In Showcase — the live match demo lands here</td></tr>
+          <tr><td>Fieldstone Advisory</td><td>Professional Services</td><td>Closed Lost, disqualifier = Temp need. Feeds the fit-score report.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>Fastest route:</b> build the CSVs in a spreadsheet and use <span class="path" style="margin:0">Data Management → Import</span> rather than hand-keying. Import companies first, then contacts with a company-domain column, then deals with association columns — HubSpot resolves associations on import, and doing it in that order saves an hour of manual linking.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section id="b4">
+    <div class="sechead">
+      <span class="num">04</span>
+      <h2>Workflows</h2>
+      <span class="est">~2 hrs</span>
+    </div>
+
+    <div class="col">
+      <span class="path">Automation → Workflows</span>
+      <p>Six workflows. Build them in this order — each depends on the one before. Name them with a team prefix so the list reads as an architecture rather than an accumulation.</p>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-01 · Sales</p>
+      <h3>Match &amp; Embed — the one you demo live</h3>
+      <dl>
+        <dt>Trigger</dt>
+        <dd>Deal stage = <b>Closed Won</b> in the Client Acquisition pipeline</dd>
+        <dt>Actions</dt>
+        <dd>
+          <ol>
+            <li><b>Create a Deal</b> in the Placements pipeline at Awaiting Match, copying tier, hourly rate, hours per week, and associating the same company</li>
+            <li><b>Set</b> <code>hourly_rate</code> by tier: 12 / 16 / 22</li>
+            <li><b>Create tasks</b> for the onboarding set — systems access, comms channels, payroll setup — each assigned and dated relative to enrollment</li>
+            <li><b>Enrol client contacts</b> in the welcome sequence, filtered to <code>contact_type = Client Contact</code></li>
+            <li><b>Send internal notification</b> to talent ops with the tier and hours required</li>
+            <li><b>Webhook to ClickUp</b> if available — otherwise a task, and say so in the demo</li>
+          </ol>
+        </dd>
+        <dt>Watch for</dt>
+        <dd>Set re-enrollment off. Without it, editing a won deal spawns duplicate placements — a mistake worth mentioning aloud, because catching it is the architect's instinct.</dd>
+      </dl>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-02 · Data quality</p>
+      <h3>Contact type enforcement</h3>
+      <dl>
+        <dt>Trigger</dt><dd>Contact created</dd>
+        <dt>Actions</dt>
+        <dd>Branch on form source and <code>source_line</code> to set <code>contact_type</code>. Anything unresolved is set to Unclassified and raises a task, so the gap is visible instead of silently defaulting to Client Contact.</dd>
+        <dt>Why it's first</dt>
+        <dd>Every downstream list and sequence filters on this property. If it's wrong, Break 01 from the walkthrough happens in your own demo portal.</dd>
+      </dl>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-03 · Sales</p>
+      <h3>Fit score routing</h3>
+      <dl>
+        <dt>Trigger</dt><dd><code>fit_score</code> is known and deal stage = Role Defined</dd>
+        <dt>Actions</dt>
+        <dd>Score ≥ 10 → move to Showcase Scheduled, notify the owner, book the showcase. Score 4–9 → enrol in the nurture built around their two weakest criteria. Score &lt; 4 → task to disqualify with <code>disqualifier_reason</code> required.</dd>
+      </dl>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-04 · Customer success</p>
+      <h3>Check-in cadence</h3>
+      <dl>
+        <dt>Trigger</dt><dd>Placement deal reaches Kickoff Scheduled</dd>
+        <dt>Actions</dt>
+        <dd>Dated tasks at day 7, 30 and 90, then quarterly. CSAT survey at day 30 and 180. Each completion stamps <code>last_checkin_date</code>. An overdue check-in past 14 days notifies the CSM's manager.</dd>
+        <dt>Demonstrates</dt>
+        <dd>Lumen’s published "ongoing check-ins" promise, running as a system behavior rather than a good intention.</dd>
+      </dl>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-05 · Customer success</p>
+      <h3>Placement health scoring</h3>
+      <dl>
+        <dt>Trigger</dt><dd>Daily schedule across all Active placements</dd>
+        <dt>Actions</dt>
+        <dd>Score from check-in recency, CSAT trend, open escalation count, and hours-logged versus contracted. Below floor → set status At Risk, alert the CSM, create a dated task. Above ceiling with positive scope drift → create a tier-upgrade task for sales.</dd>
+      </dl>
+    </div>
+
+    <div class="wf">
+      <p class="wfname">WF-06 · Education</p>
+      <h3>LumenU enrollment on Steady State</h3>
+      <dl>
+        <dt>Trigger</dt><dd>Placement reaches Steady State</dd>
+        <dt>Actions</dt>
+        <dd>Add the placed talent contact to the current cohort list, set <code>cohort_status = Enrolled</code>, send the access email.</dd>
+        <dt>Why include it</dt>
+        <dd>It's the only workflow that touches the Education department the JD names, and it closes the loop on the support model's second promise. Small, but it shows you read all five departments.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section id="b5">
+    <div class="sechead">
+      <span class="num">05</span>
+      <h2>Forms, meetings and the front door</h2>
+      <span class="est">~40 min</span>
+    </div>
+
+    <div class="col">
+      <p class="lede">Lumen already runs two conversion actions on their site — "Book a 15-Min Alignment Call" and "Schedule a Talent Showcase." Build both, because it shows the design starts where their traffic actually lands.</p>
+      <ul class="body">
+        <li><strong>Alignment Call meeting link</strong> with the qualification questions embedded as booking fields — practice type, team size, what role is falling through the cracks. The rep arrives at the call with the scorecard half filled.</li>
+        <li><strong>Talent Showcase form</strong>, gated slightly harder: tier interest and hours per week required, because a showcase request is a genuine buying signal and deserves faster routing.</li>
+        <li><strong>Talent application form</strong> writing <code>contact_type = Talent</code> directly, so the two audiences separate at the point of entry rather than by cleanup later.</li>
+        <li><strong>Hidden UTM fields</strong> on all three, mapped to <code>source_line</code>, so attribution works from day one instead of being retrofitted.</li>
+      </ul>
+      <div class="note"><b>One flourish worth the ten minutes:</b> set the alignment-call booking confirmation to send a short "how to prepare" email listing the six fit criteria. It qualifies the prospect before the call, it uses Lumen’s own words, and in the demo it lets you say the system starts doing the qualification work before anyone picks up the phone.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section id="b6">
+    <div class="sechead">
+      <span class="num">06</span>
+      <h2>Dashboards</h2>
+      <span class="est">~60 min</span>
+    </div>
+
+    <div class="col">
+      <span class="path">Reports → Dashboards → Create</span>
+      <p>Four dashboards. Build the executive one first and make it good — it's the one you present. The three department dashboards can be lighter; their job is to prove you understood that different audiences need different screens.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Executive dashboard — report configuration</caption>
+        <thead><tr><th style="width:32%">Tile</th><th style="width:24%">Report type</th><th>Build note</th></tr></thead>
+        <tbody>
+          <tr><td>Recurring Placement Revenue</td><td>Single object — Deals</td><td>Sum of <code>monthly_value</code>, filtered to Placements pipeline + status Active, broken down by tier</td></tr>
+          <tr><td>Gross Margin by Tier</td><td>Single object — Deals</td><td>Sum of <code>gross_margin</code> by <code>placement_tier</code>. Restrict dashboard access — it exposes cost rates.</td></tr>
+          <tr><td>Bench Utilization</td><td>Single object — Contacts</td><td>Talent contacts with an active placement ÷ all Bench-Ready, split by tier</td></tr>
+          <tr><td>Time to Placement</td><td>Custom report builder</td><td>Median days between acquisition close date and placement <code>embed_start_date</code></td></tr>
+          <tr><td>Placements at Risk</td><td>Single object — Deals</td><td>List view, not a chart. Every row needs an owner and a next action.</td></tr>
+          <tr><td>Fit Score Distribution</td><td>Single object — Deals</td><td>Won/lost bucketed by <code>fit_score</code>, with <code>disqualifier_reason</code> as a second chart</td></tr>
+          <tr><td>Pipeline by Practice Type</td><td>Cross-object — Deals + Companies</td><td>Win rate and average deal size by <code>practice_type</code>. This is the tile that gets a reaction.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>Presentation detail that costs nothing:</b> write the definition into every report's description field. When you say "confidence in reporting comes from agreed definitions, not prettier charts," you can then hover a tile and show the definition sitting right there. It turns a claim into a demonstration.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 07 ═══ -->
+  <section id="b7">
+    <div class="sechead">
+      <span class="num">07</span>
+      <h2>The live demo run</h2>
+      <span class="est">6 min of the call</span>
+    </div>
+
+    <div class="col">
+      <p class="lede">Rehearse this until it runs without hesitation. Have the deal pre-staged at Agreement Sent, both browser tabs open, notifications enabled. If a step fails live, narrate what it does and move on — recovering calmly reads better than a flawless run.</p>
+    </div>
+
+    <ol class="script">
+      <li><b>Open on the executive dashboard.</b><span>Note the current recurring revenue figure aloud. You're establishing a before state that will visibly change.</span></li>
+      <li><b>Open the Meridian Ortho Group deal at Agreement Sent.</b><span>Point at the fit scorecard in the sidebar — twelve fields, Lumen’s own criteria, a score of 14. Thirty seconds, no more.</span></li>
+      <li><b>Drag it to Closed Won.</b><span>Say nothing for a beat. Let the workflow run.</span></li>
+      <li><b>Show the placement record that appeared.</b><span>Tier, rate, hours, monthly value already calculated. This is the Deal-versus-Placement distinction, made concrete.</span></li>
+      <li><b>Open the talent ops notification.</b><span>Three bench-ready Momentum profiles in the right timezone, ready for a Talent Showcase. Their process step three, automated.</span></li>
+      <li><b>Show the onboarding tasks and the check-in cadence already scheduled.</b><span>Day 7, 30, 90. Their published support promise, now a system behavior.</span></li>
+      <li><b>Return to the executive dashboard and refresh.</b><span>Recurring revenue up, one more active placement, time-to-placement clock started. Close on this — the whole argument is that leadership sees it without asking anyone.</span></li>
+    </ol>
+
+    <div class="col">
+      <div class="note warn"><b>Do not demo:</b> anything you built at 2am and haven't run twice. A four-step demo that works beats a seven-step demo that stalls. Cut steps 5 and 6 before you cut steps 3 and 7.</div>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>Build order matters more than build completeness. Properties, then pipelines, then seed data, then workflows — anything built out of that order gets rebuilt. If time runs short, ship WF-01 and the executive dashboard, and present the rest as design.</p>
+  </div>
+
+</div>
+</body>
+</html>

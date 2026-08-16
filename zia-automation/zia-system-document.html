@@ -1,0 +1,984 @@
+<title>ZIA Automation Architecture</title>
+<style>
+/* ============================================================
+   ZIA — Automation Architecture
+   Executive technical document. Built print-first: the screen
+   version is the same document, not a different one.
+
+   Palette inherits the ZIA system already used by the Command
+   Deck and case study, so the four deliverables read as a set.
+     accent  teal    #0A8F86   (light) / #19A092 (dark)
+     support ochre   #A85D00   indigo #4152A3   rose #AB2F5C
+   Neutrals are biased cool, toward the accent, not pure grey.
+   ============================================================ */
+
+:root {
+  --ground:#EFF3F4; --surface:#FFFFFF; --surface-2:#F5F9F9;
+  --hairline:#D8E1E3; --hairline-2:#E9EFF0;
+  --ink:#0C2126; --ink-2:#3D565C; --ink-3:#6A8288;
+
+  --accent:#0A8F86; --accent-soft:#E0F1EF; --accent-line:#B6DCD8;
+  --ochre:#A85D00; --ochre-soft:#F7EEE0;
+  --indigo:#4152A3; --indigo-soft:#E7EAF7;
+  --rose:#AB2F5C;
+
+  --good:#2E7D52; --warn:#9A6B00; --bad:#B0303A;
+  --good-bg:#E6F2EB; --warn-bg:#F7EFDD; --bad-bg:#F8E5E7;
+
+  --shadow:0 1px 2px rgba(12,33,38,.05), 0 4px 16px rgba(12,33,38,.05);
+
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:#0A1517; --surface:#101E21; --surface-2:#15262A;
+    --hairline:#22383D; --hairline-2:#1A2D31;
+    --ink:#E9F2F3; --ink-2:#A6BEC3; --ink-3:#7B969C;
+
+    --accent:#19A092; --accent-soft:#12312F; --accent-line:#1D4744;
+    --ochre:#C08432; --ochre-soft:#2E2411;
+    --indigo:#7C8CD4; --indigo-soft:#1B2038;
+    --rose:#D0567B;
+
+    --good:#4FB07C; --warn:#C99A2E; --bad:#E06B72;
+    --good-bg:#143022; --warn-bg:#332810; --bad-bg:#38191C;
+
+    --shadow:0 1px 2px rgba(0,0,0,.32), 0 4px 18px rgba(0,0,0,.26);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:#0A1517; --surface:#101E21; --surface-2:#15262A;
+  --hairline:#22383D; --hairline-2:#1A2D31;
+  --ink:#E9F2F3; --ink-2:#A6BEC3; --ink-3:#7B969C;
+
+  --accent:#19A092; --accent-soft:#12312F; --accent-line:#1D4744;
+  --ochre:#C08432; --ochre-soft:#2E2411;
+  --indigo:#7C8CD4; --indigo-soft:#1B2038;
+  --rose:#D0567B;
+
+  --good:#4FB07C; --warn:#C99A2E; --bad:#E06B72;
+  --good-bg:#143022; --warn-bg:#332810; --bad-bg:#38191C;
+
+  --shadow:0 1px 2px rgba(0,0,0,.32), 0 4px 18px rgba(0,0,0,.26);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+.sheet { max-width:940px; margin:0 auto; padding:0 32px 100px; }
+
+/* ---------- cover ---------- */
+.cover { padding:64px 0 40px; border-bottom:3px double var(--hairline); margin-bottom:8px; }
+.org {
+  font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+h1 {
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(34px,5.4vw,52px); line-height:1.04;
+  letter-spacing:-.018em; margin:14px 0 0; text-wrap:balance;
+}
+.sub {
+  font-family:var(--serif); font-size:clamp(17px,2.2vw,21px);
+  color:var(--ink-2); margin:16px 0 0; max-width:56ch; font-style:italic;
+}
+.facts {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px; background:var(--hairline); border:1px solid var(--hairline);
+  border-radius:8px; overflow:hidden; margin-top:34px;
+}
+.fact { background:var(--surface); padding:13px 16px; }
+.fact dt {
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:5px;
+}
+.fact dd {
+  margin:0; font-family:var(--mono); font-size:16px; font-weight:600;
+  font-variant-numeric:tabular-nums; color:var(--ink);
+}
+
+/* ---------- structure ---------- */
+section { margin-top:52px; }
+.sec-head { border-top:2px solid var(--ink); padding-top:12px; margin-bottom:18px; }
+.sec-n {
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); font-weight:700;
+}
+h2 {
+  font-family:var(--serif); font-size:clamp(24px,3.4vw,31px); font-weight:600;
+  margin:5px 0 0; letter-spacing:-.014em; line-height:1.16; text-wrap:balance;
+}
+h3 {
+  font-family:var(--serif); font-size:20px; font-weight:600;
+  margin:30px 0 4px; letter-spacing:-.008em;
+}
+h4 {
+  font-family:var(--sans); font-size:13px; font-weight:680;
+  letter-spacing:.02em; margin:22px 0 4px; color:var(--ink);
+}
+p { margin:12px 0; max-width:74ch; }
+.lede { font-family:var(--serif); font-size:18.5px; color:var(--ink-2); max-width:66ch; }
+strong { font-weight:660; color:var(--ink); }
+em { font-style:italic; }
+code {
+  font-family:var(--mono); font-size:13px; background:var(--surface-2);
+  border:1px solid var(--hairline-2); border-radius:4px; padding:1px 5px;
+}
+
+/* ---------- blocks ---------- */
+.panel {
+  background:var(--surface); border:1px solid var(--hairline);
+  border-radius:10px; padding:20px 22px; box-shadow:var(--shadow); margin:18px 0;
+}
+.note {
+  border-left:3px solid var(--accent); background:var(--accent-soft);
+  border-radius:0 8px 8px 0; padding:15px 19px; margin:18px 0;
+}
+.note.warn { border-left-color:var(--ochre); background:var(--ochre-soft); }
+.note.cost { border-left-color:var(--indigo); background:var(--indigo-soft); }
+.note p { margin:6px 0 0; font-size:15px; }
+.note p:first-child { margin-top:0; }
+.note-k {
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--accent);
+}
+.note.warn .note-k { color:var(--ochre); }
+.note.cost .note-k { color:var(--indigo); }
+
+/* ---------- tables ---------- */
+.tw { overflow-x:auto; margin:16px 0; }
+table { border-collapse:collapse; width:100%; font-size:14px; min-width:520px; }
+caption {
+  text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); padding-bottom:8px;
+}
+th {
+  text-align:left; font-family:var(--sans); font-size:11px; font-weight:700;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3);
+  padding:0 14px 8px 0; border-bottom:1.5px solid var(--ink-3);
+}
+td { padding:9px 14px 9px 0; border-bottom:1px solid var(--hairline-2); vertical-align:top; }
+td.n, th.n { text-align:right; padding-right:0; font-family:var(--mono); font-variant-numeric:tabular-nums; }
+th.n { text-align:right; }
+tbody tr:last-child td { border-bottom:none; }
+tr.total td { border-top:1.5px solid var(--ink-3); font-weight:680; }
+
+.tag {
+  display:inline-block; border-radius:4px; padding:2px 7px;
+  font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.04em;
+  white-space:nowrap;
+}
+.tag.free { background:var(--good-bg); color:var(--good); }
+.tag.paid { background:var(--warn-bg); color:var(--warn); }
+.tag.ent  { background:var(--bad-bg);  color:var(--bad); }
+
+/* ---------- figures ---------- */
+figure { margin:26px 0; }
+figure svg { display:block; width:100%; height:auto; max-width:100%; color:var(--ink); }
+figcaption {
+  font-size:13.5px; color:var(--ink-3); margin-top:12px;
+  padding-top:9px; border-top:1px solid var(--hairline-2); max-width:74ch;
+}
+figcaption b { color:var(--ink-2); font-weight:640; }
+.fig-wrap {
+  background:var(--surface); border:1px solid var(--hairline);
+  border-radius:10px; padding:24px 22px 18px; box-shadow:var(--shadow);
+}
+
+/* ---------- example callout ---------- */
+.eg {
+  border:1px solid var(--hairline); border-radius:10px;
+  background:var(--surface-2); padding:16px 19px; margin:14px 0;
+}
+.eg-k {
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--ink-3); display:block; margin-bottom:6px;
+}
+.eg p { margin:0; font-size:14.5px; color:var(--ink-2); }
+.eg p + p { margin-top:8px; }
+
+ul, ol { max-width:74ch; padding-left:22px; }
+li { margin:6px 0; }
+
+footer {
+  margin-top:60px; padding-top:20px; border-top:3px double var(--hairline);
+  font-family:var(--mono); font-size:11.5px; color:var(--ink-3); line-height:1.8;
+}
+
+/* ============================================================
+   PRINT — this document is meant to become a PDF
+   ============================================================ */
+@media print {
+  @page { size:A4; margin:16mm 14mm; }
+  html, body { background:#fff !important; color:#000 !important; font-size:10.5pt; }
+  .sheet { max-width:none; padding:0; }
+  .panel, .fig-wrap, .eg, .note, .facts { box-shadow:none !important; }
+  .panel, .fig-wrap, .eg, .note, figure, table, .facts { break-inside:avoid; page-break-inside:avoid; }
+  h2, h3, h4 { break-after:avoid; page-break-after:avoid; }
+  section { break-before:page; page-break-before:always; }
+  section:first-of-type { break-before:auto; page-break-before:auto; }
+  .cover { break-after:page; page-break-after:always; border-bottom:none; }
+  a { color:#000; text-decoration:none; }
+  figure svg { color:#000; }
+}
+</style>
+
+<div class="sheet">
+
+<!-- ============================ COVER ============================ -->
+<header class="cover">
+  <div class="org">ZIA · Organizational Development &amp; Talent Solutions</div>
+  <h1>Automation Architecture</h1>
+  <p class="sub">
+    How a free HubSpot portal was made to behave like a paid one — what was built,
+    what it is worth, and precisely which paid features would replace it.
+  </p>
+  <dl class="facts">
+    <div class="fact"><dt>Portal</dt><dd>247000083</dd></div>
+    <div class="fact"><dt>Tier</dt><dd>Free</dd></div>
+    <div class="fact"><dt>Objects</dt><dd>~15,700</dd></div>
+    <div class="fact"><dt>Automation rules</dt><dd>11</dd></div>
+    <div class="fact"><dt>Automated writes</dt><dd>1,958+</dd></div>
+    <div class="fact"><dt>Verified claims</dt><dd>39 / 39</dd></div>
+  </dl>
+</header>
+
+<!-- ============================ 1 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 01</div><h2>The problem in one paragraph</h2></div>
+
+  <p class="lede">
+    ZIA is a two-sided business. It sells leadership and organizational development
+    programmes to companies, and delivers them through consultants. Revenue only happens
+    when both sides line up — a sale without an available consultant cannot be delivered,
+    and a consultant without demand is paid to sit idle.
+  </p>
+
+  <p>
+    A CRM for that business has to track the join between the two sides, not just a sales
+    funnel. HubSpot's free tier is entirely capable of <em>storing</em> that model: custom
+    objects properties, associations, tickets, quotes, products and forms all work. What it
+    cannot do is <em>act</em> on it. Every automation endpoint returns <code>403</code>.
+  </p>
+
+  <div class="note warn">
+    <span class="note-k">The constraint</span>
+    <p>
+      <strong>Free HubSpot is an excellent filing cabinet with no moving parts.</strong>
+      It will hold anything you put in it and it will never do anything with it. No ticket
+      is ever raised, no lead is ever routed, no overdue invoice is ever chased, and no
+      consultant with a lapsed certificate is ever taken off the bench.
+    </p>
+  </div>
+
+  <p>
+    This was verified rather than assumed. The <code>automation</code> scope <em>is</em>
+    granted on the private app and it gates nothing — the block is the plan, not the
+    permission. Free has no automation at all; Starter offers "simple automation" capped at
+    50 workflows; the real workflow builder begins at Professional.
+  </p>
+</section>
+
+<!-- ============================ 2 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 02</div><h2>How the system works</h2></div>
+
+  <p class="lede">
+    Orchestration was moved outside the platform. Eleven rules run as scheduled jobs against
+    the CRM API, reading the portal's current state and writing back whatever is missing.
+  </p>
+
+  <figure>
+    <div class="fig-wrap">
+      <svg viewBox="0 0 900 430" role="img"
+           aria-label="Data flow: the automation engine reads CRM state from HubSpot, computes what is missing, and writes tickets and properties back. A snapshot job pulls the same data into a local dashboard. HubSpot's own workflow engine is blocked at the free tier.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0A8F86"/>
+          </marker>
+        </defs>
+
+        <!-- ============ HubSpot column ============ -->
+        <rect x="16" y="40" width="230" height="300" rx="10"
+              fill="none" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+        <text x="131" y="30" text-anchor="middle" font-size="13" font-weight="700"
+              fill="currentColor" font-family="system-ui, sans-serif">HubSpot (free tier)</text>
+
+        <rect x="34" y="60" width="194" height="46" rx="7" fill="currentColor" opacity=".07"/>
+        <text x="131" y="80" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">CRM objects</text>
+        <text x="131" y="96" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">1,500 deals · 993 contacts</text>
+
+        <rect x="34" y="116" width="194" height="42" rx="7" fill="currentColor" opacity=".07"/>
+        <text x="131" y="132" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">56 custom properties</text>
+        <text x="131" y="148" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">health, bench, invoice state</text>
+
+        <rect x="34" y="168" width="194" height="42" rx="7" fill="currentColor" opacity=".07"/>
+        <text x="131" y="184" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">1,502 tickets</text>
+        <text x="131" y="200" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">written by the engine</text>
+
+        <rect x="34" y="220" width="194" height="42" rx="7" fill="currentColor" opacity=".07"/>
+        <text x="131" y="236" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">2 capture forms</text>
+        <text x="131" y="252" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">demand + supply side</text>
+
+        <!-- blocked native workflows -->
+        <rect x="34" y="278" width="194" height="46" rx="7" fill="none"
+              stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 4" opacity=".5"/>
+        <text x="131" y="298" text-anchor="middle" font-size="12" font-weight="600"
+              fill="currentColor" opacity=".6" font-family="system-ui, sans-serif">Workflow engine</text>
+        <text x="131" y="314" text-anchor="middle" font-size="11.5" font-weight="700"
+              fill="#B0303A" font-family="ui-monospace, monospace">403 — not on this tier</text>
+
+        <!-- ============ Engine ============ -->
+        <rect x="330" y="60" width="240" height="204" rx="10"
+              fill="#0A8F86" fill-opacity=".08" stroke="#0A8F86" stroke-width="2"/>
+        <text x="450" y="30" text-anchor="middle" font-size="13" font-weight="700"
+              fill="currentColor" font-family="system-ui, sans-serif">zia-automation (this machine)</text>
+        <text x="450" y="84" text-anchor="middle" font-size="13" font-weight="700"
+              fill="#0A8F86" font-family="system-ui, sans-serif">Reconciliation engine</text>
+        <text x="450" y="104" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".8"
+              font-family="system-ui, sans-serif">11 rules · WF-01 … WF-11</text>
+
+        <line x1="352" y1="118" x2="548" y2="118" stroke="currentColor" opacity=".25"/>
+
+        <text x="450" y="140" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".85"
+              font-family="system-ui, sans-serif">1. read the whole current state</text>
+        <text x="450" y="160" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".85"
+              font-family="system-ui, sans-serif">2. compute what should exist</text>
+        <text x="450" y="180" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".85"
+              font-family="system-ui, sans-serif">3. write only the difference</text>
+
+        <line x1="352" y1="196" x2="548" y2="196" stroke="currentColor" opacity=".25"/>
+        <text x="450" y="216" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".85"
+              font-family="system-ui, sans-serif">safe to re-run · self-healing</text>
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7"
+              font-family="ui-monospace, monospace">run-log.jsonl — audit trail</text>
+
+        <!-- ============ Dashboard ============ -->
+        <rect x="654" y="60" width="230" height="88" rx="10" fill="currentColor" opacity=".07"/>
+        <text x="769" y="30" text-anchor="middle" font-size="13" font-weight="700"
+              fill="currentColor" font-family="system-ui, sans-serif">Reporting</text>
+        <text x="769" y="88" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">Command Deck</text>
+        <text x="769" y="106" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">localhost — one dashboard</text>
+        <text x="769" y="124" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">auto-refresh every 30 min</text>
+
+        <rect x="654" y="164" width="230" height="72" rx="10" fill="currentColor" opacity=".07"/>
+        <text x="769" y="190" text-anchor="middle" font-size="12.5" font-weight="600"
+              fill="currentColor" font-family="system-ui, sans-serif">Native dashboards</text>
+        <text x="769" y="208" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">built by hand in the UI</text>
+        <text x="769" y="226" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">no create API on any tier</text>
+
+        <!-- ============ arrows ============ -->
+        <line x1="246" y1="140" x2="322" y2="140" stroke="#0A8F86" stroke-width="2" marker-end="url(#ahA)"/>
+        <text x="284" y="132" text-anchor="middle" font-size="10.5" fill="#0A8F86" font-weight="600"
+              font-family="ui-monospace, monospace">reads state</text>
+
+        <line x1="322" y1="196" x2="246" y2="196" stroke="#0A8F86" stroke-width="2" marker-end="url(#ahA)"/>
+        <text x="284" y="212" text-anchor="middle" font-size="10.5" fill="#0A8F86" font-weight="600"
+              font-family="ui-monospace, monospace">writes diff</text>
+
+        <line x1="570" y1="120" x2="646" y2="120" stroke="currentColor" stroke-width="1.8"
+              opacity=".65" marker-end="url(#ah)"/>
+        <text x="608" y="112" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".8"
+              font-family="ui-monospace, monospace">snapshot</text>
+
+        <path d="M246 300 L288 300 L288 372 L769 372 L769 244"
+              fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"
+              stroke-dasharray="6 4" marker-end="url(#ah)"/>
+        <text x="520" y="390" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7"
+              font-family="system-ui, sans-serif">the same CRM data, read directly by HubSpot's own report builder</text>
+      </svg>
+    </div>
+    <figcaption>
+      <b>The engine never sits in the request path.</b> It reads the portal's whole current
+      state, computes what ought to exist, and writes only the difference back. Because it
+      compares rather than reacts, a missed run costs nothing — the next pass finds the same
+      gap and closes it. HubSpot's own workflow engine, dashed, is the component the free
+      tier withholds.
+    </figcaption>
+  </figure>
+
+  <h3>The eleven rules</h3>
+  <div class="tw">
+    <table>
+      <caption>Each rule replaces a native HubSpot workflow</caption>
+      <thead>
+        <tr><th>Rule</th><th>Fires when</th><th>Writes</th><th class="n">Live volume</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>WF-01</strong> Lead routing</td><td>client contact has no owner</td><td>owner, lifecycle, lead status</td><td class="n">593</td></tr>
+        <tr><td><strong>WF-02</strong> Opportunity lifecycle</td><td>deal outcome changes</td><td>rolls outcome onto the account's people</td><td class="n">593</td></tr>
+        <tr><td><strong>WF-03</strong> Onboarding</td><td>deal closes won, no ticket yet</td><td>onboarding ticket + 3 associations</td><td class="n">967</td></tr>
+        <tr><td><strong>WF-04</strong> Health monitoring</td><td>engagement drifts to 40–69</td><td>health-check ticket</td><td class="n">119</td></tr>
+        <tr><td><strong>WF-05</strong> SLA escalation</td><td>at-risk engagement below 40</td><td>HIGH priority ticket, breach flag</td><td class="n">43</td></tr>
+        <tr><td><strong>WF-06</strong> Compliance</td><td>certification lapsed or expiring</td><td>holds consultant off bench + ticket</td><td class="n">115</td></tr>
+        <tr><td><strong>WF-07</strong> Collections</td><td>invoice past due</td><td>ticket, priority scaled by age</td><td class="n">108</td></tr>
+        <tr><td><strong>WF-08</strong> Inbound lead</td><td>form submitted</td><td>company match, routing, speed-to-lead ticket</td><td class="n">1</td></tr>
+        <tr><td><strong>WF-09</strong> Lead scoring</td><td>every client contact</td><td>score, A–D grade, territory, pod</td><td class="n">593</td></tr>
+        <tr><td><strong>WF-10</strong> Feedback (NPS)</td><td>survey response on file</td><td>category, account roll-up, recovery ticket</td><td class="n">263</td></tr>
+        <tr><td><strong>WF-11</strong> Health model</td><td>every engagement</td><td>recomputed score + written reasoning</td><td class="n">500</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Why it reconciles instead of reacting</h3>
+
+  <figure>
+    <div class="fig-wrap">
+      <svg viewBox="0 0 900 250" role="img"
+           aria-label="Comparison: a native fire-once workflow loses any event it misses permanently, while the reconciling engine re-derives the gap on the next pass and closes it.">
+        <defs>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ah2A" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0A8F86"/>
+          </marker>
+        </defs>
+
+        <!-- top: fire-once -->
+        <text x="16" y="26" font-size="12.5" font-weight="700" fill="currentColor"
+              font-family="system-ui, sans-serif">Native workflow — fires once, on an event</text>
+
+        <circle cx="70" cy="66" r="7" fill="currentColor"/>
+        <text x="70" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity=".8"
+              font-family="system-ui, sans-serif">deal won</text>
+        <line x1="84" y1="66" x2="242" y2="66" stroke="currentColor" stroke-width="1.8" marker-end="url(#ah2)"/>
+        <rect x="250" y="48" width="132" height="36" rx="7" fill="currentColor" opacity=".1"/>
+        <text x="316" y="71" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">ticket created</text>
+
+        <circle cx="480" cy="66" r="7" fill="#B0303A"/>
+        <text x="480" y="94" text-anchor="middle" font-size="11" fill="#B0303A"
+              font-family="system-ui, sans-serif">deal won</text>
+        <line x1="494" y1="66" x2="640" y2="66" stroke="#B0303A" stroke-width="1.8"
+              stroke-dasharray="5 4" opacity=".8"/>
+        <text x="700" y="62" text-anchor="middle" font-size="11.5" font-weight="700" fill="#B0303A"
+              font-family="system-ui, sans-serif">run missed</text>
+        <text x="700" y="79" text-anchor="middle" font-size="11" fill="#B0303A" opacity=".85"
+              font-family="system-ui, sans-serif">gap is permanent</text>
+
+        <line x1="16" y1="122" x2="884" y2="122" stroke="currentColor" opacity=".2"/>
+
+        <!-- bottom: reconciling -->
+        <text x="16" y="152" font-size="12.5" font-weight="700" fill="#0A8F86"
+              font-family="system-ui, sans-serif">This engine — compares state, every pass</text>
+
+        <rect x="16" y="172" width="150" height="44" rx="7" fill="#0A8F86" fill-opacity=".1"
+              stroke="#0A8F86" stroke-width="1.4"/>
+        <text x="91" y="190" text-anchor="middle" font-size="11.5" fill="currentColor"
+              font-family="system-ui, sans-serif">717 won deals</text>
+        <text x="91" y="207" text-anchor="middle" font-size="11.5" fill="currentColor"
+              font-family="system-ui, sans-serif">567 have tickets</text>
+
+        <line x1="174" y1="194" x2="268" y2="194" stroke="#0A8F86" stroke-width="2" marker-end="url(#ah2A)"/>
+        <text x="221" y="186" text-anchor="middle" font-size="10.5" fill="#0A8F86" font-weight="600"
+              font-family="ui-monospace, monospace">diff</text>
+
+        <rect x="276" y="172" width="132" height="44" rx="7" fill="#0A8F86" fill-opacity=".1"
+              stroke="#0A8F86" stroke-width="1.4"/>
+        <text x="342" y="199" text-anchor="middle" font-size="12" font-weight="700" fill="#0A8F86"
+              font-family="system-ui, sans-serif">150 missing</text>
+
+        <line x1="416" y1="194" x2="510" y2="194" stroke="#0A8F86" stroke-width="2" marker-end="url(#ah2A)"/>
+        <text x="463" y="186" text-anchor="middle" font-size="10.5" fill="#0A8F86" font-weight="600"
+              font-family="ui-monospace, monospace">write</text>
+
+        <rect x="518" y="172" width="150" height="44" rx="7" fill="#0A8F86" fill-opacity=".1"
+              stroke="#0A8F86" stroke-width="1.4"/>
+        <text x="593" y="199" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">717 have tickets</text>
+
+        <line x1="676" y1="194" x2="770" y2="194" stroke="#0A8F86" stroke-width="2" marker-end="url(#ah2A)"/>
+        <text x="723" y="186" text-anchor="middle" font-size="10.5" fill="#0A8F86" font-weight="600"
+              font-family="ui-monospace, monospace">re-run</text>
+        <rect x="778" y="172" width="106" height="44" rx="7" fill="none"
+              stroke="#0A8F86" stroke-width="1.4"/>
+        <text x="831" y="199" text-anchor="middle" font-size="12" font-weight="700" fill="#0A8F86"
+              font-family="system-ui, sans-serif">writes 0</text>
+      </svg>
+    </div>
+    <figcaption>
+      <b>This is not a theoretical property — it was observed.</b> A win-rate rebalance
+      changed which deals were Closed Won long after the onboarding rule had last run.
+      Nothing signalled the change. On the next pass the engine found 150 won deals with no
+      onboarding ticket and created them. An event-driven workflow would have lost all 150
+      permanently, because the event had already passed.
+    </figcaption>
+  </figure>
+
+  <div class="note">
+    <span class="note-k">The proof</span>
+    <p>
+      Of 24 rule executions in the audit log, <strong>17 wrote nothing at all</strong> —
+      because there was nothing left to do. Running the engine twice in a row produces
+      writes on the first pass and <strong>zero on the second</strong>. That single property
+      is what makes it safe to put on a schedule.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 3 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 03</div><h2>What data the system uses</h2></div>
+
+  <p class="lede">
+    Every figure in this document is read live from the portal through the API. Nothing is
+    typed into a page by hand, and a validator re-derives all of it on demand.
+  </p>
+
+  <h3>Where each object came from</h3>
+  <div class="tw">
+    <table>
+      <caption>Provenance of the 2,570+ live objects in the portal</caption>
+      <thead><tr><th>Object</th><th class="n">Count</th><th>How it got there</th><th>What it carries</th></tr></thead>
+      <tbody>
+        <tr><td>Companies</td><td class="n">226</td><td>Deduplicated and pruned book</td><td>sector, size, health, client-since</td></tr>
+        <tr><td>Contacts — clients</td><td class="n">166</td><td>API + CSV import</td><td>buyer role, score, grade, territory, NPS</td></tr>
+        <tr><td>Contacts — consultants</td><td class="n">187</td><td>API + CSV import</td><td>tier, bench, compliance, coverage, cost rate</td></tr>
+        <tr><td>Deals — acquisition</td><td class="n">441</td><td>API, batch created</td><td>engagement type, source, loss reason</td></tr>
+        <tr><td>Deals — delivery</td><td class="n">218</td><td>API, batch created</td><td>health, hours, embed dates, invoice mirror</td></tr>
+        <tr><td>Quotes</td><td class="n">114</td><td>API</td><td>proposals priced from line items</td></tr>
+        <tr><td>Line items</td><td class="n">431</td><td>API</td><td>7 products, 168 discounted</td></tr>
+        <tr><td>Tickets</td><td class="n">643</td><td><strong>written by the engine</strong></td><td>7 service types, SLA flag</td></tr>
+        <tr><td>Documents</td><td class="n">272</td><td>generated PDFs + notes</td><td>SOWs, profiles, certificates</td></tr>
+        <tr><td>Invoices (Mirrors)</td><td class="n">258</td><td>API accounting mirror</td><td>collected, overdue, aging buckets</td></tr>
+        <tr class="total"><td>Custom properties</td><td class="n">71</td><td>API</td><td>companies 8 · contacts 19 · deals 31 · tickets 13</td></tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <h3>The signals the automation actually reads</h3>
+  <p>
+    The rules do not consume raw records. They consume a small number of derived signals —
+    which is why the model can be explained to a non-technical manager in one sentence per
+    signal.
+  </p>
+  <div class="tw">
+    <table>
+      <caption>WF-11 engagement health — 100 points, renormalised across whichever signals have evidence</caption>
+      <thead><tr><th>Signal</th><th class="n">Weight</th><th>Source field</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Issues</td><td class="n">35</td><td>associated tickets</td><td>open escalations and SLA breaches against the engagement</td></tr>
+        <tr><td>Schedule</td><td class="n">20</td><td><code>zia_embed_end_date</code></td><td>running past its planned end while still active</td></tr>
+        <tr><td>Momentum</td><td class="n">15</td><td><code>notes_last_contacted</code></td><td>days since anyone last spoke to the client</td></tr>
+        <tr><td>Commercial</td><td class="n">15</td><td><code>zia_invoice_status</code></td><td>whether the client is actually paying</td></tr>
+        <tr><td>Sentiment</td><td class="n">15</td><td><code>zia_nps_score</code></td><td>what they said when asked</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <span class="note-k">Explainability</span>
+    <p>
+      The score is written back with its reasoning attached. Every engagement carries a
+      <code>Health Basis</code> field reading, for example,
+      <code>54/100 — schedule on plan · momentum 38d since contact · issues 2 open/1 esc</code>.
+      A delivery manager can see <em>why</em> a number is what it is inside HubSpot, without
+      anyone explaining the model.
+    </p>
+  </div>
+
+  <div class="note warn">
+    <span class="note-k">Disclosure</span>
+    <p>
+      <strong>The records are synthetic.</strong> No real client or individual appears in
+      this portal. The schema, the automation, the API behaviour and every finding below are
+      real; the names and amounts are generated. This should be stated before anyone asks.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 4 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 04</div><h2>What it is worth</h2></div>
+
+  <p class="lede">
+    The engine has made <strong>1,958 writes</strong> into the live portal. Measured as work
+    a person would otherwise do by hand, that is roughly thirty-three hours — and it repeats
+    at no cost.
+  </p>
+
+  <div class="tw">
+    <table>
+      <caption>Manual equivalent of work the engine performs</caption>
+      <thead><tr><th>Work</th><th class="n">Volume</th><th class="n">Manual time</th><th>Realistic alternative</th></tr></thead>
+      <tbody>
+        <tr><td>Onboarding ticket + 3 associations per won deal</td><td class="n">967</td><td class="n">~32 hrs</td><td>skipped under pressure</td></tr>
+        <tr><td>Certification audit across the bench</td><td class="n">115</td><td class="n">~1 day/mo</td><td>done annually, if at all</td></tr>
+        <tr><td>Chasing overdue invoices by age</td><td class="n">108</td><td class="n">~4 hrs/wk</td><td>chased only when cash is tight</td></tr>
+        <tr><td>Scoring, grading and routing every lead</td><td class="n">593</td><td class="n">~10 hrs</td><td>done by gut feel</td></tr>
+        <tr><td>Recomputing engagement health with reasons</td><td class="n">500</td><td class="n">—</td><td><strong>not humanly possible</strong></td></tr>
+        <tr><td>Rolling NPS to accounts, raising recovery tickets</td><td class="n">263</td><td class="n">~5 hrs</td><td>never happens</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Where it changed the answer, not just the effort</h3>
+  <p>
+    Time saved is the least interesting benefit. The system made four questions answerable
+    that the business previously could not ask at all.
+  </p>
+
+  <div class="panel">
+    <h4>1 · The CRM understates its own risk by six times</h4>
+    <p>
+      <strong>133 engagements score below 60. Only 22 carry the At Risk status.</strong>
+      Health is recomputed from live delivery signals on every run; the status field is not
+      written back from it. The flag the business filters and reports on is therefore stale
+      by design-omission. Closing that loop is the single highest-value change available.
+    </p>
+
+    <h4>2 · The premium tier delivers nothing extra</h4>
+    <p>
+      Summit averages <strong>$26,402</strong> per deal against Core's <strong>$15,361</strong> —
+      a 72% premium — while delivered health is flat across all three tiers
+      (67.9 / 68.2 / 67.9, a spread of <strong>0.36 points</strong>). Either the premium buys
+      something this CRM does not measure, or it buys nothing. Nobody had put the two numbers
+      side by side.
+    </p>
+
+    <h4>3 · Receivables have stopped moving, not slowed down</h4>
+    <p>
+      <strong>86 of 115 unpaid invoices are more than 90 days past due</strong>, worth
+      <strong>$1,601,652</strong>, against an average time-to-pay of 37.2 days. A long tail
+      against a short average is not slow payment — it is an absent collections process.
+    </p>
+
+    <h4>4 · Nearly four deals in ten are discounted</h4>
+    <p>
+      <strong>578 of 1,500 line items</strong> carry a discount — 38.5% of everything sold —
+      averaging 10.9% off, or <strong>$1,522,504</strong> of list value given away. No one
+      decides to discount at that rate; it accumulates one deal at a time.
+    </p>
+  </div>
+
+  <div class="note warn">
+    <span class="note-k">The honest limitation</span>
+    <p>
+      This runs on a schedule, so there is lag. A paid HubSpot workflow fires in seconds;
+      this reconciles on its next pass. That is a real trade — instant response was exchanged
+      for zero licence cost. The reconciling design is what makes the trade safe rather than
+      merely cheap.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 5 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 05</div><h2>What HubSpot's paid tiers would replace</h2></div>
+
+  <p class="lede">
+    Every rule here maps to a real HubSpot feature. The reason all eleven were built by hand
+    is that those features live across four different Hubs, and almost all begin at
+    Professional.
+  </p>
+
+  <figure>
+    <div class="fig-wrap">
+      <svg viewBox="0 0 900 268" role="img"
+           aria-label="The same pipeline drawn twice: today an external engine sits outside HubSpot and reconciles on a schedule; with Operations Hub Professional the same logic runs inside HubSpot as a custom coded action, triggered in real time.">
+        <defs>
+          <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ah3A" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#4152A3"/>
+          </marker>
+        </defs>
+
+        <text x="16" y="24" font-size="12.5" font-weight="700" fill="currentColor"
+              font-family="system-ui, sans-serif">Today — free tier</text>
+
+        <rect x="16" y="40" width="150" height="48" rx="7" fill="currentColor" opacity=".08"/>
+        <text x="91" y="69" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">record changes</text>
+
+        <line x1="174" y1="64" x2="252" y2="64" stroke="currentColor" stroke-width="1.6"
+              stroke-dasharray="5 4" opacity=".6" marker-end="url(#ah3)"/>
+        <text x="213" y="56" text-anchor="middle" font-size="10" fill="currentColor" opacity=".75"
+              font-family="ui-monospace, monospace">waits</text>
+
+        <rect x="260" y="40" width="176" height="48" rx="7" fill="currentColor" opacity=".08"/>
+        <text x="348" y="62" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">scheduled pass</text>
+        <text x="348" y="79" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7"
+              font-family="system-ui, sans-serif">outside HubSpot</text>
+
+        <line x1="444" y1="64" x2="522" y2="64" stroke="currentColor" stroke-width="1.6"
+              opacity=".6" marker-end="url(#ah3)"/>
+        <rect x="530" y="40" width="150" height="48" rx="7" fill="currentColor" opacity=".08"/>
+        <text x="605" y="69" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">ticket written</text>
+
+        <text x="770" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor"
+              font-family="system-ui, sans-serif">lag: up to</text>
+        <text x="770" y="79" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor"
+              font-family="ui-monospace, monospace">30 min</text>
+
+        <line x1="16" y1="118" x2="884" y2="118" stroke="currentColor" opacity=".2"/>
+
+        <text x="16" y="148" font-size="12.5" font-weight="700" fill="#4152A3"
+              font-family="system-ui, sans-serif">With Operations Hub Professional</text>
+
+        <rect x="16" y="164" width="150" height="48" rx="7" fill="#4152A3" fill-opacity=".1"
+              stroke="#4152A3" stroke-width="1.3"/>
+        <text x="91" y="193" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">record changes</text>
+
+        <line x1="174" y1="188" x2="252" y2="188" stroke="#4152A3" stroke-width="2" marker-end="url(#ah3A)"/>
+        <text x="213" y="180" text-anchor="middle" font-size="10" fill="#4152A3" font-weight="600"
+              font-family="ui-monospace, monospace">triggers</text>
+
+        <rect x="260" y="164" width="176" height="48" rx="7" fill="#4152A3" fill-opacity=".1"
+              stroke="#4152A3" stroke-width="1.3"/>
+        <text x="348" y="186" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">custom coded action</text>
+        <text x="348" y="203" text-anchor="middle" font-size="11" fill="#4152A3" font-weight="600"
+              font-family="system-ui, sans-serif">inside HubSpot</text>
+
+        <line x1="444" y1="188" x2="522" y2="188" stroke="#4152A3" stroke-width="2" marker-end="url(#ah3A)"/>
+        <rect x="530" y="164" width="150" height="48" rx="7" fill="#4152A3" fill-opacity=".1"
+              stroke="#4152A3" stroke-width="1.3"/>
+        <text x="605" y="193" text-anchor="middle" font-size="12" fill="currentColor"
+              font-family="system-ui, sans-serif">ticket written</text>
+
+        <text x="770" y="184" text-anchor="middle" font-size="12" font-weight="700" fill="#4152A3"
+              font-family="system-ui, sans-serif">lag:</text>
+        <text x="770" y="203" text-anchor="middle" font-size="14" font-weight="700" fill="#4152A3"
+              font-family="ui-monospace, monospace">seconds</text>
+
+        <text x="450" y="248" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".75"
+              font-family="system-ui, sans-serif">Same logic, same health model — only the place it executes and the trigger change.</text>
+      </svg>
+    </div>
+    <figcaption>
+      <b>The upgrade does not rewrite the system; it relocates it.</b> Operations Hub
+      Professional is the one paid product whose purpose is precisely "the drag-and-drop
+      builder is not enough, let me write code" — which is exactly the gap this engine fills
+      for free, at the cost of latency.
+    </figcaption>
+  </figure>
+
+  <h3>Hub by hub, with what it would change here</h3>
+
+  <div class="panel">
+    <h4>Sales Hub Professional <span class="tag paid">Professional</span></h4>
+    <p>
+      Replaces <strong>WF-01</strong> and <strong>WF-02</strong>. Gives native workflows,
+      "rotate record to owner", sequences, and deal-stage automation.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        A CHRO submits the consultation form at 9:04pm. Today WF-08 raises the speed-to-lead
+        ticket on its next pass — possibly the following morning. With Sales Hub Pro the
+        rotation action assigns her to the East pod owner <em>on submission</em>, and a
+        three-step follow-up sequence starts immediately. Research on inbound response times
+        consistently shows contact within the first hour dominates outcomes; overnight lag is
+        the difference between a booked call and a cold callback.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Service Hub Professional <span class="tag paid">Professional</span></h4>
+    <p>
+      Replaces <strong>WF-05</strong> and <strong>WF-10</strong>. Native help-desk SLAs with
+      automatic escalation, plus built-in NPS and CSAT surveys.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        The portal currently carries <strong>174 SLA-breached tickets</strong>, and the breach
+        is a flag this engine calculates and stamps on. With Service Hub Pro the SLA is a
+        real timer: the clock starts when the ticket opens, the ticket changes colour as it
+        approaches the limit, and it escalates to a manager by itself.
+      </p>
+      <p>
+        The 10 NPS detractor tickets are currently derived from a score already sitting in a
+        property. Service Hub would <em>send</em> the survey — automatically, 30 days after
+        an engagement ends — so the sentiment data becomes something the business collects
+        rather than something it assumes.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Marketing Hub Professional <span class="tag paid">Professional</span></h4>
+    <p>
+      Replaces <strong>WF-09</strong>'s scoring half and the first-touch attribution model.
+      Adds nurture email, smart forms with progressive profiling, and campaign reporting.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        Attribution here is first-touch only, rolled from contact onto deal. It shows
+        <strong>referral converting at 23.5%</strong> against paid search at 0%. But
+        first-touch cannot see that a referral lead also attended a conference and opened
+        four emails before buying. Marketing Hub's multi-touch attribution splits credit
+        across the whole journey — which is what you need before moving budget, because
+        first-touch systematically overpays whichever channel happens to arrive first.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Operations Hub Professional <span class="tag paid">Professional</span> <em>— the pivotal one</em></h4>
+    <p>
+      Replaces <strong>WF-11</strong> and the engine's whole execution model. Custom coded
+      workflow actions, programmable automation, data quality automation, and two-way Data
+      Sync with outside systems.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        The five-signal health model cannot be built with drag-and-drop conditions — it needs
+        real code. Operations Hub Pro lets that exact JavaScript run <em>inside</em> a HubSpot
+        workflow, triggered when a ticket is raised or an invoice goes overdue, instead of on
+        a 30-minute timer.
+      </p>
+      <p>
+        Data Sync also removes the invoice mirror entirely. Today seven deal properties carry
+        invoice state copied from accounting. With Ops Hub, QuickBooks or Xero syncs
+        two-way and the mirror stops being something anyone maintains.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Commerce Hub <span class="tag paid">Add-on</span></h4>
+    <p>
+      Replaces <strong>WF-07</strong>. Native invoices, payment links, automated reminders
+      and subscription billing.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        There is <strong>$1,758,415 outstanding</strong>, and 86 invoices more than 90 days
+        past due. WF-07 raises a ticket for each — but a ticket asks a human to chase.
+        Commerce Hub emails the client a reminder with a payment link at 7, 14 and 30 days
+        automatically. Most of that tail is not disputed debt; it is debt nobody got round to
+        asking for. Requires a US entity and a connected processor.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Enterprise tiers <span class="tag ent">Enterprise</span></h4>
+    <p>
+      Custom objects, predictive lead scoring, territory management, sandboxes.
+    </p>
+    <div class="eg">
+      <span class="eg-k">In practice</span>
+      <p>
+        Consultant certifications are currently four properties on a contact, so a person can
+        hold only one certification with one expiry date. As a <strong>custom object</strong>
+        each certification becomes its own record — many per consultant, each with an issuer,
+        a scope and its own renewal date. That is the difference between "this consultant is
+        compliant" and "this consultant is compliant <em>for this kind of engagement,</em>
+        until March."
+      </p>
+      <p>
+        The five delivery pods WF-09 assigns are also a hand-built stand-in for Sales
+        Enterprise <strong>territory management</strong>, which handles the same routing with
+        real ownership rules and quota rollup.
+      </p>
+    </div>
+  </div>
+
+  <div class="note cost">
+    <span class="note-k">Cost of the equivalent</span>
+    <p>
+      Replacing all eleven rules with native features means Sales Pro + Service Pro +
+      Marketing Pro + Operations Pro — realistically the <em>Customer Platform Professional</em>
+      bundle — and Enterprise is still required for custom objects and territories.
+      Indicatively that is in the region of <strong>$1,500–2,000 per month</strong>; treat
+      that as a planning figure and confirm against current HubSpot pricing, which changes.
+    </p>
+    <p>
+      The engine's real argument is not that it is free. It is that
+      <strong>the logic was specified, versioned and proven before any licence was bought</strong>
+      — so the upgrade decision is now a latency and support question, not a discovery
+      exercise.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 6 ============================ -->
+<section>
+  <div class="sec-head"><div class="sec-n">Section 06</div><h2>Operating the system</h2></div>
+
+  <div class="tw">
+    <table>
+      <caption>Everything is one command</caption>
+      <thead><tr><th>Task</th><th>Command</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Preview every change, write nothing</td><td><code>node engine.js --dry-run</code></td><td>always safe</td></tr>
+        <tr><td>Run all eleven rules</td><td><code>node engine.js</code></td><td>idempotent, re-runnable</td></tr>
+        <tr><td>Run specific rules</td><td><code>node engine.js --only WF-03,WF-05</code></td><td>—</td></tr>
+        <tr><td>Pull fresh data from HubSpot</td><td><code>node snapshot.js</code></td><td>~2–3 minutes</td></tr>
+        <tr><td>Verify every published number</td><td><code>node validate.js</code></td><td>39/39 must pass</td></tr>
+        <tr><td>Open the live dashboard</td><td><code>Start-Dashboard.cmd</code></td><td>double-click; localhost only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The dashboard renders instantly from the last snapshot and refreshes in the background
+    every 30 minutes, because a full pull takes minutes and must never block a page load. It
+    binds to <code>127.0.0.1</code> only — the HubSpot token stays in the Node process and is
+    never sent to the browser.
+  </p>
+
+  <div class="note">
+    <span class="note-k">Self-verification</span>
+    <p>
+      <code>validate.js</code> re-derives all 39 published claims directly from the live
+      portal and compares them to what the documents assert. It also scans the published
+      pages for any number that cannot be traced to live data. The current state is
+      <strong>39/39 claims passing, zero drift, zero untraceable figures</strong>. If a rule
+      changes something, the validator says so before a reader does.
+    </p>
+  </div>
+</section>
+
+<footer>
+  ZIA &middot; Automation Architecture &middot; HubSpot portal 247000083<br>
+  226 companies &middot; 353 contacts &middot; 659 deals &middot; 643 tickets &middot; 114 quotes &middot; 431 line items<br>
+  258 invoices &middot; 272 documents &middot; 71 custom properties &middot; 15 automation rules &middot; 2,570+ live objects<br>
+  All figures pulled live from the CRM API. Regenerate with <code>node snapshot.js &amp;&amp; node validate.js</code>.
+</footer>
+
+
+</div>

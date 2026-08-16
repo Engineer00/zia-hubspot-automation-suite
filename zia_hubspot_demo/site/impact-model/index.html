@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placement Economics — What the System Is Worth</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  /* Minimal reset — the fragment supplies its own design system on top. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --ground:#F2F3F0; --surface:#FBFBF9; --sunk:#E8EAE5; --raised:#FFFFFF;
+    --ink:#171A19; --ink-2:#5D6560; --ink-3:#878F89;
+    --rule:#D6D9D3; --rule-firm:#B9BEB7;
+    --accent:#1D5D57; --accent-soft:#DDE8E5;
+    --signal:#B4471C; --signal-soft:#F3E2D8;
+    --good:#2F6B45; --good-soft:#DCE9E0;
+    --shadow: 0 1px 2px rgba(23,26,25,.06), 0 8px 24px -16px rgba(23,26,25,.28);
+    --track: #CFD4CD;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+      --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+      --rule:#2C312E; --rule-firm:#404742;
+      --accent:#6FBBB1; --accent-soft:#1B2E2B;
+      --signal:#E2895B; --signal-soft:#2E1F18;
+      --good:#7DBE95; --good-soft:#1A2A1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+      --track: #363C38;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+    --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+    --rule:#2C312E; --rule-firm:#404742;
+    --accent:#6FBBB1; --accent-soft:#1B2E2B;
+    --signal:#E2895B; --signal-soft:#2E1F18;
+    --good:#7DBE95; --good-soft:#1A2A1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    --track: #363C38;
+  }
+  :root {
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6; margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px 100px; }
+
+  header.top { padding: 64px 0 30px; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.08;
+    letter-spacing: -.015em; margin: 0 0 16px; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--serif); font-size: 1.14rem; line-height: 1.5;
+    color: var(--ink-2); max-width: 58ch; margin: 0;
+  }
+
+  /* ── headline result ─────────────────────────────── */
+  .headline {
+    margin: 34px 0 0; padding: 30px 32px;
+    background: var(--accent-soft); border: 1px solid var(--accent);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px;
+  }
+  .hl .hlk {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 8px;
+  }
+  .hl .hlv {
+    font-family: var(--mono); font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+    font-weight: 600; letter-spacing: -.02em; color: var(--ink);
+    font-variant-numeric: tabular-nums; margin: 0 0 6px; line-height: 1.05;
+  }
+  .hl .hln { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.45; }
+
+  /* ── layout ──────────────────────────────────────── */
+  .grid {
+    display: grid; grid-template-columns: 330px minmax(0,1fr);
+    gap: 40px; margin-top: 54px; align-items: start;
+  }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; gap: 34px; } }
+
+  /* ── controls ────────────────────────────────────── */
+  .panel {
+    background: var(--surface); border: 1px solid var(--rule);
+    padding: 24px 22px; box-shadow: var(--shadow); position: sticky; top: 20px;
+  }
+  @media (max-width: 860px) { .panel { position: static; } }
+  .panel h2 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 20px; font-weight: 500;
+  }
+  .ctrl { margin-bottom: 22px; }
+  .ctrl:last-child { margin-bottom: 0; }
+  .ctrl label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13.5px; color: var(--ink-2); margin-bottom: 8px; gap: 10px;
+  }
+  .ctrl label .val {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    font-variant-numeric: tabular-nums; font-weight: 600;
+  }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 3px; background: var(--track);
+    border-radius: 2px; outline: none; margin: 0; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  .mixbar {
+    display: flex; height: 8px; margin: 10px 0 8px;
+    border: 1px solid var(--rule-firm); overflow: hidden;
+  }
+  .mixbar span { display: block; height: 100%; }
+  .mix-core { background: var(--track); }
+  .mix-mom  { background: var(--accent); }
+  .mix-sum  { background: var(--ink-2); }
+  .mixkey {
+    display: flex; flex-wrap: wrap; gap: 4px 14px;
+    font-family: var(--mono); font-size: 10.5px; color: var(--ink-3);
+  }
+  .mixkey b { color: var(--ink-2); font-weight: 500; }
+
+  .reset {
+    margin-top: 24px; width: 100%; padding: 9px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    background: transparent; color: var(--ink-2);
+    border: 1px solid var(--rule-firm); border-radius: 2px; cursor: pointer;
+  }
+  .reset:hover { color: var(--accent); border-color: var(--accent); }
+  .reset:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ── results ─────────────────────────────────────── */
+  .resultblock { margin-bottom: 44px; }
+  .rb-head {
+    display: flex; align-items: baseline; gap: 14px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 22px;
+  }
+  .rb-head h2 {
+    font-family: var(--serif); font-weight: 400; font-size: 1.5rem;
+    letter-spacing: -.012em; margin: 0;
+  }
+  .rb-head .n { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .rb-intro { font-size: 14.5px; color: var(--ink-2); margin: 0 0 22px; max-width: 66ch; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  }
+  .stat { background: var(--raised); padding: 18px 18px 16px; }
+  .stat .k {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px;
+  }
+  .stat .v {
+    font-family: var(--mono); font-size: 1.45rem; font-weight: 600;
+    letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+    margin: 0 0 8px; line-height: 1.1; color: var(--ink);
+  }
+  .stat .v.pos { color: var(--good); }
+  .stat .v.neg { color: var(--signal); }
+  .stat .d { font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+  .stat .f {
+    font-family: var(--mono); font-size: 10.5px; color: var(--ink-3);
+    margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+
+  /* ── waterfall ───────────────────────────────────── */
+  .fall { margin: 26px 0 0; }
+  .fallrow {
+    display: grid; grid-template-columns: 180px minmax(0,1fr) 118px;
+    gap: 14px; align-items: center; padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fallrow:last-child { border-bottom: none; }
+  .fallrow .fl { font-size: 13.5px; color: var(--ink-2); }
+  .fallrow .fbwrap { background: var(--sunk); height: 20px; position: relative; }
+  .fallrow .fb { height: 100%; background: var(--accent); transition: width .18s ease; }
+  .fallrow .fb.warn { background: var(--signal); }
+  .fallrow .fb.good { background: var(--good); }
+  .fallrow .fv {
+    font-family: var(--mono); font-size: 13px; text-align: right;
+    font-variant-numeric: tabular-nums; color: var(--ink);
+  }
+  @media (max-width: 620px) {
+    .fallrow { grid-template-columns: 1fr 90px; }
+    .fallrow .fbwrap { grid-column: 1 / -1; order: 3; }
+  }
+
+  .note {
+    font-size: 13.5px; color: var(--ink-2); background: var(--sunk);
+    border: 1px solid var(--rule); padding: 15px 17px; margin: 26px 0 0; max-width: 72ch;
+  }
+  .note b { color: var(--ink); }
+  .note.warn { border-color: var(--signal); background: var(--signal-soft); }
+  .note.warn b { color: var(--signal); }
+
+  details.assump {
+    margin-top: 40px; border: 1px solid var(--rule-firm); background: var(--surface);
+  }
+  details.assump summary {
+    padding: 16px 20px; cursor: pointer; font-family: var(--mono);
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+    list-style: none;
+  }
+  details.assump summary::-webkit-details-marker { display: none; }
+  details.assump summary::before { content: "▸ "; }
+  details.assump[open] summary::before { content: "▾ "; }
+  details.assump summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .assump-body { padding: 0 20px 22px; font-size: 14px; color: var(--ink-2); max-width: 74ch; }
+  .assump-body p { margin: 0 0 .9em; }
+  .assump-body ul { padding-left: 1.15em; margin: 0 0 .9em; }
+  .assump-body li { margin-bottom: .4em; }
+  .assump-body b { color: var(--ink); }
+  .assump-body code {
+    font-family: var(--mono); font-size: .86em; background: var(--sunk);
+    padding: 1px 5px; border-radius: 2px;
+  }
+
+  .closer {
+    margin-top: 60px; padding: 30px;
+    background: var(--surface); border: 1px solid var(--rule-firm); box-shadow: var(--shadow);
+  }
+  .closer p { font-family: var(--serif); font-size: 1.14rem; line-height: 1.5; margin: 0; max-width: 60ch; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Placement economics · interactive model</p>
+    <h1>What your placement book is worth,<br>and what churn is quietly costing you</h1>
+    <p class="standfirst">Adjust the inputs on the left to reflect your actual book. Every figure recalculates from your numbers, and each one shows the formula behind it so you can check the working rather than take it on trust.</p>
+  </header>
+
+  <div class="headline" role="region" aria-label="Headline results">
+    <div class="hl">
+      <p class="hlk">Recurring revenue running today</p>
+      <p class="hlv" id="hl-mrr">$0</p>
+      <p class="hln">That's <b id="hl-arr">$0</b> a year, and none of it currently appears in a deal-based forecast.</p>
+    </div>
+    <div class="hl">
+      <p class="hlk">At risk each year from churn</p>
+      <p class="hlv" id="hl-risk">$0</p>
+      <p class="hln">The revenue you need to replace every year simply to stay where you are.</p>
+    </div>
+    <div class="hl">
+      <p class="hlk">Recoverable with earlier warning</p>
+      <p class="hlv" id="hl-save">$0</p>
+      <p class="hln">Along with <b id="hl-hours">0 hours</b> of coordination time given back to the team.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- ── controls ── -->
+    <form class="panel" id="panel" aria-label="Model inputs">
+      <h2>Your numbers</h2>
+
+      <div class="ctrl">
+        <label for="placements">Active placements <span class="val" id="v-placements">25</span></label>
+        <input type="range" id="placements" min="1" max="200" step="1" value="25">
+      </div>
+
+      <div class="ctrl">
+        <label for="hours">Avg hours per week <span class="val" id="v-hours">32</span></label>
+        <input type="range" id="hours" min="10" max="40" step="1" value="32">
+      </div>
+
+      <div class="ctrl">
+        <label for="mixCore">Tier mix — Core <span class="val" id="v-mixCore">30%</span></label>
+        <input type="range" id="mixCore" min="0" max="100" step="5" value="30">
+        <label for="mixSummit" style="margin-top:12px">Tier mix — Summit <span class="val" id="v-mixSummit">15%</span></label>
+        <input type="range" id="mixSummit" min="0" max="100" step="5" value="15">
+        <div class="mixbar" aria-hidden="true">
+          <span class="mix-core" id="bar-core" style="width:30%"></span>
+          <span class="mix-mom"  id="bar-mom"  style="width:55%"></span>
+          <span class="mix-sum"  id="bar-sum"  style="width:15%"></span>
+        </div>
+        <div class="mixkey">
+          <span><b id="k-core">30%</b> Core $12</span>
+          <span><b id="k-mom">55%</b> Momentum $16</span>
+          <span><b id="k-sum">15%</b> Summit $22</span>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label for="cost">Talent cost as % of bill rate <span class="val" id="v-cost">45%</span></label>
+        <input type="range" id="cost" min="20" max="80" step="1" value="45">
+      </div>
+
+      <div class="ctrl">
+        <label for="churn">Annual placement churn <span class="val" id="v-churn">25%</span></label>
+        <input type="range" id="churn" min="0" max="60" step="1" value="25">
+      </div>
+
+      <div class="ctrl">
+        <label for="saverate">Churn caught by early warning <span class="val" id="v-saverate">25%</span></label>
+        <input type="range" id="saverate" min="0" max="60" step="5" value="25">
+      </div>
+
+      <div class="ctrl">
+        <label for="newper">New placements per month <span class="val" id="v-newper">3</span></label>
+        <input type="range" id="newper" min="0" max="20" step="1" value="3">
+      </div>
+
+      <div class="ctrl">
+        <label for="coord">Manual coordination hrs per new placement <span class="val" id="v-coord">6</span></label>
+        <input type="range" id="coord" min="0" max="20" step="1" value="6">
+      </div>
+
+      <button type="button" class="reset" id="reset">Reset to defaults</button>
+    </form>
+
+    <!-- ── results ── -->
+    <div>
+
+      <section class="resultblock">
+        <div class="rb-head"><span class="n">01</span><h2>What the book is worth</h2></div>
+        <p class="rb-intro">A deal record carries one amount and one close date. A placement bills every week for a year or more. That difference is why the figures below don't appear anywhere in a standard CRM setup — there is no record holding them.</p>
+        <div class="stats">
+          <div class="stat">
+            <p class="k">Blended bill rate</p>
+            <p class="v" id="s-blend">$0</p>
+            <p class="d">Weighted across your tier mix.</p>
+            <p class="f">Σ (tier rate × tier share)</p>
+          </div>
+          <div class="stat">
+            <p class="k">Revenue per placement</p>
+            <p class="v" id="s-perplace">$0</p>
+            <p class="d">Per month, at your average hours.</p>
+            <p class="f">rate × hrs/wk × 4.33</p>
+          </div>
+          <div class="stat">
+            <p class="k">Monthly recurring</p>
+            <p class="v" id="s-mrr">$0</p>
+            <p class="d">Across all active placements.</p>
+            <p class="f">per-placement × active</p>
+          </div>
+          <div class="stat">
+            <p class="k">Gross margin / month</p>
+            <p class="v pos" id="s-margin">$0</p>
+            <p class="d">Only computable once talent cost sits on a record joined to the placement.</p>
+            <p class="f">(bill − cost) × hrs × 4.33</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="resultblock">
+        <div class="rb-head"><span class="n">02</span><h2>Where it leaks</h2></div>
+        <p class="rb-intro">Placements rarely end suddenly. They degrade over weeks — a check-in that slips, satisfaction drifting down, escalations becoming more frequent. Every one of those signals is already sitting in the CRM from the moment a placement record exists. The difficulty is that nothing is currently watching for them.</p>
+        <div class="stats">
+          <div class="stat">
+            <p class="k">Placements lost / year</p>
+            <p class="v neg" id="s-lost">0</p>
+            <p class="d">At your current churn rate.</p>
+            <p class="f">active × churn rate</p>
+          </div>
+          <div class="stat">
+            <p class="k">Run-rate revenue lost</p>
+            <p class="v neg" id="s-risk">$0</p>
+            <p class="d">Annualized value of the placements that end.</p>
+            <p class="f">lost × per-placement × 12</p>
+          </div>
+          <div class="stat">
+            <p class="k">Recoverable annually</p>
+            <p class="v pos" id="s-save">$0</p>
+            <p class="d">If health scoring surfaces at-risk placements early enough to intervene.</p>
+            <p class="f">revenue at risk × save rate</p>
+          </div>
+          <div class="stat">
+            <p class="k">Margin recovered</p>
+            <p class="v pos" id="s-savemargin">$0</p>
+            <p class="d">The part that reaches the bottom line.</p>
+            <p class="f">recovered × (1 − cost %)</p>
+          </div>
+        </div>
+
+        <div class="fall" id="fall" aria-label="Revenue waterfall">
+          <div class="fallrow">
+            <span class="fl">Run-rate if nothing churned</span>
+            <span class="fbwrap"><span class="fb" id="f1" style="width:100%"></span></span>
+            <span class="fv" id="fv1">$0</span>
+          </div>
+          <div class="fallrow">
+            <span class="fl">Lost to churn</span>
+            <span class="fbwrap"><span class="fb warn" id="f2" style="width:0%"></span></span>
+            <span class="fv" id="fv2">$0</span>
+          </div>
+          <div class="fallrow">
+            <span class="fl">Recovered by early warning</span>
+            <span class="fbwrap"><span class="fb good" id="f3" style="width:0%"></span></span>
+            <span class="fv" id="fv3">$0</span>
+          </div>
+          <div class="fallrow">
+            <span class="fl">Net annual revenue</span>
+            <span class="fbwrap"><span class="fb" id="f4" style="width:0%"></span></span>
+            <span class="fv" id="fv4">$0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="resultblock">
+        <div class="rb-head"><span class="n">03</span><h2>What automation returns</h2></div>
+        <p class="rb-intro">Every new placement sets off the same chain of manual work: checking who's available, creating the onboarding task, sending the welcome email, requesting system access, and remembering to book the first check-in. It's a day's coordination that happens the same way every time, which is precisely what makes it automatable.</p>
+        <div class="stats">
+          <div class="stat">
+            <p class="k">Coordination hours / year</p>
+            <p class="v" id="s-coordhrs">0</p>
+            <p class="d">Currently spent placing people, not on the work itself.</p>
+            <p class="f">new/mo × 12 × hrs each</p>
+          </div>
+          <div class="stat">
+            <p class="k">Working weeks equivalent</p>
+            <p class="v" id="s-weeks">0</p>
+            <p class="d">At a 40-hour week — easier to feel than a raw hour count.</p>
+            <p class="f">hours ÷ 40</p>
+          </div>
+          <div class="stat">
+            <p class="k">Total annual value</p>
+            <p class="v pos" id="s-total">$0</p>
+            <p class="d">Recovered margin plus coordination time valued at the blended cost rate.</p>
+            <p class="f">margin recovered + hours × cost rate</p>
+          </div>
+          <div class="stat">
+            <p class="k">Break-even at</p>
+            <p class="v" id="s-breakeven">—</p>
+            <p class="d">Share of the recoverable churn that would need to be caught for the system to pay for a $15k/yr role.</p>
+            <p class="f">role cost ÷ value at 100% save</p>
+          </div>
+        </div>
+
+        <div class="note warn" id="sanity"><b>Sanity check:</b> adjust the inputs to your real book before quoting any of this.</div>
+      </section>
+
+      <details class="assump">
+        <summary>Assumptions, and where this model is weakest</summary>
+        <div class="assump-body">
+          <p>A model presented without its limits is a sales pitch. These are the places this one is soft, stated so they can be argued with rather than discovered later.</p>
+          <ul>
+            <li><b>4.33 weeks per month</b> is used throughout (52 ÷ 12). Fine for planning, wrong for invoicing — real billing follows actual hours logged, which will differ.</li>
+            <li><b>Churn is modeled as run-rate loss</b>, not as remaining contract value. A placement ending in month three costs more than one ending in month twenty, and this model doesn't distinguish them. It therefore understates early churn and overstates late churn.</li>
+            <li><b>The save rate is the softest input on the page.</b> Health scoring surfaces at-risk placements; it does not save them. Whether an intervention works depends on the CSM and the client, not the CRM. Treat 25% as a hypothesis to be measured after two quarters, not a promise.</li>
+            <li><b>Coordination hours are self-reported</b> and people are poor at estimating their own admin time — usually underestimating it. Worth timing one real onboarding before trusting the figure.</li>
+            <li><b>Talent cost as a flat percentage</b> smooths over real variation between tiers and regions. Actual margin comes from a cost rate on each talent record, which is exactly why the architecture puts it there.</li>
+            <li><b>Nothing here counts the upside</b> from faster matching, higher showcase conversion, or tier upgrades caught by scope-drift monitoring. Those are real but harder to defend, so they're left out rather than used to inflate the number.</li>
+          </ul>
+          <p>The honest summary: <b>the revenue-visibility figures are solid</b> — they're arithmetic on rates and hours. The <b>recovery figures are directional</b>, dependent on an intervention rate nobody can know in advance. Present them as two different kinds of claim, because they are.</p>
+        </div>
+      </details>
+
+      <div class="closer">
+        <p>The size of the number matters less than the fact that, today, it can't be produced at all. A business whose revenue comes almost entirely from recurring delivery is currently forecasting on the one part of the transaction that only happens once. Everything in this model becomes reportable the moment a placement has a record of its own.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var RATES = { core: 12, momentum: 16, summit: 22 };
+  var WEEKS_PER_MONTH = 52 / 12;
+  var ROLE_COST = 15000; // annual, USD equivalent — the hire this system justifies
+
+  var DEFAULTS = {
+    placements: 25, hours: 32, mixCore: 30, mixSummit: 15,
+    cost: 45, churn: 25, saverate: 25, newper: 3, coord: 6
+  };
+
+  var ids = Object.keys(DEFAULTS);
+  var el = {};
+  ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+  function $(id) { return document.getElementById(id); }
+
+  function money(n) {
+    var abs = Math.abs(n);
+    if (abs >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+    if (abs >= 10000)   return '$' + Math.round(n / 1000) + 'k';
+    return '$' + Math.round(n).toLocaleString();
+  }
+  function exact(n) { return '$' + Math.round(n).toLocaleString(); }
+
+  function readMix() {
+    var core = +el.mixCore.value;
+    var summit = +el.mixSummit.value;
+    // Core and Summit are the two the user steers; Momentum absorbs the remainder,
+    // which matches how the tiers actually sell (Momentum is the common case).
+    if (core + summit > 100) {
+      summit = 100 - core;
+      el.mixSummit.value = summit;
+    }
+    return { core: core, summit: summit, momentum: 100 - core - summit };
+  }
+
+  function compute() {
+    var mix = readMix();
+    var placements = +el.placements.value;
+    var hours = +el.hours.value;
+    var costPct = +el.cost.value / 100;
+    var churn = +el.churn.value / 100;
+    var saveRate = +el.saverate.value / 100;
+    var newPer = +el.newper.value;
+    var coordHrs = +el.coord.value;
+
+    var blended = (RATES.core * mix.core + RATES.momentum * mix.momentum + RATES.summit * mix.summit) / 100;
+    var perPlacementMonth = blended * hours * WEEKS_PER_MONTH;
+    var mrr = perPlacementMonth * placements;
+    var arr = mrr * 12;
+    var marginMonth = blended * (1 - costPct) * hours * WEEKS_PER_MONTH * placements;
+
+    var lost = placements * churn;
+    var revenueAtRisk = lost * perPlacementMonth * 12;
+    var recovered = revenueAtRisk * saveRate;
+    var recoveredMargin = recovered * (1 - costPct);
+
+    var coordHoursYear = newPer * 12 * coordHrs;
+    // Coordination time is valued at the blended talent cost rate — the closest
+    // defensible proxy for what an hour of internal ops time costs.
+    var coordValue = coordHoursYear * (blended * costPct);
+
+    var totalValue = recoveredMargin + coordValue;
+    var valueAtFullSave = revenueAtRisk * (1 - costPct) + coordValue;
+    var breakevenPct = valueAtFullSave > 0 ? (ROLE_COST / valueAtFullSave) * 100 : Infinity;
+
+    return {
+      mix: mix, blended: blended, perPlacementMonth: perPlacementMonth,
+      mrr: mrr, arr: arr, marginMonth: marginMonth,
+      lost: lost, revenueAtRisk: revenueAtRisk,
+      recovered: recovered, recoveredMargin: recoveredMargin,
+      coordHoursYear: coordHoursYear, coordValue: coordValue,
+      totalValue: totalValue, breakevenPct: breakevenPct
+    };
+  }
+
+  function render() {
+    var r = compute();
+
+    // control read-outs
+    $('v-placements').textContent = el.placements.value;
+    $('v-hours').textContent = el.hours.value;
+    $('v-mixCore').textContent = r.mix.core + '%';
+    $('v-mixSummit').textContent = r.mix.summit + '%';
+    $('v-cost').textContent = el.cost.value + '%';
+    $('v-churn').textContent = el.churn.value + '%';
+    $('v-saverate').textContent = el.saverate.value + '%';
+    $('v-newper').textContent = el.newper.value;
+    $('v-coord').textContent = el.coord.value;
+
+    $('bar-core').style.width = r.mix.core + '%';
+    $('bar-mom').style.width  = r.mix.momentum + '%';
+    $('bar-sum').style.width  = r.mix.summit + '%';
+    $('k-core').textContent = r.mix.core + '%';
+    $('k-mom').textContent  = r.mix.momentum + '%';
+    $('k-sum').textContent  = r.mix.summit + '%';
+
+    // headline
+    $('hl-mrr').textContent = money(r.mrr);
+    $('hl-arr').textContent = money(r.arr);
+    $('hl-risk').textContent = money(r.revenueAtRisk);
+    $('hl-save').textContent = money(r.recovered);
+    $('hl-hours').textContent = Math.round(r.coordHoursYear).toLocaleString() + ' hours';
+
+    // block 1
+    $('s-blend').textContent = '$' + r.blended.toFixed(2);
+    $('s-perplace').textContent = exact(r.perPlacementMonth);
+    $('s-mrr').textContent = money(r.mrr);
+    $('s-margin').textContent = money(r.marginMonth);
+
+    // block 2
+    $('s-lost').textContent = r.lost.toFixed(1);
+    $('s-risk').textContent = money(r.revenueAtRisk);
+    $('s-save').textContent = money(r.recovered);
+    $('s-savemargin').textContent = money(r.recoveredMargin);
+
+    // waterfall — bars scale against the gross run-rate
+    var base = r.arr || 1;
+    var net = r.arr - r.revenueAtRisk + r.recovered;
+    $('f1').style.width = '100%';
+    $('f2').style.width = Math.min(100, (r.revenueAtRisk / base) * 100) + '%';
+    $('f3').style.width = Math.min(100, (r.recovered / base) * 100) + '%';
+    $('f4').style.width = Math.min(100, (net / base) * 100) + '%';
+    $('fv1').textContent = money(r.arr);
+    $('fv2').textContent = '−' + money(r.revenueAtRisk);
+    $('fv3').textContent = '+' + money(r.recovered);
+    $('fv4').textContent = money(net);
+
+    // block 3
+    $('s-coordhrs').textContent = Math.round(r.coordHoursYear).toLocaleString();
+    $('s-weeks').textContent = (r.coordHoursYear / 40).toFixed(1);
+    $('s-total').textContent = money(r.totalValue);
+    $('s-breakeven').textContent = isFinite(r.breakevenPct)
+      ? Math.min(999, Math.round(r.breakevenPct)) + '%'
+      : '—';
+
+    // A break-even above 100% means the modeled value can't cover the role —
+    // saying so plainly is more useful than letting the number pass unremarked.
+    var sanity = $('sanity');
+    if (!isFinite(r.breakevenPct) || r.breakevenPct > 100) {
+      sanity.className = 'note warn';
+      sanity.innerHTML = '<b>At these inputs the system does not pay for itself on churn recovery alone.</b> ' +
+        'That is a legitimate outcome and worth saying out loud — at a small book, the argument for this architecture is revenue visibility and forecast accuracy, not cost recovery.';
+    } else {
+      sanity.className = 'note';
+      sanity.innerHTML = '<b>Reading this honestly:</b> catching just <b>' + Math.round(r.breakevenPct) +
+        '%</b> of at-risk placements covers the cost of the role. Everything above that line is margin, ' +
+        'and the revenue-visibility gain is on top and not counted here.';
+    }
+  }
+
+  ids.forEach(function (id) { el[id].addEventListener('input', render); });
+
+  $('reset').addEventListener('click', function () {
+    ids.forEach(function (id) { el[id].value = DEFAULTS[id]; });
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

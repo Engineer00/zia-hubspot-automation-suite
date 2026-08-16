@@ -1,0 +1,20 @@
+---
+source_file: "zia-automation/server.js"
+type: "code"
+community: "Live Dashboard Server"
+location: "L64"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Live_Dashboard_Server
+---
+
+# refresh()
+
+## Connections
+- [[compute()]] - `calls` [EXTRACTED]
+- [[pull()]] - `calls` [EXTRACTED]
+- [[server]] - `calls` [EXTRACTED]
+- [[server.js]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Live_Dashboard_Server

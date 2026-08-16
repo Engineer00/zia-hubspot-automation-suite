@@ -1,0 +1,664 @@
+{
+  "$comment": "Lumen Practice Partners — HubSpot portal schema. A staffing firm placing remote professionals into dental and medical practices: insurance verification, revenue cycle, scheduling and front-office work. Declarative source of truth for every custom property. Run `node provision.js` to apply. Idempotent.",
+
+  "$compliance": "Talent placed by this business handles protected health information. This schema deliberately holds NO patient data of any kind. What it records is evidence that the people who touch PHI are trained, covered by a BAA, and currently authorized. Never add a property to this file that could carry patient information.",
+
+  "propertyGroups": {
+    "contacts": [
+      { "name": "lmn_identity", "label": "Lumen — Identity" },
+      { "name": "lmn_talent", "label": "Lumen — Talent Profile" },
+      { "name": "lmn_compliance", "label": "Lumen — Compliance & Credentials" },
+      { "name": "lmn_education", "label": "Lumen — LumenU" }
+    ],
+    "companies": [
+      { "name": "lmn_practice", "label": "Lumen — Practice Profile" }
+    ],
+    "deals": [
+      { "name": "lmn_engagement", "label": "Lumen — Engagement" },
+      { "name": "lmn_fit", "label": "Lumen — Fit Scorecard" },
+      { "name": "lmn_placement", "label": "Lumen — Placement" }
+    ],
+    "tickets": [
+      { "name": "lmn_support", "label": "Lumen — Support" }
+    ]
+  },
+
+  "properties": {
+    "contacts": [
+      {
+        "name": "lmn_contact_type",
+        "label": "Contact Type",
+        "description": "The discriminator that separates the two audiences. Every list, workflow and sequence filters on this. Never leave blank.",
+        "groupName": "lmn_identity",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Practice Contact", "value": "practice_contact" },
+          { "label": "Talent", "value": "talent" },
+          { "label": "Learner", "value": "learner" },
+          { "label": "Referral Partner", "value": "referral_partner" },
+          { "label": "Unclassified", "value": "unclassified" }
+        ]
+      },
+      {
+        "name": "lmn_practice_role",
+        "label": "Role in Practice",
+        "description": "Buying-committee position. In dental practices the office manager is often the real decision influencer even when the doctor signs.",
+        "groupName": "lmn_identity",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Owner / Doctor", "value": "owner_doctor" },
+          { "label": "Practice Administrator", "value": "practice_admin" },
+          { "label": "Office Manager", "value": "office_manager" },
+          { "label": "Regional / Multi-Site Director", "value": "regional_director" },
+          { "label": "COO / Executive (DSO)", "value": "dso_exec" },
+          { "label": "Billing / RCM Lead", "value": "rcm_lead" },
+          { "label": "HR / People Ops", "value": "hr_people_ops" },
+          { "label": "Other", "value": "other" }
+        ]
+      },
+      {
+        "name": "lmn_source_line",
+        "label": "Source Line",
+        "groupName": "lmn_identity",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Virtual Talent", "value": "virtual_talent" },
+          { "label": "LumenU", "value": "lumenu" },
+          { "label": "Referral — Client", "value": "referral_client" },
+          { "label": "Referral — Partner / Consultant", "value": "referral_partner" },
+          { "label": "Content / Organic", "value": "content_organic" },
+          { "label": "Conference / Study Club", "value": "conference" }
+        ]
+      },
+      {
+        "name": "lmn_referred_by_contact",
+        "label": "Referred By",
+        "description": "Who introduced this contact. The single property that turns word-of-mouth from anecdote into a reportable channel.",
+        "groupName": "lmn_identity",
+        "type": "string",
+        "fieldType": "text"
+      },
+
+      {
+        "name": "lmn_tier_certified",
+        "label": "Tier Certified",
+        "description": "Highest tier this talent is certified to deliver. Required for Bench-Ready.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Core", "value": "core" },
+          { "label": "Momentum", "value": "momentum" },
+          { "label": "Summit", "value": "summit" }
+        ]
+      },
+      {
+        "name": "lmn_talent_function",
+        "label": "Clinical-Administrative Function",
+        "description": "What this person actually does inside a practice. These are genuinely different skills — an insurance verifier is not interchangeable with a treatment coordinator.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "checkbox",
+        "options": [
+          { "label": "Insurance Verification", "value": "insurance_verification" },
+          { "label": "Revenue Cycle / Billing", "value": "revenue_cycle" },
+          { "label": "Claims & AR Follow-up", "value": "claims_ar" },
+          { "label": "Patient Scheduling", "value": "patient_scheduling" },
+          { "label": "Recall & Reactivation", "value": "recall_reactivation" },
+          { "label": "Treatment Coordination", "value": "treatment_coordination" },
+          { "label": "Front Office / Patient Comms", "value": "front_office" },
+          { "label": "Records & Charting Support", "value": "records_charting" },
+          { "label": "Practice Marketing", "value": "practice_marketing" },
+          { "label": "Office Management", "value": "office_management" },
+          { "label": "Operations Leadership", "value": "operations_leadership" }
+        ]
+      },
+      {
+        "name": "lmn_pms_proficiency",
+        "label": "Practice Software Proficiency",
+        "description": "Practice management system experience. A hard matching constraint — fluency in one platform does not transfer to another, and a mismatch costs weeks of productivity.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "checkbox",
+        "options": [
+          { "label": "Dentrix", "value": "dentrix" },
+          { "label": "Eaglesoft", "value": "eaglesoft" },
+          { "label": "Open Dental", "value": "open_dental" },
+          { "label": "Curve Dental", "value": "curve_dental" },
+          { "label": "Denticon", "value": "denticon" },
+          { "label": "Carestream", "value": "carestream" },
+          { "label": "athenahealth", "value": "athenahealth" },
+          { "label": "Other / General EHR", "value": "other_ehr" }
+        ]
+      },
+      {
+        "name": "lmn_payer_experience",
+        "label": "Payer Experience",
+        "description": "Which insurance environments this person has worked. Relevant for verification and claims roles where payer-specific process knowledge is the productivity difference.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "checkbox",
+        "options": [
+          { "label": "Commercial PPO", "value": "commercial_ppo" },
+          { "label": "Medicaid / State Programs", "value": "medicaid" },
+          { "label": "Medicare Advantage", "value": "medicare_advantage" },
+          { "label": "Dental HMO / Capitation", "value": "dhmo" },
+          { "label": "Self-Pay / Membership Plans", "value": "self_pay" }
+        ]
+      },
+      {
+        "name": "lmn_timezone_band",
+        "label": "Coverage Band",
+        "description": "Practices need coverage during their own operating hours. A hard matching constraint, not a preference.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "US Pacific", "value": "us_pacific" },
+          { "label": "US Central / Mountain", "value": "us_central" },
+          { "label": "US Eastern", "value": "us_eastern" },
+          { "label": "Overnight / Overflow", "value": "overnight" }
+        ]
+      },
+      {
+        "name": "lmn_availability_hrs",
+        "label": "Available Hours / Week",
+        "groupName": "lmn_talent",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_cost_rate",
+        "label": "Cost Rate (hourly)",
+        "description": "Internal cost. Restrict field-level visibility to leadership.",
+        "groupName": "lmn_talent",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_bench_status",
+        "label": "Bench Status",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "In Assessment", "value": "in_assessment" },
+          { "label": "Bench-Ready", "value": "bench_ready" },
+          { "label": "In Showcase", "value": "in_showcase" },
+          { "label": "Placed", "value": "placed" },
+          { "label": "Inactive", "value": "inactive" }
+        ]
+      },
+      {
+        "name": "lmn_assessment_profile",
+        "label": "Assessment Profile",
+        "description": "Structured result of the I/O assessment. Stored as a queryable property rather than an attachment, so it can be matched against a practice's stated working environment.",
+        "groupName": "lmn_talent",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Structured / process-driven", "value": "structured" },
+          { "label": "Adaptive / cross-functional", "value": "adaptive" },
+          { "label": "Autonomous / ownership-oriented", "value": "autonomous" },
+          { "label": "Relational / patient-facing", "value": "relational" }
+        ]
+      },
+      {
+        "name": "lmn_assessment_date",
+        "label": "Assessment Date",
+        "description": "Drives the re-assessment prompt so certifications do not silently go stale.",
+        "groupName": "lmn_talent",
+        "type": "date",
+        "fieldType": "date"
+      },
+
+      {
+        "name": "lmn_hipaa_training_date",
+        "label": "HIPAA Training Completed",
+        "description": "Compliance artifact, not patient data.",
+        "groupName": "lmn_compliance",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_hipaa_training_expiry",
+        "label": "HIPAA Training Expires",
+        "description": "Automated re-certification prompt fires 30 days before this date.",
+        "groupName": "lmn_compliance",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_background_check_date",
+        "label": "Background Check Completed",
+        "groupName": "lmn_compliance",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_compliance_status",
+        "label": "Compliance Status",
+        "description": "Rolled up nightly. Talent cannot be placed into a PHI-handling role while this is anything other than Clear.",
+        "groupName": "lmn_compliance",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Clear", "value": "clear" },
+          { "label": "Expiring Soon", "value": "expiring_soon" },
+          { "label": "Lapsed", "value": "lapsed" },
+          { "label": "Not Started", "value": "not_started" }
+        ]
+      },
+
+      {
+        "name": "lmn_cohort_name",
+        "label": "LumenU Cohort",
+        "groupName": "lmn_education",
+        "type": "string",
+        "fieldType": "text"
+      },
+      {
+        "name": "lmn_cohort_tier",
+        "label": "Cohort Tier",
+        "groupName": "lmn_education",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Standard", "value": "standard" },
+          { "label": "Premium", "value": "premium" }
+        ]
+      },
+      {
+        "name": "lmn_cohort_status",
+        "label": "Cohort Status",
+        "groupName": "lmn_education",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Interest Submitted", "value": "interest" },
+          { "label": "Registered", "value": "registered" },
+          { "label": "Pre-Work Complete", "value": "prework_complete" },
+          { "label": "Attended", "value": "attended" },
+          { "label": "Alumni", "value": "alumni" },
+          { "label": "Waitlisted", "value": "waitlisted" }
+        ]
+      },
+      {
+        "name": "lmn_stated_problem",
+        "label": "Stated Leadership Problem",
+        "description": "Captured in their own words at cohort registration. This is what makes the post-cohort staffing follow-up specific rather than generic.",
+        "groupName": "lmn_education",
+        "type": "string",
+        "fieldType": "textarea"
+      }
+    ],
+
+    "companies": [
+      {
+        "name": "lmn_practice_type",
+        "label": "Practice Type",
+        "description": "Primary client segment. Dropdown rather than text — free entry here produces four spellings of the same specialty and destroys every segment report.",
+        "groupName": "lmn_practice",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "General Dentistry — Solo", "value": "dental_solo" },
+          { "label": "General Dentistry — Group", "value": "dental_group" },
+          { "label": "DSO / Multi-Site", "value": "dso" },
+          { "label": "Orthodontics", "value": "orthodontics" },
+          { "label": "Oral Surgery", "value": "oral_surgery" },
+          { "label": "Periodontics / Endodontics", "value": "perio_endo" },
+          { "label": "Pediatric Dentistry", "value": "pediatric_dental" },
+          { "label": "Physical Therapy", "value": "physical_therapy" },
+          { "label": "Medical — Specialty", "value": "medical_specialty" }
+        ]
+      },
+      {
+        "name": "lmn_location_count",
+        "label": "Number of Locations",
+        "description": "The strongest single predictor of deal size. A multi-site group buys seats per location.",
+        "groupName": "lmn_practice",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_practice_pms",
+        "label": "Practice Management System",
+        "description": "Determines which bench talent can be placed here without a ramp period.",
+        "groupName": "lmn_practice",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Dentrix", "value": "dentrix" },
+          { "label": "Eaglesoft", "value": "eaglesoft" },
+          { "label": "Open Dental", "value": "open_dental" },
+          { "label": "Curve Dental", "value": "curve_dental" },
+          { "label": "Denticon", "value": "denticon" },
+          { "label": "Carestream", "value": "carestream" },
+          { "label": "Other", "value": "other" }
+        ]
+      },
+      {
+        "name": "lmn_org_stage",
+        "label": "Organizational Stage",
+        "groupName": "lmn_practice",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Scaling / Adding Locations", "value": "scaling" },
+          { "label": "Post-Acquisition Integration", "value": "post_acquisition" },
+          { "label": "Restructuring", "value": "restructuring" },
+          { "label": "Stable", "value": "stable" }
+        ]
+      },
+      {
+        "name": "lmn_baa_status",
+        "label": "BAA Status",
+        "description": "Business associate agreement covering the workflows placed talent performs. A placement cannot reach systems-access stage without this executed.",
+        "groupName": "lmn_practice",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Executed", "value": "executed" },
+          { "label": "Sent — Awaiting Signature", "value": "sent" },
+          { "label": "Renewal Due", "value": "renewal_due" },
+          { "label": "Not Started", "value": "not_started" }
+        ]
+      },
+      {
+        "name": "lmn_baa_effective_date",
+        "label": "BAA Effective Date",
+        "groupName": "lmn_practice",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_baa_renewal_date",
+        "label": "BAA Renewal Date",
+        "groupName": "lmn_practice",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_risk_review_date",
+        "label": "Last Risk Review",
+        "description": "Documented risk assessment per engagement. Absence of this artifact is the most frequent finding in enforcement actions.",
+        "groupName": "lmn_practice",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_active_placements",
+        "label": "Active Placements",
+        "groupName": "lmn_practice",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_referral_count",
+        "label": "Referrals Generated",
+        "description": "How many new practices this client has introduced. Identifies the advocates worth investing in.",
+        "groupName": "lmn_practice",
+        "type": "number",
+        "fieldType": "number"
+      }
+    ],
+
+    "deals": [
+      {
+        "name": "lmn_tier_requested",
+        "label": "Tier Requested",
+        "groupName": "lmn_engagement",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Core ($12/hr)", "value": "core" },
+          { "label": "Momentum ($16/hr)", "value": "momentum" },
+          { "label": "Summit ($22/hr)", "value": "summit" }
+        ]
+      },
+      {
+        "name": "lmn_function_needed",
+        "label": "Function Needed",
+        "description": "What the practice actually needs covered. Drives the shortlist query.",
+        "groupName": "lmn_engagement",
+        "type": "enumeration",
+        "fieldType": "checkbox",
+        "options": [
+          { "label": "Insurance Verification", "value": "insurance_verification" },
+          { "label": "Revenue Cycle / Billing", "value": "revenue_cycle" },
+          { "label": "Claims & AR Follow-up", "value": "claims_ar" },
+          { "label": "Patient Scheduling", "value": "patient_scheduling" },
+          { "label": "Recall & Reactivation", "value": "recall_reactivation" },
+          { "label": "Treatment Coordination", "value": "treatment_coordination" },
+          { "label": "Front Office / Patient Comms", "value": "front_office" },
+          { "label": "Office Management", "value": "office_management" },
+          { "label": "Operations Leadership", "value": "operations_leadership" }
+        ]
+      },
+      {
+        "name": "lmn_seats_committed",
+        "label": "Seats Committed",
+        "groupName": "lmn_engagement",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_hours_per_week",
+        "label": "Hours per Week",
+        "groupName": "lmn_engagement",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_target_embed_date",
+        "label": "Target Embed Date",
+        "groupName": "lmn_engagement",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_role_defined",
+        "label": "Role Definition Complete",
+        "description": "Stage gate. Scope and accountability defined before anyone is placed.",
+        "groupName": "lmn_engagement",
+        "type": "bool",
+        "fieldType": "booleancheckbox",
+        "options": [
+          { "label": "Yes", "value": "true" },
+          { "label": "No", "value": "false" }
+        ]
+      },
+      {
+        "name": "lmn_showcase_candidates",
+        "label": "Candidates Presented",
+        "description": "How many profiles were shown at the Talent Showcase. Paired with the selection outcome, this makes shortlist quality measurable.",
+        "groupName": "lmn_engagement",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_showcase_rejection_reason",
+        "label": "Showcase Rejection Reason",
+        "description": "Why declined candidates were declined. Aggregated, this feeds back into vetting criteria.",
+        "groupName": "lmn_engagement",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Communication style", "value": "communication" },
+          { "label": "Practice software gap", "value": "pms_gap" },
+          { "label": "Coverage hours mismatch", "value": "coverage" },
+          { "label": "Specialty experience", "value": "specialty_experience" },
+          { "label": "Rate", "value": "rate" },
+          { "label": "Client paused decision", "value": "paused" }
+        ]
+      },
+      {
+        "name": "lmn_disqualifier_reason",
+        "label": "Disqualifier Reason",
+        "groupName": "lmn_fit",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Price shopping", "value": "price_shopping" },
+          { "label": "Temp / short-term gap", "value": "temp_need" },
+          { "label": "No ownership intent", "value": "no_ownership" },
+          { "label": "Role undefined", "value": "role_undefined" },
+          { "label": "No culture investment", "value": "no_culture_investment" },
+          { "label": "No onboarding investment", "value": "no_onboarding_investment" }
+        ]
+      },
+      {
+        "name": "lmn_fit_score",
+        "label": "Fit Score",
+        "description": "Sum of the twelve qualification criteria. 10+ routes to showcase, 4-9 to nurture, below 4 to disqualification.",
+        "groupName": "lmn_fit",
+        "type": "number",
+        "fieldType": "number"
+      },
+
+      {
+        "name": "lmn_placement_tier",
+        "label": "Placement Tier",
+        "groupName": "lmn_placement",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Core", "value": "core" },
+          { "label": "Momentum", "value": "momentum" },
+          { "label": "Summit", "value": "summit" }
+        ]
+      },
+      {
+        "name": "lmn_hourly_rate",
+        "label": "Hourly Rate (client)",
+        "groupName": "lmn_placement",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_monthly_value",
+        "label": "Monthly Value",
+        "description": "hourly_rate x hours_per_week x 4.33. The property that makes recurring-revenue reporting possible.",
+        "groupName": "lmn_placement",
+        "type": "number",
+        "fieldType": "calculation_equation",
+        "calculationFormula": "lmn_hourly_rate * lmn_hours_per_week * 4.33"
+      },
+      {
+        "name": "lmn_placement_status",
+        "label": "Placement Status",
+        "groupName": "lmn_placement",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Awaiting Match", "value": "awaiting_match" },
+          { "label": "Showcasing", "value": "showcasing" },
+          { "label": "Credentialing", "value": "credentialing" },
+          { "label": "Active", "value": "active" },
+          { "label": "At Risk", "value": "at_risk" },
+          { "label": "Ended", "value": "ended" }
+        ]
+      },
+      {
+        "name": "lmn_embed_start_date",
+        "label": "Embed Start Date",
+        "groupName": "lmn_placement",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_embed_end_date",
+        "label": "Embed End Date",
+        "groupName": "lmn_placement",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_health_score",
+        "label": "Placement Health Score",
+        "description": "Written nightly. 0-100. Below 40 sets status to At Risk.",
+        "groupName": "lmn_placement",
+        "type": "number",
+        "fieldType": "number"
+      },
+      {
+        "name": "lmn_last_checkin_date",
+        "label": "Last Check-in Date",
+        "groupName": "lmn_placement",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_documentation_current",
+        "label": "Role Documentation Current",
+        "description": "Stage gate for Steady State. Instruments the continuity promise.",
+        "groupName": "lmn_placement",
+        "type": "bool",
+        "fieldType": "booleancheckbox",
+        "options": [
+          { "label": "Yes", "value": "true" },
+          { "label": "No", "value": "false" }
+        ]
+      },
+      {
+        "name": "lmn_pms_access_granted",
+        "label": "Practice System Access Granted",
+        "description": "Date access to the practice management system was provisioned.",
+        "groupName": "lmn_placement",
+        "type": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "lmn_pms_access_revoked",
+        "label": "Practice System Access Revoked",
+        "description": "The field that matters most. When a placement ends, access removal must be a dated, owned, auditable event rather than an assumption.",
+        "groupName": "lmn_placement",
+        "type": "date",
+        "fieldType": "date"
+      }
+    ],
+
+    "tickets": [
+      {
+        "name": "lmn_ticket_type",
+        "label": "Ticket Type",
+        "groupName": "lmn_support",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          { "label": "Onboarding", "value": "onboarding" },
+          { "label": "Credentialing / Access", "value": "credentialing" },
+          { "label": "Scheduled Check-in", "value": "checkin" },
+          { "label": "Escalation — Practice", "value": "escalation_practice" },
+          { "label": "Escalation — Talent", "value": "escalation_talent" },
+          { "label": "Access Revocation", "value": "access_revocation" },
+          { "label": "Continuity / Handover", "value": "continuity" }
+        ]
+      }
+    ]
+  },
+
+  "fitCriteria": {
+    "$comment": "The published qualification model, weighted. provision.js generates one boolean property per criterion in the lmn_fit group.",
+    "positive": [
+      { "name": "lmn_fit_past_diy", "label": "Past the do-everything-ourselves stage", "weight": 2 },
+      { "name": "lmn_fit_full_time", "label": "Needs full-time dedicated ownership, not fractional", "weight": 3 },
+      { "name": "lmn_fit_culture", "label": "Values cultural alignment and long-term trust", "weight": 2 },
+      { "name": "lmn_fit_scales", "label": "Wants talent that scales in responsibility", "weight": 2 },
+      { "name": "lmn_fit_infrastructure", "label": "Has infrastructure to support virtual talent", "weight": 2 },
+      { "name": "lmn_fit_hybrid_aligned", "label": "Leadership aligned on building hybrid teams", "weight": 3 }
+    ],
+    "negative": [
+      { "name": "lmn_dq_cheapest", "label": "Looking for the cheapest option", "weight": -3 },
+      { "name": "lmn_dq_temp", "label": "Needs a temp for a short-term gap", "weight": -4 },
+      { "name": "lmn_dq_no_ownership", "label": "Wants task handoff with no real ownership", "weight": -3 },
+      { "name": "lmn_dq_role_undefined", "label": "Has not defined what the role should do", "weight": -2 },
+      { "name": "lmn_dq_no_culture", "label": "Not ready to invest in culture alongside capability", "weight": -3 },
+      { "name": "lmn_dq_no_onboarding", "label": "Expects results without onboarding investment", "weight": -3 }
+    ]
+  }
+}

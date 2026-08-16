@@ -1,0 +1,167 @@
+First Name,Last Name,Email,Phone Number,Contact Type,Buyer Role,First Touch Source,Lead Score,Lead Grade,Territory,Assigned Pod,NPS Score,NPS Category,Lifecycle Stage,Lead Status
+Pavel,Osei,pavel.osei@ridgelinehealth.com,+16023101315,Client Contact,CEO / Founder,Website — organic,85,A,West,Pod West 1,,,customer,OPEN_DEAL
+Kenji,Duarte,kenji.duarte@draycottcontracting.com,+16106900304,Client Contact,CEO / Founder,Website — organic,66,B,East,Pod East 1,9,Promoter,customer,OPEN_DEAL
+Isabel,Nkemdi,isabel.nkemdi@thornburysoftware.com,+19556812250,Client Contact,L&D Manager,Referral,69,B,West,Pod West 2,,,customer,OPEN_DEAL
+Pedro,Sorensen,pedro.sorensen@brooklineworks.com,+18758713668,Client Contact,Department Head,Event / conference,61,B,West,Pod West 1,,,customer,OPEN_DEAL
+Yara,Bianchi,yara.bianchi@tilburyfabrication.com,+17022855602,Client Contact,CEO / Founder,Referral,73,B,East,Pod East 2,8,Passive,opportunity,IN_PROGRESS
+Caleb,Petrov,caleb.petrov@rosemontgroup.com,+18877189373,Client Contact,HR Manager,Website — organic,66,B,West,Pod West 2,8,Passive,customer,OPEN_DEAL
+Kwame,Farah,kwame.farah@winsleybuilders.com,+19434559155,Client Contact,HR Manager,Website — organic,57,B,West,Pod West 1,8,Passive,customer,OPEN_DEAL
+Astrid,Lindgren,astrid.lindgren@orchardalliance.com,+12582553018,Client Contact,CEO / Founder,Referral,65,B,West,Pod West 2,10,Promoter,customer,OPEN_DEAL
+Sofia,Olsen,sofia.olsen@vantagemedicalgroup.com,+18512726485,Client Contact,L&D Manager,Referral,67,B,Central,Pod Central 1,,,customer,OPEN_DEAL
+Fatima,Sandoval,fatima.sandoval@cardinalcapital.com,+12034858288,Client Contact,HR Manager,Website — organic,71,B,Central,Pod Central 1,,,customer,OPEN_DEAL
+Nadia,Bergstrom,nadia.bergstrom@kestrelfreight.com,+17736312552,Client Contact,COO / Operations Lead,Website — organic,68,B,West,Pod West 1,9,Promoter,customer,OPEN_DEAL
+Arun,Mensah,arun.mensah@tilburyworks.com,,Client Contact,HR Manager,Website — organic,55,B,Central,Pod Central 1,9,Promoter,opportunity,IN_PROGRESS
+Pavel,Krishnan,pavel.krishnan@lindenconsulting.com,+19029471487,Client Contact,HR Manager,Event / conference,42,C,West,Pod West 2,9,Promoter,lead,UNQUALIFIED
+Yusuf,Chen,yusuf.chen@sablesoftware.com,+16124027945,Client Contact,Talent Director,Website — organic,79,A,West,Pod West 1,,,customer,OPEN_DEAL
+Pavel,Novak,pavel.novak@latticemedicalgroup.com,+14402730470,Client Contact,HR Manager,Website — organic,64,B,West,Pod West 2,7,Passive,opportunity,IN_PROGRESS
+Omar,Marchetti,omar.marchetti@norburygroup.com,+18773111944,Client Contact,L&D Manager,Website — organic,71,B,West,Pod West 1,9,Promoter,opportunity,IN_PROGRESS
+Boris,Sorensen,boris.sorensen@underhilldigital.com,+14596663472,Client Contact,HR Manager,Website — organic,70,B,West,Pod West 2,,,customer,OPEN_DEAL
+Rina,Raghunathan,rina.raghunathan@grantonretailgroup.com,,Client Contact,COO / Operations Lead,Inbound enquiry,76,A,Central,Pod Central 1,,,customer,OPEN_DEAL
+Priya,Torres,priya.torres@norburygoods.com,+15862082018,Client Contact,Talent Director,Website — organic,40,C,East,Pod East 1,9,Promoter,opportunity,UNQUALIFIED
+Caleb,Nasser,caleb.nasser@vestryconsulting.com,+16837962603,Client Contact,HR Manager,Referral,68,B,East,Pod East 2,10,Promoter,customer,OPEN_DEAL
+Andres,Mwangi,andres.mwangi@ivywellfreight.com,,Client Contact,HR Manager,Website — organic,54,C,Central,Pod Central 1,8,Passive,opportunity,IN_PROGRESS
+Wren,Bakker,wren.bakker@northwinddigital.com,+17848176730,Client Contact,HR Manager,Website — organic,38,C,West,Pod West 1,9,Promoter,opportunity,UNQUALIFIED
+Dana,Novak,dana.novak@foxglovebuilders.com,+12528596644,Client Contact,Department Head,Website — organic,49,C,Central,Pod Central 1,,,customer,OPEN_DEAL
+Marta,Serrano,marta.serrano@copperfieldcaregroup.com,,Client Contact,CEO / Founder,Website — organic,40,C,East,Pod East 1,8,Passive,opportunity,UNQUALIFIED
+Mei,Weiss,mei.weiss@larkspurlogistics.com,+15438459014,Client Contact,Talent Director,Event / conference,58,B,West,Pod West 2,10,Promoter,customer,OPEN_DEAL
+Sofia,Sultana,sofia.sultana@merrowretailgroup.com,+19047631355,Client Contact,CEO / Founder,Referral,43,C,East,Pod East 2,8,Passive,opportunity,UNQUALIFIED
+Bilal,Aguilar,bilal.aguilar@whitlockmedicalgroup.com,+16686220399,Client Contact,Talent Director,Event / conference,73,B,East,Pod East 1,8,Passive,opportunity,IN_PROGRESS
+Salma,Novak,salma.novak@blackstonegroup.com,+13263493625,Client Contact,HR Manager,Referral,44,C,East,Pod East 2,8,Passive,opportunity,UNQUALIFIED
+Sofia,Ferreira,sofia.ferreira@stonebridgeindustries.com,+15836233459,Client Contact,CEO / Founder,Inbound enquiry,44,C,West,Pod West 1,8,Passive,opportunity,UNQUALIFIED
+Joon,Larsen,joon.larsen@stonebridgeeducationgroup.com,+13083382130,Client Contact,Department Head,Referral,59,B,West,Pod West 2,8,Passive,opportunity,IN_PROGRESS
+Tomas,Costa,tomas.costa@latticeworks.com,+17694836161,Client Contact,Talent Director,Website — organic,53,C,East,Pod East 1,8,Passive,opportunity,UNQUALIFIED
+Sofia,Mensah,sofia.mensah@brightharboracademy.com,+18517767931,Client Contact,Talent Director,Event / conference,52,C,Central,Pod Central 1,9,Promoter,customer,OPEN_DEAL
+Marisol,Kovacs,marisol.kovacs@draycottcaregroup.com,+19459061394,Client Contact,Talent Director,Referral,49,C,West,Pod West 1,9,Promoter,customer,OPEN_DEAL
+Bella,Lindqvist,bella.lindqvist@glenmoorinitiative.com,+12625039104,Client Contact,L&D Manager,Website — organic,30,D,East,Pod East 2,10,Promoter,opportunity,UNQUALIFIED
+Anika,Larsen,anika.larsen@harrowgatemanufacturing.com,+13778331661,Client Contact,Talent Director,Inbound enquiry,71,B,Central,Pod Central 1,9,Promoter,opportunity,IN_PROGRESS
+Anders,Fischer,anders.fischer@valeadvisory.com,+13243548106,Client Contact,HR Manager,Inbound enquiry,65,B,Central,Pod Central 1,10,Promoter,customer,OPEN_DEAL
+Salma,Rossi,salma.rossi@uptonworks.com,+12055538106,Client Contact,CEO / Founder,Website — organic,75,A,West,Pod West 2,9,Promoter,opportunity,IN_PROGRESS
+Rafael,Haddad,rafael.haddad@newboldconsulting.com,+19582642609,Client Contact,CHRO / People Leader,Website — organic,74,B,West,Pod West 1,,,customer,OPEN_DEAL
+Rosa,Kovacs,rosa.kovacs@lindencapital.com,,Client Contact,HR Manager,Website — organic,61,B,West,Pod West 2,,,customer,OPEN_DEAL
+Marisol,Vasquez,marisol.vasquez@lindeninitiative.com,+16134620455,Client Contact,L&D Manager,Website — organic,48,C,Central,Pod Central 1,9,Promoter,customer,OPEN_DEAL
+Rania,Whitfield,rania.whitfield@jarrowcapital.com,+12469221271,Client Contact,HR Manager,Event / conference,57,B,West,Pod West 1,9,Promoter,opportunity,IN_PROGRESS
+Lian,Diallo,lian.diallo@wexfordindustries.com,+16413883921,Client Contact,CEO / Founder,Inbound enquiry,66,B,East,Pod East 1,9,Promoter,opportunity,IN_PROGRESS
+Tunde,Klein,tunde.klein@winsleyfinancial.com,+19186578863,Client Contact,CHRO / People Leader,Inbound enquiry,50,C,West,Pod West 2,9,Promoter,opportunity,UNQUALIFIED
+Clara,Bakker,clara.bakker@glenmoordigital.com,+13197802540,Client Contact,COO / Operations Lead,Referral,73,B,East,Pod East 2,8,Passive,opportunity,IN_PROGRESS
+Camila,Krishnan,camila.krishnan@stonebridgelabs.com,+16865534099,Client Contact,Department Head,Referral,72,B,West,Pod West 1,7,Passive,opportunity,IN_PROGRESS
+Yusuf,Bakker,yusuf.bakker@hallmarkdigital.com,+16929366940,Client Contact,HR Manager,Website — organic,60,B,West,Pod West 2,7,Passive,opportunity,IN_PROGRESS
+Camila,Diallo,camila.diallo@beaconbrands.com,+18713971256,Client Contact,COO / Operations Lead,Website — organic,61,B,Central,Pod Central 1,8,Passive,opportunity,IN_PROGRESS
+Tomas,Novak,tomas.novak@wexfordgoods.com,+19014891395,Client Contact,Talent Director,Referral,41,C,East,Pod East 1,10,Promoter,opportunity,UNQUALIFIED
+Astrid,Fontaine,astrid.fontaine@hallmarkmedicalgroup.com,+19573419689,Client Contact,HR Manager,Website — organic,64,B,Central,Pod Central 1,8,Passive,customer,OPEN_DEAL
+Marta,Balogun,marta.balogun@yarrowsoftware.com,,Client Contact,HR Manager,Website — organic,54,C,Central,Pod Central 1,,,customer,OPEN_DEAL
+Amara,Santos,amara.santos@redwynfreight.com,+15537466407,Client Contact,L&D Manager,Website — organic,65,B,East,Pod East 2,9,Promoter,opportunity,IN_PROGRESS
+Hiro,Kim,hiro.kim@glenmoorindustries.com,+14326192516,Client Contact,Talent Director,Website — organic,70,B,East,Pod East 1,7,Passive,opportunity,IN_PROGRESS
+Idris,Ibrahim,idris.ibrahim@carrowsystems.com,+19674771004,Client Contact,Talent Director,Website — organic,48,C,Central,Pod Central 1,7,Passive,lead,UNQUALIFIED
+Thandi,Malek,thandi.malek@pinehillconsulting.com,+17697470425,Client Contact,Department Head,Inbound enquiry,58,B,East,Pod East 2,8,Passive,lead,UNQUALIFIED
+Idris,Kamau,idris.kamau@cheswickcaregroup.com,+14134962183,Client Contact,Talent Director,Referral,47,C,East,Pod East 1,10,Promoter,lead,UNQUALIFIED
+Lucia,Mensah,lucia.mensah@dunmorefinancial.com,+18179896837,Client Contact,HR Manager,Website — organic,35,C,Central,Pod Central 1,8,Passive,lead,UNQUALIFIED
+Dana,Eriksen,dana.eriksen@winsleybrands.com,+15097050286,Client Contact,L&D Manager,Website — organic,58,B,Central,Pod Central 1,,,customer,OPEN_DEAL
+Tomas,Ibrahim,tomas.ibrahim@valegoods.com,,Client Contact,Talent Director,Website — organic,52,C,Central,Pod Central 1,,,customer,OPEN_DEAL
+Divya,Reyes,divya.reyes@lyndhurstfinancial.com,+15259722169,Client Contact,HR Manager,Referral,65,B,East,Pod East 2,8,Passive,customer,OPEN_DEAL
+Layla,Olsen,layla.olsen@dunmoorcaregroup.com,+16776738989,Client Contact,Department Head,Referral,66,B,Central,Pod Central 1,10,Promoter,opportunity,IN_PROGRESS
+Marcus,Obi,marcus.obi@evertonlogistics.com,+14802071164,Client Contact,CHRO / People Leader,Website — organic,48,C,East,Pod East 1,9,Promoter,customer,OPEN_DEAL
+Astrid,Achebe,astrid.achebe@dunmorepartners.com,+12322477937,Client Contact,CEO / Founder,Website — organic,72,B,West,Pod West 1,7,Passive,opportunity,IN_PROGRESS
+Divya,Marchetti,divya.marchetti@quarrycaregroup.com,+12795385565,Client Contact,COO / Operations Lead,Event / conference,48,C,West,Pod West 2,8,Passive,lead,UNQUALIFIED
+Aisha,Ferreira,aisha.ferreira@fairbournepartners.com,+13333546581,Client Contact,HR Manager,Event / conference,42,C,West,Pod West 1,7,Passive,lead,UNQUALIFIED
+Dana,Klein,dana.klein@oakfieldindustries.com,+13846479761,Client Contact,CHRO / People Leader,Website — organic,58,B,East,Pod East 2,8,Passive,lead,UNQUALIFIED
+Ravi,Raghunathan,ravi.raghunathan@kestrelpartners.com,,Client Contact,Department Head,Referral,64,B,Central,Pod Central 1,9,Promoter,customer,OPEN_DEAL
+Clara,Larsen,clara.larsen@norburyadvisory.com,+12059596231,Client Contact,CEO / Founder,Referral,78,A,Central,Pod Central 1,10,Promoter,customer,OPEN_DEAL
+Kwame,Kamau,kwame.kamau@sorrellogistics.com,+14648685527,Client Contact,L&D Manager,Inbound enquiry,34,D,West,Pod West 2,8,Passive,lead,UNQUALIFIED
+Rania,Mwangi,rania.mwangi@wayfindercapital.com,,Client Contact,COO / Operations Lead,Inbound enquiry,55,B,West,Pod West 1,7,Passive,lead,UNQUALIFIED
+Yuki,Okonjo,yuki.okonjo@vantagewealthpartners.com,+13314090758,Client Contact,L&D Manager,Website — organic,54,C,Central,Pod Central 1,8,Passive,customer,OPEN_DEAL
+Kwame,Mahmood,kwame.mahmood@draperfieldclinicalgroup.com,+15157492392,Client Contact,COO / Operations Lead,Website — organic,44,C,East,Pod East 1,8,Passive,lead,UNQUALIFIED
+Amara,Hassan,amara.hassan@pembertonacademy.com,+12549557741,Client Contact,Talent Director,Event / conference,32,D,East,Pod East 2,7,Passive,lead,UNQUALIFIED
+Tomas,Nkemdi,tomas.nkemdi@jarrowgoods.com,+14035847199,Client Contact,HR Manager,Website — organic,25,D,Central,Pod Central 1,8,Passive,lead,UNQUALIFIED
+Boris,Aguilar,boris.aguilar@chesneysystems.com,+14417431702,Client Contact,Talent Director,Website — organic,69,B,Central,Pod Central 1,,,customer,OPEN_DEAL
+Malik,Banda,malik.banda@inglewoodfreight.com,+12024180928,Client Contact,CEO / Founder,Referral,48,C,East,Pod East 1,9,Promoter,opportunity,UNQUALIFIED
+Anika,Yilmaz,anika.yilmaz@draycottlogistics.com,+14612721789,Client Contact,HR Manager,Inbound enquiry,37,C,East,Pod East 2,8,Passive,opportunity,UNQUALIFIED
+Sofia,Petrov,sofia.petrov@merrowfinancial.com,+14525174567,Client Contact,L&D Manager,Referral,81,A,West,Pod West 2,9,Promoter,opportunity,IN_PROGRESS
+Rania,Malek,rania.malek@junipereducationgroup.com,+19093455879,Client Contact,CEO / Founder,Website — organic,84,A,West,Pod West 1,7,Passive,opportunity,IN_PROGRESS
+Amara,Petrov,amara.petrov@marlowecaregroup.com,+13139323936,Client Contact,HR Manager,Website — organic,32,D,East,Pod East 1,8,Passive,opportunity,UNQUALIFIED
+Sofia,Sandoval,sofia.sandoval@kingsfordadvisory.com,+13335853550,Client Contact,L&D Manager,Website — organic,45,C,Central,Pod Central 1,10,Promoter,customer,OPEN_DEAL
+Fatima,Alvarez,fatima.alvarez@underhillcaregroup.com,+15887775343,Client Contact,CHRO / People Leader,Website — organic,46,C,West,Pod West 2,9,Promoter,opportunity,UNQUALIFIED
+Pedro,Castillo,pedro.castillo@yarrowcapital.com,+12537842142,Client Contact,COO / Operations Lead,Referral,53,C,Central,Pod Central 1,7,Passive,customer,OPEN_DEAL
+Divya,Nkemdi,divya.nkemdi@northwindsoftware.com,+16199433688,Client Contact,CEO / Founder,Referral,54,C,West,Pod West 1,9,Promoter,opportunity,UNQUALIFIED
+Ines,Bianchi,ines.bianchi@pembertonworks.com,+13703994997,Client Contact,HR Manager,Inbound enquiry,38,C,East,Pod East 2,9,Promoter,opportunity,UNQUALIFIED
+Lucia,Jansen,lucia.jansen@kingsfordsystems.com,+12486496129,Client Contact,L&D Manager,Inbound enquiry,55,B,East,Pod East 1,7,Passive,opportunity,UNQUALIFIED
+Emeka,Sultana,emeka.sultana@blackstoneeducationgroup.com,+12983644698,Client Contact,CHRO / People Leader,Referral,47,C,West,Pod West 2,7,Passive,opportunity,UNQUALIFIED
+Caleb,Diallo,caleb.diallo@larkspuradvisory.com,+19612274470,Client Contact,L&D Manager,Website — organic,71,B,East,Pod East 2,9,Promoter,opportunity,IN_PROGRESS
+Boris,Achebe,boris.achebe@winsleysoftware.com,+16906907332,Client Contact,HR Manager,Referral,62,B,West,Pod West 1,10,Promoter,opportunity,IN_PROGRESS
+Layla,Alvarez,layla.alvarez@lyndhurstmanufacturing.com,+15045904203,Client Contact,L&D Manager,Inbound enquiry,32,D,West,Pod West 2,8,Passive,opportunity,UNQUALIFIED
+Boris,Rivera,boris.rivera@meridianmedicalgroup.com,+19638724546,Client Contact,CHRO / People Leader,Event / conference,62,B,Central,Pod Central 1,7,Passive,customer,OPEN_DEAL
+Malik,Moreau,malik.moreau@ironwoodfinancial.com,+15713267371,Client Contact,HR Manager,Website — organic,41,C,West,Pod West 1,,,customer,OPEN_DEAL
+Rina,Raghunathan,rina.raghunathan@pembertoncontracting.com,+14026451151,Client Contact,CHRO / People Leader,Website — organic,43,C,East,Pod East 1,10,Promoter,opportunity,UNQUALIFIED
+Dana,Rahman,dana.rahman@orchardlabs.com,+18869814826,Client Contact,Talent Director,Website — organic,50,C,East,Pod East 2,9,Promoter,opportunity,UNQUALIFIED
+Marta,Achebe,marta.achebe@marlowtechnologies.com,+17033994883,Client Contact,HR Manager,Website — organic,71,B,West,Pod West 2,7,Passive,opportunity,IN_PROGRESS
+Yara,Bianchi,yara.bianchi@beaconworks.com,+16116556348,Client Contact,COO / Operations Lead,Inbound enquiry,68,B,West,Pod West 1,8,Passive,customer,OPEN_DEAL
+Andres,Delgado,andres.delgado@quarrymanufacturing.com,+12329601763,Client Contact,COO / Operations Lead,Website — organic,59,B,East,Pod East 1,7,Passive,customer,OPEN_DEAL
+Chidi,Baptiste,chidi.baptiste@larkspurindustries.com,+13138735982,Client Contact,CEO / Founder,Referral,39,C,West,Pod West 2,9,Promoter,opportunity,UNQUALIFIED
+Greta,Iqbal,greta.iqbal@whitlockcaregroup.com,+16886733544,Client Contact,COO / Operations Lead,Website — organic,76,A,East,Pod East 2,8,Passive,opportunity,IN_PROGRESS
+Marta,Baptiste,marta.baptiste@asterfinancial.com,+19015731062,Client Contact,Talent Director,Website — organic,44,C,East,Pod East 1,9,Promoter,opportunity,UNQUALIFIED
+Priya,Fischer,priya.fischer@merrowhealth.com,+12265243650,Client Contact,HR Manager,Event / conference,42,C,East,Pod East 2,,,customer,OPEN_DEAL
+Alba,Farah,alba.farah@cardinalmedicalgroup.com,,Client Contact,L&D Manager,Website — organic,59,B,West,Pod West 1,8,Passive,opportunity,IN_PROGRESS
+Ada,Andersen,ada.andersen@tanglewoodmedicalgroup.com,+13169070249,Client Contact,CHRO / People Leader,Event / conference,62,B,Central,Pod Central 1,8,Passive,customer,OPEN_DEAL
+Omar,Larsen,omar.larsen@ridgelinegroup.com,+18234292618,Client Contact,CHRO / People Leader,Website — organic,81,A,West,Pod West 2,10,Promoter,opportunity,IN_PROGRESS
+Tariq,Vasquez,tariq.vasquez@norburytechnologies.com,,Client Contact,Department Head,Event / conference,69,B,West,Pod West 1,10,Promoter,customer,OPEN_DEAL
+Bilal,Silva,bilal.silva@harlowadvisory.com,+13189041862,Client Contact,CHRO / People Leader,Website — organic,70,B,Central,Pod Central 1,10,Promoter,opportunity,IN_PROGRESS
+Ada,Okafor,ada.okafor@ivywelltechnologies.com,+15255929128,Client Contact,CHRO / People Leader,Website — organic,64,B,East,Pod East 1,8,Passive,customer,OPEN_DEAL
+Camila,Ferreira,camila.ferreira@aldercontracting.com,+14633867171,Client Contact,CEO / Founder,Website — organic,67,B,Central,Pod Central 1,10,Promoter,customer,OPEN_DEAL
+Noemi,Okafor,noemi.okafor@vestrysystems.com,+17808982923,Client Contact,CHRO / People Leader,Inbound enquiry,77,A,West,Pod West 2,8,Passive,customer,OPEN_DEAL
+Astrid,Lindgren,astrid.lindgren@jarroweducationgroup.com,+19047112801,Client Contact,HR Manager,Referral,53,C,West,Pod West 1,,,customer,OPEN_DEAL
+Zane,Nyong,zane.nyong@quarryhealth.com,+14613519134,Client Contact,HR Manager,Referral,54,C,West,Pod West 2,,,customer,OPEN_DEAL
+Rafael,Raghunathan,rafael.raghunathan@redwyntechnologies.com,+17722375427,Client Contact,CEO / Founder,Event / conference,52,C,Central,Pod Central 1,10,Promoter,lead,UNQUALIFIED
+Ravi,Marchetti,ravi.marchetti@uptontechnologies.com,+14868598062,Client Contact,CHRO / People Leader,Website — organic,74,B,West,Pod West 1,,,customer,OPEN_DEAL
+Hiro,Lindgren,hiro.lindgren@junipermedicalgroup.com,+16073905709,Client Contact,HR Manager,Website — organic,40,C,West,Pod West 2,7,Passive,lead,UNQUALIFIED
+Oskar,Serrano,oskar.serrano@ashgrovefabrication.com,+17075761228,Client Contact,Department Head,Event / conference,66,B,Central,Pod Central 1,,,customer,OPEN_DEAL
+Kai,Duarte,kai.duarte@jarrowinitiative.com,,Client Contact,Department Head,Referral,39,C,East,Pod East 2,8,Passive,lead,UNQUALIFIED
+Lian,Hassan,lian.hassan@stonebridgesystems.com,+18773039475,Client Contact,HR Manager,Website — organic,64,B,Central,Pod Central 1,9,Promoter,customer,OPEN_DEAL
+Tomas,Olsen,tomas.olsen@winsleyretailgroup.com,+17539553074,Client Contact,CEO / Founder,Event / conference,49,C,East,Pod East 1,,,customer,OPEN_DEAL
+Camila,Jansen,camila.jansen@hartleywealthpartners.com,,Client Contact,CEO / Founder,Event / conference,51,C,West,Pod West 1,,,customer,OPEN_DEAL
+Pavel,Rossi,pavel.rossi@sableadvisory.com,+12147428664,Client Contact,L&D Manager,Referral,69,B,West,Pod West 2,8,Passive,opportunity,IN_PROGRESS
+Rohan,Sultana,rohan.sultana@ridgelinecaregroup.com,+18223867799,Client Contact,L&D Manager,Inbound enquiry,64,B,West,Pod West 1,,,customer,OPEN_DEAL
+Fatima,Sultana,fatima.sultana@copperfielddigital.com,+16843567490,Client Contact,L&D Manager,Website — organic,61,B,East,Pod East 2,9,Promoter,opportunity,IN_PROGRESS
+Anja,Lindgren,anja.lindgren@norburyworks.com,+12836468890,Client Contact,Department Head,Event / conference,43,C,East,Pod East 1,,,customer,OPEN_DEAL
+Hugo,Raghunathan,hugo.raghunathan@uptonpartners.com,+17022950649,Client Contact,HR Manager,Inbound enquiry,65,B,West,Pod West 2,9,Promoter,customer,OPEN_DEAL
+Elsa,Petrov,elsa.petrov@merrowmanufacturing.com,,Client Contact,Talent Director,Website — organic,70,B,West,Pod West 1,7,Passive,opportunity,IN_PROGRESS
+Boris,Sultana,boris.sultana@thatchampartners.com,+13749234289,Client Contact,HR Manager,Website — organic,56,B,West,Pod West 2,,,customer,OPEN_DEAL
+Nasir,Novotny,nasir.novotny@meridianhealth.com,+18358476537,Client Contact,HR Manager,Referral,44,C,East,Pod East 2,,,customer,OPEN_DEAL
+Lucia,Chen,lucia.chen@grantondigital.com,+18068508467,Client Contact,L&D Manager,Website — organic,67,B,West,Pod West 1,10,Promoter,customer,OPEN_DEAL
+Oskar,Olsen,oskar.olsen@vantagecaregroup.com,+15975622441,Client Contact,CEO / Founder,Website — organic,57,B,East,Pod East 1,8,Passive,opportunity,UNQUALIFIED
+Ines,Osei,ines.osei@grantonadvisory.com,+17748615288,Client Contact,COO / Operations Lead,Website — organic,46,C,East,Pod East 2,7,Passive,opportunity,UNQUALIFIED
+Rosa,Achebe,rosa.achebe@fairhavenhealth.com,+14517106874,Client Contact,HR Manager,Website — organic,62,B,West,Pod West 2,,,customer,OPEN_DEAL
+Ravi,Diallo,ravi.diallo@verdantmanufacturing.com,,Client Contact,CHRO / People Leader,Inbound enquiry,48,C,West,Pod West 1,7,Passive,opportunity,UNQUALIFIED
+Thandi,Rossi,thandi.rossi@copperfieldacademy.com,+16904559269,Client Contact,L&D Manager,Website — organic,54,C,East,Pod East 1,9,Promoter,opportunity,IN_PROGRESS
+Marisol,Ellery,marisol.ellery@ridgelineconsulting.com,+13574971508,Client Contact,HR Manager,Inbound enquiry,71,B,East,Pod East 2,9,Promoter,opportunity,IN_PROGRESS
+Bilal,Adebayo,bilal.adebayo@carrowdigital.com,+14469422129,Client Contact,HR Manager,Event / conference,60,B,East,Pod East 1,9,Promoter,opportunity,IN_PROGRESS
+Lian,Kamau,lian.kamau@copperfieldwealthpartners.com,+12189475826,Client Contact,COO / Operations Lead,Website — organic,47,C,Central,Pod Central 1,7,Passive,opportunity,UNQUALIFIED
+Nadia,Delgado,nadia.delgado@underhillindustries.com,+18119135738,Client Contact,HR Manager,Referral,39,C,West,Pod West 2,8,Passive,opportunity,UNQUALIFIED
+Nora,Costa,nora.costa@kingsfordsupplyco.com,+13212392315,Client Contact,CHRO / People Leader,Website — organic,60,B,East,Pod East 2,8,Passive,customer,OPEN_DEAL
+Anika,Diallo,anika.diallo@quarrysoftware.com,+14279675483,Client Contact,Talent Director,Website — organic,43,C,West,Pod West 1,8,Passive,opportunity,UNQUALIFIED
+Noemi,Mensah,noemi.mensah@copperfieldeducationgroup.com,+16727683153,Client Contact,CEO / Founder,Website — organic,61,B,East,Pod East 1,7,Passive,customer,OPEN_DEAL
+Anika,Aguilar,anika.aguilar@sablemanufacturing.com,+17098663964,Client Contact,CHRO / People Leader,Website — organic,43,C,West,Pod West 2,8,Passive,opportunity,UNQUALIFIED
+Elena,Balogun,elena.balogun@cobaltretailgroup.com,+12662771677,Client Contact,L&D Manager,Website — organic,58,B,West,Pod West 1,,,customer,OPEN_DEAL
+Hiro,Mwangi,hiro.mwangi@orchardworks.com,+17643684414,Client Contact,HR Manager,Website — organic,27,D,Central,Pod Central 1,7,Passive,opportunity,UNQUALIFIED
+Rosa,Baptiste,rosa.baptiste@northwindassociates.com,+16972790659,Client Contact,Department Head,Event / conference,64,B,West,Pod West 2,9,Promoter,opportunity,IN_PROGRESS
+Astrid,Silva,astrid.silva@meridianworks.com,+14338016164,Client Contact,COO / Operations Lead,Website — organic,63,B,Central,Pod Central 1,7,Passive,opportunity,IN_PROGRESS
+Mei,Yilmaz,mei.yilmaz@larkspurwealthpartners.com,+14654725509,Client Contact,CHRO / People Leader,Website — organic,66,B,West,Pod West 1,10,Promoter,customer,OPEN_DEAL
+Diego,Novotny,diego.novotny@cheswickdigital.com,,Client Contact,CEO / Founder,Referral,54,C,Central,Pod Central 1,10,Promoter,lead,UNQUALIFIED
+Andres,Reyes,andres.reyes@keswickadvisory.com,+18769003878,Client Contact,CEO / Founder,Referral,76,A,West,Pod West 2,,,customer,OPEN_DEAL
+Priya,Torres,priya.torres@redwynadvisory.com,,Client Contact,Talent Director,Website — organic,49,C,West,Pod West 1,,,customer,OPEN_DEAL
+Yusuf,Silva,yusuf.silva@bramblebrands.com,+14315609624,Client Contact,HR Manager,Website — organic,35,C,West,Pod West 2,7,Passive,lead,UNQUALIFIED
+Anja,Ibrahim,anja.ibrahim@inglewooddigital.com,+12818027312,Client Contact,HR Manager,Referral,51,C,West,Pod West 1,8,Passive,lead,UNQUALIFIED
+Noemi,Marchetti,noemi.marchetti@fenwicktrust.com,+16812725004,Client Contact,HR Manager,Referral,53,C,West,Pod West 2,8,Passive,opportunity,IN_PROGRESS
+Kenji,Delgado,kenji.delgado@blackstonebrands.com,+17982659588,Client Contact,Department Head,Referral,65,B,West,Pod West 1,,,customer,OPEN_DEAL
+Dana,Bergstrom,dana.bergstrom@elmridgesupplyco.com,+12288086496,Client Contact,Talent Director,Website — organic,62,B,West,Pod West 2,9,Promoter,opportunity,IN_PROGRESS
+Emeka,Patel,emeka.patel@alderconstruction.com,+17907724912,Client Contact,HR Manager,Website — organic,45,C,East,Pod East 2,9,Promoter,customer,OPEN_DEAL
+Thandi,Ibrahim,thandi.ibrahim@vantrylabs.com,+15997260454,Client Contact,COO / Operations Lead,Event / conference,50,C,West,Pod West 1,8,Passive,lead,UNQUALIFIED
+Kenji,Torres,kenji.torres@beacondigital.com,+17378297475,Client Contact,L&D Manager,Inbound enquiry,62,B,West,Pod West 2,8,Passive,opportunity,IN_PROGRESS
+Leila,Fontaine,leila.fontaine@orchardbrands.com,,Client Contact,Department Head,Website — organic,57,B,West,Pod West 1,10,Promoter,opportunity,IN_PROGRESS
+Astrid,Zhang,astrid.zhang@hallmarkgroup.com,+16177247038,Client Contact,CEO / Founder,Event / conference,66,B,East,Pod East 1,,,customer,OPEN_DEAL
+Bilal,Weiss,bilal.weiss@uptonconsulting.com,+19778252584,Client Contact,HR Manager,Website — organic,57,B,East,Pod East 2,9,Promoter,customer,OPEN_DEAL
+Malik,Hoffman,malik.hoffman@fairhavencapital.com,+19806603337,Client Contact,COO / Operations Lead,Website — organic,47,C,West,Pod West 2,8,Passive,lead,UNQUALIFIED
+Caleb,Ellery,caleb.ellery@underhillpartners.com,+16009976720,Client Contact,HR Manager,Website — organic,66,B,West,Pod West 1,7,Passive,customer,OPEN_DEAL
+Isabel,Jansen,isabel.jansen@quarrysupplyco.com,+14067609242,Client Contact,CEO / Founder,Event / conference,46,C,West,Pod West 2,8,Passive,lead,UNQUALIFIED
+Divya,Rojas,divya.rojas@oakfieldfreight.com,,Client Contact,L&D Manager,Inbound enquiry,43,C,West,Pod West 1,8,Passive,customer,OPEN_DEAL
+Aisha,Fontaine,aisha.fontaine@norburymanufacturing.com,+18653782291,Client Contact,Department Head,Inbound enquiry,56,B,Central,Pod Central 1,6,Detractor,customer,OPEN_DEAL
+Nikhil,Sandoval,nikhil.sandoval@newboldmanufacturing.com,+15209935202,Client Contact,Talent Director,Referral,69,B,East,Pod East 1,10,Promoter,opportunity,IN_PROGRESS
+Astrid,Balogun,astrid.balogun@orchardcaregroup.com,,Client Contact,Department Head,Referral,46,C,East,Pod East 2,10,Promoter,opportunity,UNQUALIFIED

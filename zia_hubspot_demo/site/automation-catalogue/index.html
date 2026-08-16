@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Complete HubSpot Automation Catalogue</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  /* Minimal reset — the fragment supplies its own design system on top. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --ground:#F2F3F0; --surface:#FBFBF9; --sunk:#E8EAE5; --raised:#FFFFFF;
+    --ink:#171A19; --ink-2:#5D6560; --ink-3:#878F89;
+    --rule:#D6D9D3; --rule-firm:#B9BEB7;
+    --accent:#1D5D57; --accent-soft:#DDE8E5;
+    --signal:#B4471C; --signal-soft:#F3E2D8;
+    --good:#2F6B45; --good-soft:#DCE9E0;
+    --shadow: 0 1px 2px rgba(23,26,25,.06), 0 8px 24px -16px rgba(23,26,25,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+      --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+      --rule:#2C312E; --rule-firm:#404742;
+      --accent:#6FBBB1; --accent-soft:#1B2E2B;
+      --signal:#E2895B; --signal-soft:#2E1F18;
+      --good:#7DBE95; --good-soft:#1A2A1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+    --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+    --rule:#2C312E; --rule-firm:#404742;
+    --accent:#6FBBB1; --accent-soft:#1B2E2B;
+    --signal:#E2895B; --signal-soft:#2E1F18;
+    --good:#7DBE95; --good-soft:#1A2A1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+  :root {
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6; margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px 110px; }
+  .col { max-width: 68ch; }
+
+  header.top { padding: 70px 0 34px; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 20px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.1rem, 5vw, 3.3rem); line-height: 1.07;
+    letter-spacing: -.015em; margin: 0 0 18px; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .standfirst {
+    font-family: var(--serif); font-size: 1.18rem; line-height: 1.5;
+    color: var(--ink-2); max-width: 58ch; margin: 0 0 28px;
+  }
+  .credit {
+    display: flex; flex-wrap: wrap; gap: 8px 28px;
+    font-family: var(--mono); font-size: 12px; color: var(--ink-3);
+  }
+  .credit b { color: var(--ink-2); font-weight: 500; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    margin: 30px 0 0; padding: 18px 20px;
+    background: var(--surface); border: 1px solid var(--rule);
+    font-size: 13px; color: var(--ink-2);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .chip {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
+    padding: 3px 7px; border-radius: 2px; white-space: nowrap; font-weight: 600;
+  }
+  .chip.built { background: var(--good-soft); color: var(--good); border: 1px solid var(--good); }
+  .chip.design { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+  .chip.gated { background: var(--signal-soft); color: var(--signal); border: 1px solid var(--signal); }
+
+  section { padding-top: 70px; scroll-margin-top: 20px; }
+  .sechead {
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 12px;
+  }
+  .sechead .num {
+    font-family: var(--mono); font-size: 13px; color: var(--accent); flex-shrink: 0;
+  }
+  .sechead h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15;
+    letter-spacing: -.012em; margin: 0; text-wrap: balance;
+  }
+  .subhead {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 26px; padding-left: 30px;
+  }
+  @media (max-width: 620px) { .subhead { padding-left: 0; } }
+
+  p { margin: 0 0 1em; }
+  .lede { font-size: 1.05rem; color: var(--ink-2); }
+  h3 { font-size: 1.02rem; font-weight: 650; margin: 2em 0 .6em; }
+  h3:first-child { margin-top: 0; }
+  ul.body { padding-left: 1.1em; margin: 0 0 1em; }
+  ul.body li { margin-bottom: .4em; }
+  a { color: var(--accent); }
+  code {
+    font-family: var(--mono); font-size: .86em; background: var(--sunk);
+    padding: 1px 5px; border-radius: 2px; color: var(--ink-2);
+  }
+
+  .tablewrap { overflow-x: auto; margin: 24px 0 32px; }
+  table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; }
+  caption {
+    text-align: left; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 10px;
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule-firm); vertical-align: bottom;
+  }
+  td {
+    padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule);
+    vertical-align: top; color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  td.st { white-space: nowrap; }
+
+  .note {
+    font-size: 13.5px; color: var(--ink-2); background: var(--sunk);
+    border: 1px solid var(--rule); padding: 15px 17px; margin: 24px 0; max-width: 74ch;
+  }
+  .note b { color: var(--ink); }
+  .note.warn { border-color: var(--signal); background: var(--signal-soft); }
+  .note.warn b { color: var(--signal); }
+
+  /* ── answer cards ── */
+  .answers { display: grid; gap: 0; margin: 30px 0; border-top: 1px solid var(--rule-firm); }
+  .ans {
+    display: grid; grid-template-columns: 34px minmax(0,1fr);
+    gap: 16px; padding: 26px 0; border-bottom: 1px solid var(--rule);
+  }
+  .ans .qn {
+    font-family: var(--mono); font-size: 11px; color: var(--accent); padding-top: 6px;
+  }
+  .ans .qt {
+    font-family: var(--serif); font-size: 1.14rem; line-height: 1.4;
+    color: var(--ink); margin: 0 0 .7em;
+  }
+  .ans .at { font-size: 14.5px; color: var(--ink-2); margin: 0 0 .7em; max-width: 68ch; }
+  .ans .at b { color: var(--ink); font-weight: 600; }
+  .ans .ev {
+    font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+    background: var(--accent-soft); border-left: 2px solid var(--accent);
+    padding: 9px 12px; margin: 0; line-height: 1.55;
+  }
+
+  .closer {
+    margin-top: 70px; padding: 32px;
+    background: var(--surface); border: 1px solid var(--rule-firm); box-shadow: var(--shadow);
+  }
+  .closer p { font-family: var(--serif); font-size: 1.16rem; line-height: 1.5; margin: 0; max-width: 60ch; }
+  .closer .sig {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+    letter-spacing: .06em; margin-top: 18px;
+  }
+
+  .toc {
+    margin: 34px 0 0; padding: 22px 24px;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .toc h2 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; font-weight: 500;
+  }
+  .toc ol {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2px 24px;
+  }
+  .toc li {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 14.5px; padding: 5px 0; border-bottom: 1px solid var(--rule);
+  }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  .toc .n { font-family: var(--mono); font-size: 11px; color: var(--accent); min-width: 20px; }
+  .toc .c {
+    margin-left: auto; font-family: var(--mono); font-size: 10.5px; color: var(--ink-3);
+  }
+
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media (max-width: 620px) {
+    .wrap { padding: 0 20px 80px; }
+    header.top { padding-top: 48px; }
+    .ans { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Reference · automation surface area</p>
+    <h1>Every automation HubSpot has,<br><em>and what each one does here</em></h1>
+    <p class="standfirst">A complete catalogue of HubSpot's automation capabilities, each mapped to a concrete job in the Lumen Talent Group build — so "we automated it" has a specific answer rather than a general one.</p>
+    <div class="credit">
+      <span><b>Companion to</b> &nbsp;the system design walkthrough</span>
+      <span><b>Prepared by</b> &nbsp;Salman K.</span>
+      <span><b>Document type</b> &nbsp;technical reference</span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><span class="chip built">BUILT</span> in the demo portal, clickable live</span>
+    <span><span class="chip design">DESIGNED</span> specified, buildable, not in the demo</span>
+    <span><span class="chip gated">TIER</span> needs a subscription above the demo portal</span>
+  </div>
+
+  <div class="note warn"><b>On tier gating:</b> HubSpot moves feature availability between subscription levels, and availability differs by which Hubs a portal holds. Every <span class="chip gated">TIER</span> mark below should be verified against the target portal's actual subscription before it is committed to a delivery plan. Nothing in this document assumes a tier that has not been confirmed.</div>
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><span class="n">01</span><a href="#s1">Workflow enrollment</a><span class="c">triggers</span></li>
+      <li><span class="n">02</span><a href="#s2">Workflow actions — CRM</a><span class="c">records</span></li>
+      <li><span class="n">03</span><a href="#s3">Workflow actions — timing &amp; logic</a><span class="c">control flow</span></li>
+      <li><span class="n">04</span><a href="#s4">Workflow actions — communication</a><span class="c">outbound</span></li>
+      <li><span class="n">05</span><a href="#s5">Data operations</a><span class="c">quality</span></li>
+      <li><span class="n">06</span><a href="#s6">Programmable automation</a><span class="c">code</span></li>
+      <li><span class="n">07</span><a href="#s7">Automation outside workflows</a><span class="c">the rest</span></li>
+      <li><span class="n">08</span><a href="#s8">AI automation</a><span class="c">judgment</span></li>
+      <li><span class="n">09</span><a href="#s9">The nine workflows, end to end</a><span class="c">the build</span></li>
+      <li><span class="n">10</span><a href="#s10">Scope delivered</a><span class="c">summary</span></li>
+    </ol>
+  </nav>
+
+  <!-- ═══ 01 ═══ -->
+  <section id="s1">
+    <div class="sechead"><span class="num">01</span><h2>Workflow enrollment</h2></div>
+    <p class="subhead">What starts an automation</p>
+
+    <div class="col">
+      <p class="lede">Enrollment is where most workflows go wrong. A trigger that's too broad re-enrolls records and duplicates work; one that's too narrow silently misses cases. Both failures are invisible until someone notices the data is wrong.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Enrollment triggers</caption>
+        <thead><tr><th style="width:20%">Trigger type</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Property-based</td><td>Deal stage becomes Closed Won → Match &amp; Embed fires</td><td class="st"><span class="chip built">BUILT</span></td><td>The primary trigger in the build</td></tr>
+          <tr><td>Object created</td><td>Contact created → contact type enforcement</td><td class="st"><span class="chip built">BUILT</span></td><td>Runs before anything else can act on the record</td></tr>
+          <tr><td>Form submission</td><td>Showcase request → fast-track routing</td><td class="st"><span class="chip built">BUILT</span></td><td>Distinct forms carry distinct intent</td></tr>
+          <tr><td>List membership</td><td>Entering an at-risk placement list → CSM alert</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Useful when the criteria are complex enough to be worth naming once</td></tr>
+          <tr><td>Activity-based</td><td>Email opened / page viewed / call logged → engagement scoring</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Behavioral half of the fit score</td></tr>
+          <tr><td>Scheduled / recurring</td><td>Nightly placement health recalculation</td><td class="st"><span class="chip built">BUILT</span></td><td>Batch work belongs on a schedule, not on a record trigger</td></tr>
+          <tr><td>Date-based</td><td>Embed start date + 7 / 30 / 90 → check-in cadence</td><td class="st"><span class="chip built">BUILT</span></td><td>Anchored to a property date, not to enrollment time</td></tr>
+          <tr><td>Meeting booked / outcome</td><td>Alignment call booked → SQL, prep task, fit scorecard surfaced</td><td class="st"><span class="chip built">BUILT</span></td><td>Their front door is a meeting link, so this matters</td></tr>
+          <tr><td>Webhook / API enrollment</td><td>External system pushes a record into a workflow</td><td class="st"><span class="chip gated">TIER</span></td><td>The integration path when a partner system owns the event</td></tr>
+          <tr><td>Manual enrollment</td><td>CSM triggers a continuity handover pack</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Deliberately human — not everything should fire itself</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>Re-enrollment is the trap.</b> On Match &amp; Embed it is switched <b>off</b>: without that, editing a won deal spawns a second placement record and the recurring-revenue number silently doubles. On the check-in cadence it is switched <b>on</b>, because a placement genuinely should re-enter the cycle. Knowing which is which per workflow is most of the craft.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section id="s2">
+    <div class="sechead"><span class="num">02</span><h2>Workflow actions — CRM</h2></div>
+    <p class="subhead">Creating and changing records</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Record actions</caption>
+        <thead><tr><th style="width:22%">Action</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Set property value</td><td>Default hourly rate by tier: 12 / 16 / 22</td><td class="st"><span class="chip built">BUILT</span></td><td>Rates live in one place, not in a rep's memory</td></tr>
+          <tr><td>Copy property value</td><td>Deal tier and hours copied onto the placement</td><td class="st"><span class="chip built">BUILT</span></td><td>Prevents re-keying, which prevents divergence</td></tr>
+          <tr><td>Create record</td><td>Placement record created at Closed Won</td><td class="st"><span class="chip built">BUILT</span></td><td>The single most important action in the build</td></tr>
+          <tr><td>Create task</td><td>Onboarding set: access, comms, payroll, documentation</td><td class="st"><span class="chip built">BUILT</span></td><td>Assigned and dated relative to embed start</td></tr>
+          <tr><td>Create ticket</td><td>Escalation raised when a check-in goes 14 days overdue</td><td class="st"><span class="chip built">BUILT</span></td><td>Gives the miss an owner and an SLA</td></tr>
+          <tr><td>Create note</td><td>Showcase shortlist written to the placement record</td><td class="st"><span class="chip built">BUILT</span></td><td>Output of the custom-coded ranking action</td></tr>
+          <tr><td>Associate / disassociate</td><td>Placement linked to company, deal and talent contact</td><td class="st"><span class="chip built">BUILT</span></td><td>Associations are what make cross-object reporting possible</td></tr>
+          <tr><td>Rotate record to owner</td><td>CSM round-robin on new embeds; sales round-robin on inbound</td><td class="st"><span class="chip built">BUILT</span></td><td>Rotation respects an availability flag, so holidays don't black-hole leads</td></tr>
+          <tr><td>Set marketing contact status</td><td>Talent contacts excluded from the marketable pool</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Two-sided databases pay for marketing contacts twice if you skip this</td></tr>
+          <tr><td>Manage subscriptions</td><td>Placed talent removed from client-facing sends</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Consent handled as data, not as a filter someone remembers</td></tr>
+          <tr><td>Approvals before action</td><td>Rate changes below a margin floor need sign-off</td><td class="st"><span class="chip gated">TIER</span></td><td>Guards the one field where a mistake costs real money</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section id="s3">
+    <div class="sechead"><span class="num">03</span><h2>Workflow actions — timing and logic</h2></div>
+    <p class="subhead">Control flow</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Delays and branching</caption>
+        <thead><tr><th style="width:22%">Action</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed delay</td><td>Day 7 / 30 / 90 check-in cadence</td><td class="st"><span class="chip built">BUILT</span></td><td>Simple, predictable, easy to audit</td></tr>
+          <tr><td>Delay until date</td><td>Wait until the embed start date before onboarding fires</td><td class="st"><span class="chip built">BUILT</span></td><td>Anchors to reality rather than to when the deal happened to close</td></tr>
+          <tr><td>Delay until event</td><td>Wait until documentation is marked current, then advance</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Event delays beat polling loops — cleaner and cheaper</td></tr>
+          <tr><td>Business-hours delay</td><td>Hold internal alerts until the owner's working hours</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Matters for a team spread across three timezone bands</td></tr>
+          <tr><td>If / then branch</td><td>Fit score ≥ 10 → showcase; 4–9 → nurture; &lt; 4 → disqualify</td><td class="st"><span class="chip built">BUILT</span></td><td>The qualification model made executable</td></tr>
+          <tr><td>Value-equals branch</td><td>Route by practice type into segment-specific tracks</td><td class="st"><span class="chip built">BUILT</span></td><td>Cleaner than nested if/then when a property has fixed options</td></tr>
+          <tr><td>Random split</td><td>A/B testing a nurture opener</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Only meaningful at volume — worth saying so rather than adding it for show</td></tr>
+          <tr><td>Go to action</td><td>Escalation loop returns an untouched lead to the routing pool</td><td class="st"><span class="chip built">BUILT</span></td><td>The return path most builds omit, which is how leads go cold</td></tr>
+          <tr><td>Suppression / goal exit</td><td>Placement reaching Steady State exits the onboarding chase</td><td class="st"><span class="chip built">BUILT</span></td><td>Without goals, automation nags people who already complied</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section id="s4">
+    <div class="sechead"><span class="num">04</span><h2>Workflow actions — communication</h2></div>
+    <p class="subhead">Outbound, internal and cross-app</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Communication actions</caption>
+        <thead><tr><th style="width:22%">Action</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Send marketing email</td><td>Client welcome series; LumenU cohort access</td><td class="st"><span class="chip built">BUILT</span></td><td>Filtered on contact type at enrollment, so candidates never receive client mail</td></tr>
+          <tr><td>Send internal email</td><td>Showcase shortlist to talent ops</td><td class="st"><span class="chip built">BUILT</span></td><td>Carries the ranked candidates and the reasoning</td></tr>
+          <tr><td>In-app notification</td><td>Placement drops below the health floor</td><td class="st"><span class="chip built">BUILT</span></td><td>Paired with a dated task — a notification alone gets dismissed</td></tr>
+          <tr><td>Slack / Teams notification</td><td>New showcase request posted to the sales channel</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Speed-to-lead depends on the alert reaching where people already are</td></tr>
+          <tr><td>Enroll in sequence</td><td>Rep-owned follow-up after a showcase</td><td class="st"><span class="chip built">BUILT</span></td><td>Sequences are 1:1 and rep-owned; workflows are systemic. Different tools, different jobs.</td></tr>
+          <tr><td>Send SMS</td><td>Same-day reminder before an alignment call</td><td class="st"><span class="chip gated">TIER</span></td><td>Requires add-on. Worth costing before promising.</td></tr>
+          <tr><td>Send webhook</td><td>Create the onboarding task in the project tool</td><td class="st"><span class="chip gated">TIER</span></td><td>Writes the HubSpot record id back for two-way traceability</td></tr>
+          <tr><td>Add to ads audience</td><td>Retarget stalled mid-fit-score prospects</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Audience defined by CRM state, not by page visit — far tighter targeting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section id="s5">
+    <div class="sechead"><span class="num">05</span><h2>Data operations</h2></div>
+    <p class="subhead">Keeping the system usable over time</p>
+
+    <div class="col">
+      <p class="lede">Unglamorous and the highest-return category in the list. Every dashboard depends on it, and it is the first thing to decay once the person who built the system stops watching.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Data quality automation</caption>
+        <thead><tr><th style="width:22%">Capability</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Format data</td><td>Name capitalisation, phone and date normalisation, whitespace trimming</td><td class="st"><span class="chip gated">TIER</span></td><td>Stops "hi john" going out in a welcome email</td></tr>
+          <tr><td>Calculated properties</td><td>Monthly value = rate × hours × 4.33; gross margin</td><td class="st"><span class="chip built">BUILT</span></td><td>The property that makes recurring-revenue reporting possible at all</td></tr>
+          <tr><td>Rollup properties</td><td>Active placement count and total monthly value on the company</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Client-level revenue without a cross-object report every time</td></tr>
+          <tr><td>Duplicate management</td><td>Scheduled review of the duplicates queue</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Two-sided databases duplicate faster — a talent contact often applies twice</td></tr>
+          <tr><td>Property validation rules</td><td>Hours per week capped at 40; rate cannot fall below cost</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Blocks the negative-margin placement before it exists</td></tr>
+          <tr><td>Required properties by stage</td><td>Stage gates on all three pipelines</td><td class="st"><span class="chip built">BUILT</span></td><td>Collects data at the moment the rep is motivated to give it</td></tr>
+          <tr><td>Data sync with external apps</td><td>Two-way sync with finance or payroll</td><td class="st"><span class="chip gated">TIER</span></td><td>Sync beats one-way webhooks when both sides can edit</td></tr>
+          <tr><td>Scheduled data audit</td><td>Quarterly portal audit re-run and compared</td><td class="st"><span class="chip built">BUILT</span></td><td>Runs as a script against the API, so it costs minutes not days</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section id="s6">
+    <div class="sechead"><span class="num">06</span><h2>Programmable automation</h2></div>
+    <p class="subhead">Where the UI runs out</p>
+
+    <div class="col">
+      <p class="lede">The line worth being able to draw in an interview: use the UI until the logic can't be expressed there, then write code — and be able to say precisely where that line falls and why.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Code-level automation</caption>
+        <thead><tr><th style="width:22%">Capability</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Custom coded action</td><td>Ranking bench-ready talent for a showcase shortlist</td><td class="st"><span class="chip gated">TIER</span></td><td>Branch logic can't rank a list — this is the genuine threshold for code</td></tr>
+          <tr><td>Custom coded action</td><td>Composite health score from four weighted signals</td><td class="st"><span class="chip gated">TIER</span></td><td>Weights live in one function, not scattered across branches</td></tr>
+          <tr><td>Outbound webhooks</td><td>Project-tool task creation with id write-back</td><td class="st"><span class="chip gated">TIER</span></td><td>Write the id back or you have a one-way street and no traceability</td></tr>
+          <tr><td>Private app + CRM API</td><td>Provisioning the entire portal schema from a JSON file</td><td class="st"><span class="chip built">BUILT</span></td><td>Properties, groups and pipelines as version-controlled code</td></tr>
+          <tr><td>Search API</td><td>Server-side bench filtering inside the custom action</td><td class="st"><span class="chip built">BUILT</span></td><td>Filtering server-side keeps the action inside its execution timeout</td></tr>
+          <tr><td>Portal audit via API</td><td>Fill rates, unowned records, stalled deals, free-text detection</td><td class="st"><span class="chip built">BUILT</span></td><td>Read-only, safe against a live portal, findings by day two</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note"><b>The judgment, stated:</b> code is used in exactly three places — ranking, composite scoring, and provisioning. Everywhere else the UI is better, because a workflow a HubSpot admin can read and change beats a function only its author understands. <b>Choosing not to write code is an architectural decision too.</b></div>
+    </div>
+  </section>
+
+  <!-- ═══ 07 ═══ -->
+  <section id="s7">
+    <div class="sechead"><span class="num">07</span><h2>Automation outside workflows</h2></div>
+    <p class="subhead">The half people forget</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Non-workflow automation surfaces</caption>
+        <thead><tr><th style="width:22%">Surface</th><th style="width:44%">Used here for</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Sales sequences</td><td>Post-showcase follow-up, owned by the rep</td><td class="st"><span class="chip built">BUILT</span></td><td>Auto-unenrolls on reply — the setting that keeps sequences from embarrassing you</td></tr>
+          <tr><td>Lead scoring</td><td>Fit score from the published qualification criteria</td><td class="st"><span class="chip built">BUILT</span></td><td>Their own criteria, weighted — not a generic engagement score</td></tr>
+          <tr><td>Predictive scoring</td><td>Likelihood-to-close, once there is enough history</td><td class="st"><span class="chip gated">TIER</span></td><td>Needs real volume. Honest answer: not yet, and here's the threshold.</td></tr>
+          <tr><td>Lifecycle stage automation</td><td>Stages move on evidence; manual editing locked</td><td class="st"><span class="chip built">BUILT</span></td><td>One setting that decides whether the funnel report means anything</td></tr>
+          <tr><td>Progressive profiling</td><td>Returning visitors asked new questions, not the same four</td><td class="st"><span class="chip built">BUILT</span></td><td>Collects the fit criteria across visits instead of one long form</td></tr>
+          <tr><td>Dependent form fields</td><td>Tier selection reveals hours and role fields</td><td class="st"><span class="chip built">BUILT</span></td><td>Shorter forms convert better and still capture what's needed</td></tr>
+          <tr><td>Smart content</td><td>Landing page copy varies by practice type</td><td class="st"><span class="chip design">DESIGNED</span></td><td>One template, four segments — marketing ships in an hour</td></tr>
+          <tr><td>Chatflows / bots</td><td>Qualification bot that books or routes to talent application</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Splits the two audiences at first contact, before any cleanup is needed</td></tr>
+          <tr><td>Meetings automation</td><td>Round-robin alignment calls with qualification questions on booking</td><td class="st"><span class="chip built">BUILT</span></td><td>The rep arrives at the call already half-informed</td></tr>
+          <tr><td>Feedback surveys</td><td>CSAT at day 30 and 180; NPS annually</td><td class="st"><span class="chip built">BUILT</span></td><td>Responses write straight to the placement health score</td></tr>
+          <tr><td>Ticket SLA automation</td><td>Response targets by ticket type, with escalation</td><td class="st"><span class="chip built">BUILT</span></td><td>Client escalations at one hour; talent escalations tracked separately</td></tr>
+          <tr><td>Quote automation</td><td>Quote generated from deal properties, e-signature tracked</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Removes the Word template and the re-keying that comes with it</td></tr>
+          <tr><td>Payments / subscriptions</td><td>Recurring billing tied to the placement record</td><td class="st"><span class="chip gated">TIER</span></td><td>Region-dependent. Would need confirming before promising.</td></tr>
+          <tr><td>Marketing email optimization</td><td>Send-time optimization, A/B subject testing</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Meaningful only above a volume threshold worth naming honestly</td></tr>
+          <tr><td>Playbooks</td><td>Tier-specific discovery questions on the deal record</td><td class="st"><span class="chip gated">TIER</span></td><td>Core and Summit are genuinely different conversations</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 08 ═══ -->
+  <section id="s8">
+    <div class="sechead"><span class="num">08</span><h2>AI automation</h2></div>
+    <p class="subhead">Where judgment is delegated, and where it isn't</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>AI capabilities</caption>
+        <thead><tr><th style="width:24%">Capability</th><th style="width:42%">Position taken</th><th style="width:12%">Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>AI in workflows</td><td>Summarise a placement's activity into a pre-call check-in brief</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Saves real time, and a wrong summary is caught by the human reading it</td></tr>
+          <tr><td>Open-text analysis</td><td>Turn CSAT comments into themes feeding the health score</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Themes are reviewed before they influence any score</td></tr>
+          <tr><td>Shortlist reasoning</td><td>Draft why each of the top three candidates fits</td><td class="st"><span class="chip design">DESIGNED</span></td><td>The ranking is deterministic code; only the explanation is generated</td></tr>
+          <tr><td>Content assistance</td><td>First drafts of nurture copy for marketing to edit</td><td class="st"><span class="chip design">DESIGNED</span></td><td>Draft, never send</td></tr>
+          <tr><td>AI setting lifecycle stages</td><td><b>Declined.</b> Stages move on evidence, not inference</td><td class="st">—</td><td>One wrong inference corrupts every funnel report downstream</td></tr>
+          <tr><td>Unsupervised fit scoring</td><td><b>Declined.</b> The criteria are published and deliberate</td><td class="st">—</td><td>A model would optimize for closing, not for fit — and those differ</td></tr>
+          <tr><td>Unreviewed client email</td><td><b>Declined.</b> Nothing reaches a client unread</td><td class="st">—</td><td>In a trust-based services business this is the whole product</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note"><b>The principle, in one line:</b> AI proposes, a human commits, the CRM records who committed it. The three declines above are worth stating out loud in the interview — <b>knowing where not to automate reads as more senior than automating everything.</b></div>
+    </div>
+  </section>
+
+  <!-- ═══ 09 ═══ -->
+  <section id="s9">
+    <div class="sechead"><span class="num">09</span><h2>The nine workflows, end to end</h2></div>
+    <p class="subhead">What actually gets built</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Workflow inventory</caption>
+        <thead><tr><th style="width:8%">ID</th><th style="width:26%">Workflow</th><th style="width:20%">Trigger</th><th>Does</th></tr></thead>
+        <tbody>
+          <tr><td>WF-01</td><td>Match &amp; Embed</td><td>Deal → Closed Won</td><td>Creates the placement, builds the showcase shortlist, opens the embed record, creates onboarding tickets, enrolls client contacts, fires the integration webhook, starts the check-in cadence</td></tr>
+          <tr><td>WF-02</td><td>Contact type enforcement</td><td>Contact created</td><td>Sets contact type from source; anything ambiguous becomes Unclassified and raises a task rather than defaulting silently</td></tr>
+          <tr><td>WF-03</td><td>Fit score routing</td><td>Fit score known</td><td>High → showcase; mid → nurture built on the two weakest criteria; low → disqualify with a reason required</td></tr>
+          <tr><td>WF-04</td><td>Lead routing cascade</td><td>Any conversion</td><td>Existing owner → named account → territory → round-robin, with a five-minute untouched escalation that returns the lead to the pool</td></tr>
+          <tr><td>WF-05</td><td>Check-in cadence</td><td>Embed start date</td><td>Dated tasks at day 7 / 30 / 90 then quarterly, CSAT at 30 and 180, escalation at 14 days overdue</td></tr>
+          <tr><td>WF-06</td><td>Placement health scoring</td><td>Nightly schedule</td><td>Weighted score from check-in recency, CSAT trend, escalations and scope drift; sets At Risk, alerts, or flags a tier upgrade</td></tr>
+          <tr><td>WF-07</td><td>LumenU enrollment</td><td>Placement → Steady State</td><td>Enrolls placed talent in the current cohort and sends access — closing the loop on the development promise</td></tr>
+          <tr><td>WF-08</td><td>Lifecycle stage engine</td><td>Multiple</td><td>Moves lifecycle on evidence only; manual editing locked at the property level</td></tr>
+          <tr><td>WF-09</td><td>Data hygiene</td><td>Create + nightly</td><td>Formatting, validation, unowned-record sweep, duplicate queue, missing-field alerts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 10 ═══ -->
+  <section id="s10">
+    <div class="sechead"><span class="num">10</span><h2>Scope delivered</h2></div>
+    <p class="subhead">What this engagement produced, and where its limits are</p>
+
+    <div class="col">
+      <p class="lede">A summary of the work, the artifacts it produced, and the assumptions that would need validating against a live portal before any of it is committed to a delivery plan.</p>
+
+      <h3>Coverage by Hub</h3>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Functional coverage</caption>
+        <thead><tr><th style="width:20%">Hub</th><th style="width:46%">What the design covers</th><th>Depends on</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Sales Hub</td>
+            <td>Three pipelines with stage gates, lead-routing cascade, fit scorecard, sequences, quote automation, two-component forecasting</td>
+            <td>Professional for multiple pipelines and sequences; playbooks are Enterprise</td>
+          </tr>
+          <tr>
+            <td>Marketing Hub</td>
+            <td>Segment landing-page templates, three form types with progressive profiling, objection-led nurture tracks, four-layer attribution model, campaign naming architecture</td>
+            <td>Professional for workflows, smart content and attribution reporting</td>
+          </tr>
+          <tr>
+            <td>Service Hub</td>
+            <td>Five ticket types with routing and response targets, escalation rules, CSAT and NPS surveys feeding the placement health score</td>
+            <td>Professional for ticket automation and feedback surveys</td>
+          </tr>
+          <tr>
+            <td>Operations Hub</td>
+            <td>Custom coded actions for shortlist ranking and composite scoring, outbound webhooks with identifier write-back, data formatting and validation</td>
+            <td>Professional for programmable automation; data sync varies by connector</td>
+          </tr>
+          <tr>
+            <td>CRM platform</td>
+            <td>Object model with three custom objects, forty-plus typed properties, calculated and rollup properties, lifecycle engine, association model</td>
+            <td>Custom objects require Enterprise; a Professional fallback is specified</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <h3>Artifacts produced</h3>
+      <ul class="body">
+        <li><strong>Object model and entity-relationship design</strong> — three custom objects, the contact-type discriminator that separates the two audiences, and the Deal-to-Placement separation that makes recurring revenue reportable.</li>
+        <li><strong>Nine workflows</strong>, specified end to end with triggers, actions, branch logic, re-enrollment settings and suppression rules.</li>
+        <li><strong>Portal provisioner</strong> — a declarative JSON schema and an idempotent script that creates every property group, property and pipeline through the CRM API, making the whole structure version-controlled and reproducible.</li>
+        <li><strong>Portal auditor</strong> — a read-only diagnostic that reports property fill rates, free-text fields that should be constrained, unowned records, stalled deals and single-pipeline anti-patterns, and writes a findings report.</li>
+        <li><strong>Shortlist ranking action</strong> — deterministic candidate scoring on tier, capacity, timezone overlap and functional match, with server-side filtering to stay inside execution limits.</li>
+        <li><strong>Reporting specification</strong> — eight executive metrics with stated formulas, four department dashboards, and a CRM health monitor sharing definitions with the auditor.</li>
+        <li><strong>Economic model</strong> — an interactive tool quantifying recurring revenue visibility, churn exposure and automation return, with its own assumptions documented.</li>
+      </ul>
+
+      <h3>The process problem this addresses</h3>
+      <p><strong>The situation.</strong> A services business whose revenue comes almost entirely from recurring delivery was forecasting on deal amount — the one component of the transaction that occurs once. Current recurring revenue, gross margin per engagement, and which engagements were degrading were all unanswerable without manual reconstruction.</p>
+      <p><strong>The intervention.</strong> Separate the sale from the delivery by introducing a Placement record with its own lifespan, rate, hours and health score. Automate the handoff at Closed Won so the record is created with the data already on it. Add nightly health scoring so degradation surfaces before it becomes churn.</p>
+      <p><strong>The result.</strong> Recurring revenue and margin become reportable properties rather than spreadsheet exercises. At-risk engagements appear on a worklist weeks before they end. Coordination work at each new placement drops from a manual chain to a single trigger. The economic model quantifies each of these against the client's own figures.</p>
+
+      <h3>Known limits</h3>
+      <ul class="body">
+        <li><strong>Subscription tier is unconfirmed.</strong> The custom-object model requires Enterprise. A Professional fallback using a second deal pipeline is specified and retains most of the design, but which path applies cannot be settled without portal access.</li>
+        <li><strong>Existing data quality is unknown.</strong> Migration scope, duplicate volume and back-fill effort all depend on audit findings that require a token to produce.</li>
+        <li><strong>Attribution can only begin where UTM capture exists.</strong> If forms do not currently carry hidden UTM fields, historical attribution is unrecoverable and the model starts from implementation date.</li>
+        <li><strong>Health-score intervention rates are hypothetical.</strong> Scoring surfaces at-risk placements; whether intervention succeeds depends on people, not the CRM. The figure should be measured over two quarters rather than assumed.</li>
+        <li><strong>Integration behavior is specified but untested</strong> against the actual project tool in use, and webhook availability varies by subscription.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>This catalogue is not an argument that everything should be automated. It exists so that every capability HubSpot offers has been considered against a specific job in this system — including the several where the correct decision was to leave the work with a person.</p>
+    <p class="sig">AUTOMATION CATALOGUE · LUMEN TALENT GROUP · HUBSPOT SYSTEMS ANALYSIS</p>
+  </div>
+
+</div>
+</body>
+</html>

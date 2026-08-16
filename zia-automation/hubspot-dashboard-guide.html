@@ -1,0 +1,661 @@
+<title>HubSpot Dashboard Build Guide</title>
+<style>
+:root {
+  --ground:#EDF1F2; --surface:#FFFFFF; --surface-2:#F6F9F9;
+  --hairline:#DBE3E5; --hairline-2:#EAF0F1;
+  --ink:#0E2429; --ink-2:#40595F; --ink-3:#6C858B;
+  --accent:#0A8F86; --accent-soft:#E2F2F0;
+  --c1:#0A8F86; --c2:#A85D00; --c3:#4152A3; --c4:#AB2F5C;
+  --good:#2E7D52; --warning:#9A6B00; --critical:#B0303A;
+  --good-bg:#E6F2EB; --warning-bg:#F7EFDD; --critical-bg:#F8E5E7;
+  --shadow:0 1px 2px rgba(14,36,41,.05), 0 4px 16px rgba(14,36,41,.05);
+  --mono: ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:#0B1618; --surface:#111F22; --surface-2:#16272B;
+    --hairline:#23393E; --hairline-2:#1B2E32;
+    --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+    --accent:#19A092; --accent-soft:#12312F;
+    --c1:#19A092; --c2:#B87B26; --c3:#6A7CCB; --c4:#D0567B;
+    --good:#4FB07C; --warning:#C99A2E; --critical:#E06B72;
+    --good-bg:#14302270; --warning-bg:#33280C70; --critical-bg:#38191C70;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F;
+  --c1:#19A092; --c2:#B87B26; --c3:#6A7CCB; --c4:#D0567B;
+  --good:#4FB07C; --warning:#C99A2E; --critical:#E06B72;
+  --good-bg:#14302270; --warning-bg:#33280C70; --critical-bg:#38191C70;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 90px}
+.masthead{background:var(--surface);border-bottom:1px solid var(--hairline);padding:30px 0}
+.mi{max-width:1080px;margin:0 auto;padding:0 24px}
+.brandmark{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:clamp(27px,4vw,38px);line-height:1.1;margin:7px 0 0;letter-spacing:-.022em;font-weight:660;text-wrap:balance}
+.standfirst{color:var(--ink-2);max-width:64ch;margin:12px 0 0}
+section{margin:46px 0 0}
+.sec-head{display:flex;align-items:baseline;gap:13px;margin:0 0 8px;flex-wrap:wrap}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--hairline);border-radius:3px;padding:4px 8px}
+h2{font-size:21px;margin:0;letter-spacing:-.012em;font-weight:640}
+h3{font-size:15px;margin:0;font-weight:620}
+.lede{color:var(--ink-2);font-size:14px;margin:0 0 16px;max-width:74ch}
+.card{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;padding:18px 20px;box-shadow:var(--shadow);margin-top:12px}
+.rep{background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--c1);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);margin-top:10px}
+.rep.ops{border-left-color:var(--c2)} .rep.sales{border-left-color:var(--c3)}
+.rep-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.num{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:600}
+dl{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;margin:0;font-size:13.5px}
+dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+dd{margin:0;color:var(--ink-2)}
+dd code,code{font-family:var(--mono);font-size:12.5px;background:var(--surface-2);border:1px solid var(--hairline-2);border-radius:4px;padding:1px 5px;color:var(--ink)}
+.why{margin-top:11px;padding-top:10px;border-top:1px solid var(--hairline-2);font-size:13px;color:var(--ink-3)}
+.why b{color:var(--ink-2);font-weight:600}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px;margin-top:6px}
+th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:0 14px 9px 0;border-bottom:1px solid var(--hairline)}
+td{padding:9px 14px 9px 0;border-bottom:1px solid var(--hairline-2);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.chip{display:inline-flex;align-items:center;border-radius:4px;padding:2px 8px;font-family:var(--mono);font-size:10.5px;font-weight:600;white-space:nowrap}
+.chip.good{background:var(--good-bg);color:var(--good)}
+.chip.warn{background:var(--warning-bg);color:var(--warning)}
+.chip.bad{background:var(--critical-bg);color:var(--critical)}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:12px 0 0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 12px 38px;font-size:14px;color:var(--ink-2)}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:6px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11.5px;font-weight:700;display:grid;place-items:center}
+ol.steps li b{color:var(--ink)}
+.callout{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--warning);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);margin-top:14px}
+.callout-icon{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--warning);background:var(--warning-bg);border-radius:4px;padding:4px 8px;letter-spacing:.06em;flex:none}
+.callout p{margin:5px 0 0;font-size:13.5px;color:var(--ink-2);max-width:76ch}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:11.5px;color:var(--ink-3);line-height:1.7}
+</style>
+
+<div class="masthead"><div class="mi">
+  <span class="brandmark">ZIA · HubSpot</span>
+  <h1>Dashboard Build Guide</h1>
+  <p class="standfirst">
+    Thirty-four reports across six dashboards, built by hand in HubSpot. Every field
+    named here exists in the portal and is populated — nothing below needs new data.
+  </p>
+</div></div>
+
+<div class="wrap">
+
+<div class="callout">
+  <span class="callout-icon">TIER</span>
+  <div>
+    <h3>Check this before you start</h3>
+    <p>
+      The portal is <code>accountType: STANDARD</code> — a free account. Free tier gives you
+      the <b>standard report library</b>; the <b>custom report builder is Professional+</b>.
+      Open <b>Reporting → Reports → Create report</b> and see whether
+      <b>"Custom Report Builder"</b> is offered. If it is not, build what you can from
+      <b>"Singular object"</b> reports, which still cover most of the list below, and say
+      plainly in the interview which reports need Professional. Naming the constraint is
+      a stronger answer than pretending it isn't there.
+    </p>
+  </div>
+</div>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">How to</span><h2>Creating a dashboard</h2></div>
+  <ol class="steps">
+    <li>Go to <b>Reporting → Dashboards → Create dashboard</b>.</li>
+    <li>Choose <b>Start from scratch</b> — the templates assume a standard sales motion and won't match a two-sided delivery business.</li>
+    <li>Name it, set visibility to <b>Everyone</b>, and create.</li>
+    <li>Inside the dashboard: <b>Add report → Create custom report → Singular object</b>, then pick the object named in each spec below.</li>
+    <li>Set the <b>chart type</b>, drag the named field to the <b>X axis</b>, set the <b>measure</b>, then add the <b>filters</b> exactly as listed.</li>
+    <li><b>Save</b> and add to the dashboard.</li>
+  </ol>
+</section>
+
+<!-- ============ EXECUTIVE ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 01</span><h2>Executive</h2></div>
+  <p class="lede">For leadership. Answers: are we selling, are we delivering, and what is on fire.</p>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.1</span><h3>New business won by month</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Area (or Column)</dd>
+      <dt>X axis</dt><dd><code>Close date</code> — grouped by <b>month</b></dd>
+      <dt>Measure</dt><dd>SUM of <code>Amount</code></dd>
+      <dt>Filters</dt><dd><code>Deal stage</code> is <b>Closed Won</b><br><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why"><b>Why the second filter matters.</b> Delivery engagements are also Closed Won. Without excluding them you are adding delivery revenue to new sales and every number is wrong. This one filter is the whole architecture point — say it out loud in the interview.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.2</span><h3>Pipeline by stage</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Deal stage</code></dd>
+      <dt>Measure</dt><dd>SUM of <code>Amount</code>, and COUNT as a second metric</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why">Shows both value and count per stage, so a fat-but-cheap stage is visible.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.3</span><h3>Revenue by program tier</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Engagement Type</code> (Core / Momentum / Summit)</dd>
+      <dt>Measure</dt><dd>SUM of <code>Amount</code></dd>
+      <dt>Filters</dt><dd><code>Deal stage</code> is <b>Closed Won</b></dd>
+    </dl>
+    <p class="why">Pair with 1.4. Summit carries the highest average deal value at <b>$51,395</b> against Core's <b>$23,047</b> — a 123% premium.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.4</span><h3>Average engagement health by tier</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Engagement Type</code></dd>
+      <dt>Measure</dt><dd>AVERAGE of <code>Health Score</code></dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>known</b></dd>
+    </dl>
+    <p class="why"><b>The money slide.</b> Put it beside 1.3 and the finding is that health is <b>flat across all three tiers</b> — Core 68.3, Momentum 68.3, Summit 70.3, a spread of 2.0 points. Clients pay a 123% premium for Summit and the delivered outcome is indistinguishable. Either the premium buys something this CRM does not measure, or it buys nothing. That is a pricing conversation the business cannot currently have, because nobody was reporting the two numbers side by side.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.5</span><h3>Engagement health distribution</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Health Score</code> — set <b>bucket size 20</b></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>known</b></dd>
+    </dl>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">1.6</span><h3>At-risk engagements</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd><b>Table</b></dd>
+      <dt>Columns</dt><dd><code>Deal name</code>, <code>Health Score</code>, <code>Amount</code>, <code>Associated company</code></dd>
+      <dt>Sort</dt><dd><code>Health Score</code> ascending</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>At Risk</b></dd>
+    </dl>
+    <p class="why">Executives want a name they can act on, not a percentage. A table beats a chart here.</p>
+  </div>
+</section>
+
+<!-- ============ OPERATIONS ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 02</span><h2>Operations</h2></div>
+  <p class="lede">For delivery. Answers: who can we place, who is blocked, and what is breaking.</p>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.1</span><h3>Consultant bench status</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Donut</dd>
+      <dt>X axis</dt><dd><code>Bench Status</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b></dd>
+    </dl>
+    <p class="why">Idle bench is unearned margin. This is the single most commercially loaded chart in the whole build.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.2</span><h3>Compliance status</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Compliance Status</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b></dd>
+    </dl>
+    <p class="why"><b>Lapsed and Not started cannot be placed.</b> This is capacity locked behind paperwork — and a liability if anyone slips through.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.3</span><h3>Delivery coverage by timezone</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Coverage Band</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b></dd>
+    </dl>
+    <p class="why">Cross-reference with loss reason "Coverage hours mismatch" on 3.2 — thin bands here explain lost deals there.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.4</span><h3>Open tickets by type</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Tickets</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>ZIA Ticket Type</code></dd>
+      <dt>Measure</dt><dd>COUNT of Tickets</dd>
+      <dt>Filters</dt><dd><code>Ticket status</code> is <b>not</b> Closed</dd>
+    </dl>
+    <p class="why">Every one of these was opened by the automation engine, not a human.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.5</span><h3>SLA breaches</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Tickets</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Ticket priority</code></dd>
+      <dt>Measure</dt><dd>COUNT of Tickets</dd>
+      <dt>Filters</dt><dd><code>SLA Breached</code> is <b>true</b></dd>
+    </dl>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">2.6</span><h3>Weekly utilisation</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Hours Per Week</code> — <b>bucket size 10</b></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>Active</b></dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ SALES ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 03</span><h2>Sales &amp; marketing</h2></div>
+  <p class="lede">For go-to-market. Answers: what converts, what kills deals, and who we should be talking to.</p>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.1</span><h3>Deals created vs closed by month</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Line, two series</dd>
+      <dt>X axis</dt><dd><code>Create date</code> by month</dd>
+      <dt>Measure</dt><dd>COUNT of Deals · add a second series on <code>Close date</code></dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why">Created running ahead of closed means the pipeline is filling faster than it converts.</p>
+  </div>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.2</span><h3>Why deals are lost</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Primary Challenge</code></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+      <dt>Filters</dt><dd><code>Deal stage</code> is <b>Closed Lost</b></dd>
+    </dl>
+    <p class="why"><b>Lead with this one.</b> If a capability gap outranks Rate, the company is losing on product and treating it as pricing. Discounting cannot fix it, and discounting is what teams do by default.</p>
+  </div>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.3</span><h3>Service line demand</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Service Type</code></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+    </dl>
+    <p class="why">Tells you which offering to staff up. Note a deal can request several, so the total exceeds the deal count — call that out rather than letting someone catch it.</p>
+  </div>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.4</span><h3>Client base by sector</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Companies</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Client Sector</code></dd>
+      <dt>Measure</dt><dd>COUNT of Companies</dd>
+    </dl>
+    <p class="why">This field is a dropdown, not free text — which is why the chart has ten clean rows instead of thirty spelling variants. Worth saying: <b>308 inconsistent values were normalized during migration.</b></p>
+  </div>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.5</span><h3>Lead status pipeline</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Lead Status</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Client Contact</b></dd>
+    </dl>
+  </div>
+
+  <div class="rep sales">
+    <div class="rep-head"><span class="num">3.6</span><h3>Buyer role mix</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Buyer Role</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Client Contact</b></dd>
+    </dl>
+    <p class="why">Who actually signs. Drives who marketing should target and what the sales deck opens with.</p>
+  </div>
+</section>
+
+<!-- ============ REVENUE OPERATIONS ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 04</span><h2>Revenue operations</h2></div>
+  <p class="lede">
+    The newest layer — everything written by the lead-scoring, feedback and health rules,
+    plus attribution and discounting. Build this one last; it is the strongest of the four
+    because every field on it is <em>computed</em>, not typed in by a human.
+  </p>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.1</span><h3>Lead quality mix</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Lead Grade</code> (A / B / C / D)</dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Client Contact</b></dd>
+    </dl>
+    <p class="why">Grade is derived from a 100-point score, not hand-set. The shape is deliberately pyramid-like — a grading model that returns mostly A's is a model that is not grading.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.2</span><h3>Territory and pod coverage</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Stacked bar</dd>
+      <dt>X axis</dt><dd><code>Territory</code> (West / Central / East)</dd>
+      <dt>Breakdown</dt><dd><code>Assigned Pod</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Client Contact</b></dd>
+    </dl>
+    <p class="why">This is the report that replaces HubSpot's territory management, which is a <b>Sales Hub Enterprise</b> feature. Worth saying out loud when you present it.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.3</span><h3>Where revenue actually comes from</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>First Touch Source</code></dd>
+      <dt>Measure</dt><dd>SUM of <code>Amount</code>, plus COUNT as a second metric</dd>
+      <dt>Filters</dt><dd><code>Deal stage</code> is <b>Closed Won</b><br><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why"><b>Read count and value together.</b> Website organic produces the most deals but referral converts better and carries a higher average value. Volume and quality are different questions and this is the chart that separates them.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.4</span><h3>Client sentiment (NPS)</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Pie or donut</dd>
+      <dt>X axis</dt><dd><code>NPS Category</code> (promoter / passive / detractor)</dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>NPS Score</code> is <b>known</b></dd>
+    </dl>
+    <p class="why">Native NPS surveys are a <b>Service Hub Professional</b> feature. This reproduces the reporting surface from scored contact properties.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.5</span><h3>Happy clients we are failing (and the reverse)</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Table</dd>
+      <dt>Columns</dt><dd><code>Deal name</code>, <code>Health Score</code>, <code>Health Basis</code>, <code>Placement Status</code></dd>
+      <dt>Filters</dt><dd><code>Health Score</code> is <b>less than 60</b><br><code>Placement Status</code> is <b>Active</b></dd>
+      <dt>Sort</dt><dd><code>Health Score</code> ascending</dd>
+    </dl>
+    <p class="why"><b>The single most important report in the build.</b> <code>Health Basis</code> spells out in words why each engagement scored what it scored — "54/100 — schedule on plan · momentum 38d since contact · issues 2 open/1 esc". A manager can act on it without asking anyone to explain the model. Cross-reference against 1.6: <b>58 engagements sit below 60 and only 8 are flagged At Risk.</b></p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.6</span><h3>Discount leakage</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Line items</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Discount percentage</code></dd>
+      <dt>Measure</dt><dd>COUNT of Line items</dd>
+    </dl>
+    <p class="why"><b>168 of 431 line items are discounted</b> — 39.0% of everything sold — averaging 10.9% off, which is <b>$1,379,284</b> of list value given away. Nobody set out to discount 4 deals in 10. Read it beside 4.3: if the discounted deals cluster in one source, you are buying revenue from a channel that does not convert on merit.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">4.7</span><h3>Receivables ageing</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Days Outstanding</code> — bucketed</dd>
+      <dt>Measure</dt><dd>SUM of <code>Amount</code></dd>
+      <dt>Filters</dt><dd><code>Invoice Status</code> is any of <b>Sent, Overdue</b></dd>
+    </dl>
+    <p class="why">Tail-heavy and alarming: <b>40 of 44 unpaid invoices are 90+ days past due</b>. Average time to pay is 36.2 days, so the tail is not slow payment — it is a set of invoices that has stopped moving entirely.</p>
+  </div>
+</section>
+
+<!-- ============ WIN RATE DIAGNOSTICS ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 05</span><h2>Win rate diagnostics</h2></div>
+  <p class="lede">
+    Why 30.1% is 30.1%. Every report here is a <b>single-object Deals report</b>, so the whole
+    dashboard works on the <b>free tier</b> &mdash; which is only true because WF-09 mirrors the
+    buyer&rsquo;s grade, score and territory onto the deal. Left on the contact, the two most
+    valuable cuts would need the Professional custom report builder.
+  </p>
+
+  <div class="callout">
+    <span class="callout-icon">READ</span>
+    <div>
+      <h3>How to read a win rate on the free tier</h3>
+      <p>
+        HubSpot&rsquo;s standard reports do not compute a ratio. Build each of these as a
+        <b>count of Deals split by Deal stage</b>, stacked on the dimension named &mdash; then read
+        won against won+lost off the chart. Filter <code>Placement Status is unknown</code> on
+        every one, or delivery engagements (all Closed Won) will inflate each bar.
+      </p>
+    </div>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">5.1</span><h3>Win rate by lead grade</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Stacked column</dd>
+      <dt>X axis</dt><dd><code>Lead Grade</code> (A / B / C / D)</dd>
+      <dt>Breakdown</dt><dd><code>Deal stage</code></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b><br><code>Deal stage</code> is any of <b>Closed Won, Closed Lost</b></dd>
+    </dl>
+    <p class="why"><b>The most important report in the build.</b> A converts at <b>47.1%</b>, B at <b>40.5%</b>, C at <b>6.0%</b>, D at <b>0%</b> &mdash; a sevenfold separation, and reps work C and D anyway: <b>94 pursuits for 5 wins</b>. Working only A and B takes the win rate from <b>30.1% to 41.2%</b> without changing how anyone sells. This is the chart that turns a scoring model into a decision.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">5.2</span><h3>Win rate by first-touch source</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Stacked column</dd>
+      <dt>X axis</dt><dd><code>First Touch Source</code></dd>
+      <dt>Breakdown</dt><dd><code>Deal stage</code></dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why"><b>LinkedIn: 31 pursuits, 0 wins, $0.</b> Not a weak channel &mdash; a zero. Outbound leads at <b>40.9%</b>, which is unusual and worth understanding before anyone cuts it.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">5.3</span><h3>Win rate by deal size</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Stacked column</dd>
+      <dt>X axis</dt><dd><code>Amount</code> &mdash; bucket size <b>20000</b></dd>
+      <dt>Breakdown</dt><dd><code>Deal stage</code></dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why">Win rate falls as size rises: <b>&lt;$20k 40.8% &rarr; $20-40k 28.3% &rarr; $40-70k 23.2% &rarr; $70k+ 16.7%</b>. The firm is better at small fast programmes than at enterprise pitches. Land-and-expand, do not lead with the big one.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">5.4</span><h3>Win rate by territory</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Stacked column</dd>
+      <dt>X axis</dt><dd><code>Territory</code> (West / Central / East)</dd>
+      <dt>Breakdown</dt><dd><code>Deal stage</code></dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>unknown</b></dd>
+    </dl>
+    <p class="why">Central <b>41.4%</b>, West <b>28.8%</b>, East <b>18.1%</b> on 83 deals &mdash; same product, less than half the conversion. That is a coaching or coverage problem, not a market one.</p>
+  </div>
+
+  <div class="rep">
+    <div class="rep-head"><span class="num">5.5</span><h3>Losses with no recorded reason</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Primary Challenge</code></dd>
+      <dt>Measure</dt><dd>COUNT of Deals</dd>
+      <dt>Filters</dt><dd><code>Deal stage</code> is <b>Closed Lost</b></dd>
+    </dl>
+    <p class="why"><b>66 losses &mdash; 25.4% &mdash; have no reason recorded.</b> A quarter of the failures are unexplained, so every other loss finding rests on three-quarters of the evidence. Make the field required on Closed Lost; it costs a rep five seconds.</p>
+  </div>
+</section>
+
+<!-- ============ BENCH CAPABILITY ============ -->
+<section>
+  <div class="sec-head"><span class="eyebrow">Dashboard 06</span><h2>Bench capability</h2></div>
+  <p class="lede">
+    What the bench can actually <em>do</em> &mdash; added because <b>&ldquo;Specialty experience&rdquo;
+    is the largest recorded loss reason (45 deals, $1,785,558)</b> and, until WF-13, no field existed
+    to report on it.
+  </p>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">6.1</span><h3>Sector expertise coverage</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Sector Expertise</code></dd>
+      <dt>Measure</dt><dd>COUNT of Contacts</dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b></dd>
+    </dl>
+    <p class="why">Read it against <b>3.4 Client base by sector</b>. Where the client bars are tall and these are short, you are selling into industries the bench cannot serve &mdash; which is what &ldquo;Specialty experience&rdquo; losses look like before they happen.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">6.2</span><h3>Service line delivery capacity</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Horizontal bar</dd>
+      <dt>X axis</dt><dd><code>Service Lines</code></dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b> &middot; <code>Bench Status</code> is <b>Bench-Ready</b></dd>
+    </dl>
+    <p class="why">Pair with <b>3.3 Service line demand</b>. Demand without capacity is a hiring plan; capacity without demand is idle margin.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">6.3</span><h3>Track record by consultant grade</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Contacts</dd>
+      <dt>Chart</dt><dd>Column</dd>
+      <dt>X axis</dt><dd><code>Consultant Grade</code></dd>
+      <dt>Measure</dt><dd>AVERAGE of <code>Avg Delivered Health</code></dd>
+      <dt>Filters</dt><dd><code>Contact Type</code> is <b>Talent</b></dd>
+    </dl>
+    <p class="why"><b>Measured, not claimed.</b> Average delivered health is computed from the consultant&rsquo;s own engagements, so it is a performance record nobody can inflate. If Partners do not outperform Associates, the grade is a pay band rather than a capability signal.</p>
+  </div>
+
+  <div class="rep ops">
+    <div class="rep-head"><span class="num">6.4</span><h3>Engagements the bench cannot serve</h3></div>
+    <dl>
+      <dt>Object</dt><dd>Deals</dd>
+      <dt>Chart</dt><dd><b>Table</b></dd>
+      <dt>Columns</dt><dd><code>Deal name</code>, <code>Best Match Score</code>, <code>Consultant Shortlist</code>, <code>Engagement Type</code></dd>
+      <dt>Sort</dt><dd><code>Best Match Score</code> ascending</dd>
+      <dt>Filters</dt><dd><code>Placement Status</code> is <b>Active</b> &middot; <code>Best Match Score</code> less than <b>50</b></dd>
+    </dl>
+    <p class="why"><b>The staffing-risk report.</b> WF-13 scores every bench consultant against every live engagement on sector, service line, track record, coverage and capacity, then writes the top three with the reason attached. Best-match scores run <b>29 to 80, median 68</b> &mdash; and <b>3 engagements have no viable match above 50</b>. Those are being delivered by whoever was free, not by whoever was right.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">Reference</span><h2>Fields you'll be picking from</h2></div>
+  <p class="lede">Every one of these is populated in the portal. HubSpot's picker searches on the label, so search the label, not the internal name.</p>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Object</th><th>Label to search</th><th>Internal name</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>Deals</td><td>Engagement Type</td><td><code>zia_deal_type</code></td><td>Core / Momentum / Summit</td></tr>
+        <tr><td>Deals</td><td>Placement Status</td><td><code>zia_placement_status</code></td><td>Active / Ended / At Risk</td></tr>
+        <tr><td>Deals</td><td>Health Score</td><td><code>zia_health_score</code></td><td>number 0–100</td></tr>
+        <tr><td>Deals</td><td>Service Type</td><td><code>zia_service_type</code></td><td>text, semicolon-separated</td></tr>
+        <tr><td>Deals</td><td>Primary Challenge</td><td><code>zia_primary_challenge</code></td><td>loss reason</td></tr>
+        <tr><td>Deals</td><td>Hours Per Week</td><td><code>zia_hours_per_week</code></td><td>number</td></tr>
+        <tr><td>Contacts</td><td>Contact Type</td><td><code>zia_contact_type</code></td><td>Client Contact / Talent</td></tr>
+        <tr><td>Contacts</td><td>Bench Status</td><td><code>zia_bench_status</code></td><td>4 values</td></tr>
+        <tr><td>Contacts</td><td>Compliance Status</td><td><code>zia_compliance_status</code></td><td>4 values</td></tr>
+        <tr><td>Contacts</td><td>Coverage Band</td><td><code>zia_coverage_band</code></td><td>timezone</td></tr>
+        <tr><td>Contacts</td><td>Buyer Role</td><td><code>zia_role</code></td><td>7 values</td></tr>
+        <tr><td>Contacts</td><td>Talent Tier</td><td><code>zia_tier</code></td><td>Core / Momentum / Summit</td></tr>
+        <tr><td>Companies</td><td>Client Sector</td><td><code>zia_industry</code></td><td>10 values</td></tr>
+        <tr><td>Companies</td><td>Client Since</td><td><code>zia_client_since</code></td><td>date</td></tr>
+        <tr><td>Companies</td><td>Client Health</td><td><code>zia_client_health</code></td><td>3 values</td></tr>
+        <tr><td>Tickets</td><td>ZIA Ticket Type</td><td><code>zia_ticket_type</code></td><td>8 values</td></tr>
+        <tr><td>Tickets</td><td>SLA Breached</td><td><code>zia_sla_breached</code></td><td>true / false</td></tr>
+        <tr><td colspan="4" style="background:rgba(127,127,127,.08);font-weight:600">Written by the automation rules — dashboard 04</td></tr>
+        <tr><td>Deals</td><td>Health Basis</td><td><code>zia_health_basis</code></td><td>text — why the score is what it is</td></tr>
+        <tr><td>Deals</td><td>Previous Health Score</td><td><code>zia_health_prev</code></td><td>number — shows movement</td></tr>
+        <tr><td>Deals</td><td>First Touch Source</td><td><code>zia_first_touch_source</code></td><td>9 values</td></tr>
+        <tr><td>Deals</td><td>Invoice Status</td><td><code>zia_invoice_status</code></td><td>draft / sent / paid / overdue / written off</td></tr>
+        <tr><td>Deals</td><td>Days Outstanding</td><td><code>zia_days_outstanding</code></td><td>number</td></tr>
+        <tr><td>Contacts</td><td>Lead Score</td><td><code>zia_lead_score</code></td><td>number 0–100</td></tr>
+        <tr><td>Contacts</td><td>Lead Grade</td><td><code>zia_lead_grade</code></td><td>A / B / C / D</td></tr>
+        <tr><td>Contacts</td><td>Territory</td><td><code>zia_territory</code></td><td>West / Central / East</td></tr>
+        <tr><td>Contacts</td><td>Assigned Pod</td><td><code>zia_assigned_pod</code></td><td>5 pods</td></tr>
+        <tr><td>Contacts</td><td>NPS Score</td><td><code>zia_nps_score</code></td><td>number 0–10</td></tr>
+        <tr><td>Contacts</td><td>NPS Category</td><td><code>zia_nps_category</code></td><td>promoter / passive / detractor</td></tr>
+        <tr><td>Companies</td><td>Account NPS</td><td><code>zia_nps_avg</code></td><td>number — rolled up from contacts</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">Careful</span><h2>Four traps</h2></div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Trap</th><th>What happens</th><th>Do this</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="chip bad">Win rate</span></td>
+          <td>All 500 delivery engagements are Closed Won, so an unfiltered win rate reads ~59% instead of the real <b>30.1%</b></td>
+          <td>Always filter <code>Placement Status is unknown</code> on any sales metric</td>
+        </tr>
+        <tr>
+          <td><span class="chip warn">Create Date</span></td>
+          <td>HubSpot makes <code>createdate</code> immutable after creation, so every company shows today</td>
+          <td>Report on <code>Client Since</code> instead — it was built for exactly this reason</td>
+        </tr>
+        <tr>
+          <td><span class="chip warn">Service Type</span></td>
+          <td>Semicolon-separated text, so counts exceed the number of deals</td>
+          <td>Describe it as "requests", not "deals", and say so before you're asked</td>
+        </tr>
+        <tr>
+          <td><span class="chip bad">Lifecycle Stage</span></td>
+          <td>HubSpot only ever moves it <b>forward</b>. A write that moves a contact backwards returns <b>200 and silently does nothing</b>, so a lifecycle report can show stages the data no longer supports</td>
+          <td>To move one back, set the property to empty first, then set the target value. Two writes, never one</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  Built against HubSpot portal 247000083 · 226 companies · 353 contacts · 660 deals · 643 tickets<br>
+  Every field listed here is populated. Re-check counts with <code>node snapshot.js</code>.
+</footer>
+</div>

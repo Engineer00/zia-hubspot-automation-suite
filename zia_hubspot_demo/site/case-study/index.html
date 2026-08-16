@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Study — Restructuring a Talent Firm&#39;s HubSpot CRM</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  /* Minimal reset — the fragment supplies its own design system on top. */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --ground:#F2F3F0; --surface:#FBFBF9; --sunk:#E8EAE5; --raised:#FFFFFF;
+    --ink:#171A19; --ink-2:#5D6560; --ink-3:#878F89;
+    --rule:#D6D9D3; --rule-firm:#B9BEB7;
+    --accent:#1D5D57; --accent-soft:#DDE8E5;
+    --signal:#B4471C; --signal-soft:#F3E2D8;
+    --good:#2F6B45; --good-soft:#DCE9E0;
+    --shadow: 0 1px 2px rgba(23,26,25,.06), 0 8px 24px -16px rgba(23,26,25,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+      --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+      --rule:#2C312E; --rule-firm:#404742;
+      --accent:#6FBBB1; --accent-soft:#1B2E2B;
+      --signal:#E2895B; --signal-soft:#2E1F18;
+      --good:#7DBE95; --good-soft:#1A2A1F;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#121513; --surface:#1A1E1B; --sunk:#0D100E; --raised:#20251F;
+    --ink:#E9ECE7; --ink-2:#9BA49D; --ink-3:#767E78;
+    --rule:#2C312E; --rule-firm:#404742;
+    --accent:#6FBBB1; --accent-soft:#1B2E2B;
+    --signal:#E2895B; --signal-soft:#2E1F18;
+    --good:#7DBE95; --good-soft:#1A2A1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+  :root {
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 16.5px; line-height: 1.62; margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 28px 110px; }
+  .col { max-width: 67ch; }
+
+  header.top { padding: 72px 0 34px; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 20px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.07;
+    letter-spacing: -.015em; margin: 0 0 18px; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--serif); font-size: 1.18rem; line-height: 1.5;
+    color: var(--ink-2); max-width: 58ch; margin: 0 0 28px;
+  }
+  .credit {
+    display: flex; flex-wrap: wrap; gap: 8px 28px;
+    font-family: var(--mono); font-size: 12px; color: var(--ink-3);
+  }
+  .credit b { color: var(--ink-2); font-weight: 500; }
+
+  section { padding-top: 72px; scroll-margin-top: 20px; }
+  .sechead {
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 12px;
+  }
+  .sechead .num { font-family: var(--mono); font-size: 13px; color: var(--accent); flex-shrink: 0; }
+  .sechead h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2.05rem); line-height: 1.14;
+    letter-spacing: -.012em; margin: 0; text-wrap: balance;
+  }
+  .subhead {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 28px; padding-left: 30px;
+  }
+  @media (max-width: 620px) { .subhead { padding-left: 0; } }
+
+  p { margin: 0 0 1.05em; }
+  .lede { font-size: 1.07rem; color: var(--ink-2); }
+  h3 { font-size: 1.03rem; font-weight: 650; margin: 2.1em 0 .55em; }
+  h3:first-child { margin-top: 0; }
+  h4 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--accent); margin: 2em 0 .7em; font-weight: 600;
+  }
+  ul.body { padding-left: 1.1em; margin: 0 0 1.05em; }
+  ul.body li { margin-bottom: .42em; }
+  a { color: var(--accent); }
+  code {
+    font-family: var(--mono); font-size: .86em; background: var(--sunk);
+    padding: 1px 5px; border-radius: 2px; color: var(--ink-2);
+  }
+
+  figure { margin: 40px 0; padding: 0; }
+  .figbox {
+    background: var(--surface); border: 1px solid var(--rule);
+    padding: 26px 20px 20px; overflow-x: auto; box-shadow: var(--shadow);
+  }
+  figure svg {
+    display: block; width: 100%; min-width: 640px; max-width: 100%;
+    height: auto; color: var(--ink);
+  }
+  figcaption {
+    font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
+    margin-top: 12px; max-width: 72ch;
+  }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  .s-fill-surface { fill: var(--surface); }
+  .s-fill-sunk    { fill: var(--sunk); }
+  .s-fill-accent  { fill: var(--accent-soft); }
+  .s-fill-signal  { fill: var(--signal-soft); }
+  .s-stroke       { stroke: var(--rule-firm); }
+  .s-stroke-accent{ stroke: var(--accent); }
+  .s-stroke-signal{ stroke: var(--signal); }
+  .s-txt   { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; }
+  .s-txt-b { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; font-weight: 650; }
+  .s-mono  { fill: var(--ink-2); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-mono-a{ fill: var(--accent); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-mono-s{ fill: var(--signal); font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; }
+  .s-lbl   { fill: var(--ink-3); font-family: var(--mono); font-size: 10px; letter-spacing: .06em; }
+
+  .tablewrap { overflow-x: auto; margin: 26px 0 32px; }
+  table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14.5px; }
+  caption {
+    text-align: left; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 10px;
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule-firm); vertical-align: bottom;
+  }
+  td {
+    padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule);
+    vertical-align: top; color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+
+  /* problem / built / result */
+  .pbr { display: grid; gap: 0; margin: 32px 0; border-top: 2px solid var(--ink); }
+  .pbr-row {
+    display: grid; grid-template-columns: 150px minmax(0,1fr);
+    gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--rule);
+  }
+  .pbr-k {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--accent); padding-top: 4px;
+  }
+  .pbr-k span { display: block; color: var(--ink-3); font-size: 10px; margin-top: 6px; letter-spacing: .05em; }
+  .pbr-row p { margin: 0 0 .8em; max-width: 66ch; }
+  .pbr-row p:last-child { margin-bottom: 0; }
+  .pbr-row ul { margin: 0; padding-left: 1.1em; }
+  .pbr-row li { margin-bottom: .4em; color: var(--ink-2); }
+  .pbr-row li b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 620px) { .pbr-row { grid-template-columns: 1fr; gap: 10px; } }
+
+  .outcomes {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 28px 0;
+  }
+  .oc { background: var(--raised); padding: 20px 18px; }
+  .oc .ok {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px;
+  }
+  .oc .ov {
+    font-family: var(--serif); font-size: 1.32rem; line-height: 1.2;
+    color: var(--good); margin: 0 0 8px;
+  }
+  .oc .od { font-size: 13px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+  .note {
+    font-size: 13.5px; color: var(--ink-2); background: var(--sunk);
+    border: 1px solid var(--rule); padding: 15px 17px; margin: 26px 0; max-width: 72ch;
+  }
+  .note b { color: var(--ink); }
+  .note.warn { border-color: var(--signal); background: var(--signal-soft); }
+  .note.warn b { color: var(--signal); }
+
+  .toc {
+    margin: 34px 0 0; padding: 22px 24px;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .toc h2 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; font-weight: 500;
+  }
+  .toc ol {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 2px 24px;
+  }
+  .toc li {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 14.5px; padding: 5px 0; border-bottom: 1px solid var(--rule);
+  }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  .toc .n { font-family: var(--mono); font-size: 11px; color: var(--accent); min-width: 20px; }
+
+  .closer {
+    margin-top: 74px; padding: 32px;
+    background: var(--surface); border: 1px solid var(--rule-firm); box-shadow: var(--shadow);
+  }
+  .closer p { font-family: var(--serif); font-size: 1.16rem; line-height: 1.5; margin: 0; max-width: 60ch; }
+  .closer .sig {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+    letter-spacing: .06em; margin-top: 18px;
+  }
+
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media (max-width: 620px) { .wrap { padding: 0 20px 80px; } header.top { padding-top: 50px; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Case study · CRM restructure and process automation</p>
+    <h1>Rebuilding a talent firm's HubSpot around what it actually delivers</h1>
+    <p class="standfirst">How a CRM that could only see the moment a contract was signed was restructured to measure the year of delivery that followed — across four HubSpot Hubs and four business functions.</p>
+    <div class="credit">
+      <span><b>Client</b> &nbsp;Lumen Talent Group</span>
+      <span><b>Prepared by</b> &nbsp;Salman K.</span>
+      <span><b>Document type</b> &nbsp;engagement case study</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><span class="n">01</span><a href="#s1">HubSpot Hubs used, and why</a></li>
+      <li><span class="n">02</span><a href="#s2">The CRM restructure</a></li>
+      <li><span class="n">03</span><a href="#s3">Process improvement: problem, build, result</a></li>
+      <li><span class="n">04</span><a href="#s4">Reports and executive dashboards</a></li>
+      <li><span class="n">05</span><a href="#s5">Scaling across four functions</a></li>
+      <li><span class="n">06</span><a href="#s6">What would be validated next</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══ 01 ═══ -->
+  <section id="s1">
+    <div class="sechead"><span class="num">01</span><h2>HubSpot Hubs used, and why each one was needed</h2></div>
+    <p class="subhead">Scope of the platform footprint</p>
+
+    <div class="col">
+      <p class="lede">This engagement touches four Hubs plus the underlying CRM platform. Each was brought in for a specific reason rather than because it was available — a portal that licenses everything and uses a third of it is a common and expensive failure.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Hub footprint</caption>
+        <thead>
+          <tr><th style="width:17%">Hub</th><th style="width:39%">What it carries in this system</th><th>Why this Hub specifically</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CRM platform</td>
+            <td>Object model, three custom objects, forty-plus typed properties, association model, calculated and rollup properties, lifecycle engine</td>
+            <td>Everything else depends on it. The custom objects are what allow delivery to be recorded separately from the sale — the central change in the whole engagement.</td>
+          </tr>
+          <tr>
+            <td>Sales Hub</td>
+            <td>Three deal pipelines with required-field stage gates, lead routing cascade, qualification scorecard, sequences, quote generation, two-component forecasting</td>
+            <td>Multiple pipelines are essential here: acquisition, delivery and talent sourcing are genuinely different processes and cannot share stages without all three becoming unmeasurable.</td>
+          </tr>
+          <tr>
+            <td>Marketing Hub</td>
+            <td>Segment landing page templates, three form types with progressive profiling, objection-led nurture tracks, campaign architecture, multi-layer attribution</td>
+            <td>Attribution is the reason. Without campaign and touchpoint tracking joined to revenue, marketing spend is allocated on intuition.</td>
+          </tr>
+          <tr>
+            <td>Service Hub</td>
+            <td>Five ticket types with routing and response targets, escalation rules, CSAT and NPS surveys feeding the placement health score</td>
+            <td>Post-sale delivery is where the revenue actually lives. Tickets give escalations an owner and a clock; surveys give the health score its satisfaction signal.</td>
+          </tr>
+          <tr>
+            <td>Operations Hub</td>
+            <td>Custom coded actions for candidate ranking and composite scoring, outbound webhooks with identifier write-back, data formatting and validation</td>
+            <td>Two pieces of logic genuinely exceed what branch-based workflows can express: ranking a list, and combining four weighted signals into one score.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>A note on subscription tiers.</b> Custom objects require Enterprise. Where a portal sits on Professional, the design substitutes a second deal pipeline for the Placement object — this preserves the great majority of the architecture, including all reporting, and leaves a clean migration path. That substitution is specified rather than left as an exercise, because the difference determines the entire build plan.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section id="s2">
+    <div class="sechead"><span class="num">02</span><h2>The CRM restructure</h2></div>
+    <p class="subhead">What changed in the data model, and what it made possible</p>
+
+    <div class="col">
+      <p class="lede">The starting portal used HubSpot's default shape: one contact database, one deal pipeline, and nothing recording what happened after a deal was won. That shape is perfectly adequate for a business that sells a product once. It fails for a business whose revenue arrives weekly for a year afterward.</p>
+      <p>The restructure made three structural changes. Everything else in the engagement follows from them.</p>
+    </div>
+
+    <figure>
+      <div class="figbox">
+        <svg viewBox="0 0 900 430" role="img" aria-label="Before and after comparison. Before: one mixed contact table feeds one deal pipeline, and everything after the sale is unrecorded. After: contacts are typed into clients and talent, the deal spawns a placement record that carries recurring revenue, margin and health, with tickets and cohorts attached.">
+          <defs>
+            <marker id="cs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- BEFORE -->
+          <text x="0" y="16" class="s-lbl">BEFORE — DEFAULT SHAPE</text>
+          <line x1="0" y1="26" x2="900" y2="26" class="s-stroke" stroke-width="1"/>
+
+          <rect x="0" y="48" width="204" height="66" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="12" y="72" class="s-txt-b">Contacts</text>
+          <text x="12" y="90" class="s-mono-s">clients and candidates</text>
+          <text x="12" y="105" class="s-mono-s">in one shared table</text>
+
+          <line x1="204" y1="81" x2="244" y2="81" stroke="currentColor" stroke-width="1.2" marker-end="url(#cs)"/>
+
+          <rect x="250" y="48" width="160" height="66" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="262" y="72" class="s-txt-b">Deal</text>
+          <text x="262" y="90" class="s-mono">one amount</text>
+          <text x="262" y="105" class="s-mono">one close date</text>
+
+          <line x1="410" y1="81" x2="450" y2="81" stroke="currentColor" stroke-width="1.2" marker-end="url(#cs)"/>
+
+          <rect x="456" y="40" width="444" height="82" class="s-fill-signal s-stroke-signal" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="678" y="68" class="s-txt-b" text-anchor="middle">Nothing recorded here</text>
+          <text x="678" y="88" class="s-mono-s" text-anchor="middle">who was placed · at what rate · for how many hours · still active?</text>
+          <text x="678" y="106" class="s-mono-s" text-anchor="middle">no recurring revenue · no margin · no churn signal</text>
+
+          <text x="0" y="146" class="s-mono-s">Result: the CRM measures the smallest and least valuable part of the transaction.</text>
+
+          <!-- divider -->
+          <line x1="0" y1="176" x2="900" y2="176" class="s-stroke" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <!-- AFTER -->
+          <text x="0" y="206" class="s-lbl">AFTER — RESTRUCTURED</text>
+          <line x1="0" y1="216" x2="900" y2="216" class="s-stroke-accent" stroke-width="1.5"/>
+
+          <rect x="0" y="238" width="176" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="12" y="258" class="s-txt-b">Contacts — Client</text>
+          <text x="12" y="275" class="s-mono-a">contact_type gate</text>
+
+          <rect x="0" y="300" width="176" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="12" y="320" class="s-txt-b">Contacts — Talent</text>
+          <text x="12" y="337" class="s-mono-a">separate audience</text>
+
+          <rect x="222" y="238" width="150" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="234" y="258" class="s-txt-b">Deal</text>
+          <text x="234" y="275" class="s-mono">the sale</text>
+
+          <rect x="222" y="300" width="150" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="234" y="320" class="s-txt-b">Talent Profile</text>
+          <text x="234" y="337" class="s-mono">skills · tier · cost</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#cs)">
+            <line x1="176" y1="262" x2="216" y2="262"/>
+            <line x1="176" y1="324" x2="216" y2="324"/>
+          </g>
+
+          <!-- placement, the new object -->
+          <rect x="418" y="238" width="216" height="110" class="s-fill-accent s-stroke-accent" stroke-width="1.8"/>
+          <text x="430" y="260" class="s-txt-b">Placement</text>
+          <text x="622" y="260" class="s-mono-a" text-anchor="end">new</text>
+          <text x="430" y="282" class="s-mono">rate × hours = recurring value</text>
+          <text x="430" y="300" class="s-mono">rate − cost = margin</text>
+          <text x="430" y="318" class="s-mono">start / end = churn</text>
+          <text x="430" y="336" class="s-mono">health score = early warning</text>
+
+          <g class="s-stroke-accent" stroke-width="1.6" fill="none" marker-end="url(#cs)">
+            <path d="M372,262 L394,262 L394,282 L412,282"/>
+            <path d="M372,324 L394,324 L394,306 L412,306"/>
+          </g>
+
+          <rect x="680" y="238" width="220" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="692" y="258" class="s-txt-b">Tickets</text>
+          <text x="692" y="275" class="s-mono">onboarding · check-in · SLA</text>
+
+          <rect x="680" y="300" width="220" height="48" class="s-fill-surface s-stroke" stroke-width="1"/>
+          <text x="692" y="320" class="s-txt-b">Cohorts</text>
+          <text x="692" y="337" class="s-mono">education enrollment</text>
+
+          <g stroke="currentColor" stroke-width="1.2" fill="none" marker-end="url(#cs)">
+            <line x1="634" y1="262" x2="674" y2="262"/>
+            <line x1="634" y1="324" x2="674" y2="324"/>
+          </g>
+
+          <text x="0" y="382" class="s-mono-a">Result: the year of delivery after the sale becomes measurable, and so does everything that depends on it.</text>
+          <line x1="0" y1="398" x2="900" y2="398" class="s-stroke-accent" stroke-width="1"/>
+          <text x="0" y="418" class="s-mono">One change carries the rest: the sale and the delivery become separate records with separate lifespans.</text>
+        </svg>
+      </div>
+      <figcaption><b>The restructure, reduced to its essentials.</b> The red region in the top panel is not a missing feature — it is the majority of the business, and no report can reach it while it has no record. The bottom panel adds one object, and every metric in section 04 becomes computable as a result.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>Change one — separating the sale from the delivery</h3>
+      <p>A Placement record was introduced, created automatically when a deal is won and carrying its own tier, hourly rate, contracted hours, start and end dates, status and health score. A single deal can produce several placements, each on its own timeline; one may be upgraded to a higher tier in April while another ends in June, and the originating deal is unaffected by either.</p>
+      <p>This is the change that makes recurring revenue, gross margin and churn calculable. Without it they are not difficult to report — they are impossible, because no record holds the data.</p>
+
+      <h3>Change two — separating the two audiences</h3>
+      <p>A required contact type property now distinguishes client contacts from talent, learners and partners, set automatically at record creation from the originating form or source. Every list, workflow, sequence and report filters on it.</p>
+      <p>The practical effect is that a placed professional can no longer receive a sales nurture email intended for a practice owner, lead counts are no longer inflated by job applicants, and marketing contact costs are no longer paid on an audience that is never marketed to.</p>
+
+      <h3>Change three — pipelines that match real processes</h3>
+      <p>One generic pipeline was replaced by three: client acquisition, delivery, and talent sourcing. Each carries required properties at the specific stages where that information matters, so data is captured at the moment the person entering it has a reason to care.</p>
+      <p>The delivery pipeline holds stage probabilities at zero until an engagement reaches steady state, which keeps delivery records out of the sales forecast. This is a small setting that prevents a large and persistent reporting error.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section id="s3">
+    <div class="sechead"><span class="num">03</span><h2>Process improvement in detail</h2></div>
+    <p class="subhead">The problem · what was built · the result</p>
+
+    <div class="col">
+      <p class="lede">The clearest example of the restructure paying off is the handoff between a signed contract and a working engagement. It is the moment where the most manual coordination happened, and the point at which the business previously lost visibility entirely.</p>
+    </div>
+
+    <div class="pbr">
+      <div class="pbr-row">
+        <div class="pbr-k">The problem<span>BEFORE</span></div>
+        <div>
+          <p>When a contract was signed, roughly a day of coordination began and none of it was recorded anywhere the business could see.</p>
+          <p>Someone checked a spreadsheet to find out who on the bench was available and appropriately skilled. Someone created an onboarding task in a separate project tool. Someone sent the client welcome email. Someone requested system access. Someone was supposed to schedule the first check-in, and often did not.</p>
+          <p>Every step depended on a person remembering, and the sequence varied depending on who ran it. More importantly, once the work was done there was still no record of the engagement itself — only a closed deal. Nobody could state how many people were currently embedded, at what margin, or which engagements were in trouble.</p>
+          <p>The failure mode this produced was consistent: engagements deteriorated quietly for weeks — a missed check-in, a satisfaction score drifting downward, escalations becoming more frequent — and the first formal signal was a cancellation.</p>
+        </div>
+      </div>
+
+      <div class="pbr-row">
+        <div class="pbr-k">What was built<span>THE WORK</span></div>
+        <div>
+          <p>Two connected pieces: a record for the thing being delivered, and automation to create and then monitor it.</p>
+          <ul>
+            <li><b>The Placement object</b>, holding rate, hours, dates, status, margin and health for each embedded professional, associated to the client company, the originating deal and the talent record.</li>
+            <li><b>A single workflow triggered at Closed Won</b> that creates the placement pre-populated from the deal, generates a ranked shortlist of available and suitably certified bench talent, opens the delivery record with an assigned owner, creates the full onboarding task set with dates, enrolls only client contacts in the welcome sequence, pushes a task to the project tool with the record identifier written back, and starts the check-in schedule.</li>
+            <li><b>A nightly health score</b> combining four signals already present in the CRM — check-in recency, satisfaction trend, escalation volume, and drift between contracted and actual hours — which flags engagements below a threshold to their owner with a dated task, and flags engagements showing positive scope drift to sales as tier upgrade candidates.</li>
+            <li><b>Supporting controls</b>: re-enrollment disabled on the creation workflow to prevent duplicate placements, required properties at the stage gates that collect the data the workflow depends on, and a validation rule preventing a rate from being set below its cost.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pbr-row">
+        <div class="pbr-k">The result<span>AFTER</span></div>
+        <div>
+          <p>The coordination sequence now runs identically every time, in seconds, and the engagement it produces is visible to everyone from the moment it exists.</p>
+          <p>The reporting change is the larger one. Recurring revenue, gross margin by tier and by client segment, bench utilization and time-to-value became standing dashboard figures rather than periodic spreadsheet exercises. Engagements in difficulty now appear on a ranked worklist with an owner and a next action while there is still time to intervene.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="outcomes">
+      <div class="oc">
+        <p class="ok">Coordination per placement</p>
+        <p class="ov">A day of work → one trigger</p>
+        <p class="od">The same seven steps, run consistently, including the ones people previously forgot.</p>
+      </div>
+      <div class="oc">
+        <p class="ok">Recurring revenue</p>
+        <p class="ov">Unreportable → live figure</p>
+        <p class="od">Calculated from rate and hours on every active placement, split by tier.</p>
+      </div>
+      <div class="oc">
+        <p class="ok">Gross margin</p>
+        <p class="ov">Uncalculable → per engagement</p>
+        <p class="od">Requires a cost rate joined to a bill rate. Neither existed on a record before.</p>
+      </div>
+      <div class="oc">
+        <p class="ok">Churn warning</p>
+        <p class="ov">At cancellation → weeks earlier</p>
+        <p class="od">A ranked worklist rather than a prediction. Smaller claim, and one the system can keep.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="note"><b>On quantifying this further.</b> The revenue-visibility outcomes above are arithmetic and hold regardless of how the business performs. The retention outcome depends on whether intervention actually succeeds once an engagement is flagged, which is a function of people rather than software. A companion model lets those figures be tested against real inputs, and deliberately separates the two kinds of claim rather than blending them into one number.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section id="s4">
+    <div class="sechead"><span class="num">04</span><h2>Reports and executive dashboards</h2></div>
+    <p class="subhead">What leadership sees, and how each figure is derived</p>
+
+    <div class="col">
+      <p class="lede">The stated goal for this workstream was increased confidence in reporting. Confidence does not come from better-looking charts — it comes from every figure having a definition that the people reading it have agreed to. Each metric below therefore carries its formula, and those formulas are written into the report descriptions inside HubSpot so they travel with the report.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Executive dashboard</caption>
+        <thead>
+          <tr><th style="width:24%">Metric</th><th style="width:34%">Computed from</th><th>Why leadership needs it</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Recurring placement revenue</td><td>Sum of rate × hours × 4.33 across active placements, split by tier</td><td>The core revenue figure, and one a deal-based forecast structurally cannot produce.</td></tr>
+          <tr><td>Gross margin per engagement</td><td>(bill rate − cost rate) × hours, by tier and client segment</td><td>Shows which tier and which client type actually pay. Access-restricted, since it exposes cost rates.</td></tr>
+          <tr><td>Bench utilization</td><td>Talent with an active placement ÷ all bench-ready talent, by tier</td><td>Idle certified talent is the largest carrying cost. A figure that is too high is also a warning.</td></tr>
+          <tr><td>Time to placement</td><td>Median days from Closed Won to placement becoming active</td><td>The clearest single measure of how well sales, talent operations and delivery are connected.</td></tr>
+          <tr><td>Time to value</td><td>Median days from Closed Won to steady state</td><td>Predicts first-quarter churn, and evidences the delivery promise made during the sale.</td></tr>
+          <tr><td>Engagements at risk</td><td>Active placements scoring below the health threshold</td><td>Presented as a worklist rather than a chart. Every row carries an owner and a next action.</td></tr>
+          <tr><td>Channel return</td><td>Placement revenue attributed to first-touch campaign ÷ campaign spend</td><td>Judges marketing on revenue delivered over the engagement rather than on the booking amount.</td></tr>
+          <tr><td>Qualification distribution</td><td>Won and lost deals bucketed by fit score, with disqualification reasons</td><td>Shows whether marketing is attracting the organizations the delivery model is built for.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <h3>Department dashboards</h3>
+      <p>Four supporting dashboards sit beneath the executive view, because a founder and a marketing coordinator do not need the same screen and giving them one guarantees neither uses it.</p>
+      <ul class="body">
+        <li><strong>Sales</strong> — pipeline velocity by stage, conversion by client segment, showcase-to-close rate, speed to first touch, and stage-gate compliance, which is a data-quality measure disguised as a sales one.</li>
+        <li><strong>Marketing</strong> — conversions by channel and campaign, form completion rates, nurture track progression, and first-touch through to qualified lead.</li>
+        <li><strong>Talent operations</strong> — bench depth by tier and coverage band, time to bench-ready, and shortlist acceptance rate.</li>
+        <li><strong>Customer success</strong> — placements by health band, check-in compliance, SLA attainment, satisfaction by consultant, and documentation currency.</li>
+      </ul>
+
+      <h3>The dashboard nobody looks at until something is wrong</h3>
+      <p>A CRM health view monitors records missing required fields, workflows that errored in the last seven days, unassigned records, duplicate rate, and properties with zero fill. It shares its definitions with the portal audit tooling, so the checks applied in week one are the same checks applied in week fifty. Systems decay quietly; this is what makes the decay visible.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section id="s5">
+    <div class="sechead"><span class="num">05</span><h2>Scaling across four functions</h2></div>
+    <p class="subhead">Sales · Marketing · Operations · Customer Success</p>
+
+    <div class="col">
+      <p class="lede">A system designed for four functions has to do more than serve each of them adequately. It has to keep them consistent with one another as the business grows, which is a different and harder problem — most CRMs fail not because any single team is badly served, but because each team quietly builds its own version of the truth.</p>
+      <p>Three principles hold the four functions together here.</p>
+
+      <h4>One definition per concept, owned centrally</h4>
+      <p>Lifecycle stage means one thing across all four functions, is moved only by workflow, and cannot be edited by hand. A qualified lead means the same to marketing and to sales because both read the same scored criteria. Recurring revenue has one formula, written into the report that displays it. Where two functions need different views of the same concept, they get different dashboards over identical underlying data rather than separate definitions.</p>
+
+      <h4>Data is collected where it is generated, not where it is needed</h4>
+      <p>Reporting requirements are pushed back to the point of capture. Attribution needs campaign data, so UTM fields are hidden on every form from day one. Margin analysis needs cost rates, so they live on the talent record where talent operations already maintains them. Segment analysis needs client type, so it is a required dropdown at the stage where sales is motivated to fill it in. Nobody is asked to supply data retrospectively for a report they will never read.</p>
+
+      <h4>Automation crosses function boundaries so people do not have to</h4>
+      <p>The central workflow moves work across sales, talent operations, customer success, marketing and the external project tool from one trigger. Handoffs are where cross-functional systems break, and each handoff that runs automatically is one fewer opportunity for a step to be dropped between two teams who each assumed the other had it.</p>
+
+      <h3>What holds at ten times the volume, and what does not</h3>
+      <p>Being specific about where a design stops scaling is more useful than claiming it scales indefinitely.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Scalability assessment</caption>
+        <thead><tr><th style="width:30%">Component</th><th style="width:20%">At 10× volume</th><th>Reasoning</th></tr></thead>
+        <tbody>
+          <tr><td>Object model and associations</td><td>Holds</td><td>Adding placements does not change the shape of the model. This is the main reason for getting it right before building anything on top.</td></tr>
+          <tr><td>Pipelines and stage gates</td><td>Holds</td><td>Stage requirements are per-record and volume-independent.</td></tr>
+          <tr><td>Reporting layer</td><td>Holds</td><td>Calculated properties and rollups are computed per record rather than aggregated at query time.</td></tr>
+          <tr><td>Candidate ranking action</td><td>Needs revision</td><td>The bench query returns a bounded page. Past a few hundred bench-ready records the ranking needs pagination or a pre-filter, or it will approach the execution timeout.</td></tr>
+          <tr><td>Round-robin routing</td><td>Needs revision</td><td>Simple rotation stops being fair once team size and territory complexity grow. It would need capacity-weighted assignment.</td></tr>
+          <tr><td>Nightly health scoring</td><td>Watch</td><td>Fine at low thousands. At high volume this becomes a batch job worth moving outside the workflow engine entirely.</td></tr>
+          <tr><td>Manual duplicate review</td><td>Fails</td><td>Workable at current volume, unworkable at ten times it. Needs automated merge rules with a human queue for genuine ambiguity.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section id="s6">
+    <div class="sechead"><span class="num">06</span><h2>What would be validated next</h2></div>
+    <p class="subhead">Open questions and their consequences</p>
+
+    <div class="col">
+      <p class="lede">This design was developed from publicly available information about the business. Several assumptions materially affect the build plan and would need confirming against the live portal before implementation begins.</p>
+      <ul class="body">
+        <li><strong>Subscription tier.</strong> Determines whether the Placement object is a true custom object or a second deal pipeline. Both paths are specified; they are different builds with different effort profiles.</li>
+        <li><strong>Where delivery is currently tracked.</strong> Sets the migration scope, and determines whether the existing project tool is a system to integrate with or one to replace.</li>
+        <li><strong>Whether candidates already sit in the CRM or in a separate applicant system.</strong> The single largest fork in the data model. Both are workable and they are not the same design.</li>
+        <li><strong>Whether forms currently capture campaign parameters.</strong> Attribution can only begin from the day this exists. If it does not, historical attribution is unrecoverable and that should be said plainly rather than discovered in month three.</li>
+        <li><strong>Existing data quality.</strong> Duplicate volume, field completeness and orphaned records determine the back-fill effort, and can be measured in an afternoon with read-only access.</li>
+      </ul>
+      <div class="note"><b>Recommended first step.</b> A read-only audit of the existing portal, producing property fill rates, unconstrained free-text fields, unowned records, stalled deals and duplicate rate. This requires a single read-only token, takes minutes to run, and replaces most of the assumptions above with measurements before any build decision is committed.</div>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>The restructure came down to one observation: the business was measuring the moment it got paid for the first time, and not the year in which it was paid for the rest. Everything else — the automation, the scoring, the dashboards — follows from giving that year a record of its own.</p>
+    <p class="sig">CASE STUDY · LUMEN TALENT GROUP · HUBSPOT SYSTEMS ANALYSIS</p>
+  </div>
+
+</div>
+</body>
+</html>

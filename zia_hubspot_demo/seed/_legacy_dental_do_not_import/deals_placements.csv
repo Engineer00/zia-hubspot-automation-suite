@@ -1,0 +1,501 @@
+Deal Name,Close Date,Associated Company,zia_deal_type,zia_hourly_rate,zia_hours_per_week,zia_placement_status,zia_embed_start_date,zia_embed_end_date,zia_health_score,zia_talent_email
+Placement — Mateo Bianchi @ Lakeshore Smile Dentistry,2025-02-27,lakeshoresmiledentistry8477.com,Core,12,35,active,2025-02-27,,93,talent0@lumentalent.example
+Placement — Noemi Jansen @ Harbour Orthodontic Group,2026-03-17,harbourorthodonticgroup.com,Core,12,23,ended,2026-03-17,2026-07-04,36,talent1@lumentalent.example
+Placement — Mei Banda @ Cavendish Root Canal Specialists,2025-03-21,cavendishrootcanalspecialist3911.com,Core,12,31,active,2025-03-21,,77,talent2@lumentalent.example
+Placement — Priya Nkemdi @ Cavendish Root Canal Specialists,2025-03-24,cavendishrootcanalspecialist3911.com,Core,12,31,ended,2025-03-24,2026-01-06,18,talent4@lumentalent.example
+Placement — Lian Moreau @ Bayview Dental Alliance,2025-05-15,bayviewdentalalliance.com,Momentum,16,22,active,2025-05-15,,73,talent5@lumentalent.example
+Placement — Bella Baptiste @ Wynn Endodontic Associates,2026-05-11,wynnendodonticassociates.com,Core,12,29,active,2026-05-11,,74,talent6@lumentalent.example
+Placement — Alba Castillo @ Wynn Endodontic Associates,2026-04-24,wynnendodonticassociates.com,Core,12,29,active,2026-04-24,,59,talent7@lumentalent.example
+Placement — Anja Nakamura @ Lockhart Smile Partners,2026-01-07,lockhartsmilepartners7531.com,Momentum,16,16,active,2026-01-07,,73,talent8@lumentalent.example
+Placement — Ada Novotny @ Cedar Point Movement Clinic,2026-07-21,cedarpointmovementclinic9718.com,Summit,22,31,at_risk,2026-07-21,,33,talent9@lumentalent.example
+Placement — Isabel Fontaine @ Westgate Kids Dental Care,2026-06-04,westgatekidsdentalcare8616.com,Core,12,23,active,2026-06-04,,93,talent11@lumentalent.example
+Placement — Omar Kim @ Oakhurst Orthodontic Group,2025-05-29,oakhurstorthodonticgroup1450.com,Momentum,16,27,active,2025-05-29,,94,talent14@lumentalent.example
+Placement — Nora Patel @ Oakhurst Orthodontic Group,2025-05-20,oakhurstorthodonticgroup1450.com,Momentum,16,27,active,2025-05-20,,82,talent15@lumentalent.example
+Placement — Viktor Moreau @ Brookvale Dental Group,2025-05-10,brookvaledentalgroup8228.com,Momentum,16,27,ended,2025-05-10,2025-10-04,33,talent17@lumentalent.example
+Placement — Alba Petrov @ Ashford Dental Collective,2025-02-01,ashforddentalcollective2306.com,Core,12,34,at_risk,2025-02-01,,38,talent19@lumentalent.example
+Placement — Salma Ibrahim @ Lockhart Dentistry,2026-06-29,lockhartdentistry9262.com,Momentum,16,25,active,2026-06-29,,73,talent20@lumentalent.example
+Placement — Freya Ellery @ Brookvale Smile Partners,2025-05-27,brookvalesmilepartners5080.com,Core,12,29,active,2025-05-27,,78,talent21@lumentalent.example
+Placement — Sven Weiss @ Granville Dental Care,2025-11-04,granvilledentalcare3638.com,Momentum,16,33,active,2025-11-04,,62,talent22@lumentalent.example
+Placement — Emeka Rossi @ Fairmont Dental Associates,2025-07-03,fairmontdentalassociates7140.com,Momentum,16,32,active,2025-07-03,,67,talent24@lumentalent.example
+Placement — Yara Ibrahim @ Bayview Dental Collective,2025-06-23,bayviewdentalcollective7752.com,Momentum,16,26,ended,2025-06-23,2026-03-07,19,talent26@lumentalent.example
+Placement — Rina Novotny @ Westgate Sports Rehab,2025-08-26,westgatesportsrehab.com,Core,12,31,active,2025-08-26,,88,talent27@lumentalent.example
+Placement — Lucia Jansen @ Ellswood Orthodontic Specialists,2026-06-27,ellswoodorthodonticspecialis.com,Core,12,28,active,2026-06-27,,72,talent28@lumentalent.example
+Placement — Sofia Zhang @ Stonebridge Pediatric Dentistry,2025-11-29,stonebridgepediatricdentistr5874.com,Core,12,30,ended,2025-11-29,2026-03-02,20,talent29@lumentalent.example
+Placement — Wren Banda @ Fieldstone Physical Therapy,2025-11-22,fieldstonephysicaltherapy.com,Momentum,16,28,at_risk,2025-11-22,,35,talent30@lumentalent.example
+Placement — Mikkel Sorensen @ Fieldstone Physical Therapy,2025-12-12,fieldstonephysicaltherapy.com,Momentum,16,28,active,2025-12-12,,69,talent33@lumentalent.example
+Placement — Fatima Moreau @ Ellswood Dental Studio,2025-05-23,ellswooddentalstudio7293.com,Momentum,16,29,at_risk,2025-05-23,,42,talent34@lumentalent.example
+Placement — Salma Achebe @ Ellswood Dental Studio,2025-05-21,ellswooddentalstudio7293.com,Momentum,16,29,active,2025-05-21,,73,talent36@lumentalent.example
+Placement — Tariq Rossi @ Everly Dental Associates,2026-06-06,everlydentalassociates.com,Core,12,29,active,2026-06-06,,71,talent37@lumentalent.example
+Placement — Leila Sultana @ Wexford Dental Associates,2025-04-23,wexforddentalassociates7004.com,Core,12,26,at_risk,2025-04-23,,25,talent38@lumentalent.example
+Placement — Hiro Duarte @ Harbour Orthodontics,2025-10-04,harbourorthodontics2206.com,Momentum,16,27,ended,2025-10-04,2026-05-25,28,talent39@lumentalent.example
+Placement — Andres Klein @ Harbour Orthodontics,2025-09-28,harbourorthodontics2206.com,Momentum,16,27,at_risk,2025-09-28,,32,talent40@lumentalent.example
+Placement — Caleb Moreau @ Highpoint Dental Alliance,2025-01-11,highpointdentalalliance.com,Summit,22,28,ended,2025-01-11,2025-06-18,27,talent41@lumentalent.example
+Placement — Layla Tanaka @ Bramwell Dental Associates,2026-03-16,bramwelldentalassociates1068.com,Momentum,16,34,active,2026-03-16,,61,talent43@lumentalent.example
+Placement — Elena Weiss @ Bramwell Dental Associates,2026-03-15,bramwelldentalassociates1068.com,Momentum,16,34,active,2026-03-15,,68,talent44@lumentalent.example
+Placement — Nora Rossi @ Bramwell Dental Associates,2026-02-25,bramwelldentalassociates1068.com,Momentum,16,34,active,2026-02-25,,62,talent46@lumentalent.example
+Placement — Anika Osei @ Alder Creek Dental Group,2026-02-11,aldercreekdentalgroup5647.com,Summit,22,28,active,2026-02-11,,95,talent47@lumentalent.example
+Placement — Caleb Costa @ Lakeshore Surgical Arts,2025-09-08,lakeshoresurgicalarts4737.com,Summit,22,22,ended,2025-09-08,2026-03-05,24,talent48@lumentalent.example
+Placement — Freya Bianchi @ Lakeshore Surgical Arts,2025-09-22,lakeshoresurgicalarts4737.com,Summit,22,22,ended,2025-09-22,2025-11-21,28,talent49@lumentalent.example
+Placement — Freya Bakker @ Windsor Dentistry,2026-05-28,windsordentistry.com,Core,12,33,active,2026-05-28,,93,talent50@lumentalent.example
+Placement — Elsa Delgado @ Windsor Dentistry,2026-06-07,windsordentistry.com,Core,12,33,active,2026-06-07,,85,talent52@lumentalent.example
+Placement — Rosa Ellery @ Wexford Dentistry,2026-06-25,wexforddentistry.com,Core,12,29,active,2026-06-25,,66,talent53@lumentalent.example
+Placement — Omar Hassan @ Lakeshore Dental Partners,2025-07-17,lakeshoredentalpartners8479.com,Core,12,25,active,2025-07-17,,70,talent54@lumentalent.example
+Placement — Kai Yilmaz @ Meridian Kids Dental Care,2026-05-30,meridiankidsdentalcare2077.com,Momentum,16,28,active,2026-05-30,,93,talent55@lumentalent.example
+Placement — Femi Serrano @ Meridian Kids Dental Care,2026-05-19,meridiankidsdentalcare2077.com,Momentum,16,28,active,2026-05-19,,87,talent57@lumentalent.example
+Placement — Priya Ferreira @ Meridian Kids Dental Care,2026-05-09,meridiankidsdentalcare2077.com,Momentum,16,28,active,2026-05-09,,63,talent58@lumentalent.example
+Placement — Kenji Bakker @ Brookvale Orthodontic Specialists,2025-05-15,brookvaleorthodonticspeciali2283.com,Core,12,24,ended,2025-05-15,2026-04-18,21,talent59@lumentalent.example
+Placement — Rania Mensah @ Kingsley Dental Associates,2025-08-08,kingsleydentalassociates4038.com,Momentum,16,35,ended,2025-08-08,2026-03-26,15,talent60@lumentalent.example
+Placement — Diego Duarte @ Kingsley Dental Associates,2025-08-10,kingsleydentalassociates4038.com,Momentum,16,35,active,2025-08-10,,73,talent62@lumentalent.example
+Placement — Aisha Fontaine @ Cavendish Smile Dentistry,2025-05-23,cavendishsmiledentistry2529.com,Momentum,16,36,active,2025-05-23,,76,talent63@lumentalent.example
+Placement — Thandi Yilmaz @ Cavendish Smile Dentistry,2025-05-25,cavendishsmiledentistry2529.com,Momentum,16,36,active,2025-05-25,,64,talent64@lumentalent.example
+Placement — Kenji Achebe @ Beacon Dental Collective,2026-05-12,beacondentalcollective.com,Core,12,30,active,2026-05-12,,65,talent65@lumentalent.example
+Placement — Mikkel Bergstrom @ Beacon Dental Collective,2026-05-19,beacondentalcollective.com,Core,12,30,active,2026-05-19,,74,talent66@lumentalent.example
+Placement — Kai Watanabe @ Oakhurst Orthodontic Group,2026-01-25,oakhurstorthodonticgroup5340.com,Core,12,37,active,2026-01-25,,75,talent69@lumentalent.example
+Placement — Thandi Fischer @ Oakhurst Orthodontic Group,2026-01-17,oakhurstorthodonticgroup5340.com,Core,12,37,active,2026-01-17,,68,talent70@lumentalent.example
+Placement — Isabel Marchetti @ Oakhurst Orthodontic Group,2026-01-12,oakhurstorthodonticgroup5340.com,Core,12,37,active,2026-01-12,,73,talent71@lumentalent.example
+Placement — Ravi Petrov @ Riverstone Family Dentistry Group,2026-02-01,riverstonefamilydentistrygro8491.com,Momentum,16,32,ended,2026-02-01,2026-07-30,22,talent72@lumentalent.example
+Placement — Diego Malek @ Riverstone Family Dentistry Group,2026-02-03,riverstonefamilydentistrygro8491.com,Momentum,16,32,active,2026-02-03,,77,talent74@lumentalent.example
+Placement — Elena Iqbal @ Tarrant Dentistry,2025-11-04,tarrantdentistry6564.com,Core,12,32,active,2025-11-04,,60,talent76@lumentalent.example
+Placement — Elsa Nasser @ Kingsley Orthodontic Specialists,2025-07-03,kingsleyorthodonticspecialis6390.com,Momentum,16,28,ended,2025-07-03,2026-05-07,27,talent78@lumentalent.example
+Placement — Aisha Yilmaz @ Kingsley Orthodontic Specialists,2025-06-15,kingsleyorthodonticspecialis6390.com,Momentum,16,28,at_risk,2025-06-15,,37,talent80@lumentalent.example
+Placement — Diego Lindqvist @ Windsor Dental Associates,2026-07-27,windsordentalassociates8210.com,Momentum,16,36,active,2026-07-27,,84,talent81@lumentalent.example
+Placement — Rohan Torres @ Fairmont Root Canal Specialists,2026-01-02,fairmontrootcanalspecialists1930.com,Momentum,16,33,ended,2026-01-02,2026-05-06,19,talent82@lumentalent.example
+Placement — Nasir Aguilar @ Kingsley Family Dental,2026-01-13,kingsleyfamilydental7002.com,Momentum,16,26,active,2026-01-13,,95,talent83@lumentalent.example
+Placement — Arun Ibrahim @ Ridgeway Oral Surgery Associates,2026-03-11,ridgewayoralsurgeryassociate.com,Momentum,16,36,active,2026-03-11,,96,talent85@lumentalent.example
+Placement — Anika Okonjo @ Oakhurst Periodontal Specialists,2026-02-13,oakhurstperiodontalspecialis9074.com,Core,12,27,active,2026-02-13,,66,talent86@lumentalent.example
+Placement — Arun Chen @ Bayview Sports Rehab,2025-01-26,bayviewsportsrehab91.com,Momentum,16,24,at_risk,2025-01-26,,26,talent87@lumentalent.example
+Placement — Rosa Sharma @ Sinclair Family Dentistry Group,2025-03-01,sinclairfamilydentistrygroup1902.com,Momentum,16,33,active,2025-03-01,,71,talent88@lumentalent.example
+Placement — Mateo Kovacs @ Hollis Dental Care,2026-08-09,hollisdentalcare4413.com,Core,12,27,active,2026-08-09,,86,talent89@lumentalent.example
+Placement — Zane Mahmood @ Camden Endodontic Associates,2026-02-08,camdenendodonticassociates.com,Core,12,32,active,2026-02-08,,68,talent91@lumentalent.example
+Placement — Fatima Novak @ Beacon Dental Associates,2026-06-09,beacondentalassociates.com,Momentum,16,27,active,2026-06-09,,63,talent94@lumentalent.example
+Placement — Rafael Chen @ Beacon Dental Associates,2026-05-25,beacondentalassociates.com,Momentum,16,27,active,2026-05-25,,61,talent95@lumentalent.example
+Placement — Leila Hoffman @ Cedar Point Family Dentistry Group,2025-11-15,cedarpointfamilydentistrygro8212.com,Summit,22,35,active,2025-11-15,,71,talent96@lumentalent.example
+Placement — Hugo Jansen @ Draycott Dental Care Group,2025-03-26,draycottdentalcaregroup1672.com,Core,12,28,active,2025-03-26,,96,talent97@lumentalent.example
+Placement — Fatima Jansen @ Sinclair Dental Care,2025-10-05,sinclairdentalcare6459.com,Momentum,16,25,active,2025-10-05,,67,talent98@lumentalent.example
+Placement — Bella Andersen @ Windsor Orthodontic Specialists,2026-03-10,windsororthodonticspecialist3204.com,Core,12,28,ended,2026-03-10,2026-05-24,29,talent101@lumentalent.example
+Placement — Ingrid Adebayo @ Fairmont Dental Alliance,2025-10-29,fairmontdentalalliance.com,Momentum,16,39,ended,2025-10-29,2026-02-01,14,talent102@lumentalent.example
+Placement — Tunde Diallo @ Nortonville Dental Group,2026-07-15,nortonvilledentalgroup2852.com,Momentum,16,24,active,2026-07-15,,73,talent103@lumentalent.example
+Placement — Yara Adebayo @ Maplewood Pediatric Dentistry,2026-04-07,maplewoodpediatricdentistry3414.com,Summit,22,31,active,2026-04-07,,90,talent104@lumentalent.example
+Placement — Marcus Bianchi @ Maplewood Pediatric Dentistry,2026-03-30,maplewoodpediatricdentistry3414.com,Summit,22,31,ended,2026-03-30,2026-06-12,38,talent106@lumentalent.example
+Placement — Yara Bianchi @ Harbour Dental Associates,2025-06-25,harbourdentalassociates.com,Summit,22,26,active,2025-06-25,,63,talent107@lumentalent.example
+Placement — Aisha Lindgren @ Harbour Dental Associates,2025-06-26,harbourdentalassociates.com,Summit,22,26,at_risk,2025-06-26,,36,talent108@lumentalent.example
+Placement — Tariq Ellery @ Harbour Dental Associates,2025-06-19,harbourdentalassociates.com,Summit,22,26,ended,2025-06-19,2025-10-24,37,talent109@lumentalent.example
+Placement — Astrid Bakker @ Beacon Dental Care Group,2026-03-21,beacondentalcaregroup2579.com,Momentum,16,30,active,2026-03-21,,60,talent110@lumentalent.example
+Placement — Elsa Patel @ Cavendish Periodontics,2025-03-20,cavendishperiodontics.com,Summit,22,29,ended,2025-03-20,2026-02-10,38,talent111@lumentalent.example
+Placement — Noemi Whitfield @ Fairmont Sports Rehab,2026-06-29,fairmontsportsrehab.com,Momentum,16,29,active,2026-06-29,,63,talent112@lumentalent.example
+Placement — Noemi Torres @ Fairmont Sports Rehab,2026-06-28,fairmontsportsrehab.com,Momentum,16,29,active,2026-06-28,,86,talent113@lumentalent.example
+Placement — Luis Balogun @ Maplewood Periodontics,2025-05-19,maplewoodperiodontics319.com,Momentum,16,34,active,2025-05-19,,58,talent114@lumentalent.example
+Placement — Femi Klein @ Maplewood Periodontics,2025-05-13,maplewoodperiodontics319.com,Momentum,16,34,active,2025-05-13,,60,talent115@lumentalent.example
+Placement — Thandi Ellery @ Maplewood Periodontics,2025-05-09,maplewoodperiodontics319.com,Momentum,16,34,ended,2025-05-09,2025-08-24,36,talent117@lumentalent.example
+Placement — Mei Eriksen @ Lockhart Family Dental,2025-08-08,lockhartfamilydental5598.com,Momentum,16,25,active,2025-08-08,,76,talent118@lumentalent.example
+Placement — Pavel Duarte @ Harbour Oral Surgery Associates,2026-05-22,harbouroralsurgeryassociates.com,Momentum,16,27,active,2026-05-22,,63,talent121@lumentalent.example
+Placement — Kai Kovacs @ Ashford Root Canal Specialists,2025-04-11,ashfordrootcanalspecialists9222.com,Momentum,16,20,active,2025-04-11,,65,talent122@lumentalent.example
+Placement — Tomas Raghunathan @ Belmont Endodontic Associates,2025-03-26,belmontendodonticassociates.com,Core,12,35,active,2025-03-26,,85,talent123@lumentalent.example
+Placement — Mateo Diallo @ Thornbury Smile Partners,2025-05-04,thornburysmilepartners3455.com,Core,12,33,ended,2025-05-04,2026-04-04,23,talent125@lumentalent.example
+Placement — Ingrid Ferreira @ Fieldstone Sports Rehab,2026-02-10,fieldstonesportsrehab7951.com,Core,12,31,active,2026-02-10,,81,talent127@lumentalent.example
+Placement — Elena Adebayo @ Belmont Orthodontic Specialists,2026-05-07,belmontorthodonticspecialist7919.com,Core,12,26,active,2026-05-07,,85,talent128@lumentalent.example
+Placement — Noemi Ferreira @ Lockhart Braces & Aligners,2025-10-15,lockhartbracesaligners.com,Momentum,16,31,ended,2025-10-15,2025-12-18,24,talent129@lumentalent.example
+Placement — Rina Kovacs @ Lockhart Braces & Aligners,2025-10-23,lockhartbracesaligners.com,Momentum,16,31,ended,2025-10-23,2026-02-01,14,talent130@lumentalent.example
+Placement — Sven Torres @ Prescott Orthodontic Specialists,2025-09-09,prescottorthodonticspecialis9702.com,Core,12,30,active,2025-09-09,,81,talent131@lumentalent.example
+Placement — Bella Chen @ Northline Dentistry,2025-05-14,northlinedentistry.com,Summit,22,34,ended,2025-05-14,2025-10-04,24,talent135@lumentalent.example
+Placement — Rohan Watanabe @ Pinehurst Dental Care,2025-10-06,pinehurstdentalcare6090.com,Momentum,16,30,active,2025-10-06,,76,talent136@lumentalent.example
+Placement — Bilal Okafor @ Glenwood Dental Care Group,2026-01-13,glenwooddentalcaregroup.com,Momentum,16,23,active,2026-01-13,,69,talent137@lumentalent.example
+Placement — Ingrid Ellery @ Maplewood Dental Care Group,2025-10-20,maplewooddentalcaregroup3696.com,Momentum,16,19,active,2025-10-20,,94,talent138@lumentalent.example
+Placement — Chidi Rivera @ Prescott Dental Group,2025-11-29,prescottdentalgroup8248.com,Core,12,31,active,2025-11-29,,63,talent139@lumentalent.example
+Placement — Lucia Raghunathan @ Maplewood Dental Group,2025-03-10,maplewooddentalgroup2628.com,Core,12,21,ended,2025-03-10,2026-03-30,23,talent140@lumentalent.example
+Placement — Hana Chen @ Maplewood Dental Group,2025-03-22,maplewooddentalgroup2628.com,Core,12,21,active,2025-03-22,,67,talent142@lumentalent.example
+Placement — Amara Rossi @ Beacon Dental Group,2025-05-06,beacondentalgroup4385.com,Momentum,16,25,ended,2025-05-06,2025-10-23,37,talent144@lumentalent.example
+Placement — Zane Rossi @ Northline Family Dentistry Group,2025-01-12,northlinefamilydentistrygrou6963.com,Core,12,27,active,2025-01-12,,84,talent145@lumentalent.example
+Placement — Leila Iqbal @ Bayview Dental Studio,2025-06-03,bayviewdentalstudio5096.com,Momentum,16,34,active,2025-06-03,,82,talent147@lumentalent.example
+Placement — Freya Jansen @ Bayview Dental Studio,2025-05-28,bayviewdentalstudio5096.com,Momentum,16,34,active,2025-05-28,,73,talent148@lumentalent.example
+Placement — Ada Raghunathan @ Foxfield Dentistry,2025-05-13,foxfielddentistry5544.com,Core,12,32,active,2025-05-13,,81,talent150@lumentalent.example
+Placement — Isabel Weiss @ Everly Dental Studio,2025-09-06,everlydentalstudio9600.com,Momentum,16,20,active,2025-09-06,,77,talent151@lumentalent.example
+Placement — Lucia Mwangi @ Everly Dental Studio,2025-09-22,everlydentalstudio9600.com,Momentum,16,20,ended,2025-09-22,2026-06-20,13,talent153@lumentalent.example
+Placement — Sana Iqbal @ Camden Dental Group,2026-05-14,camdendentalgroup3067.com,Momentum,16,25,active,2026-05-14,,76,talent154@lumentalent.example
+Placement — Ingrid Ferreira @ Thornbury Dental Group,2025-07-26,thornburydentalgroup9228.com,Core,12,27,ended,2025-07-26,2026-07-11,23,talent155@lumentalent.example
+Placement — Rina Rivera @ Everly Dentistry,2026-06-22,everlydentistry6409.com,Momentum,16,15,active,2026-06-22,,79,talent156@lumentalent.example
+Placement — Mateo Farah @ Highpoint Kids Dental Care,2026-05-17,highpointkidsdentalcare3145.com,Core,12,26,active,2026-05-17,,94,talent157@lumentalent.example
+Placement — Yuki Petrov @ Lockhart Sports Rehab,2026-07-01,lockhartsportsrehab.com,Momentum,16,29,active,2026-07-01,,86,talent158@lumentalent.example
+Placement — Idris Castillo @ Clearwater Orthodontic Specialists,2025-08-26,clearwaterorthodonticspecial6018.com,Core,12,34,active,2025-08-26,,71,talent159@lumentalent.example
+Placement — Leila Farah @ Prescott Family Dentistry Group,2025-05-30,prescottfamilydentistrygroup8196.com,Core,12,36,active,2025-05-30,,86,talent160@lumentalent.example
+Placement — Mei Lindqvist @ Cavendish Dental Studio,2025-11-28,cavendishdentalstudio6218.com,Momentum,16,27,ended,2025-11-28,2026-06-03,17,talent161@lumentalent.example
+Placement — Wren Novotny @ Glenwood Oral & Maxillofacial Surgery,2025-02-12,glenwoodoralmaxillofacialsur.com,Momentum,16,26,ended,2025-02-12,2026-04-06,26,talent162@lumentalent.example
+Placement — Anders Achebe @ Granville Family Dental,2026-05-02,granvillefamilydental8186.com,Summit,22,26,active,2026-05-02,,91,talent163@lumentalent.example
+Placement — Ada Adebayo @ Bayview Oral & Maxillofacial Surgery,2026-08-07,bayvieworalmaxillofacialsurg2285.com,Core,12,19,active,2026-08-07,,75,talent166@lumentalent.example
+Placement — Tunde Haddad @ Fairmont Rehab Associates,2026-05-02,fairmontrehabassociates.com,Momentum,16,25,active,2026-05-02,,66,talent169@lumentalent.example
+Placement — Nora Bianchi @ Bayview Dental Collective,2026-01-23,bayviewdentalcollective.com,Momentum,16,32,active,2026-01-23,,69,talent170@lumentalent.example
+Placement — Kai Hoffman @ Prescott Dental Care Group,2026-07-08,prescottdentalcaregroup4514.com,Momentum,16,26,ended,2026-07-08,2026-09-16,18,talent171@lumentalent.example
+Placement — Sana Patel @ Prescott Dental Care Group,2026-07-24,prescottdentalcaregroup4514.com,Momentum,16,26,active,2026-07-24,,80,talent172@lumentalent.example
+Placement — Ingrid Bergstrom @ Brookvale Children’s Dental,2025-12-07,brookvalechildrensdental8870.com,Momentum,16,26,ended,2025-12-07,2026-05-17,23,talent173@lumentalent.example
+Placement — Ravi Ellery @ Fieldstone Family Dentistry Group,2025-06-02,fieldstonefamilydentistrygro6327.com,Momentum,16,20,ended,2025-06-02,2026-01-31,31,talent174@lumentalent.example
+Placement — Salma Bergstrom @ Summit Ridge Dental Collective,2025-06-15,summitridgedentalcollective4934.com,Momentum,16,28,ended,2025-06-15,2026-03-14,24,talent176@lumentalent.example
+Placement — Caleb Yilmaz @ Cavendish Dental Associates,2025-07-11,cavendishdentalassociates1678.com,Core,12,25,ended,2025-07-11,2025-12-09,29,talent178@lumentalent.example
+Placement — Sofia Osei @ Cavendish Dental Associates,2025-07-03,cavendishdentalassociates1678.com,Core,12,25,active,2025-07-03,,91,talent180@lumentalent.example
+Placement — Oskar Aguilar @ Wynn Dental Partners,2026-03-29,wynndentalpartners.com,Summit,22,22,active,2026-03-29,,65,talent181@lumentalent.example
+Placement — Oskar Kovacs @ Sinclair Orthodontic Group,2026-07-25,sinclairorthodonticgroup.com,Momentum,16,24,active,2026-07-25,,75,talent182@lumentalent.example
+Placement — Kai Sultana @ Highpoint Dentistry,2025-12-01,highpointdentistry2338.com,Momentum,16,18,ended,2025-12-01,2026-07-31,37,talent183@lumentalent.example
+Placement — Bilal Rahman @ Highpoint Dentistry,2025-12-16,highpointdentistry2338.com,Momentum,16,18,at_risk,2025-12-16,,38,talent184@lumentalent.example
+Placement — Andres Baptiste @ Draycott Family Dentistry Group,2025-04-25,draycottfamilydentistrygroup8149.com,Core,12,27,active,2025-04-25,,80,talent186@lumentalent.example
+Placement — Marta Sharma @ Glenwood Dental Associates,2026-04-08,glenwooddentalassociates3948.com,Momentum,16,17,active,2026-04-08,,72,talent188@lumentalent.example
+Placement — Luis Olsen @ Foxfield Dental Care Group,2026-01-26,foxfielddentalcaregroup.com,Core,12,24,ended,2026-01-26,2026-07-24,15,talent192@lumentalent.example
+Placement — Joon Alvarez @ Silverbrook Dental Associates,2025-08-28,silverbrookdentalassociates2298.com,Momentum,16,27,ended,2025-08-28,2026-02-26,13,talent193@lumentalent.example
+Placement — Rosa Nyong @ Harbour Dental Group,2025-06-06,harbourdentalgroup.com,Momentum,16,31,ended,2025-06-06,2026-02-19,25,talent194@lumentalent.example
+Placement — Noemi Sandoval @ Wynn Dental Collective,2025-03-08,wynndentalcollective2499.com,Core,12,28,at_risk,2025-03-08,,30,talent195@lumentalent.example
+Placement — Ada Vasquez @ Ridgeway Orthodontic Group,2025-06-12,ridgewayorthodonticgroup9819.com,Momentum,16,35,active,2025-06-12,,76,talent196@lumentalent.example
+Placement — Layla Lindgren @ Highpoint Periodontics,2025-03-28,highpointperiodontics3110.com,Summit,22,31,ended,2025-03-28,2025-12-03,28,talent197@lumentalent.example
+Placement — Aisha Sorensen @ Foxfield Dental Collective,2025-07-22,foxfielddentalcollective2130.com,Momentum,16,28,active,2025-07-22,,88,talent199@lumentalent.example
+Placement — Greta Castillo @ Foxfield Dental Collective,2025-07-11,foxfielddentalcollective2130.com,Momentum,16,28,ended,2025-07-11,2026-03-03,20,talent200@lumentalent.example
+Placement — Nora Nakamura @ Foxfield Dental Collective,2025-07-07,foxfielddentalcollective2130.com,Momentum,16,28,active,2025-07-07,,65,talent201@lumentalent.example
+Placement — Anja Krishnan @ Thornbury Dental Group,2025-06-08,thornburydentalgroup5704.com,Core,12,24,ended,2025-06-08,2026-07-17,29,talent202@lumentalent.example
+Placement — Marisol Rossi @ Thornbury Dental Group,2025-06-02,thornburydentalgroup5704.com,Core,12,24,active,2025-06-02,,71,talent203@lumentalent.example
+Placement — Rosa Nasser @ Meridian Specialty Care Partners,2025-07-10,meridianspecialtycarepartner6591.com,Core,12,19,active,2025-07-10,,63,talent204@lumentalent.example
+Placement — Tomas Diallo @ Draycott Family Dental,2026-05-31,draycottfamilydental.com,Momentum,16,24,ended,2026-05-31,2026-08-02,18,talent205@lumentalent.example
+Placement — Tomas Moreau @ Oakhurst Dental Care,2026-07-21,oakhurstdentalcare7705.com,Core,12,26,active,2026-07-21,,71,talent206@lumentalent.example
+Placement — Rosa Aguilar @ Oakhurst Dental Care,2026-08-01,oakhurstdentalcare7705.com,Core,12,26,active,2026-08-01,,58,talent207@lumentalent.example
+Placement — Hana Novotny @ Oakhurst Dental Care,2026-08-02,oakhurstdentalcare7705.com,Core,12,26,active,2026-08-02,,58,talent208@lumentalent.example
+Placement — Marta Diallo @ Ashford Dental Care,2026-05-03,ashforddentalcare2958.com,Core,12,36,active,2026-05-03,,90,talent209@lumentalent.example
+Placement — Bilal Ndiaye @ Wexford Oral Surgery Associates,2025-03-13,wexfordoralsurgeryassociates8425.com,Core,12,23,ended,2025-03-13,2025-12-19,19,talent212@lumentalent.example
+Placement — Sven Diallo @ Granville Endodontic Associates,2026-04-05,granvilleendodonticassociate2260.com,Summit,22,32,active,2026-04-05,,75,talent213@lumentalent.example
+Placement — Pavel Bergstrom @ Bayview Smile Partners,2025-04-17,bayviewsmilepartners4264.com,Summit,22,23,ended,2025-04-17,2025-11-08,37,talent214@lumentalent.example
+Placement — Aisha Nkemdi @ Clearwater Family Dental,2026-04-16,clearwaterfamilydental4352.com,Momentum,16,28,active,2026-04-16,,84,talent217@lumentalent.example
+Placement — Nikhil Malek @ Clearwater Family Dental,2026-04-23,clearwaterfamilydental4352.com,Momentum,16,28,active,2026-04-23,,77,talent218@lumentalent.example
+Placement — Hiro Larsen @ Westgate Dental Collective,2025-12-15,westgatedentalcollective.com,Core,12,31,active,2025-12-15,,96,talent219@lumentalent.example
+Placement — Noemi Rivera @ Clearwater Dental Care Group,2025-03-05,clearwaterdentalcaregroup7533.com,Core,12,29,ended,2025-03-05,2025-07-15,13,talent220@lumentalent.example
+Placement — Kai Tanaka @ Riverstone Orthodontic Specialists,2026-01-30,riverstoneorthodonticspecial.com,Momentum,16,36,active,2026-01-30,,62,talent221@lumentalent.example
+Placement — Caleb Adebayo @ Bramwell Smile Partners,2025-10-04,bramwellsmilepartners2665.com,Momentum,16,27,active,2025-10-04,,59,talent222@lumentalent.example
+Placement — Ada Novotny @ Everly Family Dentistry Group,2026-01-19,everlyfamilydentistrygroup5780.com,Momentum,16,19,active,2026-01-19,,59,talent225@lumentalent.example
+Placement — Femi Moreau @ Lakeshore Dentistry,2025-05-01,lakeshoredentistry9444.com,Summit,22,21,at_risk,2025-05-01,,33,talent228@lumentalent.example
+Placement — Nikhil Nyong @ Beacon Smile Dentistry,2026-07-24,beaconsmiledentistry6799.com,Core,12,29,active,2026-07-24,,90,talent229@lumentalent.example
+Placement — Hana Alvarez @ Beacon Smile Dentistry,2026-07-24,beaconsmiledentistry6799.com,Core,12,29,active,2026-07-24,,86,talent230@lumentalent.example
+Placement — Dana Mensah @ Brookvale Pediatric Dentistry,2026-02-03,brookvalepediatricdentistry.com,Momentum,16,25,active,2026-02-03,,84,talent232@lumentalent.example
+Placement — Yuki Moreau @ Everly Surgical Arts,2026-05-15,everlysurgicalarts.com,Momentum,16,21,active,2026-05-15,,95,talent233@lumentalent.example
+Placement — Rina Kamau @ Thornbury Root Canal Specialists,2025-05-22,thornburyrootcanalspecialist9984.com,Summit,22,26,active,2025-05-22,,95,talent234@lumentalent.example
+Placement — Ines Larsen @ Redwood Sports Rehab,2026-04-08,redwoodsportsrehab1606.com,Summit,22,25,ended,2026-04-08,2026-07-30,30,talent236@lumentalent.example
+Placement — Thandi Mahmood @ Northline Dental Care,2026-07-22,northlinedentalcare1670.com,Core,12,36,active,2026-07-22,,94,talent237@lumentalent.example
+Placement — Anders Santos @ Northline Dental Care,2026-07-19,northlinedentalcare1670.com,Core,12,36,active,2026-07-19,,94,talent238@lumentalent.example
+Placement — Fatima Lindqvist @ Meridian Surgical Arts,2026-05-12,meridiansurgicalarts7167.com,Summit,22,38,active,2026-05-12,,72,talent240@lumentalent.example
+Placement — Arun Torres @ Draycott Dental Alliance,2025-03-22,draycottdentalalliance9692.com,Core,12,21,ended,2025-03-22,2025-07-07,28,talent241@lumentalent.example
+Placement — Wren Mwangi @ Sinclair Dental Group,2025-12-23,sinclairdentalgroup6610.com,Core,12,28,active,2025-12-23,,95,talent242@lumentalent.example
+Placement — Nasir Jansen @ Stonebridge Oral Health Partners,2025-11-11,stonebridgeoralhealthpartner8744.com,Core,12,29,at_risk,2025-11-11,,32,talent243@lumentalent.example
+Placement — Yara Jansen @ Oakhurst Dentistry,2026-04-08,oakhurstdentistry1211.com,Core,12,21,active,2026-04-08,,87,talent244@lumentalent.example
+Placement — Yuki Mahmood @ Oakhurst Dentistry,2026-03-23,oakhurstdentistry1211.com,Core,12,21,ended,2026-03-23,2026-05-24,13,talent245@lumentalent.example
+Placement — Ines Torres @ Maplewood Periodontics,2024-12-22,maplewoodperiodontics.com,Momentum,16,28,ended,2024-12-22,2025-12-07,13,talent246@lumentalent.example
+Placement — Tunde Aguilar @ Windsor Periodontics,2025-08-14,windsorperiodontics9837.com,Momentum,16,22,ended,2025-08-14,2025-11-21,36,talent247@lumentalent.example
+Placement — Sven Chen @ Bramwell Family Dentistry Group,2025-01-27,bramwellfamilydentistrygroup2377.com,Core,12,36,ended,2025-01-27,2026-01-16,16,talent248@lumentalent.example
+Placement — Oskar Bianchi @ Bramwell Dental Associates,2026-06-15,bramwelldentalassociates7884.com,Momentum,16,23,ended,2026-06-15,2026-08-15,36,talent249@lumentalent.example
+Placement — Bilal Mahmood @ Bramwell Dental Associates,2026-06-24,bramwelldentalassociates7884.com,Momentum,16,23,active,2026-06-24,,81,talent250@lumentalent.example
+Placement — Chidi Balogun @ Harbour Dental Care,2025-10-18,harbourdentalcare2594.com,Core,12,24,active,2025-10-18,,60,talent251@lumentalent.example
+Placement — Bella Fontaine @ Prescott Movement Clinic,2025-04-30,prescottmovementclinic5129.com,Momentum,16,20,active,2025-04-30,,83,talent252@lumentalent.example
+Placement — Marta Kovacs @ Harbour Dental Care,2025-10-06,harbourdentalcare5253.com,Momentum,16,23,active,2025-10-06,,63,talent253@lumentalent.example
+Placement — Rohan Whitfield @ Harbour Dental Care,2025-10-01,harbourdentalcare5253.com,Momentum,16,23,ended,2025-10-01,2026-07-26,19,talent254@lumentalent.example
+Placement — Omar Haddad @ Windsor Dental Care Group,2025-09-19,windsordentalcaregroup7255.com,Summit,22,24,ended,2025-09-19,2026-07-21,19,talent255@lumentalent.example
+Placement — Dana Vasquez @ Cavendish Dental Associates,2025-02-02,cavendishdentalassociates1678.com,Summit,22,24,active,2025-02-02,,64,talent256@lumentalent.example
+Placement — Nadia Olsen @ Harbour Dental Studio,2026-06-11,harbourdentalstudio6658.com,Momentum,16,21,ended,2026-06-11,2026-08-12,29,talent257@lumentalent.example
+Placement — Thandi Rivera @ Meridian Surgical Arts,2026-01-17,meridiansurgicalarts5485.com,Summit,22,40,at_risk,2026-01-17,,35,talent260@lumentalent.example
+Placement — Marta Silva @ Cavendish Orthodontics,2025-06-13,cavendishorthodontics.com,Summit,22,33,at_risk,2025-06-13,,26,talent261@lumentalent.example
+Placement — Ingrid Raghunathan @ Cavendish Dental Care,2026-03-25,cavendishdentalcare4607.com,Momentum,16,27,ended,2026-03-25,2026-08-03,12,talent262@lumentalent.example
+Placement — Fatima Lindgren @ Lockhart Root Canal Specialists,2025-11-30,lockhartrootcanalspecialists3959.com,Momentum,16,24,active,2025-11-30,,82,talent263@lumentalent.example
+Placement — Zane Osei @ Belmont Kids Dental Care,2025-02-08,belmontkidsdentalcare8720.com,Core,12,27,active,2025-02-08,,95,talent265@lumentalent.example
+Placement — Caleb Novotny @ Harbour Smile Dentistry,2026-06-06,harboursmiledentistry8760.com,Momentum,16,36,active,2026-06-06,,65,talent266@lumentalent.example
+Placement — Rania Hassan @ Camden Smile Dentistry,2026-03-22,camdensmiledentistry3116.com,Momentum,16,20,active,2026-03-22,,77,talent268@lumentalent.example
+Placement — Freya Andersen @ Wynn Dental Group,2025-03-21,wynndentalgroup7580.com,Core,12,20,active,2025-03-21,,76,talent269@lumentalent.example
+Placement — Salma Ellery @ Wynn Dental Group,2025-03-27,wynndentalgroup7580.com,Core,12,20,active,2025-03-27,,65,talent270@lumentalent.example
+Placement — Joon Ferreira @ Pinehurst Dentistry,2026-06-19,pinehurstdentistry5754.com,Summit,22,27,active,2026-06-19,,71,talent272@lumentalent.example
+Placement — Divya Kovacs @ Thornbury Root Canal Specialists,2025-08-13,thornburyrootcanalspecialist1449.com,Summit,22,30,active,2025-08-13,,90,talent273@lumentalent.example
+Placement — Tariq Marchetti @ Belmont Oral & Maxillofacial Surgery,2025-07-01,belmontoralmaxillofacialsurg5046.com,Momentum,16,28,active,2025-07-01,,88,talent274@lumentalent.example
+Placement — Tunde Achebe @ Pinehurst Periodontal Specialists,2026-06-13,pinehurstperiodontalspeciali3548.com,Momentum,16,17,active,2026-06-13,,72,talent275@lumentalent.example
+Placement — Marisol Ibrahim @ Camden Dental Care,2026-03-31,camdendentalcare3215.com,Momentum,16,27,active,2026-03-31,,78,talent276@lumentalent.example
+Placement — Tariq Larsen @ Camden Dental Care,2026-04-03,camdendentalcare3215.com,Momentum,16,27,ended,2026-04-03,2026-07-14,13,talent279@lumentalent.example
+Placement — Salma Nasser @ Wexford Dental Studio,2025-04-26,wexforddentalstudio.com,Core,12,30,ended,2025-04-26,2025-08-13,37,talent280@lumentalent.example
+Placement — Nasir Diallo @ Thornbury Smile Dentistry,2025-12-26,thornburysmiledentistry8142.com,Core,12,31,active,2025-12-26,,83,talent281@lumentalent.example
+Placement — Caleb Duarte @ Thornbury Smile Dentistry,2025-12-15,thornburysmiledentistry8142.com,Core,12,31,active,2025-12-15,,92,talent282@lumentalent.example
+Placement — Malik Andersen @ Camden Orthodontics,2025-09-23,camdenorthodontics3721.com,Core,12,31,active,2025-09-23,,73,talent284@lumentalent.example
+Placement — Diego Malek @ Highpoint Movement Clinic,2026-06-20,highpointmovementclinic3437.com,Core,12,31,active,2026-06-20,,90,talent286@lumentalent.example
+Placement — Idris Chen @ Stonebridge Dental Associates,2026-03-22,stonebridgedentalassociates4155.com,Summit,22,34,at_risk,2026-03-22,,34,talent288@lumentalent.example
+Placement — Yusuf Adebayo @ Cavendish Dentistry,2026-06-11,cavendishdentistry4260.com,Momentum,16,37,at_risk,2026-06-11,,42,talent289@lumentalent.example
+Placement — Marisol Ferreira @ Bayview Orthodontics,2025-09-28,bayvieworthodontics5222.com,Momentum,16,29,active,2025-09-28,,96,talent292@lumentalent.example
+Placement — Mikkel Balogun @ Tarrant Dental Group,2025-03-22,tarrantdentalgroup94.com,Momentum,16,36,active,2025-03-22,,60,talent293@lumentalent.example
+Placement — Luis Diallo @ Ellswood Dental Studio,2026-07-04,ellswooddentalstudio6898.com,Momentum,16,23,active,2026-07-04,,93,talent294@lumentalent.example
+Placement — Malik Achebe @ Ellswood Dental Studio,2026-07-15,ellswooddentalstudio6898.com,Momentum,16,23,active,2026-07-15,,69,talent295@lumentalent.example
+Placement — Tomas Rivera @ Maplewood Endodontic Associates,2025-05-08,maplewoodendodonticassociate4039.com,Momentum,16,35,active,2025-05-08,,63,talent297@lumentalent.example
+Placement — Leila Sorensen @ Beacon Dentistry,2025-05-10,beacondentistry1603.com,Momentum,16,18,ended,2025-05-10,2025-08-02,35,talent299@lumentalent.example
+Placement — Chidi Vasquez @ Ridgeway Dental Studio,2025-04-18,ridgewaydentalstudio.com,Core,12,26,active,2025-04-18,,94,talent302@lumentalent.example
+Placement — Lucia Bianchi @ Prescott Family Dentistry Group,2025-05-12,prescottfamilydentistrygroup8791.com,Core,12,19,active,2025-05-12,,69,talent304@lumentalent.example
+Placement — Yusuf Mwangi @ Pinehurst Dental Care Group,2026-07-12,pinehurstdentalcaregroup1318.com,Momentum,16,31,active,2026-07-12,,96,talent306@lumentalent.example
+Placement — Zane Okafor @ Pinehurst Dental Care Group,2026-07-12,pinehurstdentalcaregroup1318.com,Momentum,16,31,active,2026-07-12,,69,talent307@lumentalent.example
+Placement — Tariq Tanaka @ Meridian Dental Care,2025-11-14,meridiandentalcare4730.com,Momentum,16,31,active,2025-11-14,,90,talent308@lumentalent.example
+Placement — Luis Sorensen @ Windsor Braces & Aligners,2025-02-19,windsorbracesaligners817.com,Momentum,16,21,at_risk,2025-02-19,,37,talent309@lumentalent.example
+Placement — Fatima Osei @ Meridian Orthodontic Group,2026-05-06,meridianorthodonticgroup3680.com,Momentum,16,35,active,2026-05-06,,94,talent310@lumentalent.example
+Placement — Boris Ferreira @ Glenwood Physical Therapy,2025-05-03,glenwoodphysicaltherapy5618.com,Momentum,16,27,ended,2025-05-03,2025-09-17,27,talent311@lumentalent.example
+Placement — Isabel Rivera @ Belmont Orthodontic Specialists,2025-11-14,belmontorthodonticspecialist6973.com,Core,12,29,ended,2025-11-14,2026-04-22,28,talent312@lumentalent.example
+Placement — Tariq Mensah @ Belmont Orthodontic Specialists,2025-10-30,belmontorthodonticspecialist6973.com,Core,12,29,active,2025-10-30,,94,talent313@lumentalent.example
+Placement — Tunde Rahman @ Belmont Orthodontic Specialists,2025-11-14,belmontorthodonticspecialist6973.com,Core,12,29,active,2025-11-14,,81,talent314@lumentalent.example
+Placement — Marta Whitfield @ Thornbury Orthodontic Specialists,2025-01-15,thornburyorthodonticspeciali152.com,Momentum,16,18,ended,2025-01-15,2025-12-12,25,talent315@lumentalent.example
+Placement — Thandi Osei @ Thornbury Orthodontic Specialists,2025-01-27,thornburyorthodonticspeciali152.com,Momentum,16,18,at_risk,2025-01-27,,34,talent316@lumentalent.example
+Placement — Marisol Nasser @ Cedar Point Smile Dentistry,2025-01-27,cedarpointsmiledentistry6254.com,Momentum,16,30,active,2025-01-27,,61,talent317@lumentalent.example
+Placement — Emeka Novotny @ Ashford Dental Partners,2025-11-21,ashforddentalpartners9543.com,Summit,22,28,active,2025-11-21,,89,talent319@lumentalent.example
+Placement — Astrid Serrano @ Beacon Smile Partners,2025-06-29,beaconsmilepartners1919.com,Core,12,26,active,2025-06-29,,60,talent320@lumentalent.example
+Placement — Greta Eriksen @ Hollis Dental Alliance,2025-03-03,hollisdentalalliance1560.com,Momentum,16,26,active,2025-03-03,,84,talent321@lumentalent.example
+Placement — Tomas Hassan @ Fieldstone Dental Group,2026-01-24,fieldstonedentalgroup9242.com,Summit,22,26,active,2026-01-24,,60,talent322@lumentalent.example
+Placement — Oskar Nyong @ Fairmont Dental Care Group,2026-06-29,fairmontdentalcaregroup.com,Core,12,27,ended,2026-06-29,2026-09-05,29,talent323@lumentalent.example
+Placement — Rina Andersen @ Cedar Point Family Dental,2025-10-25,cedarpointfamilydental4976.com,Momentum,16,30,ended,2025-10-25,2026-01-01,29,talent324@lumentalent.example
+Placement — Yuki Eriksen @ Cedar Point Family Dental,2025-10-09,cedarpointfamilydental4976.com,Momentum,16,30,active,2025-10-09,,89,talent325@lumentalent.example
+Placement — Pedro Weiss @ Windsor Root Canal Specialists,2025-08-18,windsorrootcanalspecialists8988.com,Momentum,16,27,active,2025-08-18,,62,talent326@lumentalent.example
+Placement — Idris Obi @ Bayview Dental Studio,2025-02-27,bayviewdentalstudio8460.com,Momentum,16,17,active,2025-02-27,,77,talent327@lumentalent.example
+Placement — Kenji Iqbal @ Meridian Smile Dentistry,2026-01-15,meridiansmiledentistry550.com,Momentum,16,21,at_risk,2026-01-15,,37,talent328@lumentalent.example
+Placement — Salma Ndiaye @ Clearwater Orthodontic Group,2026-05-24,clearwaterorthodonticgroup2772.com,Core,12,26,active,2026-05-24,,75,talent329@lumentalent.example
+Placement — Kai Osei @ Pinehurst Orthodontic Group,2025-03-16,pinehurstorthodonticgroup.com,Summit,22,33,ended,2025-03-16,2026-06-16,20,talent330@lumentalent.example
+Placement — Ada Sandoval @ Hollis Children’s Dental,2025-09-24,hollischildrensdental7689.com,Summit,22,36,active,2025-09-24,,76,talent332@lumentalent.example
+Placement — Rafael Marchetti @ Everly Dentistry,2025-02-04,everlydentistry.com,Momentum,16,25,active,2025-02-04,,65,talent334@lumentalent.example
+Placement — Isabel Baptiste @ Belmont Dental Alliance,2025-09-23,belmontdentalalliance.com,Core,12,34,active,2025-09-23,,79,talent335@lumentalent.example
+Placement — Sana Ellery @ Oakhurst Family Dental,2026-07-14,oakhurstfamilydental7718.com,Momentum,16,28,active,2026-07-14,,60,talent336@lumentalent.example
+Placement — Viktor Obi @ Ashford Root Canal Specialists,2025-07-19,ashfordrootcanalspecialists.com,Momentum,16,27,active,2025-07-19,,78,talent337@lumentalent.example
+Placement — Leila Rojas @ Ashford Root Canal Specialists,2025-07-09,ashfordrootcanalspecialists.com,Momentum,16,27,ended,2025-07-09,2026-01-19,32,talent339@lumentalent.example
+Placement — Rania Castillo @ Lockhart Dental Collective,2025-10-21,lockhartdentalcollective6592.com,Momentum,16,24,active,2025-10-21,,88,talent340@lumentalent.example
+Placement — Tariq Rivera @ Hollis Dental Group,2026-02-07,hollisdentalgroup6047.com,Momentum,16,26,ended,2026-02-07,2026-04-13,33,talent344@lumentalent.example
+Placement — Bilal Bakker @ Fieldstone Dental Care,2025-10-30,fieldstonedentalcare.com,Summit,22,25,ended,2025-10-30,2026-05-11,17,talent345@lumentalent.example
+Placement — Joon Nakamura @ Northline Dental Studio,2025-05-30,northlinedentalstudio1985.com,Summit,22,33,ended,2025-05-30,2026-04-14,24,talent346@lumentalent.example
+Placement — Layla Raghunathan @ Glenwood Root Canal Specialists,2025-07-30,glenwoodrootcanalspecialists1891.com,Momentum,16,32,active,2025-07-30,,94,talent347@lumentalent.example
+Placement — Marcus Sandoval @ Glenwood Root Canal Specialists,2025-07-18,glenwoodrootcanalspecialists1891.com,Momentum,16,32,active,2025-07-18,,59,talent348@lumentalent.example
+Placement — Greta Kim @ Fairmont Dental Care,2025-08-07,fairmontdentalcare1510.com,Core,12,19,ended,2025-08-07,2026-02-09,13,talent349@lumentalent.example
+Placement — Clara Iqbal @ Fairmont Dental Associates,2026-07-21,fairmontdentalassociates4863.com,Core,12,28,active,2026-07-21,,69,talent350@lumentalent.example
+Placement — Pavel Sharma @ Granville Dermatology Group,2025-08-06,granvilledermatologygroup.com,Core,12,35,active,2025-08-06,,78,talent353@lumentalent.example
+Placement — Clara Mahmood @ Thornbury Orthodontics,2025-11-02,thornburyorthodontics1355.com,Momentum,16,28,at_risk,2025-11-02,,33,talent355@lumentalent.example
+Placement — Rohan Adeyemi @ Nortonville Orthodontic Group,2026-05-22,nortonvilleorthodonticgroup.com,Momentum,16,33,active,2026-05-22,,89,talent356@lumentalent.example
+Placement — Pavel Fischer @ Westgate Oral & Maxillofacial Surgery,2026-03-26,westgateoralmaxillofacialsur.com,Core,12,27,active,2026-03-26,,80,talent357@lumentalent.example
+Placement — Rania Torres @ Westgate Oral & Maxillofacial Surgery,2026-03-29,westgateoralmaxillofacialsur.com,Core,12,27,active,2026-03-29,,80,talent358@lumentalent.example
+Placement — Sana Sharma @ Maplewood Dental Care,2026-07-14,maplewooddentalcare7104.com,Momentum,16,29,active,2026-07-14,,64,talent359@lumentalent.example
+Placement — Ingrid Andersen @ Foxfield Dental Associates,2025-05-06,foxfielddentalassociates.com,Core,12,26,active,2025-05-06,,77,talent360@lumentalent.example
+Placement — Astrid Moreau @ Bramwell Kids Dental Care,2025-03-26,bramwellkidsdentalcare.com,Momentum,16,25,ended,2025-03-26,2025-06-18,36,talent363@lumentalent.example
+Placement — Arun Farah @ Bramwell Kids Dental Care,2025-03-16,bramwellkidsdentalcare.com,Momentum,16,25,ended,2025-03-16,2025-11-22,12,talent364@lumentalent.example
+Placement — Andres Raghunathan @ Thornbury Physical Therapy,2025-09-26,thornburyphysicaltherapy.com,Momentum,16,32,active,2025-09-26,,82,talent365@lumentalent.example
+Placement — Zane Ndiaye @ Ridgeway Dental Group,2025-07-19,ridgewaydentalgroup9328.com,Core,12,28,ended,2025-07-19,2026-02-16,18,talent366@lumentalent.example
+Placement — Joon Achebe @ Belmont Family Dental,2025-01-31,belmontfamilydental6731.com,Momentum,16,38,ended,2025-01-31,2025-10-17,33,talent368@lumentalent.example
+Placement — Idris Rivera @ Belmont Family Dental,2025-02-17,belmontfamilydental6731.com,Momentum,16,38,active,2025-02-17,,78,talent369@lumentalent.example
+Placement — Greta Rossi @ Fairmont Oral & Maxillofacial Surgery,2025-11-21,fairmontoralmaxillofacialsur.com,Momentum,16,26,active,2025-11-21,,89,talent370@lumentalent.example
+Placement — Pavel Castillo @ Fairmont Oral & Maxillofacial Surgery,2025-11-15,fairmontoralmaxillofacialsur.com,Momentum,16,26,active,2025-11-15,,72,talent371@lumentalent.example
+Placement — Mei Sultana @ Everly Family Dentistry Group,2025-03-07,everlyfamilydentistrygroup2907.com,Momentum,16,27,active,2025-03-07,,78,talent372@lumentalent.example
+Placement — Fatima Chen @ Fairmont Dentistry,2025-01-08,fairmontdentistry5040.com,Momentum,16,28,ended,2025-01-08,2025-12-07,32,talent373@lumentalent.example
+Placement — Ravi Ibrahim @ Wynn Dentistry,2025-03-09,wynndentistry4148.com,Core,12,25,active,2025-03-09,,59,talent375@lumentalent.example
+Placement — Marta Sultana @ Tarrant Dental Partners,2025-12-07,tarrantdentalpartners8785.com,Core,12,37,ended,2025-12-07,2026-02-23,13,talent376@lumentalent.example
+Placement — Lian Novak @ Kingsley Smile Partners,2025-09-01,kingsleysmilepartners1735.com,Momentum,16,21,ended,2025-09-01,2026-03-28,34,talent377@lumentalent.example
+Placement — Pedro Klein @ Nortonville Dental Studio,2025-11-04,nortonvilledentalstudio.com,Core,12,25,ended,2025-11-04,2026-03-19,36,talent378@lumentalent.example
+Placement — Pavel Larsen @ Pinehurst Dental Alliance,2026-07-13,pinehurstdentalalliance283.com,Momentum,16,22,active,2026-07-13,,92,talent379@lumentalent.example
+Placement — Ines Serrano @ Cedar Point Dental Partners,2025-01-27,cedarpointdentalpartners206.com,Summit,22,22,ended,2025-01-27,2026-07-03,28,talent380@lumentalent.example
+Placement — Alba Obi @ Oakhurst Dental Studio,2026-03-06,oakhurstdentalstudio.com,Momentum,16,27,active,2026-03-06,,82,talent381@lumentalent.example
+Placement — Rania Costa @ Clearwater Family Dentistry Group,2026-06-20,clearwaterfamilydentistrygro3362.com,Momentum,16,36,active,2026-06-20,,95,talent383@lumentalent.example
+Placement — Luis Chen @ Clearwater Family Dentistry Group,2026-06-22,clearwaterfamilydentistrygro3362.com,Momentum,16,36,active,2026-06-22,,91,talent385@lumentalent.example
+Placement — Hiro Banda @ Northline Dental Studio,2026-03-28,northlinedentalstudio4059.com,Momentum,16,19,ended,2026-03-28,2026-05-28,19,talent386@lumentalent.example
+Placement — Arun Yilmaz @ Belmont Children’s Dental,2026-07-18,belmontchildrensdental9478.com,Core,12,21,active,2026-07-18,,59,talent388@lumentalent.example
+Placement — Rohan Watanabe @ Westgate Orthodontics,2026-02-06,westgateorthodontics.com,Momentum,16,24,active,2026-02-06,,68,talent389@lumentalent.example
+Placement — Boris Ndiaye @ Fairmont Surgical Arts,2026-07-12,fairmontsurgicalarts6051.com,Core,12,35,active,2026-07-12,,63,talent390@lumentalent.example
+Placement — Hana Aguilar @ Cavendish Smile Dentistry,2026-04-05,cavendishsmiledentistry6142.com,Core,12,31,active,2026-04-05,,58,talent391@lumentalent.example
+Placement — Sven Patel @ Wexford Dental Studio,2025-03-05,wexforddentalstudio460.com,Momentum,16,29,ended,2025-03-05,2025-12-03,24,talent392@lumentalent.example
+Placement — Elena Kamau @ Westgate Dental Care,2025-04-08,westgatedentalcare713.com,Core,12,18,active,2025-04-08,,63,talent393@lumentalent.example
+Placement — Arun Fischer @ Ellswood Dental Group,2026-07-06,ellswooddentalgroup3194.com,Momentum,16,26,at_risk,2026-07-06,,25,talent394@lumentalent.example
+Placement — Sana Banda @ Tarrant Oral & Maxillofacial Surgery,2026-02-15,tarrantoralmaxillofacialsurg.com,Momentum,16,22,active,2026-02-15,,83,talent395@lumentalent.example
+Placement — Rina Tanaka @ Oakhurst Dental Associates,2026-06-12,oakhurstdentalassociates5216.com,Momentum,16,33,active,2026-06-12,,95,talent396@lumentalent.example
+Placement — Lian Aguilar @ Westgate Smile Dentistry,2025-05-12,westgatesmiledentistry4884.com,Momentum,16,31,active,2025-05-12,,62,talent398@lumentalent.example
+Placement — Mikkel Baptiste @ Hollis Dentistry,2026-07-29,hollisdentistry3629.com,Summit,22,33,active,2026-07-29,,73,talent401@lumentalent.example
+Placement — Nikhil Eriksen @ Thornbury Oral Surgery Associates,2025-04-20,thornburyoralsurgeryassociat.com,Momentum,16,24,ended,2025-04-20,,29,talent402@lumentalent.example
+Placement — Aisha Yilmaz @ Ridgeway Children’s Dental,2025-02-09,ridgewaychildrensdental2849.com,Core,12,29,active,2025-02-09,,81,talent403@lumentalent.example
+Placement — Astrid Jansen @ Ridgeway Children’s Dental,2025-02-26,ridgewaychildrensdental2849.com,Core,12,29,ended,2025-02-26,2025-11-29,17,talent405@lumentalent.example
+Placement — Kwame Nkemdi @ Ridgeway Children’s Dental,2025-02-26,ridgewaychildrensdental2849.com,Core,12,29,active,2025-02-26,,60,talent407@lumentalent.example
+Placement — Arun Lindqvist @ Everly Dentistry,2025-07-24,everlydentistry5339.com,Core,12,21,active,2025-07-24,,66,talent408@lumentalent.example
+Placement — Arun Rojas @ Everly Dentistry,2025-07-09,everlydentistry5339.com,Core,12,21,active,2025-07-09,,61,talent409@lumentalent.example
+Placement — Mateo Banda @ Ellswood Dental Alliance,2025-01-03,ellswooddentalalliance.com,Core,12,21,active,2025-01-03,,70,talent410@lumentalent.example
+Placement — Kai Gupta @ Ellswood Dental Alliance,2025-01-08,ellswooddentalalliance.com,Core,12,21,active,2025-01-08,,81,talent411@lumentalent.example
+Placement — Hana Bianchi @ Belmont Orthodontic Specialists,2025-11-11,belmontorthodonticspecialist.com,Momentum,16,32,active,2025-11-11,,69,talent412@lumentalent.example
+Placement — Nikhil Adebayo @ Tarrant Dental Care,2026-03-09,tarrantdentalcare3804.com,Core,12,33,active,2026-03-09,,82,talent413@lumentalent.example
+Placement — Elena Fischer @ Clearwater Braces & Aligners,2025-11-07,clearwaterbracesaligners.com,Summit,22,31,ended,2025-11-07,2026-01-13,17,talent414@lumentalent.example
+Placement — Nasir Novak @ Westgate Pediatric Dentistry,2026-05-11,westgatepediatricdentistry3460.com,Momentum,16,25,ended,2026-05-11,2026-07-29,23,talent415@lumentalent.example
+Placement — Andres Tanaka @ Westgate Pediatric Dentistry,2026-05-26,westgatepediatricdentistry3460.com,Momentum,16,25,ended,2026-05-26,2026-07-31,37,talent416@lumentalent.example
+Placement — Caleb Santos @ Beacon Smile Partners,2025-08-25,beaconsmilepartners7117.com,Momentum,16,32,active,2025-08-25,,66,talent417@lumentalent.example
+Placement — Ingrid Baptiste @ Camden Dental Care Group,2025-09-07,camdendentalcaregroup2101.com,Summit,22,29,active,2025-09-07,,94,talent418@lumentalent.example
+Placement — Zane Aguilar @ Camden Dental Care Group,2025-08-30,camdendentalcaregroup2101.com,Summit,22,29,active,2025-08-30,,77,talent420@lumentalent.example
+Placement — Clara Rahman @ Cavendish Family Dentistry Group,2025-05-01,cavendishfamilydentistrygrou6798.com,Core,12,27,at_risk,2025-05-01,,33,talent421@lumentalent.example
+Placement — Divya Duarte @ Ellswood Oral & Maxillofacial Surgery,2025-10-09,ellswoodoralmaxillofacialsur1718.com,Core,12,31,ended,2025-10-09,2026-06-21,25,talent422@lumentalent.example
+Placement — Layla Patel @ Alder Creek Orthodontic Group,2025-05-14,aldercreekorthodonticgroup.com,Core,12,31,active,2025-05-14,,91,talent424@lumentalent.example
+Placement — Camila Iqbal @ Oakhurst Sports Rehab,2026-07-10,oakhurstsportsrehab9371.com,Core,12,30,ended,2026-07-10,2026-09-09,23,talent425@lumentalent.example
+Placement — Marta Novak @ Oakhurst Sports Rehab,2026-07-15,oakhurstsportsrehab9371.com,Core,12,30,at_risk,2026-07-15,,28,talent426@lumentalent.example
+Placement — Mikkel Santos @ Bayview Family Dentistry Group,2026-03-27,bayviewfamilydentistrygroup5094.com,Momentum,16,37,active,2026-03-27,,93,talent427@lumentalent.example
+Placement — Rafael Patel @ Bayview Family Dentistry Group,2026-04-05,bayviewfamilydentistrygroup5094.com,Momentum,16,37,ended,2026-04-05,2026-08-01,13,talent428@lumentalent.example
+Placement — Sana Weiss @ Draycott Dental Studio,2025-11-14,draycottdentalstudio612.com,Momentum,16,23,active,2025-11-14,,95,talent429@lumentalent.example
+Placement — Hana Bergstrom @ Draycott Dental Studio,2025-11-13,draycottdentalstudio612.com,Momentum,16,23,active,2025-11-13,,90,talent430@lumentalent.example
+Placement — Dana Whitfield @ Granville Dental Care Group,2026-07-05,granvilledentalcaregroup4346.com,Core,12,26,active,2026-07-05,,82,talent431@lumentalent.example
+Placement — Fatima Duarte @ Granville Dental Care Group,2026-07-23,granvilledentalcaregroup4346.com,Core,12,26,active,2026-07-23,,68,talent432@lumentalent.example
+Placement — Kai Costa @ Kingsley Family Dentistry Group,2026-07-14,kingsleyfamilydentistrygroup5233.com,Core,12,33,active,2026-07-14,,66,talent433@lumentalent.example
+Placement — Anika Tanaka @ Kingsley Family Dentistry Group,2026-08-02,kingsleyfamilydentistrygroup5233.com,Core,12,33,active,2026-08-02,,66,talent434@lumentalent.example
+Placement — Clara Nasser @ Brookvale Dental Collective,2026-06-07,brookvaledentalcollective.com,Momentum,16,34,active,2026-06-07,,64,talent435@lumentalent.example
+Placement — Divya Mahmood @ Alder Creek Dental Collective,2025-03-15,aldercreekdentalcollective4865.com,Summit,22,34,active,2025-03-15,,93,talent436@lumentalent.example
+Placement — Leila Bakker @ Fieldstone Pediatric Dentistry,2025-02-24,fieldstonepediatricdentistry.com,Core,12,34,active,2025-02-24,,68,talent437@lumentalent.example
+Placement — Ada Moreau @ Fieldstone Pediatric Dentistry,2025-02-17,fieldstonepediatricdentistry.com,Core,12,34,ended,2025-02-17,2026-05-03,31,talent438@lumentalent.example
+Placement — Elena Fontaine @ Cedar Point Smile Dentistry,2025-03-26,cedarpointsmiledentistry.com,Summit,22,31,ended,2025-03-26,2025-09-03,20,talent439@lumentalent.example
+Placement — Arun Vasquez @ Fieldstone Dental Alliance,2026-07-31,fieldstonedentalalliance9710.com,Momentum,16,25,active,2026-07-31,,86,talent440@lumentalent.example
+Placement — Layla Rossi @ Fieldstone Dental Alliance,2026-07-26,fieldstonedentalalliance9710.com,Momentum,16,25,active,2026-07-26,,77,talent441@lumentalent.example
+Placement — Rosa Ellery @ Tarrant Family Dental,2026-03-24,tarrantfamilydental3633.com,Core,12,23,ended,2026-03-24,2026-06-17,34,talent443@lumentalent.example
+Placement — Aisha Jansen @ Ashford Family Dentistry Group,2025-08-28,ashfordfamilydentistrygroup6117.com,Core,12,25,active,2025-08-28,,81,talent444@lumentalent.example
+Placement — Ravi Raghunathan @ Granville Orthodontic Specialists,2025-10-29,granvilleorthodonticspeciali.com,Momentum,16,28,active,2025-10-29,,87,talent445@lumentalent.example
+Placement — Kenji Fischer @ Westgate Dentistry,2025-10-22,westgatedentistry5828.com,Core,12,35,active,2025-10-22,,85,talent447@lumentalent.example
+Placement — Sana Fontaine @ Bayview Periodontal Specialists,2026-05-21,bayviewperiodontalspecialist.com,Momentum,16,29,active,2026-05-21,,70,talent449@lumentalent.example
+Placement — Elena Okafor @ Foxfield Smile Dentistry,2025-01-05,foxfieldsmiledentistry7494.com,Core,12,25,active,2025-01-05,,62,talent450@lumentalent.example
+Placement — Chidi Bianchi @ Pinehurst Family Dentistry Group,2025-09-01,pinehurstfamilydentistrygrou.com,Core,12,27,ended,2025-09-01,2025-12-07,22,talent454@lumentalent.example
+Placement — Ada Olsen @ Everly Dental Studio,2025-06-01,everlydentalstudio5711.com,Momentum,16,27,active,2025-06-01,,69,talent455@lumentalent.example
+Placement — Thandi Kovacs @ Bramwell Orthodontic Specialists,2025-05-26,bramwellorthodonticspecialis.com,Momentum,16,21,ended,2025-05-26,2026-02-02,29,talent456@lumentalent.example
+Placement — Ingrid Adebayo @ Foxfield Dental Associates,2025-09-27,foxfielddentalassociates.com,Core,12,32,active,2025-09-27,,82,talent457@lumentalent.example
+Placement — Sofia Fischer @ Nortonville Oral Health Partners,2025-04-05,nortonvilleoralhealthpartner2991.com,Momentum,16,23,active,2025-04-05,,79,talent458@lumentalent.example
+Placement — Zara Whitfield @ Hollis Dental Care,2025-03-27,hollisdentalcare.com,Summit,22,27,active,2025-03-27,,65,talent459@lumentalent.example
+Placement — Nikhil Tanaka @ Tarrant Root Canal Specialists,2025-02-05,tarrantrootcanalspecialists8698.com,Momentum,16,27,ended,2025-02-05,2025-11-06,20,talent460@lumentalent.example
+Placement — Rina Eriksen @ Tarrant Root Canal Specialists,2025-01-24,tarrantrootcanalspecialists8698.com,Momentum,16,27,at_risk,2025-01-24,,33,talent461@lumentalent.example
+Placement — Sven Gupta @ Bramwell Dental Alliance,2025-04-17,bramwelldentalalliance5274.com,Momentum,16,17,at_risk,2025-04-17,,20,talent462@lumentalent.example
+Placement — Layla Rahman @ Bramwell Dental Alliance,2025-04-29,bramwelldentalalliance5274.com,Momentum,16,17,active,2025-04-29,,88,talent464@lumentalent.example
+Placement — Omar Patel @ Brookvale Dental Studio,2025-07-07,brookvaledentalstudio5489.com,Summit,22,18,active,2025-07-07,,70,talent465@lumentalent.example
+Placement — Isabel Achebe @ Brookvale Dental Studio,2025-07-25,brookvaledentalstudio5489.com,Summit,22,18,active,2025-07-25,,90,talent466@lumentalent.example
+Placement — Omar Nakamura @ Sinclair Family Dentistry Group,2025-10-27,sinclairfamilydentistrygroup.com,Momentum,16,22,ended,2025-10-27,2026-02-14,17,talent468@lumentalent.example
+Placement — Hana Kim @ Sinclair Family Dentistry Group,2025-10-30,sinclairfamilydentistrygroup.com,Momentum,16,22,active,2025-10-30,,83,talent469@lumentalent.example
+Placement — Anika Ndiaye @ Pinehurst Dental Partners,2025-12-01,pinehurstdentalpartners8610.com,Momentum,16,20,ended,2025-12-01,2026-07-08,26,talent470@lumentalent.example
+Placement — Zara Nkemdi @ Thornbury Smile Dentistry,2026-03-17,thornburysmiledentistry1695.com,Summit,22,34,at_risk,2026-03-17,,37,talent471@lumentalent.example
+Placement — Pedro Patel @ Highpoint Orthodontics,2026-02-03,highpointorthodontics.com,Summit,22,32,ended,2026-02-03,2026-05-28,38,talent472@lumentalent.example
+Placement — Rohan Rossi @ Prescott Smile Dentistry,2025-01-27,prescottsmiledentistry3138.com,Momentum,16,26,active,2025-01-27,,72,talent473@lumentalent.example
+Placement — Layla Banda @ Camden Dental Care Group,2025-01-26,camdendentalcaregroup.com,Core,12,25,active,2025-01-26,,90,talent475@lumentalent.example
+Placement — Rina Torres @ Stonebridge Dental Associates,2025-05-23,stonebridgedentalassociates485.com,Momentum,16,31,ended,2025-05-23,2025-09-25,21,talent477@lumentalent.example
+Placement — Kwame Nkemdi @ Belmont Family Dentistry Group,2025-07-17,belmontfamilydentistrygroup.com,Momentum,16,32,active,2025-07-17,,88,talent478@lumentalent.example
+Placement — Wren Jansen @ Belmont Family Dentistry Group,2025-07-18,belmontfamilydentistrygroup.com,Momentum,16,32,ended,2025-07-18,2026-04-03,24,talent479@lumentalent.example
+Placement — Femi Bakker @ Camden Dental Group,2025-04-11,camdendentalgroup3682.com,Core,12,25,active,2025-04-11,,83,talent481@lumentalent.example
+Placement — Leila Nakamura @ Everly Orthodontics,2025-07-30,everlyorthodontics5957.com,Momentum,16,28,ended,2025-07-30,2026-04-23,21,talent482@lumentalent.example
+Placement — Salma Whitfield @ Everly Orthodontics,2025-07-13,everlyorthodontics5957.com,Momentum,16,28,active,2025-07-13,,59,talent483@lumentalent.example
+Placement — Bella Delgado @ Everly Orthodontics,2025-08-07,everlyorthodontics5957.com,Momentum,16,28,ended,2025-08-07,2026-05-17,38,talent484@lumentalent.example
+Placement — Clara Aguilar @ Wynn Oral Surgery Associates,2026-07-01,wynnoralsurgeryassociates6094.com,Momentum,16,24,active,2026-07-01,,63,talent485@lumentalent.example
+Placement — Nasir Hassan @ Beacon Endodontic Associates,2026-01-13,beaconendodonticassociates.com,Core,12,24,at_risk,2026-01-13,,21,talent487@lumentalent.example
+Placement — Mei Torres @ Beacon Endodontic Associates,2026-02-01,beaconendodonticassociates.com,Core,12,24,ended,2026-02-01,2026-07-19,38,talent488@lumentalent.example
+Placement — Leila Sandoval @ Ellswood Orthodontic Group,2026-07-10,ellswoodorthodonticgroup5835.com,Momentum,16,25,active,2026-07-10,,83,talent489@lumentalent.example
+Placement — Divya Kovacs @ Wexford Orthodontic Specialists,2025-09-17,wexfordorthodonticspecialist.com,Momentum,16,29,active,2025-09-17,,93,talent490@lumentalent.example
+Placement — Femi Nyong @ Belmont Dental Collective,2025-06-23,belmontdentalcollective4483.com,Core,12,26,active,2025-06-23,,63,talent493@lumentalent.example
+Placement — Arun Sharma @ Silverbrook Endodontic Associates,2025-11-17,silverbrookendodonticassocia4580.com,Momentum,16,29,active,2025-11-17,,85,talent495@lumentalent.example
+Placement — Zane Fontaine @ Silverbrook Endodontic Associates,2025-11-06,silverbrookendodonticassocia4580.com,Momentum,16,29,active,2025-11-06,,60,talent496@lumentalent.example
+Placement — Noemi Farah @ Foxfield Dental Group,2025-01-18,foxfielddentalgroup.com,Momentum,16,34,active,2025-01-18,,81,talent498@lumentalent.example
+Placement — Zane Klein @ Foxfield Dental Group,2025-01-21,foxfielddentalgroup.com,Momentum,16,34,ended,2025-01-21,2026-07-08,29,talent499@lumentalent.example
+Placement — Sofia Okafor @ Hollis Family Dental,2026-05-15,hollisfamilydental.com,Momentum,16,20,active,2026-05-15,,83,talent500@lumentalent.example
+Placement — Andres Raghunathan @ Hollis Family Dental,2026-04-26,hollisfamilydental.com,Momentum,16,20,active,2026-04-26,,86,talent501@lumentalent.example
+Placement — Pedro Hoffman @ Ellswood Orthodontics,2025-03-26,ellswoodorthodontics.com,Momentum,16,21,ended,2025-03-26,2025-11-07,18,talent502@lumentalent.example
+Placement — Wren Gupta @ Glenwood Physical Therapy,2025-03-26,glenwoodphysicaltherapy5139.com,Momentum,16,19,at_risk,2025-03-26,,42,talent503@lumentalent.example
+Placement — Sana Adeyemi @ Glenwood Physical Therapy,2025-03-13,glenwoodphysicaltherapy5139.com,Momentum,16,19,active,2025-03-13,,72,talent504@lumentalent.example
+Placement — Marcus Tanaka @ Fieldstone Kids Dental Care,2025-05-30,fieldstonekidsdentalcare.com,Core,12,26,ended,2025-05-30,2026-01-05,13,talent505@lumentalent.example
+Placement — Diego Gupta @ Stonebridge Orthodontics,2025-02-04,stonebridgeorthodontics.com,Momentum,16,34,ended,2025-02-04,2025-08-25,37,talent506@lumentalent.example
+Placement — Anja Bergstrom @ Stonebridge Orthodontics,2025-02-20,stonebridgeorthodontics.com,Momentum,16,34,at_risk,2025-02-20,,28,talent507@lumentalent.example
+Placement — Zara Silva @ Sinclair Orthodontic Group,2025-08-10,sinclairorthodonticgroup7385.com,Summit,22,22,active,2025-08-10,,86,talent508@lumentalent.example
+Placement — Pavel Torres @ Fairmont Dental Associates,2025-01-17,fairmontdentalassociates1053.com,Summit,22,20,ended,2025-01-17,2025-05-16,37,talent509@lumentalent.example
+Placement — Divya Bianchi @ Tarrant Dental Care,2026-05-15,tarrantdentalcare2549.com,Momentum,16,33,active,2026-05-15,,92,talent511@lumentalent.example
+Placement — Tariq Ferreira @ Lakeshore Movement Clinic,2025-10-18,lakeshoremovementclinic.com,Momentum,16,28,at_risk,2025-10-18,,37,talent513@lumentalent.example
+Placement — Yara Castillo @ Redwood Sports Rehab,2025-01-19,redwoodsportsrehab.com,Momentum,16,17,active,2025-01-19,,86,talent514@lumentalent.example
+Placement — Kwame Larsen @ Thornbury Dental Partners,2026-02-22,thornburydentalpartners2788.com,Core,12,27,active,2026-02-22,,83,talent515@lumentalent.example
+Placement — Layla Adeyemi @ Thornbury Dental Partners,2026-02-19,thornburydentalpartners2788.com,Core,12,27,active,2026-02-19,,83,talent516@lumentalent.example
+Placement — Salma Castillo @ Fairmont Orthodontics,2025-01-30,fairmontorthodontics7333.com,Summit,22,21,ended,2025-01-30,2026-05-14,19,talent517@lumentalent.example
+Placement — Rafael Nasser @ Highpoint Dental Care,2026-01-14,highpointdentalcare7223.com,Core,12,33,active,2026-01-14,,69,talent520@lumentalent.example
+Placement — Sofia Mahmood @ Tarrant Dental Care,2026-05-30,tarrantdentalcare9756.com,Momentum,16,20,ended,2026-05-30,2026-07-29,20,talent521@lumentalent.example
+Placement — Oskar Delgado @ Silverbrook Smile Partners,2025-10-10,silverbrooksmilepartners673.com,Momentum,16,19,active,2025-10-10,,60,talent522@lumentalent.example
+Placement — Noemi Kovacs @ Silverbrook Smile Partners,2025-10-29,silverbrooksmilepartners673.com,Momentum,16,19,active,2025-10-29,,82,talent523@lumentalent.example
+Placement — Anika Rossi @ Granville Orthodontics,2025-07-01,granvilleorthodontics9115.com,Core,12,24,active,2025-07-01,,72,talent525@lumentalent.example
+Placement — Divya Nasser @ Granville Orthodontics,2025-06-22,granvilleorthodontics9115.com,Core,12,24,active,2025-06-22,,59,talent526@lumentalent.example
+Placement — Yara Rossi @ Granville Orthodontics,2025-06-19,granvilleorthodontics9115.com,Core,12,24,active,2025-06-19,,60,talent528@lumentalent.example
+Placement — Nasir Watanabe @ Belmont Dental Care,2025-06-29,belmontdentalcare3102.com,Momentum,16,29,ended,2025-06-29,2026-07-07,27,talent529@lumentalent.example
+Placement — Nora Nyong @ Bramwell Pediatric Dentistry,2025-01-14,bramwellpediatricdentistry3230.com,Core,12,27,active,2025-01-14,,71,talent531@lumentalent.example
+Placement — Rania Kamau @ Bramwell Pediatric Dentistry,2024-12-30,bramwellpediatricdentistry3230.com,Core,12,27,active,2024-12-30,,75,talent532@lumentalent.example
+Placement — Ada Costa @ Highpoint Dentistry,2026-04-20,highpointdentistry.com,Core,12,33,active,2026-04-20,,59,talent533@lumentalent.example
+Placement — Marcus Sandoval @ Glenwood Dental Associates,2026-04-10,glenwooddentalassociates6151.com,Momentum,16,35,active,2026-04-10,,80,talent534@lumentalent.example
+Placement — Yusuf Osei @ Tarrant Orthodontic Specialists,2026-07-26,tarrantorthodonticspecialist5994.com,Momentum,16,26,active,2026-07-26,,72,talent535@lumentalent.example
+Placement — Camila Nasser @ Westgate Dental Studio,2026-06-02,westgatedentalstudio6028.com,Core,12,21,ended,2026-06-02,2026-08-08,19,talent538@lumentalent.example
+Placement — Hiro Marchetti @ Meridian Sleep Medicine,2025-02-27,meridiansleepmedicine.com,Momentum,16,23,ended,2025-02-27,2026-05-28,26,talent539@lumentalent.example
+Placement — Salma Gupta @ Camden Family Dentistry Group,2025-06-17,camdenfamilydentistrygroup7960.com,Momentum,16,22,active,2025-06-17,,80,talent542@lumentalent.example
+Placement — Luis Kamau @ Northline Orthodontic Specialists,2025-09-29,northlineorthodonticspeciali9806.com,Core,12,37,at_risk,2025-09-29,,24,talent543@lumentalent.example
+Placement — Rina Mensah @ Granville Family Dentistry Group,2026-03-29,granvillefamilydentistrygrou.com,Summit,22,27,active,2026-03-29,,71,talent546@lumentalent.example
+Placement — Kenji Sultana @ Highpoint Dental Care,2025-05-20,highpointdentalcare.com,Momentum,16,22,active,2025-05-20,,84,talent547@lumentalent.example
+Placement — Salma Castillo @ Harbour Orthodontic Group,2025-10-08,harbourorthodonticgroup9217.com,Core,12,22,active,2025-10-08,,93,talent548@lumentalent.example
+Placement — Ravi Mahmood @ Silverbrook Dental Group,2026-07-01,silverbrookdentalgroup9230.com,Momentum,16,37,active,2026-07-01,,93,talent549@lumentalent.example
+Placement — Hugo Novotny @ Stonebridge Kids Dental Care,2026-06-26,stonebridgekidsdentalcare.com,Core,12,23,at_risk,2026-06-26,,22,talent550@lumentalent.example
+Placement — Chidi Diallo @ Kingsley Dental Collective,2025-07-27,kingsleydentalcollective6476.com,Momentum,16,24,ended,2025-07-27,2026-03-25,35,talent551@lumentalent.example
+Placement — Hugo Whitfield @ Stonebridge Dental Partners,2025-07-16,stonebridgedentalpartners6664.com,Core,12,18,ended,2025-07-16,2026-05-03,34,talent553@lumentalent.example
+Placement — Boris Baptiste @ Granville Dentistry,2025-01-15,granvilledentistry6469.com,Core,12,28,active,2025-01-15,,74,talent555@lumentalent.example
+Placement — Malik Watanabe @ Granville Dentistry,2025-01-22,granvilledentistry6469.com,Core,12,28,active,2025-01-22,,80,talent556@lumentalent.example
+Placement — Camila Moreau @ Camden Family Dental,2026-06-26,camdenfamilydental345.com,Momentum,16,25,ended,2026-06-26,2026-08-30,33,talent558@lumentalent.example
+Placement — Rafael Osei @ Bramwell Dental Collective,2026-03-02,bramwelldentalcollective352.com,Core,12,27,active,2026-03-02,,89,talent559@lumentalent.example
+Placement — Omar Farah @ Glenwood Dental Studio,2025-06-07,glenwooddentalstudio3464.com,Core,12,25,active,2025-06-07,,70,talent560@lumentalent.example
+Placement — Lucia Torres @ Everly Dental Studio,2025-08-15,everlydentalstudio8499.com,Core,12,29,active,2025-08-15,,76,talent561@lumentalent.example
+Placement — Nikhil Rossi @ Wynn Dentistry,2025-08-08,wynndentistry7102.com,Momentum,16,17,active,2025-08-08,,95,talent563@lumentalent.example
+Placement — Camila Bakker @ Meridian Dental Group,2026-03-07,meridiandentalgroup1370.com,Summit,22,31,active,2026-03-07,,75,talent564@lumentalent.example
+Placement — Clara Novotny @ Bramwell Smile Dentistry,2026-06-06,bramwellsmiledentistry2546.com,Momentum,16,36,at_risk,2026-06-06,,32,talent565@lumentalent.example
+Placement — Andres Iqbal @ Bramwell Smile Dentistry,2026-05-31,bramwellsmiledentistry2546.com,Momentum,16,36,active,2026-05-31,,59,talent566@lumentalent.example
+Placement — Idris Tanaka @ Harbour Periodontics,2025-05-04,harbourperiodontics.com,Summit,22,21,at_risk,2025-05-04,,29,talent567@lumentalent.example
+Placement — Bella Yilmaz @ Tarrant Family Dentistry Group,2025-09-18,tarrantfamilydentistrygroup9671.com,Momentum,16,30,active,2025-09-18,,63,talent568@lumentalent.example
+Placement — Zara Adeyemi @ Summit Ridge Oral Health Partners,2026-03-07,summitridgeoralhealthpartner4496.com,Momentum,16,20,active,2026-03-07,,67,talent569@lumentalent.example
+Placement — Lucia Petrov @ Wynn Dental Partners,2025-05-23,wynndentalpartners.com,Momentum,16,26,active,2025-05-23,,79,talent570@lumentalent.example
+Placement — Luis Weiss @ Sinclair Oral Health Partners,2026-05-29,sinclairoralhealthpartners3344.com,Momentum,16,32,ended,2026-05-29,2026-08-05,23,talent571@lumentalent.example
+Placement — Zara Ndiaye @ Bayview Dental Associates,2025-05-09,bayviewdentalassociates4675.com,Momentum,16,28,ended,2025-05-09,2026-04-19,27,talent572@lumentalent.example
+Placement — Clara Bergstrom @ Harbour Movement Clinic,2025-06-05,harbourmovementclinic6380.com,Summit,22,25,at_risk,2025-06-05,,36,talent573@lumentalent.example
+Placement — Lian Hassan @ Maplewood Periodontics,2026-02-13,maplewoodperiodontics5210.com,Momentum,16,36,ended,2026-02-13,2026-04-21,24,talent575@lumentalent.example
+Placement — Dana Ndiaye @ Prescott Surgical Arts,2025-08-16,prescottsurgicalarts5751.com,Momentum,16,27,active,2025-08-16,,96,talent576@lumentalent.example
+Placement — Wren Hoffman @ Everly Root Canal Specialists,2025-04-21,everlyrootcanalspecialists5100.com,Momentum,16,25,active,2025-04-21,,84,talent577@lumentalent.example
+Placement — Sofia Sandoval @ Beacon Dental Care Group,2025-03-07,beacondentalcaregroup8303.com,Momentum,16,18,ended,2025-03-07,2026-02-16,22,talent578@lumentalent.example
+Placement — Sana Rossi @ Lockhart Smile Dentistry,2025-08-22,lockhartsmiledentistry.com,Momentum,16,32,active,2025-08-22,,78,talent579@lumentalent.example
+Placement — Anja Duarte @ Redwood Dental Group,2025-04-05,redwooddentalgroup3813.com,Core,12,35,active,2025-04-05,,72,talent580@lumentalent.example
+Placement — Elena Okafor @ Redwood Dental Group,2025-04-03,redwooddentalgroup3813.com,Core,12,35,active,2025-04-03,,82,talent581@lumentalent.example
+Placement — Sven Torres @ Wexford Dental Partners,2025-03-28,wexforddentalpartners9022.com,Momentum,16,19,ended,2025-03-28,2025-06-15,12,talent582@lumentalent.example
+Placement — Omar Krishnan @ Silverbrook Orthodontic Group,2025-02-26,silverbrookorthodonticgroup9119.com,Momentum,16,32,active,2025-02-26,,89,talent583@lumentalent.example
+Placement — Sven Petrov @ Silverbrook Orthodontic Group,2025-03-22,silverbrookorthodonticgroup9119.com,Momentum,16,32,active,2025-03-22,,66,talent584@lumentalent.example
+Placement — Anja Whitfield @ Foxfield Dental Care Group,2026-04-08,foxfielddentalcaregroup506.com,Momentum,16,25,active,2026-04-08,,81,talent586@lumentalent.example
+Placement — Marta Banda @ Highpoint Dental Care,2025-06-11,highpointdentalcare.com,Summit,22,24,ended,2025-06-11,2025-10-01,27,talent587@lumentalent.example
+Placement — Greta Kamau @ Wynn Dental Group,2025-10-21,wynndentalgroup1385.com,Summit,22,28,ended,2025-10-21,2026-05-24,20,talent588@lumentalent.example
+Placement — Elena Lindqvist @ Wynn Periodontics,2025-08-07,wynnperiodontics.com,Summit,22,31,active,2025-08-07,,65,talent589@lumentalent.example
+Placement — Mateo Sorensen @ Camden Children’s Dental,2025-12-02,camdenchildrensdental.com,Momentum,16,24,active,2025-12-02,,88,talent590@lumentalent.example
+Placement — Sana Lindqvist @ Bayview Periodontal Specialists,2025-07-27,bayviewperiodontalspecialist.com,Summit,22,25,ended,2025-07-27,2026-04-02,20,talent592@lumentalent.example
+Placement — Mei Eriksen @ Bayview Periodontal Specialists,2025-08-16,bayviewperiodontalspecialist.com,Summit,22,25,active,2025-08-16,,75,talent593@lumentalent.example
+Placement — Salma Okafor @ Bramwell Endodontic Associates,2025-01-27,bramwellendodonticassociates9721.com,Momentum,16,28,active,2025-01-27,,66,talent594@lumentalent.example
+Placement — Yara Patel @ Fieldstone Dental Group,2026-07-19,fieldstonedentalgroup3822.com,Momentum,16,26,active,2026-07-19,,64,talent596@lumentalent.example
+Placement — Hugo Haddad @ Bayview Dental Care,2026-02-24,bayviewdentalcare7925.com,Core,12,35,ended,2026-02-24,2026-07-18,33,talent597@lumentalent.example
+Placement — Kwame Iqbal @ Brookvale Braces & Aligners,2025-08-09,brookvalebracesaligners9862.com,Summit,22,38,ended,2025-08-09,2026-03-27,38,talent598@lumentalent.example
+Placement — Hana Watanabe @ Beacon Children’s Dental,2026-06-10,beaconchildrensdental8829.com,Momentum,16,23,active,2026-06-10,,85,talent599@lumentalent.example
+Placement — Yuki Raghunathan @ Beacon Children’s Dental,2026-06-04,beaconchildrensdental8829.com,Momentum,16,23,active,2026-06-04,,61,talent600@lumentalent.example
+Placement — Hana Weiss @ Beacon Children’s Dental,2026-06-06,beaconchildrensdental8829.com,Momentum,16,23,at_risk,2026-06-06,,23,talent601@lumentalent.example
+Placement — Astrid Sharma @ Lockhart Root Canal Specialists,2025-03-17,lockhartrootcanalspecialists9740.com,Momentum,16,28,ended,2025-03-17,2026-02-07,25,talent603@lumentalent.example
+Placement — Tunde Farah @ Maplewood Surgical Arts,2026-07-17,maplewoodsurgicalarts7469.com,Momentum,16,36,at_risk,2026-07-17,,41,talent604@lumentalent.example
+Placement — Zane Rojas @ Hollis Family Dental,2026-07-29,hollisfamilydental6277.com,Momentum,16,29,active,2026-07-29,,80,talent605@lumentalent.example
+Placement — Mikkel Nasser @ Bayview Dental Care,2025-09-13,bayviewdentalcare690.com,Momentum,16,27,active,2025-09-13,,68,talent606@lumentalent.example
+Placement — Yuki Klein @ Silverbrook Dental Collective,2025-02-03,silverbrookdentalcollective1566.com,Momentum,16,26,ended,2025-02-03,2025-12-23,32,talent607@lumentalent.example
+Placement — Astrid Adebayo @ Glenwood Dentistry,2025-06-01,glenwooddentistry3382.com,Momentum,16,25,ended,2025-06-01,2025-09-04,38,talent608@lumentalent.example
+Placement — Nora Sorensen @ Meridian Family Dentistry Group,2025-06-20,meridianfamilydentistrygroup7667.com,Momentum,16,36,active,2025-06-20,,76,talent609@lumentalent.example
+Placement — Elena Kamau @ Ellswood Physical Therapy,2025-12-30,ellswoodphysicaltherapy.com,Momentum,16,32,active,2025-12-30,,68,talent610@lumentalent.example
+Placement — Noemi Krishnan @ Tarrant Orthodontic Group,2026-03-01,tarrantorthodonticgroup4663.com,Momentum,16,30,active,2026-03-01,,76,talent612@lumentalent.example
+Placement — Mateo Sultana @ Tarrant Dental Care,2026-06-11,tarrantdentalcare524.com,Momentum,16,24,active,2026-06-11,,84,talent613@lumentalent.example
+Placement — Rina Yilmaz @ Prescott Dental Care,2026-06-07,prescottdentalcare9010.com,Summit,22,24,active,2026-06-07,,77,talent614@lumentalent.example
+Placement — Layla Kovacs @ Pinehurst Dental Group,2026-05-17,pinehurstdentalgroup2504.com,Momentum,16,23,active,2026-05-17,,77,talent616@lumentalent.example
+Placement — Alba Whitfield @ Belmont Family Dental,2025-03-11,belmontfamilydental4945.com,Momentum,16,28,at_risk,2025-03-11,,22,talent617@lumentalent.example
+Placement — Sven Lindqvist @ Westgate Kids Dental Care,2025-12-28,westgatekidsdentalcare.com,Core,12,36,ended,2025-12-28,2026-05-27,27,talent618@lumentalent.example
+Placement — Pedro Delgado @ Westgate Kids Dental Care,2025-12-21,westgatekidsdentalcare.com,Core,12,36,active,2025-12-21,,64,talent619@lumentalent.example
+Placement — Salma Hoffman @ Nortonville Dental Care Group,2026-04-23,nortonvilledentalcaregroup6388.com,Core,12,35,active,2026-04-23,,82,talent620@lumentalent.example
+Placement — Noemi Osei @ Bramwell Dental Care Group,2026-06-26,bramwelldentalcaregroup6960.com,Summit,22,25,active,2026-06-26,,62,talent621@lumentalent.example
+Placement — Nikhil Castillo @ Harbour Orthodontics,2025-04-04,harbourorthodontics830.com,Momentum,16,25,active,2025-04-04,,73,talent623@lumentalent.example
+Placement — Layla Olsen @ Harbour Orthodontics,2025-04-13,harbourorthodontics830.com,Momentum,16,25,active,2025-04-13,,65,talent624@lumentalent.example
+Placement — Rina Krishnan @ Redwood Dental Care Group,2026-07-08,redwooddentalcaregroup4436.com,Core,12,33,active,2026-07-08,,91,talent625@lumentalent.example
+Placement — Hana Kim @ Redwood Dental Care Group,2026-07-23,redwooddentalcaregroup4436.com,Core,12,33,ended,2026-07-23,2026-09-24,35,talent626@lumentalent.example
+Placement — Zara Vasquez @ Cavendish Dentistry,2025-03-30,cavendishdentistry.com,Momentum,16,27,active,2025-03-30,,80,talent627@lumentalent.example
+Placement — Hana Banda @ Belmont Dental Group,2025-02-25,belmontdentalgroup5872.com,Momentum,16,28,active,2025-02-25,,89,talent628@lumentalent.example
+Placement — Elsa Gupta @ Lockhart Dental Group,2025-01-19,lockhartdentalgroup6012.com,Core,12,25,ended,2025-01-19,2026-05-07,28,talent629@lumentalent.example
+Placement — Lucia Alvarez @ Lockhart Dental Group,2025-01-10,lockhartdentalgroup6012.com,Core,12,25,active,2025-01-10,,95,talent630@lumentalent.example
+Placement — Sven Nyong @ Foxfield Dental Studio,2026-05-25,foxfielddentalstudio6232.com,Momentum,16,36,active,2026-05-25,,68,talent631@lumentalent.example
+Placement — Rania Chen @ Wexford Dental Care Group,2026-08-08,wexforddentalcaregroup.com,Momentum,16,27,ended,2026-08-08,2026-10-11,32,talent632@lumentalent.example
+Placement — Malik Sorensen @ Wexford Dental Care Group,2026-08-04,wexforddentalcaregroup.com,Momentum,16,27,ended,2026-08-04,2026-10-10,22,talent634@lumentalent.example
+Placement — Ines Eriksen @ Redwood Family Dental,2026-05-29,redwoodfamilydental5534.com,Momentum,16,26,active,2026-05-29,,77,talent636@lumentalent.example
+Placement — Wren Ellery @ Riverstone Smile Partners,2025-11-30,riverstonesmilepartners3654.com,Summit,22,27,ended,2025-11-30,2026-07-30,33,talent638@lumentalent.example
+Placement — Sofia Chen @ Kingsley Periodontics,2025-09-05,kingsleyperiodontics.com,Momentum,16,32,active,2025-09-05,,78,talent639@lumentalent.example
+Placement — Joon Tanaka @ Wynn Orthodontics,2025-03-24,wynnorthodontics1608.com,Momentum,16,33,ended,2025-03-24,2026-07-12,32,talent640@lumentalent.example
+Placement — Anja Kim @ Windsor Dental Studio,2025-01-12,windsordentalstudio6598.com,Summit,22,26,active,2025-01-12,,77,talent641@lumentalent.example
+Placement — Marcus Tanaka @ Wexford Braces & Aligners,2026-07-23,wexfordbracesaligners.com,Summit,22,26,ended,2026-07-23,2026-09-27,38,talent642@lumentalent.example
+Placement — Rania Serrano @ Cavendish Dental Partners,2026-06-23,cavendishdentalpartners1609.com,Core,12,28,active,2026-06-23,,90,talent643@lumentalent.example
+Placement — Rohan Vasquez @ Meridian Orthodontic Specialists,2025-09-18,meridianorthodonticspecialis2955.com,Momentum,16,25,active,2025-09-18,,90,talent644@lumentalent.example
+Placement — Mateo Patel @ Harbour Orthodontics,2025-08-21,harbourorthodontics1700.com,Core,12,37,active,2025-08-21,,68,talent645@lumentalent.example
+Placement — Malik Fontaine @ Wynn Family Dentistry Group,2025-10-21,wynnfamilydentistrygroup3936.com,Momentum,16,24,active,2025-10-21,,70,talent646@lumentalent.example
+Placement — Anja Balogun @ Beacon Oral Health Partners,2026-05-06,beaconoralhealthpartners1368.com,Momentum,16,24,active,2026-05-06,,78,talent647@lumentalent.example
+Placement — Zara Hassan @ Nortonville Orthodontics,2026-07-19,nortonvilleorthodontics8553.com,Momentum,16,35,active,2026-07-19,,81,talent648@lumentalent.example
+Placement — Alba Santos @ Thornbury Dental Care,2025-06-28,thornburydentalcare5588.com,Core,12,23,ended,2025-06-28,2025-12-30,28,talent650@lumentalent.example
+Placement — Tomas Delgado @ Highpoint Oral Health Partners,2026-07-18,highpointoralhealthpartners359.com,Summit,22,34,active,2026-07-18,,74,talent651@lumentalent.example
+Placement — Nasir Rossi @ Highpoint Oral Health Partners,2026-07-20,highpointoralhealthpartners359.com,Summit,22,34,active,2026-07-20,,61,talent652@lumentalent.example

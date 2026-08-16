@@ -1,0 +1,499 @@
+<title>The ZIA Build</title>
+<style>
+:root{
+  --ground:#EDF1F2; --surface:#FFFFFF; --surface-2:#F6F9F9;
+  --hairline:#DBE3E5; --hairline-2:#EAF0F1;
+  --ink:#0E2429; --ink-2:#40595F; --ink-3:#6C858B;
+  --accent:#0A8F86; --accent-soft:#E2F2F0;
+  --c1:#0A8F86; --c2:#A85D00; --c3:#4152A3; --c4:#AB2F5C;
+  --good:#2E7D52; --warning:#9A6B00; --critical:#B0303A;
+  --good-bg:#E6F2EB; --warning-bg:#F7EFDD; --critical-bg:#F8E5E7;
+  --shadow:0 1px 2px rgba(14,36,41,.05), 0 4px 16px rgba(14,36,41,.05);
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F;
+  --c1:#19A092; --c2:#B87B26; --c3:#6A7CCB; --c4:#D0567B;
+  --good:#4FB07C; --warning:#C99A2E; --critical:#E06B72;
+  --good-bg:#14302270; --warning-bg:#33280C70; --critical-bg:#38191C70;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1618; --surface:#111F22; --surface-2:#16272B;
+  --hairline:#23393E; --hairline-2:#1B2E32;
+  --ink:#E8F1F2; --ink-2:#A8BFC4; --ink-3:#7C979D;
+  --accent:#19A092; --accent-soft:#12312F;
+  --c1:#19A092; --c2:#B87B26; --c3:#6A7CCB; --c4:#D0567B;
+  --good:#4FB07C; --warning:#C99A2E; --critical:#E06B72;
+  --good-bg:#14302270; --warning-bg:#33280C70; --critical-bg:#38191C70;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px 90px}
+.masthead{background:var(--surface);border-bottom:1px solid var(--hairline);padding:34px 0}
+.mi{max-width:820px;margin:0 auto;padding:0 24px}
+.brandmark{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.06;margin:8px 0 0;letter-spacing:-.025em;font-weight:660;text-wrap:balance}
+.standfirst{color:var(--ink-2);margin:14px 0 0;font-size:16.5px;max-width:60ch}
+.meta{display:flex;gap:22px;flex-wrap:wrap;margin:20px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.meta b{color:var(--ink-2);font-weight:600}
+section{margin:50px 0 0}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:7px}
+h2{font-size:25px;margin:0 0 6px;letter-spacing:-.018em;font-weight:645;text-wrap:balance}
+h3{font-size:16px;margin:22px 0 6px;font-weight:625}
+p{margin:11px 0}
+.lede{color:var(--ink-2);font-size:16px}
+strong{font-weight:640}
+code{font-family:var(--mono);font-size:12.5px;background:var(--surface-2);border:1px solid var(--hairline-2);border-radius:4px;padding:1px 5px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;padding:19px 21px;box-shadow:var(--shadow);margin:16px 0}
+.finding{background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--critical);border-radius:10px;padding:18px 21px;box-shadow:var(--shadow);margin:14px 0}
+.finding.warn{border-left-color:var(--warning)}
+.finding.info{border-left-color:var(--c3)}
+.finding h3{margin:0 0 7px;font-size:16.5px}
+.finding p{margin:7px 0 0;font-size:14.5px;color:var(--ink-2)}
+.stat{font-family:var(--mono);font-size:30px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.1}
+.qa{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;padding:18px 21px;box-shadow:var(--shadow);margin:12px 0}
+.q{font-weight:640;font-size:15px;margin:0 0 9px;color:var(--ink)}
+.q::before{content:"Q";font-family:var(--mono);font-size:10.5px;background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:3px 7px;margin-right:9px;font-weight:700;letter-spacing:.05em}
+.a{font-size:14.5px;color:var(--ink-2);margin:0}
+.a p{margin:9px 0}
+.yours{background:var(--warning-bg);color:var(--warning);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.07em;border-radius:4px;padding:3px 7px;margin-left:8px;white-space:nowrap}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px;margin:8px 0}
+th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:0 16px 9px 0;border-bottom:1px solid var(--hairline)}
+td{padding:10px 16px 10px 0;border-bottom:1px solid var(--hairline-2);vertical-align:top}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;padding-right:0}
+th.n{text-align:right;padding-right:0}
+tbody tr:last-child td{border-bottom:none}
+ol.walk{counter-reset:w;list-style:none;padding:0;margin:14px 0 0}
+ol.walk li{counter-increment:w;position:relative;padding:0 0 17px 44px}
+ol.walk li::before{content:counter(w);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:700;display:grid;place-items:center}
+ol.walk b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+ol.walk span{font-size:14px;color:var(--ink-2)}
+.say{border-left:2px solid var(--accent);padding:2px 0 2px 14px;margin:9px 0 0;font-size:14px;color:var(--ink-2);font-style:italic}
+.chip{display:inline-flex;border-radius:4px;padding:2px 8px;font-family:var(--mono);font-size:10.5px;font-weight:600}
+.chip.good{background:var(--good-bg);color:var(--good)}
+.chip.bad{background:var(--critical-bg);color:var(--critical)}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:11.5px;color:var(--ink-3);line-height:1.75}
+</style>
+
+<div class="masthead"><div class="mi">
+  <span class="brandmark">Case study · HubSpot Architect</span>
+  <h1>Rebuilding an operational engine that had never worked</h1>
+  <p class="standfirst">
+    A two-sided consulting business, a CRM holding 20,551 companies that could not
+    associate a single deal, and a platform tier that blocked the obvious solution.
+  </p>
+  <div class="meta">
+    <span>Portal <b>247000083</b></span>
+    <span>Objects <b>~4,600</b></span>
+    <span>Automation rules <b>11</b></span>
+    <span>Built via <b>API</b></span>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<section>
+  <span class="eyebrow">01 · The situation</span>
+  <h2>What ZIA does, and why its CRM is hard</h2>
+  <p class="lede">
+    ZIA is an organizational development and talent solutions company. It sells leadership
+    programs, org design and change management to growing businesses, and delivers them
+    through consultants.
+  </p>
+  <p>
+    That makes it a <strong>two-sided business</strong>, and it is the reason the data model
+    is not a standard sales pipeline. Revenue requires both sides to line up at once:
+  </p>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Side</th><th>Who</th><th class="n">In the CRM</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Demand</strong></td><td>Client organizations buying programs</td><td class="n">226 companies · 166 buyers</td></tr>
+        <tr><td><strong>Supply</strong></td><td>Consultants who deliver the work</td><td class="n">400 consultants</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Sell without an available consultant and you cannot deliver. Hire without demand and
+    you are paying people to sit idle. A product company only has to watch one funnel;
+    ZIA has to watch two and the join between them. <strong>That join is what the CRM
+    exists to make visible</strong>, and it is where every finding in this build came from.
+  </p>
+</section>
+
+<section>
+  <span class="eyebrow">02 · The audit</span>
+  <h2>What I found before writing anything</h2>
+  <p class="lede">
+    The instinct is to start importing. I queried the live portal first, and the data
+    contradicted the handover notes on every material point.
+  </p>
+
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Documented</th><th class="n">Claimed</th><th class="n">Actual</th></tr></thead>
+      <tbody>
+        <tr><td>Companies</td><td class="n">1,228</td><td class="n"><strong>20,551</strong></td></tr>
+        <tr><td>Deals</td><td class="n">0</td><td class="n">1 (sample)</td></tr>
+        <tr><td>Company <code>domain</code></td><td class="n">"fixed"</td><td class="n"><strong>empty portal-wide</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="finding">
+    <h3>The import had run twice</h3>
+    <p>
+      Create timestamps clustered exactly: <span class="num">10,000</span> records at
+      <code>12:33</code> and <span class="num">10,000</span> more at <code>12:36</code>.
+      The source file was 10,000 rows. Nobody had noticed.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>Every deal association would have failed silently</h3>
+    <p>
+      The deal file matched companies on <code>domain</code>. That property was empty on
+      all 20,000 records — an earlier "fix" had been applied to the deal files only. A live
+      search for a sample domain returned <strong>zero companies</strong>. Importing as
+      planned would have associated nothing and auto-created ~994 more companies on top.
+    </p>
+  </div>
+
+  <div class="finding warn">
+    <h3>The planned import route could not have worked at all</h3>
+    <p>
+      The deal file had no <strong>Pipeline</strong> or <strong>Deal Stage</strong> column.
+      HubSpot requires both to create a deal, so the UI importer would have rejected the
+      file regardless of how the columns were mapped.
+    </p>
+  </div>
+
+  <p>Three more problems sat underneath:</p>
+  <div class="card tbl-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Duplicate names</strong></td><td>10,000 rows carried only 1,525 unique names — one appeared 54 times</td></tr>
+        <tr><td><strong>Dirty categories</strong></td><td>308 free-text sector values: <code>dental</code>, <code>Dental</code>, <code>DSO</code>, <code>ortho</code>, <code>Ortho</code> as separate rows</td></tr>
+        <tr><td><strong>Ghost records</strong></td><td>535 nameless companies HubSpot auto-created from contact email domains</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">03 · What I built</span>
+  <h2>Four layers, all through the API</h2>
+  <p class="lede">
+    I archived 20,550 records and rebuilt from a deduplicated source with domains
+    populated, then layered the operating model on top.
+  </p>
+
+  <h3>The data model</h3>
+  <p>
+    <strong>56 custom properties</strong> across four objects, every enumeration a dropdown
+    rather than free text — which is why sector analysis returns ten clean rows instead of
+    thirty spelling variants.
+  </p>
+
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Object</th><th class="n">Records</th><th>Carries</th></tr></thead>
+      <tbody>
+        <tr><td>Companies</td><td class="n">226</td><td>sector, health, size, client-since</td></tr>
+        <tr><td>Contacts</td><td class="n">353</td><td>buyer role · or tier, bench, compliance, coverage</td></tr>
+        <tr><td>Deals</td><td class="n">660</td><td>engagement type, health, hours, invoice mirror</td></tr>
+        <tr><td>Quotes</td><td class="n">114</td><td>proposals, priced from line items</td></tr>
+        <tr><td>Line items</td><td class="n">431</td><td>7 products, 168 discounted 5–20%</td></tr>
+        <tr><td>Tickets</td><td class="n">643</td><td>onboarding, health, escalation, compliance, collections</td></tr>
+        <tr><td>Activities</td><td class="n">1,938</td><td>calls, meetings, notes, tasks</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The automation</h3>
+  <p>
+    The portal is free-tier, so workflows return <code>403</code> — the feature does not
+    exist at this level. Rather than drop the requirement I moved orchestration outside the
+    platform: <strong>eleven rules as scheduled API jobs</strong>, in version control, with
+    an append-only run log.
+  </p>
+  <p>
+    Every rule <strong>reconciles current state</strong> instead of reacting to an event, so
+    a missed run self-heals on the next pass and re-running is always safe.
+  </p>
+
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Rule</th><th>Fires on</th><th class="n">First run</th></tr></thead>
+      <tbody>
+        <tr><td>WF-01 Lead routing</td><td>unowned client contact</td><td class="n">—</td></tr>
+        <tr><td>WF-02 Lifecycle</td><td>deal outcome per account</td><td class="n">—</td></tr>
+        <tr><td>WF-03 Onboarding</td><td>won deal, no ticket</td><td class="n">317</td></tr>
+        <tr><td>WF-04 Health monitoring</td><td>health 40–69, no open check</td><td class="n">102</td></tr>
+        <tr><td>WF-05 SLA escalation</td><td>at risk and below floor</td><td class="n">39</td></tr>
+        <tr><td>WF-06 Compliance</td><td>lapsed / expiring credential</td><td class="n">115</td></tr>
+        <tr><td>WF-07 Collections</td><td>invoice past due</td><td class="n">108</td></tr>
+        <tr><td>WF-08 Inbound lead</td><td>form submission, unrouted</td><td class="n">1</td></tr>
+        <tr><td>WF-09 Lead scoring</td><td>client contact, any</td><td class="n">600</td></tr>
+        <tr><td>WF-10 NPS feedback</td><td>survey response on file</td><td class="n">273</td></tr>
+        <tr><td>WF-11 Health model</td><td>every engagement, rescored</td><td class="n">357</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="finding info">
+    <h3>The bug that justifies the whole approach</h3>
+    <p>
+      A dry run reported <code>alreadyCovered 500</code> yet <code>wouldWrite 817</code> —
+      arithmetic that cannot be right. HubSpot returns association <code>toObjectId</code> as
+      a <strong>number</strong> while object ids everywhere else are <strong>strings</strong>,
+      so every deduplication check silently missed. Live, that was
+      <strong>817 duplicate tickets</strong>. Fixed once in the client layer so no rule can
+      reintroduce it. The second live run wrote <strong>zero</strong> — which is the property
+      that makes any of this safe to schedule.
+    </p>
+  </div>
+
+  <h3>The billing boundary</h3>
+  <p>
+    HubSpot Payments needs a US entity and a connected bank, and a consulting firm billing
+    on contract terms should not route payments through its CRM anyway. So billing is modelled
+    as an <strong>integration boundary</strong>: the accounting system owns the ledger, and
+    seven deal properties carry the invoice state back so revenue operations can report on
+    collections without leaving HubSpot. Those are exactly the fields a QuickBooks Online or
+    Xero connector writes.
+  </p>
+</section>
+
+<section>
+  <span class="eyebrow">04 · What it revealed</span>
+  <h2>Three things the business could not see</h2>
+  <p class="lede">
+    None of these are CRM problems. They are business problems the CRM was hiding, and they
+    only became askable once the data was trustworthy.
+  </p>
+
+  <div class="finding">
+    <h3>The premium tier is the hardest to sell and delivers no better</h3>
+    <div class="stat">12.2% vs 33.9%</div>
+    <p>
+      Summit closes <strong>9 of 82</strong> pursuits — a <strong>12.2%</strong> win rate against
+      Core's <strong>33.9%</strong> — and carries the highest price at <strong>$51,395</strong> a
+      sale. Yet delivered health is flat across all three tiers: <strong>68.3 / 68.3 / 70.3</strong>.
+      The company works hardest to sell the thing clients experience no differently. Nobody had put
+      conversion and delivered outcome in the same view, so the question could not be asked.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>A fifth of the bench cannot be placed at all</h3>
+    <div class="stat">29 / 187</div>
+    <p>
+      <strong>21 lapsed credentials and 8 never started</strong>, with a further 17 expiring.
+      These consultants <strong>cannot be assigned</strong> — capacity frozen by an administrative
+      process nobody owned. Worse, the bench field said otherwise: <strong>153 consultants were on
+      live engagements while only 76 were marked as placed</strong>, so half the delivery team
+      looked bookable while already working. That is how you promise a client someone who has no
+      hours left. WF-12 now derives bench state from actual assignment, and compliance always wins.
+    </p>
+  </div>
+
+  <div class="finding warn">
+    <h3>The risk flag understates exposure seven times over</h3>
+    <div class="stat">58 vs 8</div>
+    <p>
+      <strong>58 engagements score below 60</strong> against a target of 70, but only
+      <strong>8</strong> carry <em>At Risk</em> status. The score is recomputed from live delivery
+      signals on every run; the status field is not. Nothing writes the model's verdict back to the
+      flag the business actually filters and reports on, so the CRM understates its own exposure by
+      <strong>seven times</strong>. Catching drift at week three instead of month three is the
+      difference between a save and a refund.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>Receivables have stopped moving, not slowed down</h3>
+    <div class="stat">40 of 44</div>
+    <p>
+      <strong>40 of 44 unpaid invoices are more than 90 days past due</strong>, against an average
+      time-to-pay of <strong>36.2 days</strong>. A long tail behind a short average is not slow
+      payment — it is an absent process. <strong>$967,510 has already been written off</strong>,
+      which is what the rest becomes if nobody chases. WF-07 now raises a ticket per past-due
+      invoice with priority scaled by age.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>Nearly four sales in ten are discounted</h3>
+    <div class="stat">39.0%</div>
+    <p>
+      <strong>168 of 431 line items</strong> carry a discount, averaging 10.9% off and giving away
+      <strong>$1,379,284</strong> of list value. No one decides to discount at that rate; it
+      accumulates one deal at a time, and without a line-item report nobody sees the total.
+    </p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">05 · The numbers</span>
+  <h2>Where the money actually is</h2>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Measure</th><th class="n">Value</th></tr></thead>
+      <tbody>
+        <tr><td>New business won</td><td class="n">$3,406,965</td></tr>
+        <tr><td>Delivered revenue</td><td class="n">$21,885,028</td></tr>
+        <tr><td>Open pipeline</td><td class="n">$2,024,038</td></tr>
+        <tr><td>Win rate — new business only</td><td class="n">30.1%</td></tr>
+        <tr><td>Collected</td><td class="n">$17,029,272</td></tr>
+        <tr><td>Outstanding</td><td class="n">$4,493,635</td></tr>
+        <tr><td>Written off</td><td class="n">$967,510</td></tr>
+        <tr><td>Idle bench capacity</td><td class="n">~$1.29M / yr</td></tr>
+        <tr><td>Compliance-locked capacity</td><td class="n">~$2.07M / yr</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    One architectural note worth saying out loud: <strong>delivery engagements are also
+    Closed Won</strong>. Counting them as sales gives a 55.9% win rate. Excluding them gives
+    the real <strong>30.1%</strong>. A single filter separates a plausible-looking lie from
+    the truth, and getting that wrong would corrupt every sales report in the portal.
+  </p>
+</section>
+
+<section>
+  <span class="eyebrow">06 · The walkthrough</span>
+  <h2>Eight minutes, in this order</h2>
+  <ol class="walk">
+    <li>
+      <b>Open with the audit, not the build</b>
+      <span>20,551 companies, imported twice, domain empty, zero possible associations.</span>
+      <p class="say">"Before I imported anything, I queried what was actually there. The notes said 1,228 companies. There were 20,551."</p>
+    </li>
+    <li>
+      <b>Show one company record</b>
+      <span>Sector dropdown, client-since date, associated contacts, deals, quotes, tickets, and a two-year activity timeline.</span>
+    </li>
+    <li>
+      <b>Follow one deal end to end</b>
+      <span>Discovery call → proposal email → quote with priced line items → won → invoice → onboarding ticket. Every object is real and linked.</span>
+    </li>
+    <li>
+      <b>Explain the two-sided model</b>
+      <span>Client contacts and consultants in one object, separated by Contact Type; deals carry both the sale and the delivery.</span>
+    </li>
+    <li>
+      <b>Run the engine live</b>
+      <span><code>node engine.js --dry-run</code>, then live, then again — and it writes zero the second time.</span>
+      <p class="say">"Workflows are Professional-tier. Rather than drop the requirement I externalized orchestration. Every rule reconciles state, so it is safe to re-run."</p>
+    </li>
+    <li>
+      <b>Tell the type-coercion bug</b>
+      <span>Dry run caught it; live it would have created 817 duplicate tickets.</span>
+    </li>
+    <li>
+      <b>Land the three findings</b>
+      <span>Summit converts at 12.2% and delivers no better · 29 consultants unplaceable · risk flag understates exposure 7&times;. This is the part they remember.</span>
+    </li>
+    <li>
+      <b>Close on the boundary</b>
+      <span>Why billing is integrated rather than processed in-CRM, and what you would build first at ZIA.</span>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <span class="eyebrow">07 · Application questions</span>
+  <h2>Drafted answers</h2>
+  <p class="lede">
+    Grounded in this build. The two marked <span class="yours">YOURS</span> require your real
+    history — never let anyone else write those.
+  </p>
+
+  <div class="qa">
+    <p class="q">Years of hands-on HubSpot experience? <span class="yours">YOURS</span></p>
+    <p class="a">Answer honestly. If this build is the bulk of your hands-on time, say so and pivot: <em>"Most of my depth is API and architecture rather than years in the UI — here is a portal I designed and populated end to end."</em> A verifiable artifact beats an inflated number, and the number is checkable.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Which Hubs have you worked in?</p>
+    <p class="a">Sales Hub (pipelines, deals, quotes, line items, products), Service Hub (ticket pipelines and service automation), and the CRM platform itself (custom properties, associations, lifecycle). Marketing Hub is the gap — say so directly and note the JD lists it as something you would own, not something you must arrive with.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Have you built automated workflows?</p>
+    <p class="a">Yes — eleven, covering lead routing, lifecycle sync, onboarding, health monitoring, SLA escalation, compliance, collections, inbound lead processing, lead scoring with territory routing, an NPS feedback loop and a five-signal engagement health model. Because the portal was free-tier, I built them as scheduled API jobs rather than native workflows. Each is idempotent: it reconciles state rather than reacting to an event, so a missed run self-heals. I can port them to native workflows on a Professional portal without changing the logic.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Have you designed or restructured a CRM from the ground up?</p>
+    <p class="a">Yes. I inherited 20,551 company records created by a duplicated import, with the domain field empty portal-wide, meaning no deal could associate to any company. I archived 20,550, rebuilt from a deduplicated source with domains populated, normalized 308 free-text category values into a controlled dropdown, and re-established every association. The portal now holds ~4,600 objects across eight types with no orphans.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">What have you personally created in HubSpot?</p>
+    <p class="a">56 custom properties across companies, contacts, deals and tickets; a two-sided data model separating client buyers from delivery consultants; a product library with line items and discounting; quotes priced from line items; a ticket taxonomy driving five service workflows; an invoice mirror modelling the accounting integration boundary; seven automation rules; and an operational dashboard. All built through the API and reproducible from scripts.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Describe a time you improved a business process. Problem, what you built, outcome.</p>
+    <p class="a">
+      <strong>Problem.</strong> A two-sided consulting business could not answer its most important question: how much of its consultant bench was earning. Contacts and deals had been loaded against different company sets, the company domain field was empty so nothing associated, and 40% of company records were empty shells.
+    </p>
+    <p class="a">
+      <strong>What I built.</strong> Rebuilt the data model so both sides of the business — buyers and consultants — resolve to the same accounts. Added bench status, compliance status and coverage band as controlled properties, then built automation to keep them true: a compliance rule that holds lapsed consultants off the bench automatically, and a health rule that opens a review before an engagement fails.
+    </p>
+    <p class="a">
+      <strong>Outcome.</strong> The bench became measurable for the first time. <strong>18 of 187 consultants are bench-ready and idle</strong> — roughly $1.29M of unrealized annual margin — and a further <strong>29 cannot be placed at all</strong> on compliance grounds, about $2.07M of frozen capacity. The sharper finding was that the bench field itself was wrong: <strong>153 consultants were on live engagements while only 76 were marked placed</strong>, so half the delivery team looked bookable while already working. None of these numbers existed before, and all three are now maintained by automation rather than by hand.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">How comfortable are you building reports and executive dashboards?</p>
+    <p class="a">Comfortable, and opinionated about it. I built an operations dashboard covering pipeline, delivery health, bench readiness and collections, plus specifications for eighteen native HubSpot reports across executive, operations and sales views. The part that matters is not the chart — it is knowing that delivery engagements are also Closed Won, so any sales report that does not exclude them reports a 55.9% win rate instead of the real 30.1%.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Rate your confidence designing scalable systems independently, 1–5 <span class="yours">YOURS</span></p>
+    <p class="a">Pick your own number and justify it with one concrete thing. A 4 with evidence reads far stronger than a 5 with none.</p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">08 · Caveats</span>
+  <h2>What to disclose before you are asked</h2>
+  <p class="lede">
+    Volunteering these makes you credible. Being caught on them does the opposite.
+  </p>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>The honest position</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip bad">Synthetic</span></td><td>The data is generated. Deal stages, health scores, invoice states and all activity are modelled, not observed. The <em>architecture</em> and the <em>method</em> are the deliverable.</td></tr>
+        <tr><td><span class="chip bad">Free tier</span></td><td>Workflows, active lists and custom objects return 403. Native workflows and the custom report builder need Professional.</td></tr>
+        <tr><td><span class="chip bad">One pipeline</span></td><td>Free tier allows one deal pipeline, so delivery engagements share the sales pipeline. On a paid portal they would be separated — which is the correct architecture and worth saying.</td></tr>
+        <tr><td><span class="chip bad">Contact cap</span></td><td>353 of 1,000, after pruning back from 1,002 to reopen headroom. 14 of 218 engagements have no consultant linked because that person exceeded the cap.</td></tr>
+        <tr><td><span class="chip bad">Create Date</span></td><td>Immutable on companies and contacts, so those show today. Mitigated with a <code>Client Since</code> property — which is what you would do on a real migration.</td></tr>
+        <tr><td><span class="chip good">Payments</span></td><td>Deliberately not connected. Needs a US entity, and consulting billed on contract terms belongs in the accounting system.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    One rule for the interview: <strong>every number you cite should be one you can pull up
+    live.</strong> If it is not on the dashboard or queryable in the portal, do not say it.
+  </p>
+</section>
+
+<footer>
+  HubSpot portal 247000083 · 226 companies · 353 contacts · 660 deals · 114 quotes<br>
+  431 line items · 258 invoices · 643 tickets · 1,938 activities · 12 automation rules<br>
+  Figures pulled live. Regenerate with <code>node snapshot.js</code>.
+</footer>
+</div>
