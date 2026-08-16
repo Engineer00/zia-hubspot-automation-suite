@@ -536,6 +536,7 @@ footer {
           <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod (WF-02, 03, 05, 06, 10)</button>
           <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod (WF-04, 07, 11, 15)</button>
           <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod (WF-12, 13, 14)</button>
+          <button class="arch-pill-btn" id="btnToggleMermaid" style="background:var(--c3);color:#fff;border-color:var(--c3)">View Mermaid Diagram</button>
         </div>
         <div class="arch-metrics-strip">
           <span class="arch-stat-badge"><span class="status-dot"></span> 15 Engine Rules</span>
@@ -725,6 +726,91 @@ footer {
         <div class="arch-inspector-body" id="archInspectDesc">
           The <b>ZIA Automation Engine</b> runs externally to HubSpot Standard Free Tier portals, executing 15 idempotent Node.js backend rules (WF-01 to WF-15). It reconciles CRM state over HubSpot REST APIs, manages Stripe mock webhook payments, calculates 5-signal delivery health scores, and serves the live <b>ZIA Command Deck</b> on port 4000.
         </div>
+      </div>
+
+      <!-- Mermaid Vector Architecture Diagram Block -->
+      <div id="mermaidWrapper" style="display:none;margin-top:16px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px;padding:20px;overflow-x:auto;position:relative;z-index:2">
+        <pre class="mermaid" id="mermaidDiag">
+flowchart TD
+    subgraph T1["Tier 1: Inbound Signals & Event Triggers"]
+        direction TB
+        T1_Forms["Inbound Web Forms & Lead Capture"]
+        T1_Stripe["Stripe Mock Backend Server (:4001)<br/>(HMAC SHA-256 Webhooks)"]
+        T1_Manual["Sales Reps & Manual CRM Actions"]
+    end
+
+    subgraph T2["Tier 2: ZIA Automation Engine (15 Backend Rules)"]
+        direction TB
+        WF01["WF-01: Lead Routing & Pod Assignment"]
+        WF02["WF-02: Opportunity Lifecycle Sync"]
+        WF03["WF-03: Onboarding Ticket Provisioning"]
+        WF04["WF-04: Placement Health Review Ticket"]
+        WF05["WF-05: SLA Escalation & Manager Assignment"]
+        WF06["WF-06: Consultant Compliance Expiration Audit"]
+        WF07["WF-07: Collections & Days Outstanding"]
+        WF08["WF-08: Inbound Domain & Company Association"]
+        WF09["WF-09: Lead Scoring (0-100) & Grade A-D"]
+        WF10["WF-10: NPS Detractor Recovery Loop"]
+        WF11["WF-11: 5-Signal Delivery Health Model"]
+        WF12["WF-12: Bench Availability Sync"]
+        WF13["WF-13: 100-Point Candidate Skill Match Engine"]
+        WF14["WF-14: Deal Intelligence (ML Win Probability)"]
+        WF15["WF-15: Stripe Payment Reconciliation"]
+    end
+
+    subgraph T3["Tier 3: Storage & State Layer"]
+        direction TB
+        T3_HubSpot["HubSpot CRM Free Tier API (v3/v4)<br/>(Contacts, Companies, Deals, Tickets)"]
+        T3_Props["71 Custom Schema Properties"]
+        T3_Neon["Neon PostgreSQL Cloud DB<br/>(zia_snapshots, zia_rule_logs)"]
+        T3_Realism["Realism Suite (p0 to p26)"]
+    end
+
+    subgraph T4["Tier 4: Analytics Snapshot & Audit"]
+        direction TB
+        T4_Snapshot["snapshot.js Engine"]
+        T4_Validate["validate.js Suite (39/39 Pass)"]
+    end
+
+    subgraph T5["Tier 5: Presentation & Cloud Deployment"]
+        direction TB
+        T5_Vercel["Vercel Production Deployment"]
+        T5_Serverless["Vercel Serverless API Functions"]
+        T5_Deck["ZIA Command Deck Console"]
+    end
+
+    T1_Forms --> WF08
+    T1_Forms --> WF01
+    T1_Stripe -->|HMAC Webhook| WF15
+    T1_Stripe --> WF07
+    T1_Manual --> WF02
+    T1_Manual --> WF12
+
+    WF01 --> T3_HubSpot
+    WF02 --> T3_HubSpot
+    WF03 --> T3_HubSpot
+    WF04 --> T3_HubSpot
+    WF05 --> T3_HubSpot
+    WF06 --> T3_HubSpot
+    WF07 --> T3_HubSpot
+    WF08 --> T3_HubSpot
+    WF09 --> T3_HubSpot
+    WF10 --> T3_HubSpot
+    WF11 --> T3_HubSpot
+    WF12 --> T3_HubSpot
+    WF13 --> T3_HubSpot
+    WF14 --> T3_HubSpot
+    WF15 --> T3_HubSpot
+
+    T3_HubSpot <--> T3_Props
+    T3_Realism --> T3_HubSpot
+    T3_HubSpot --> T4_Snapshot
+    T4_Snapshot --> T3_Neon
+    T4_Snapshot --> T4_Validate
+    T4_Snapshot --> T5_Serverless
+    T5_Serverless --> T5_Deck
+    T5_Vercel --> T5_Deck
+        </pre>
       </div>
 
     </div>
@@ -2081,6 +2167,23 @@ hbar('#geo', Object.entries(D.companies.byState)
       });
     });
   }
+  /* ---------- Mermaid Toggle Handler ---------- */
+  const mBtn = document.getElementById('btnToggleMermaid');
+  const mWrap = document.getElementById('mermaidWrapper');
+  const grid = document.querySelector('.arch-diagram-grid');
+  const inspector = document.getElementById('archInspector');
+  if (mBtn && mWrap) {
+    mBtn.addEventListener('click', () => {
+      const isHidden = mWrap.style.display === 'none';
+      mWrap.style.display = isHidden ? 'block' : 'none';
+      if (grid) grid.style.display = isHidden ? 'none' : 'grid';
+      if (inspector) inspector.style.display = isHidden ? 'none' : 'block';
+      mBtn.textContent = isHidden ? 'View Interactive Console' : 'View Mermaid Diagram';
+      if (isHidden && typeof mermaid !== 'undefined') {
+        mermaid.contentLoaded();
+      }
+    });
+  }
 })();
 
 /* nav highlight */
@@ -2091,4 +2194,10 @@ addEventListener('scroll', () => {
   secs.forEach((s,i) => { if (s && s.getBoundingClientRect().top < 140) idx = i; });
   links.forEach((a,i) => a.classList.toggle('on', i === idx));
 }, { passive: true });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+if (typeof mermaid !== 'undefined') {
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+}
 </script>
