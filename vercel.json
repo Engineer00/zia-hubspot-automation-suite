@@ -1,7 +1,6 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/", "destination": "/zia-automation/dist-command-deck.html" },
     { "source": "/api/health", "destination": "/api/health.js" },
     { "source": "/api/snapshot", "destination": "/api/snapshot.js" }
   ]

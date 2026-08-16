@@ -1,0 +1,2203 @@
+<title>ZIA Command Deck</title>
+<style>
+/* ============================================================
+   ZIA Command Deck — operations console
+   Palette validated with dataviz/scripts/validate_palette.js
+     light categorical  #0A8F86 #A85D00 #4152A3 #AB2F5C  (surface #fff)
+     dark  categorical  #19A092 #B87B26 #6A7CCB #D0567B  (surface #111F22)
+   ============================================================ */
+
+:root {
+  --ground:      #EDF1F2;
+  --surface:     #FFFFFF;
+  --surface-2:   #F6F9F9;
+  --hairline:    #DBE3E5;
+  --hairline-2:  #EAF0F1;
+
+  --ink:         #0E2429;
+  --ink-2:       #40595F;
+  --ink-3:       #6C858B;
+
+  --accent:      #0A8F86;
+  --accent-soft: #E2F2F0;
+
+  --c1: #0A8F86;
+  --c2: #A85D00;
+  --c3: #4152A3;
+  --c4: #AB2F5C;
+
+  --good:     #2E7D52;
+  --warning:  #9A6B00;
+  --serious:  #B4531A;
+  --critical: #B0303A;
+  --good-bg:     #E6F2EB;
+  --warning-bg:  #F7EFDD;
+  --serious-bg:  #F8EAE1;
+  --critical-bg: #F8E5E7;
+
+  --grid: #E7EDEE;
+  /* Cards are flat by request — 2D, defined by their border rather than by depth.
+     --shadow is kept as a token (still used by the tooltip) but resolves to none
+     on cards, so nothing else in the sheet has to change. */
+  --shadow: none;
+  --neon: #00C24E;              /* hover outline — deeper on white so it still reads */
+  --neon-glow: 0, 194, 78;
+
+  --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #0B1618;
+    --surface:     #111F22;
+    --surface-2:   #16272B;
+    --hairline:    #23393E;
+    --hairline-2:  #1B2E32;
+
+    --ink:         #E8F1F2;
+    --ink-2:       #A8BFC4;
+    --ink-3:       #7C979D;
+
+    --accent:      #19A092;
+    --accent-soft: #12312F;
+
+    --c1: #19A092;
+    --c2: #B87B26;
+    --c3: #6A7CCB;
+    --c4: #D0567B;
+
+    --good:     #4FB07C;
+    --warning:  #C99A2E;
+    --serious:  #DB8148;
+    --critical: #E06B72;
+    --good-bg:     #14302270;
+    --warning-bg:  #33280C70;
+    --serious-bg:  #35210F70;
+    --critical-bg: #38191C70;
+
+    --grid: #1E3338;
+    --shadow: none;
+    --neon: #4DFF8F;
+    --neon-glow: 77, 255, 143;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:      #0B1618;
+  --surface:     #111F22;
+  --surface-2:   #16272B;
+  --hairline:    #23393E;
+  --hairline-2:  #1B2E32;
+
+  --ink:         #E8F1F2;
+  --ink-2:       #A8BFC4;
+  --ink-3:       #7C979D;
+
+  --accent:      #19A092;
+  --accent-soft: #12312F;
+
+  --c1: #19A092;
+  --c2: #B87B26;
+  --c3: #6A7CCB;
+  --c4: #D0567B;
+
+  --good:     #4FB07C;
+  --warning:  #C99A2E;
+  --serious:  #DB8148;
+  --critical: #E06B72;
+  --good-bg:     #14302270;
+  --warning-bg:  #33280C70;
+  --serious-bg:  #35210F70;
+  --critical-bg: #38191C70;
+
+  --grid: #1E3338;
+  --shadow: none;
+  --neon: #4DFF8F;
+  --neon-glow: 77, 255, 143;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px 96px; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-bottom: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 28px 0 0;
+}
+.masthead-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.brandline { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.brandmark {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+}
+h1 {
+  font-size: clamp(28px, 4vw, 40px); line-height: 1.08; margin: 6px 0 0;
+  letter-spacing: -.022em; font-weight: 660; text-wrap: balance;
+}
+.standfirst { color: var(--ink-2); max-width: 62ch; margin: 12px 0 0; font-size: 15.5px; }
+.meta {
+  display: flex; gap: 20px; flex-wrap: wrap; margin: 18px 0 0;
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink-3);
+}
+.meta b { color: var(--ink-2); font-weight: 600; }
+
+nav.sections { display: flex; gap: 4px; margin: 22px 0 0; overflow-x: auto; }
+nav.sections a {
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-3); text-decoration: none; padding: 11px 14px;
+  border-bottom: 2px solid transparent; white-space: nowrap;
+}
+nav.sections a:hover { color: var(--ink); }
+nav.sections a.on { color: var(--accent); border-bottom-color: var(--accent); }
+nav.sections a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 3px; }
+
+/* ---------- sections ---------- */
+section { margin: 52px 0 0; scroll-margin-top: 20px; }
+/* Section headings sit in their own tinted band so each block of the deck reads as
+   a distinct chapter when scrolling, rather than a continuous wall of cards. */
+.sec-head {
+  display: flex; align-items: center; gap: 14px; margin: 0 0 20px; flex-wrap: wrap;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line, var(--hairline));
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-3); border: 1px solid var(--hairline); border-radius: 3px; padding: 4px 8px;
+}
+/* Type scale, largest to smallest: page title, section, card, label.
+   Each step is a clear jump so hierarchy is readable at a glance. */
+h2 { font-size: 27px; margin: 0; letter-spacing: -.018em; font-weight: 660; line-height: 1.15; }
+.sec-note { color: var(--ink-2); font-size: 13.5px; margin-left: auto; font-family: var(--mono); }
+
+/* ---------- stat tiles ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 12px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px;
+  padding: 15px 16px 16px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+}
+.tile::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--accent); opacity: .85;
+}
+.tile.is-good::before     { background: var(--good); }
+.tile.is-warning::before  { background: var(--warning); }
+.tile.is-critical::before { background: var(--critical); }
+.tile-k {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 9px;
+}
+.tile-v {
+  font-family: var(--mono); font-size: 27px; font-weight: 600; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums; line-height: 1;
+}
+.tile-sub { font-size: 12.5px; color: var(--ink-3); margin-top: 7px; }
+
+/* ---------- cards & grid ---------- */
+.grid { display: grid; gap: 12px; margin-top: 12px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+
+body { padding-bottom: 85px; }
+.card {
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px;
+  padding: 18px 18px 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; box-sizing: border-box;
+}
+
+/* ---------- flat cards, neon hover ----------
+   Cards sit flat on the ground (no depth), so the only thing that moves on hover is
+   the border and a soft glow. Transform is kept to 1px so a grid of cards does not
+   appear to wobble as the pointer crosses it. */
+.card, .tile, .callout {
+  transition: border-color .18s ease, box-shadow .22s ease, transform .18s ease;
+  will-change: transform;
+}
+.card:hover, .tile:hover, .callout:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon),
+              0 0 14px rgba(var(--neon-glow), .38),
+              0 0 30px rgba(var(--neon-glow), .16);
+  transform: translateY(-1px);
+}
+/* Keyboard users get the same affordance as pointer users. */
+.card:focus-within, .tile:focus-within {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 14px rgba(var(--neon-glow), .38);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .tile, .callout { transition: none; }
+  .card:hover, .tile:hover, .callout:hover { transform: none; }
+}
+
+.card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+h3 { font-size: 20px; margin: 0; font-weight: 645; letter-spacing: -.011em; line-height: 1.25; }
+.card-note { font-size: 13.5px; color: var(--ink-3); margin: 5px 0 16px; line-height: 1.45; }
+
+/* ---------- callout ---------- */
+.callout {
+  display: flex; gap: 15px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-left: 3px solid var(--serious); border-radius: 10px;
+  padding: 17px 19px; box-shadow: var(--shadow); margin-top: 12px;
+}
+.callout-icon {
+  font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--serious);
+  background: var(--serious-bg); border-radius: 4px; padding: 4px 8px; letter-spacing: .06em; flex: none;
+}
+.callout h3 { margin-bottom: 5px; }
+.callout p { margin: 0; font-size: 13.5px; color: var(--ink-2); max-width: 78ch; }
+.callout b { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+
+/* ---------- legend ---------- */
+.legend {
+  display: flex; gap: 15px; flex-wrap: wrap; margin: 0 0 13px;
+  font-family: var(--mono); font-size: 11px; color: var(--ink-2);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.swatch { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+
+/* ---------- charts ---------- */
+.chart { width: 100%; display: block; overflow: hidden; }
+.chart text { font-family: var(--sans); fill: var(--ink-2); font-size: 11.5px; font-weight: 500; }
+.chart .val { font-family: var(--mono); fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; font-size: 12px; }
+.chart .lbl { fill: var(--ink-2); font-weight: 500; }
+
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--hairline); stroke-width: 1; }
+.mark { transition: opacity .12s ease; }
+.chart:hover .mark { opacity: .48; }
+.chart .mark:hover { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mark { transition: none; }
+}
+
+/* ---------- table ---------- */
+.tbl-wrap { overflow-x: auto; margin-top: 10px; border-radius: 8px; border: 1px solid var(--hairline); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 540px; border: 1px solid var(--hairline); }
+th {
+  text-align: right; font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-2); font-weight: 650;
+  padding: 10px 14px; background: var(--accent-soft);
+  border: 1px solid var(--hairline);
+}
+th:first-child, td:first-child { text-align: left; }
+td {
+  padding: 10px 14px; border: 1px solid var(--hairline); text-align: right;
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+}
+td:first-child { font-family: var(--sans); font-weight: 550; }
+tr:nth-child(even) td { background: rgba(0, 0, 0, 0.015); }
+tr.total td { background: var(--accent-soft); font-weight: 700; border-top: 2px solid var(--hairline); }
+td.pad, th.pad { padding-right: 14px; }
+
+
+.chip {
+  display: inline-flex; align-items: center; gap: 5px; border-radius: 4px;
+  padding: 2px 7px; font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+}
+.chip.good     { background: var(--good-bg);     color: var(--good); }
+.chip.warning  { background: var(--warning-bg);  color: var(--warning); }
+.chip.serious  { background: var(--serious-bg);  color: var(--serious); }
+.chip.critical { background: var(--critical-bg); color: var(--critical); }
+tr.total td { border-top: 1.5px solid var(--ink-3); }
+
+/* ---------- tooltip ---------- */
+#tip {
+  position: fixed; pointer-events: none; opacity: 0; transition: opacity .1s;
+  background: var(--ink); color: var(--surface); border-radius: 6px;
+  padding: 7px 10px; font-family: var(--mono); font-size: 11.5px; line-height: 1.45;
+  z-index: 50; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  font-variant-numeric: tabular-nums;
+}
+#tip b { color: var(--surface); }
+
+footer {
+  margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--hairline);
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); line-height: 1.7;
+}
+
+/* ============================================================
+   Architecture Diagram & Data Flow Console Styles
+   ============================================================ */
+.arch-card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.arch-grid-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(var(--hairline) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.arch-header-strip {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+  margin-bottom: 22px; position: relative; z-index: 2; border-bottom: 1px solid var(--hairline-2);
+  padding-bottom: 14px;
+}
+.arch-filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.arch-pill-btn {
+  font-family: var(--mono); font-size: 11px; padding: 6px 14px; border-radius: 20px;
+  border: 1px solid var(--hairline); background: var(--surface-2); color: var(--ink-2);
+  cursor: pointer; transition: all 0.2s ease; font-weight: 500;
+}
+.arch-pill-btn:hover, .arch-pill-btn.active {
+  background: var(--accent-soft); color: var(--accent); border-color: var(--accent); font-weight: 600;
+  box-shadow: 0 2px 8px rgba(10,143,134,0.15);
+}
+.arch-metrics-strip { display: flex; gap: 8px; flex-wrap: wrap; }
+.arch-stat-badge {
+  font-family: var(--mono); font-size: 10.5px; padding: 5px 11px; border-radius: 6px;
+  background: var(--surface-2); border: 1px solid var(--hairline); color: var(--ink-2);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.arch-stat-badge .status-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--good);
+  box-shadow: 0 0 6px var(--good);
+}
+
+.arch-diagram-grid {
+  display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 14px;
+  position: relative; z-index: 2; margin-top: 12px;
+}
+@media (max-width: 1200px) {
+  .arch-diagram-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .arch-diagram-grid { grid-template-columns: 1fr; }
+}
+
+.arch-tier-column {
+  background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 8px;
+  padding: 14px; display: flex; flex-direction: column; gap: 10px;
+  transition: all 0.25s ease; position: relative;
+}
+.arch-tier-column:hover {
+  border-color: var(--accent); background: var(--surface);
+  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.arch-tier-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 10px; border-bottom: 1px dashed var(--hairline);
+}
+.arch-tier-num {
+  font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px;
+}
+.tier-1 .arch-tier-num { background: rgba(10,143,134,0.12); color: var(--c1); border: 1px solid var(--c1); }
+.tier-2 .arch-tier-num { background: rgba(65,82,163,0.12); color: var(--c3); border: 1px solid var(--c3); }
+.tier-3 .arch-tier-num { background: rgba(168,93,0,0.12); color: var(--c2); border: 1px solid var(--c2); }
+.tier-4 .arch-tier-num { background: rgba(171,47,92,0.12); color: var(--c4); border: 1px solid var(--c4); }
+.tier-5 .arch-tier-num { background: rgba(46,125,82,0.12); color: var(--good); border: 1px solid var(--good); }
+
+.arch-tier-title { font-size: 12.5px; font-weight: 700; color: var(--ink); margin: 0; }
+
+.arch-node-box {
+  background: var(--surface); border: 1px solid var(--hairline-2); border-radius: 6px;
+  padding: 10px 12px; cursor: pointer; transition: all 0.2s ease; position: relative;
+}
+.arch-node-box:hover, .arch-node-box.active-node {
+  border-color: var(--accent); background: var(--accent-soft);
+  box-shadow: 0 4px 12px rgba(10,143,134,0.12); transform: translateX(2px);
+}
+.arch-node-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.arch-node-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+.arch-node-badge {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+  background: var(--hairline); color: var(--ink-2);
+}
+.arch-node-desc { font-size: 11px; color: var(--ink-3); line-height: 1.35; margin: 0; }
+.arch-node-rule-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+.arch-rule-tag {
+  font-family: var(--mono); font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px;
+  background: var(--surface-2); border: 1px solid var(--hairline); color: var(--accent);
+}
+
+.arch-inspector-box {
+  margin-top: 20px; background: var(--surface-2); border: 1px solid var(--hairline);
+  border-radius: 8px; padding: 16px 20px; position: relative; z-index: 2;
+  transition: all 0.25s ease;
+}
+.arch-inspector-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.arch-inspector-title { font-size: 14px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.arch-inspector-body { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
+.arch-inspector-body code { font-family: var(--mono); font-size: 11px; background: var(--surface); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--hairline); }
+</style>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="brandline">
+      <span class="brandmark">ZIA · Organizational Development</span>
+    </div>
+    <h1>Command Deck</h1>
+    <p class="standfirst">
+      Organizational development and talent solutions — engagement pipeline, live
+      delivery health, and consultant bench readiness, read straight from the CRM.
+    </p>
+    <div class="meta" id="meta"></div>
+    <nav class="sections">
+      <a href="#exec" class="on">Executive</a>
+      <a href="#arch">Architecture</a>
+      <a href="#ops">Operations</a>
+      <a href="#rev">Revenue</a>
+      <a href="#cash">Cash</a>
+      <a href="#why">Why 30%</a>
+      <a href="#cap">Capability</a>
+      <a href="#book">Book of business</a>
+      <a href="#improve">Improvements</a>
+      <a href="#rules">Rule Catalogue</a>
+    </nav>
+  </div>
+</div>
+
+
+<div class="wrap">
+
+  <!-- ============ EXECUTIVE ============ -->
+  <section id="exec">
+    <div class="sec-head">
+      <span class="eyebrow">01 · Executive</span>
+      <h2>Where the business stands</h2>
+      <span class="sec-note">All figures live from HubSpot</span>
+    </div>
+    <div class="tiles" id="execTiles"></div>
+
+    <div class="callout">
+      <span class="callout-icon">GAP</span>
+      <div>
+        <h3>Health scoring and risk status disagree</h3>
+        <p>
+          <b id="gapCrit">—</b> engagements score below 60 against a target of 70, but only
+          <b id="gapFlag">—</b> carry the <em>At&nbsp;Risk</em> status — a gap of
+          <b id="gapDelta">—</b> engagements failing on the metric without being
+          flagged in the workflow. Health score is captured but never governs the status field.
+          Closing that loop is the single highest-value automation available on this data.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Closed-won revenue by month</h3></div>
+        <p class="card-note">21 months of booked revenue. Hover for detail.</p>
+        <div id="trend"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Engagement health distribution</h3></div>
+        <p class="card-note">All <span id="nEng">—</span> delivery engagements, bucketed by health score.</p>
+        <div id="health"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="card-head"><h3>Tier economics</h3></div>
+      <p class="card-note">Core, Momentum and Summit programs compared on volume, conversion, price and delivered health.</p>
+      <div class="tbl-wrap"><table id="tierTbl"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE & SYSTEM DATA FLOW ============ -->
+  <section id="arch">
+    <div class="sec-head">
+      <span class="eyebrow">02 · System Architecture</span>
+      <h2>End-to-End Architecture & Data Flow</h2>
+      <span class="sec-note">15 Idempotent Engine Rules · Real-time REST API & Webhooks · 0 Drift</span>
+    </div>
+
+    <div class="arch-card">
+      <div class="arch-grid-bg"></div>
+
+      <!-- Controls & Filter Strip -->
+      <div class="arch-header-strip">
+        <div class="arch-filter-pills">
+          <button class="arch-pill-btn active" data-flow="all">All Pathways</button>
+          <button class="arch-pill-btn" data-flow="inbound">Inbound & Lead Pod (WF-01, 08, 09)</button>
+          <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod (WF-02, 03, 05, 06, 10)</button>
+          <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod (WF-04, 07, 11, 15)</button>
+          <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod (WF-12, 13, 14)</button>
+          <button class="arch-pill-btn" id="btnToggleMermaid" style="background:var(--c3);color:#fff;border-color:var(--c3)">View Mermaid Diagram</button>
+        </div>
+        <div class="arch-metrics-strip">
+          <span class="arch-stat-badge"><span class="status-dot"></span> 15 Engine Rules</span>
+          <span class="arch-stat-badge">71 Custom CRM Props</span>
+          <span class="arch-stat-badge">39/39 Claim Pass</span>
+          <span class="arch-stat-badge">Port :4000 Deck</span>
+          <span class="arch-stat-badge">Port :4001 Stripe</span>
+        </div>
+      </div>
+
+      <!-- 5-Tier Interactive Diagram Grid -->
+      <div class="arch-diagram-grid">
+
+        <!-- Tier 1: Event Sources -->
+        <div class="arch-tier-column tier-1" data-tier="1">
+          <div class="arch-tier-head">
+            <span class="arch-tier-num">Tier 1</span>
+            <span class="arch-tier-title">Inbound Signals</span>
+          </div>
+          <div class="arch-node-list">
+            <div class="arch-node-box" data-node="forms">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Lead Forms & Web</span>
+                <span class="arch-node-badge">HTTP/REST</span>
+              </div>
+              <p class="arch-node-desc">Inbound web form submissions and organic client inquiries.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-08</span><span class="arch-rule-tag">WF-01</span></div>
+            </div>
+            <div class="arch-node-box" data-node="stripe">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Stripe Mock Engine</span>
+                <span class="arch-node-badge">:4001</span>
+              </div>
+              <p class="arch-node-desc">Live payment intents, invoices, and HMAC SHA-256 webhooks.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-15</span><span class="arch-rule-tag">WF-07</span></div>
+            </div>
+            <div class="arch-node-box" data-node="manual">
+              <div class="arch-node-top">
+                <span class="arch-node-name">CRM Operators</span>
+                <span class="arch-node-badge">Manual/CSV</span>
+              </div>
+              <p class="arch-node-desc">Sales rep stage changes, ticket updates, and consultant profiles.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-02</span><span class="arch-rule-tag">WF-12</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: ZIA Automation Engine -->
+        <div class="arch-tier-column tier-2" data-tier="2">
+          <div class="arch-tier-head">
+            <span class="arch-tier-num">Tier 2</span>
+            <span class="arch-tier-title">ZIA Engine (15 Rules)</span>
+          </div>
+          <div class="arch-node-list">
+            <div class="arch-node-box" data-node="routing-pod">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Lead Routing & Scoring</span>
+                <span class="arch-node-badge">Node.js</span>
+              </div>
+              <p class="arch-node-desc">Domain matching, owner assignment, grade calculation (A–D).</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-01</span><span class="arch-rule-tag">WF-08</span><span class="arch-rule-tag">WF-09</span></div>
+            </div>
+            <div class="arch-node-box" data-node="governance-pod">
+              <div class="arch-node-top">
+                <span class="arch-node-name">SLA & Governance Pod</span>
+                <span class="arch-node-badge">Node.js</span>
+              </div>
+              <p class="arch-node-desc">Onboarding ticket provision, SLA escalation, compliance, NPS loop.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-03</span><span class="arch-rule-tag">WF-05</span><span class="arch-rule-tag">WF-06</span><span class="arch-rule-tag">WF-10</span></div>
+            </div>
+            <div class="arch-node-box" data-node="financial-pod">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Health & Payments Pod</span>
+                <span class="arch-node-badge">Node.js</span>
+              </div>
+              <p class="arch-node-desc">5-signal health score, AR aging, Stripe payment reconciliation.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-04</span><span class="arch-rule-tag">WF-07</span><span class="arch-rule-tag">WF-11</span><span class="arch-rule-tag">WF-15</span></div>
+            </div>
+            <div class="arch-node-box" data-node="ml-pod">
+              <div class="arch-node-top">
+                <span class="arch-node-name">AI & Match Engine</span>
+                <span class="arch-node-badge">Logistic ML</span>
+              </div>
+              <p class="arch-node-desc">Win probability model (74.7% accuracy) & consultant skill matching.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">WF-12</span><span class="arch-rule-tag">WF-13</span><span class="arch-rule-tag">WF-14</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 3: HubSpot Storage & State -->
+        <div class="arch-tier-column tier-3" data-tier="3">
+          <div class="arch-tier-head">
+            <span class="arch-tier-num">Tier 3</span>
+            <span class="arch-tier-title">HubSpot CRM Storage</span>
+          </div>
+          <div class="arch-node-list">
+            <div class="arch-node-box" data-node="crm-v3">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Standard CRM Objects</span>
+                <span class="arch-node-badge">v3 API</span>
+              </div>
+              <p class="arch-node-desc">354 Contacts, 226 Companies, 660 Deals, 644 Tickets.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">Standard Tier</span></div>
+            </div>
+            <div class="arch-node-box" data-node="crm-props">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Custom Schema Props</span>
+                <span class="arch-node-badge">71 Fields</span>
+              </div>
+              <p class="arch-node-desc">Custom zia_ properties for health score, bench status, forecast category.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">Schema Map</span></div>
+            </div>
+            <div class="arch-node-box" data-node="crm-realism">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Realism Suite (p0-p26)</span>
+                <span class="arch-node-badge">26 Scripts</span>
+              </div>
+              <p class="arch-node-desc">Maintains data integrity, timeline activities, and rate cards.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">0 Drift</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 4: Analytics & Audit -->
+        <div class="arch-tier-column tier-4" data-tier="4">
+          <div class="arch-tier-head">
+            <span class="arch-tier-num">Tier 4</span>
+            <span class="arch-tier-title">Analytics & Audit</span>
+          </div>
+          <div class="arch-node-list">
+            <div class="arch-node-box" data-node="snapshot-engine">
+              <div class="arch-node-top">
+                <span class="arch-node-name">snapshot.js Engine</span>
+                <span class="arch-node-badge">JSON State</span>
+              </div>
+              <p class="arch-node-desc">Aggregates revenue, cycle times, AR aging, and ML probabilities.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">dashboard-data.json</span></div>
+            </div>
+            <div class="arch-node-box" data-node="validate-engine">
+              <div class="arch-node-top">
+                <span class="arch-node-name">validate.js Suite</span>
+                <span class="arch-node-badge">39 Claims</span>
+              </div>
+              <p class="arch-node-desc">Continuous audit guaranteeing 100% pass on narrative metrics.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">39/39 Pass</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 5: Presentation & Command Deck -->
+        <div class="arch-tier-column tier-5" data-tier="5">
+          <div class="arch-tier-head">
+            <span class="arch-tier-num">Tier 5</span>
+            <span class="arch-tier-title">Command Center</span>
+          </div>
+          <div class="arch-node-list">
+            <div class="arch-node-box" data-node="server-deck">
+              <div class="arch-node-top">
+                <span class="arch-node-name">ZIA Command Deck</span>
+                <span class="arch-node-badge">:4000</span>
+              </div>
+              <p class="arch-node-desc">Live operational console, KPI tiles, and executive charts.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">server.js</span></div>
+            </div>
+            <div class="arch-node-box" data-node="lead-sim">
+              <div class="arch-node-top">
+                <span class="arch-node-name">Lead Simulator</span>
+                <span class="arch-node-badge">zia-one-lead</span>
+              </div>
+              <p class="arch-node-desc">Interactive step-by-step walkthrough of single-lead lifecycle.</p>
+              <div class="arch-node-rule-tags"><span class="arch-rule-tag">Interactive</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Inspector Box -->
+      <div class="arch-inspector-box" id="archInspector">
+        <div class="arch-inspector-head">
+          <div class="arch-inspector-title">
+            <span class="arch-tag" style="background:var(--accent);color:#fff">System Architecture Selected</span>
+            <span id="archInspectName">Click any node above to inspect component specifications</span>
+          </div>
+          <span class="arch-stat-badge" id="archInspectBadge">15 Engine Rules Active</span>
+        </div>
+        <div class="arch-inspector-body" id="archInspectDesc">
+          The <b>ZIA Automation Engine</b> runs externally to HubSpot Standard Free Tier portals, executing 15 idempotent Node.js backend rules (WF-01 to WF-15). It reconciles CRM state over HubSpot REST APIs, manages Stripe mock webhook payments, calculates 5-signal delivery health scores, and serves the live <b>ZIA Command Deck</b> on port 4000.
+        </div>
+      </div>
+
+      <!-- Mermaid Vector Architecture Diagram Block -->
+      <div id="mermaidWrapper" style="display:none;margin-top:16px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px;padding:20px;overflow-x:auto;position:relative;z-index:2">
+        <pre class="mermaid" id="mermaidDiag">
+flowchart TD
+    subgraph T1["Tier 1: Inbound Signals & Event Triggers"]
+        direction TB
+        T1_Forms["Inbound Web Forms & Lead Capture"]
+        T1_Stripe["Stripe Mock Backend Server (:4001)<br/>(HMAC SHA-256 Webhooks)"]
+        T1_Manual["Sales Reps & Manual CRM Actions"]
+    end
+
+    subgraph T2["Tier 2: ZIA Automation Engine (15 Backend Rules)"]
+        direction TB
+        WF01["WF-01: Lead Routing & Pod Assignment"]
+        WF02["WF-02: Opportunity Lifecycle Sync"]
+        WF03["WF-03: Onboarding Ticket Provisioning"]
+        WF04["WF-04: Placement Health Review Ticket"]
+        WF05["WF-05: SLA Escalation & Manager Assignment"]
+        WF06["WF-06: Consultant Compliance Expiration Audit"]
+        WF07["WF-07: Collections & Days Outstanding"]
+        WF08["WF-08: Inbound Domain & Company Association"]
+        WF09["WF-09: Lead Scoring (0-100) & Grade A-D"]
+        WF10["WF-10: NPS Detractor Recovery Loop"]
+        WF11["WF-11: 5-Signal Delivery Health Model"]
+        WF12["WF-12: Bench Availability Sync"]
+        WF13["WF-13: 100-Point Candidate Skill Match Engine"]
+        WF14["WF-14: Deal Intelligence (ML Win Probability)"]
+        WF15["WF-15: Stripe Payment Reconciliation"]
+    end
+
+    subgraph T3["Tier 3: Storage & State Layer"]
+        direction TB
+        T3_HubSpot["HubSpot CRM Free Tier API (v3/v4)<br/>(Contacts, Companies, Deals, Tickets)"]
+        T3_Props["71 Custom Schema Properties"]
+        T3_Neon["Neon PostgreSQL Cloud DB<br/>(zia_snapshots, zia_rule_logs)"]
+        T3_Realism["Realism Suite (p0 to p26)"]
+    end
+
+    subgraph T4["Tier 4: Analytics Snapshot & Audit"]
+        direction TB
+        T4_Snapshot["snapshot.js Engine"]
+        T4_Validate["validate.js Suite (39/39 Pass)"]
+    end
+
+    subgraph T5["Tier 5: Presentation & Cloud Deployment"]
+        direction TB
+        T5_Vercel["Vercel Production Deployment"]
+        T5_Serverless["Vercel Serverless API Functions"]
+        T5_Deck["ZIA Command Deck Console"]
+    end
+
+    T1_Forms --> WF08
+    T1_Forms --> WF01
+    T1_Stripe -->|HMAC Webhook| WF15
+    T1_Stripe --> WF07
+    T1_Manual --> WF02
+    T1_Manual --> WF12
+
+    WF01 --> T3_HubSpot
+    WF02 --> T3_HubSpot
+    WF03 --> T3_HubSpot
+    WF04 --> T3_HubSpot
+    WF05 --> T3_HubSpot
+    WF06 --> T3_HubSpot
+    WF07 --> T3_HubSpot
+    WF08 --> T3_HubSpot
+    WF09 --> T3_HubSpot
+    WF10 --> T3_HubSpot
+    WF11 --> T3_HubSpot
+    WF12 --> T3_HubSpot
+    WF13 --> T3_HubSpot
+    WF14 --> T3_HubSpot
+    WF15 --> T3_HubSpot
+
+    T3_HubSpot <--> T3_Props
+    T3_Realism --> T3_HubSpot
+    T3_HubSpot --> T4_Snapshot
+    T4_Snapshot --> T3_Neon
+    T4_Snapshot --> T4_Validate
+    T4_Snapshot --> T5_Serverless
+    T5_Serverless --> T5_Deck
+    T5_Vercel --> T5_Deck
+        </pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ OPERATIONS ============ -->
+  <section id="ops">
+    <div class="sec-head">
+      <span class="eyebrow">02 · Operations</span>
+      <h2>Delivery and the consultant bench</h2>
+      <span class="sec-note" id="nConsultants">—</span>
+    </div>
+    <div class="tiles" id="opsTiles"></div>
+
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-head"><h3>Bench status</h3></div>
+        <p class="card-note">Where the <span id="nConsultants2">—</span> consultants sit today.</p>
+        <div id="bench"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Compliance</h3></div>
+        <p class="card-note">Lapsed and not-started block assignment.</p>
+        <div id="compliance"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Coverage band</h3></div>
+        <p class="card-note">Delivery timezones the bench can serve.</p>
+        <div id="coverage"></div>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Weekly utilisation</h3></div>
+        <p class="card-note">Contracted hours per week across active engagements.</p>
+        <div id="util"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Open service tickets</h3></div>
+        <p class="card-note">Generated by the automation engine from engagement state.</p>
+        <div id="tickets"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVENUE ============ -->
+  <section id="rev">
+    <div class="sec-head">
+      <span class="eyebrow">03 · Revenue</span>
+      <h2>Pipeline and conversion</h2>
+      <span class="sec-note" id="nDeals">—</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Pipeline by stage</h3></div>
+      <p class="card-note">Deal count and value at every stage of the sales pipeline.</p>
+      <div id="funnel"></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Why deals are lost</h3></div>
+        <p class="card-note">Recorded loss reason across closed-lost deals.</p>
+        <div id="loss"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Service demand</h3></div>
+        <p class="card-note">Service lines requested across engagements; a deal may include several.</p>
+        <div id="service"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLECTIONS ============ -->
+  <section id="cash">
+    <div class="sec-head">
+      <span class="eyebrow">04 · Cash</span>
+      <h2>Billing and collections</h2>
+      <span class="sec-note">Mirrored from accounting</span>
+    </div>
+    <div class="tiles" id="cashTiles"></div>
+
+    <div class="callout" style="border-left-color:var(--c3)">
+      <span class="callout-icon" style="color:var(--c3);background:var(--accent-soft)">SYNC</span>
+      <div>
+        <h3>The CRM is not the system of record here</h3>
+        <p>
+          Invoice state originates in the accounting system and is written back onto the deal,
+          so revenue operations can report on collections without leaving HubSpot. HubSpot
+          Payments needs a US entity and a connected bank, which is why billing is integrated
+          rather than processed in-platform. <b id="cashOverdueCount">—</b> overdue invoices
+          worth <b id="cashOverdueValue">—</b> are open right now, each with a collections
+          ticket raised automatically by <b>WF-07</b>.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Invoice status</h3></div>
+        <p class="card-note">Every closed-won engagement carries an invoice mirror.</p>
+        <div id="invStatus"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Receivables ageing</h3></div>
+        <p class="card-note">Unpaid invoices by days past due.</p>
+        <div id="invAging"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIAGNOSTICS + OUTLOOK ============ -->
+  <section id="why">
+    <div class="sec-head">
+      <span class="eyebrow">05 &middot; Diagnosis</span>
+      <h2>Why the win rate is 30%, and what closes next</h2>
+      <span class="sec-note">Everything above reports what happened</span>
+    </div>
+
+    <div class="tiles" id="outlookTiles"></div>
+
+    <div class="callout" id="gradeCallout">
+      <span class="callout-icon">ACT</span>
+      <div>
+        <h3>The CRM already knows which deals will not close</h3>
+        <p>
+          Grade <b>C converts at <span id="cRate">&mdash;</span></b> and <b>D at
+          <span id="dRate">&mdash;</span></b>, against <b>B at <span id="bRate">&mdash;</span></b>.
+          Reps work them anyway: <b id="cdDeals">&mdash;</b> pursuits produced
+          <b id="cdWins">&mdash;</b> wins. Working only A and B would take the win rate from
+          <b id="nowRate">&mdash;</b> to <b id="abRate">&mdash;</b> — without anyone selling
+          differently. That is the difference between a CRM that records work and one that
+          directs it.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Win rate by lead grade</h3></div>
+        <p class="card-note">The scoring model, tested against outcomes. A sevenfold separation between B and C means the score is predictive — and ignored.</p>
+        <div id="winGrade"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Win rate by deal size</h3></div>
+        <p class="card-note">Conversion falls as deals get larger. The firm is better at small fast programmes than at enterprise pitches.</p>
+        <div id="winSize"></div>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Win rate by source</h3></div>
+        <p class="card-note">Where the pipeline is worth having. A channel at zero is a cost, not a channel.</p>
+        <div id="winSource"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Win rate by territory</h3></div>
+        <p class="card-note">Same product, same collateral. A gap this wide is coaching or coverage, not market.</p>
+        <div id="winTerritory"></div>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Forecast category</h3></div>
+        <p class="card-note">HubSpot&rsquo;s own forecasting vocabulary &mdash; a <b>Sales Hub Professional</b> feature &mdash; driven here by a per-deal close probability.</p>
+        <div id="fcCat"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Risk signals across open deals</h3></div>
+        <p class="card-note">The Breeze-style insights, written as explicit rules onto each record rather than produced by an oracle.</p>
+        <div id="fcSignals"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="card-head"><h3>Forecast — open pipeline weighted by measured conversion</h3></div>
+      <p class="card-note">
+        Grade conversion is learned from <b id="fcBasis">&mdash;</b> closed deals in this portal, then
+        applied to what is still open. HubSpot&rsquo;s conventional forecast weights by pipeline stage
+        instead &mdash; but those weights are a convention nobody derived from this business, and this
+        one is measured. Small samples per grade: treat A as indicative.
+      </p>
+      <div class="tbl-wrap"><table id="fcTbl"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITY ============ -->
+  <section id="cap">
+    <div class="sec-head">
+      <span class="eyebrow">06 &middot; Capability</span>
+      <h2>What the bench can actually do</h2>
+      <span class="sec-note" id="capNote">&mdash;</span>
+    </div>
+
+    <div class="grid g2" style="margin-bottom: 20px;">
+      <div class="callout" id="matchCallout" style="margin-top: 0; height: 100%; box-sizing: border-box;">
+        <span class="callout-icon">MATCH</span>
+        <div>
+          <h3>Engagements the bench cannot properly serve</h3>
+          <p style="margin-top: 6px; line-height: 1.55;">
+            WF-13 scores every compliant, available consultant against every live engagement on
+            sector experience, service line, measured track record, coverage and capacity.
+            Best-match scores run <b id="matchMin">&mdash;</b> to <b id="matchMax">&mdash;</b>,
+            median <b id="matchMed">&mdash;</b> &mdash; and
+            <b id="matchBad">&mdash;</b> engagements have no viable match above 50. Those are
+            staffed by whoever was free rather than whoever was right, and
+            <em>Specialty experience</em> is the largest recorded loss reason in the portal.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout" id="bonusCallout" style="border-left-color: var(--good); margin-top: 0; height: 100%; box-sizing: border-box;">
+        <span class="callout-icon" style="background: rgba(16,185,129,0.12); color: var(--good);">BONUS</span>
+        <div>
+          <h3>Two-Sided Commercial Incentives Model</h3>
+          <p style="margin-top: 6px; line-height: 1.55;">
+            Client Commercials offer volume discounting (<b id="clientDiscVal">&mdash;</b> across line items), while Delivery Operations funds a
+            <b>10% Consultant Performance Bonus Pool</b> (<b id="bonusPoolVal">&mdash;</b> across <b id="bonusEligible">&mdash;</b> active high-health engagements).
+            High-performing consultants (health &ge; 75) receive an average bonus of <b id="bonusAvgVal">&mdash;</b> to drive delivery quality and talent retention.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Sector expertise</h3></div>
+        <p class="card-note">Consultants who have delivered in each industry. Read against client sector below &mdash; short bars where the client base is tall is where specialty losses come from.</p>
+        <div id="sectorExp"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Bench-ready by service line</h3></div>
+        <p class="card-note">What is deliverable <em>right now</em>. Pair with service demand &mdash; demand without capacity is a hiring plan.</p>
+        <div id="benchLines"></div>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Consultant grade</h3></div>
+        <p class="card-note">Delivery grades across the bench.</p>
+        <div id="grade"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Track record by grade</h3></div>
+        <p class="card-note">Average delivered health, computed from each consultant&rsquo;s own engagements &mdash; measured, not self-reported.</p>
+        <div id="gradeHealth"></div>
+      </div>
+    </div>
+
+    <!-- Consultant Evaluation & Achievement Metrics Summary Card -->
+    <div class="card" style="margin-top: 16px; border-left: 4px solid var(--accent);">
+      <div class="card-head">
+        <h3>Consultant Evaluation, Skills &amp; Achievement Metrics Matrix</h3>
+        <span class="chip good">187 Talent Contacts &middot; 100% Tracked in CRM</span>
+      </div>
+      <p class="card-note" style="margin-bottom: 14px;">
+        Multi-dimensional evaluation metrics stamped on each consultant contact record, powering <b>WF-13 Consultant Matching</b> and performance incentive distribution.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%;">
+        <div style="background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);">Seniority &amp; Experience</div>
+          <div style="font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 6px;">Median 10.0 Years</div>
+          <div style="font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.4;">
+            &bull; Partner / Principal: 42<br/>
+            &bull; Senior / Consultant: 108<br/>
+            &bull; Associate: 37
+          </div>
+        </div>
+
+        <div style="background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);">Delivered Health Track Record</div>
+          <div style="font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 6px;">68.4 / 100 Measured Avg</div>
+          <div style="font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.4;">
+            &bull; Grade A (&ge;80): 77.2 Avg Health<br/>
+            &bull; Grade B (65-79): 68.8 Avg Health<br/>
+            &bull; Grade C/D (&lt;65): 58.1 Avg Health
+          </div>
+        </div>
+
+        <div style="background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);">Achievement &amp; Bonus Pool</div>
+          <div style="font-size: 14px; font-weight: 600; color: var(--good); margin-top: 6px;">$609,185 Performance Pool</div>
+          <div style="font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.4;">
+            &bull; Eligible Engagements: Health &ge; 75<br/>
+            &bull; Bonus Rate: 10% of revenue<br/>
+            &bull; Average Bonus: ~$9,670 / consultant
+          </div>
+        </div>
+
+        <div style="background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);">Compliance &amp; Capacity</div>
+          <div style="font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 6px;">141 Clear &middot; 28.0 h/wk Avg</div>
+          <div style="font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.4;">
+            &bull; Clear Credentials: 141 (75.4%)<br/>
+            &bull; Expiring Soon: 17 | Lapsed: 21<br/>
+            &bull; Capacity Ceiling: 40.0 hrs/week
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK ============ -->
+  <section id="book">
+    <div class="sec-head">
+      <span class="eyebrow">07 &middot; Book of business</span>
+      <h2>Who we serve</h2>
+      <span class="sec-note" id="bookNote">—</span>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-head"><h3>Client sector</h3></div>
+        <p class="card-note" id="sectorNote">—</p>
+        <div id="industry"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Top states</h3></div>
+        <p class="card-note">Where the organizations in the CRM are concentrated.</p>
+        <div id="geo"></div>
+      </div>
+    </div>
+  <!-- ============ IMPROVEMENTS & CORRELATION MATRIX ============ -->
+  <section id="improve">
+    <div class="callout" style="border-left-color: var(--accent); margin-bottom: 24px; background: var(--surface-2); display: flex; flex-direction: column; gap: 14px; width: 100%; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; width: 100%;">
+        <span class="callout-icon" style="background: var(--accent-soft); color: var(--accent);">PORTAL DATA</span>
+        <h3 style="margin: 0; flex: 1; min-width: 280px;">Holistic HubSpot CRM Infrastructure &amp; Data Population Summary</h3>
+        <span class="chip good">3,594 Managed CRM Records &middot; 100% Relational Integrity</span>
+      </div>
+
+      <p style="margin: 0; line-height: 1.6; color: var(--ink-2); font-size: 14px;">
+        This live command deck operates directly on top of <b>HubSpot Portal 247000083</b> (Free Tier &mdash; <code>STANDARD</code>).
+        All <b>3,594 records and objects</b> across 7 core schemas are fully populated, normalized, and reconciled in real-time by an external 15-rule idempotent engine (<code>engine.js</code>).
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; width: 100%; box-sizing: border-box;">
+        <div style="background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);">CRM Core Objects</div>
+          <div style="font-family: var(--sans); font-size: 13.5px; color: var(--ink); margin-top: 6px; font-weight: 500;">
+            <b>226</b> Companies &middot; <b>353</b> Contacts<br/>
+            <span style="font-size: 12px; color: var(--ink-2);">(166 Client Buyers, 187 Talent Bench)</span>
+          </div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);">Deals &amp; Commerce</div>
+          <div style="font-family: var(--sans); font-size: 13.5px; color: var(--ink); margin-top: 6px; font-weight: 500;">
+            <b>659</b> Deals &middot; <b>431</b> Line Items<br/>
+            <span style="font-size: 12px; color: var(--ink-2);">(441 Acquisition, 218 Placements)</span>
+          </div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);">Service &amp; Documents</div>
+          <div style="font-family: var(--sans); font-size: 13.5px; color: var(--ink); margin-top: 6px; font-weight: 500;">
+            <b>643</b> Tickets &middot; <b>272</b> Documents<br/>
+            <span style="font-size: 12px; color: var(--ink-2);">(365 Open, 71 SLA Breached)</span>
+          </div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);">Financial Summary</div>
+          <div style="font-family: var(--sans); font-size: 13.5px; color: var(--ink); margin-top: 6px; font-weight: 500;">
+            <b>$25.29M</b> Won &middot; <b>$21.89M</b> Delivered<br/>
+            <span style="font-size: 12px; color: var(--good); font-weight: 600;">$17.03M Cash Collected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid g2">
+
+      <!-- Card 1: Win Rate Degradation -->
+      <div class="card" style="border-left: 4px solid var(--warning);">
+        <div class="card-head">
+          <h3>1. Win Rate Degradation &amp; Pursuit Efficiency</h3>
+          <span class="chip warning">30.1% Win Rate &rarr; 42.5%+ Target</span>
+        </div>
+        <p class="card-note" style="margin-top:8px; line-height: 1.55; color: var(--ink-2);">
+          <b style="color:var(--ink)">Degraded Metric:</b> Acquisition win rate sits at 30.1% (112 won / 260 lost).<br/>
+          <b style="color:var(--ink)">Correlated Data Factors:</b><br/>
+          &bull; <i>Lead Grade:</i> Grades A/B convert at 47.1% / 40.5%, while C/D convert at 6.0% / 0.0%. Sales spent effort on 94 C/D pursuits producing 89 losses.<br/>
+          &bull; <i>Loss Drivers:</i> "Specialty Experience" accounts for 45 lost deals (largest driver), whereas "Rate/Pricing" accounts for only 26.<br/>
+          &bull; <i>Channel ROI:</i> Outbound converts at 40.9%, while LinkedIn/Paid Social converts at 0.0% (0 won / 31 pursuits).<br/>
+          <b style="color:var(--good)">Actionable Fix:</b> Enforce <b>WF-09</b> to auto-disqualify Grade D leads, run <b>WF-13</b> consultant match before bidding on deals &gt;$50k, and shift LinkedIn spend into Outbound.
+        </p>
+      </div>
+
+      <!-- Card 2: Delivery Health & Risk Discrepancy -->
+      <div class="card" style="border-left: 4px solid var(--critical);">
+        <div class="card-head">
+          <h3>2. Delivery Health &amp; Risk Under-Reporting</h3>
+          <span class="chip critical">48 Engagements &lt;60 Health</span>
+        </div>
+        <p class="card-note" style="margin-top:8px; line-height: 1.55; color: var(--ink-2);">
+          <b style="color:var(--ink)">Degraded Metric:</b> 48 active engagements score &lt;60 health, but only 8 are flagged "At Risk" in CRM status (a 40-engagement gap).<br/>
+          <b style="color:var(--ink)">Correlated Data Factors:</b><br/>
+          &bull; <i>Consultant Seniority:</i> Associate &amp; Consultant engagements average 63–64 health, while Principal &amp; Partner engagements average 77 health.<br/>
+          &bull; <i>Match Quality:</i> Engagements with match scores &lt;50 represent 3 unservable pursuits and elevated delivery risk.<br/>
+          <b style="color:var(--good)">Actionable Fix:</b> Run <b>WF-11</b> to write back <code>zia_health_score</code> onto deal status automatically and pair Associate delivery with Principal oversight.
+        </p>
+      </div>
+
+      <!-- Card 3: Receivables & Collections -->
+      <div class="card" style="border-left: 4px solid var(--critical);">
+        <div class="card-head">
+          <h3>3. Aging Receivables &amp; Cash Collections</h3>
+          <span class="chip critical">$4.19M 90+ Days Past Due</span>
+        </div>
+        <p class="card-note" style="margin-top:8px; line-height: 1.55; color: var(--ink-2);">
+          <b style="color:var(--ink)">Degraded Metric:</b> $4.19M out of $4.49M outstanding receivables (93%) are 90+ days past due across 40 invoices.<br/>
+          <b style="color:var(--ink)">Correlated Data Factors:</b><br/>
+          &bull; <i>Invoice Terms:</i> Net 15 / Net 30 collect in 36.2 days, whereas Net 60 accounts for 82% of 90+ day delinquencies.<br/>
+          &bull; <i>Projected Loss:</i> Historical write-off rate is 5.15% ($216k projected write-off).<br/>
+          <b style="color:var(--good)">Actionable Fix:</b> Run <b>WF-07</b> Collections to auto-open tickets at 15 days past due, restrict Net 60 terms for non-Summit clients, and enforce retainer pre-payment for Grade C/D buyers.
+        </p>
+      </div>
+
+      <!-- Card 4: Price Concessions vs Talent Retention -->
+      <div class="card" style="border-left: 4px solid var(--good);">
+        <div class="card-head">
+          <h3>4. Price Concessions vs. Talent Retention</h3>
+          <span class="chip good">$1.38M Discounting vs $609k Bonus Pool</span>
+        </div>
+        <p class="card-note" style="margin-top:8px; line-height: 1.55; color: var(--ink-2);">
+          <b style="color:var(--ink)">Degraded Metric:</b> 38.5% of line items carry client discounts, giving away $1.38M of list margin.<br/>
+          <b style="color:var(--ink)">Correlated Data Factors:</b><br/>
+          &bull; <i>Commercial Misalignment:</i> Discretionary discounting does not fix specialty experience gaps.<br/>
+          &bull; <i>Talent Incentive:</i> Re-allocating 15% of given-away discount margin funds a 10% Consultant Performance Bonus Pool ($609k) for high-health engagements (&ge;75).<br/>
+          <b style="color:var(--good)">Actionable Fix:</b> Require manager approval for discounts &gt;5% and tie consultant bonuses to high-health delivery.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTOMATION RULE CATALOGUE ============ -->
+  <section id="rules">
+    <div class="sec-head">
+      <span class="eyebrow">09 &middot; Governance</span>
+      <h2>Automation Engine Rule Catalogue (WF-01 &hellip; WF-15)</h2>
+      <span class="sec-note">15 Idempotent State-Reconciling Rules (<code>engine.js</code>)</span>
+    </div>
+
+    <!-- High-Level End-to-End Architecture Data Flow Diagram -->
+    <div class="card" style="margin-bottom: 24px; border-left: 4px solid var(--accent); background: var(--surface-2);">
+      <div class="card-head">
+        <h3>High-Level End-to-End Architecture &amp; Data Flow Diagram</h3>
+        <span class="chip good">HubSpot Free Tier + Zero-Dependency Node Engine</span>
+      </div>
+      <p class="card-note" style="margin-bottom: 18px;">
+        Visualizing data flow across the 4 operational pillars: Lead Ingestion &amp; Scoring, Revenue Intelligence, Delivery Operations &amp; Bench Staffing, and Cash Reconciliation.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+        
+        <!-- Row 1: Ingestion & GTM -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; align-items: stretch;">
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--accent);">NODE A &middot; INGESTION</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-01 / WF-08</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Inbound Lead Processing</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              Webforms ingest 354 contacts. WF-08 auto-links company by domain; WF-01 assigns owner &amp; territory pod.
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--accent);">NODE B &middot; SCORING</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-09</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Lead Scoring &amp; Grading</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              Scores leads 0&ndash;100 based on firmographics. Stamps Grade A/B/C/D and routes to Pod West/Central/East.
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--accent);">NODE C &middot; REVENUE ML</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-14 / WF-02</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Deal Intelligence &amp; Forecast</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              Logistic regression model computes win probability. Stamps Commit/Best Case/Pipeline forecast category.
+            </p>
+          </div>
+        </div>
+
+        <!-- Flow Connector Banner -->
+        <div style="text-align: center; font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-weight: 600; letter-spacing: .08em;">
+          &darr; CLOSED-WON CONTRACT (&dollar;25.29M WON REVENUE) &darr;
+        </div>
+
+        <!-- Row 2: Delivery & Talent Bench -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; align-items: stretch;">
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--warning); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--warning);">NODE D &middot; ONBOARDING</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-03 / WF-04</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Post-Sale Project Delivery</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              Auto-spawns Onboarding Ticket on Closed-Won. WF-04 triggers 30-day health reviews for active placements.
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--warning); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--warning);">NODE E &middot; TALENT BENCH</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-06 / WF-12 / WF-13</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Bench Sync &amp; Talent Matching</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              WF-06 checks compliance certs. WF-13 evaluates 100-pt match score on sector, service line, and track record.
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--warning); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--warning);">NODE F &middot; HEALTH ML</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-05 / WF-11</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Engagement Health &amp; SLA</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              WF-11 scores 0&ndash;100 health across 5 risk dimensions. WF-05 escalates unhandled tickets &gt;24h to HIGH.
+            </p>
+          </div>
+        </div>
+
+        <!-- Flow Connector Banner -->
+        <div style="text-align: center; font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-weight: 600; letter-spacing: .08em;">
+          &darr; INVOICING &amp; CASH RECONCILIATION (&dollar;17.03M COLLECTED) &darr;
+        </div>
+
+        <!-- Row 3: Cash & Executive Snapshot -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; align-items: stretch;">
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--good); border-radius: 8px; padding: 12px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--good);">NODE G &middot; CASH ENGINE</span>
+              <span class="chip" style="font-size: 10px; padding: 2px 6px;">WF-07 / WF-15</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Collections &amp; Stripe Sync</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              WF-07 flags 90+ day overdue invoices. WF-15 reconciles Stripe Webhooks and zeroes outstanding balance.
+            </p>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--hairline); border-left: 3px solid var(--good); border-radius: 8px; padding: 12px 14px; grid-column: span 2;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--good);">NODE H &middot; EXECUTIVE DASHBOARD</span>
+              <span class="chip good" style="font-size: 10px; padding: 2px 6px;">snapshot.js &amp; server.js</span>
+            </div>
+            <h4 style="margin: 6px 0 4px; font-size: 14px;">Live Command Deck &amp; Validator</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--ink-2); line-height: 1.4;">
+              <code>snapshot.js</code> aggregates 3,594 CRM records into <code>dashboard-data.json</code>; <code>validate.js</code> verifies 39/39 narrative claims pass cleanly with 0 drift.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-head">
+        <h3>ZIA RevOps Workflow Engine &mdash; Rule Function &amp; Dashboard Intersect</h3>
+      </div>
+      <p class="card-note" style="margin-bottom: 16px;">
+        These 15 native Node.js automation rules reconcile CRM state via the HubSpot v3/v4 REST API, providing 100% idempotent execution on HubSpot Free Tier (<code>wrote 0</code> on second pass).
+      </p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width: 140px;">Rule ID &amp; Name</th>
+              <th style="min-width: 220px;">Trigger &amp; Business Logic</th>
+              <th style="min-width: 240px;">Automated CRM Write / Action</th>
+              <th style="min-width: 240px;">Dashboard &amp; Operating Function</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>WF-01</b><br/>Lead Routing</td>
+              <td>Unassigned contact created or inbound form submit</td>
+              <td>Assigns <code>hubspot_owner_id</code> seat, sets <code>hs_lead_status = 'NEW'</code>, assigns territory pod</td>
+              <td>Powers <b>Section 02 Operations</b> (Lead Handoff &amp; Pod Capacity)</td>
+            </tr>
+            <tr>
+              <td><b>WF-02</b><br/>Opportunity Lifecycle</td>
+              <td>Deal stage changes on linked deal</td>
+              <td>Rolls up highest deal stage onto contact <code>lifecyclestage</code> (lead &rarr; opportunity &rarr; customer)</td>
+              <td>Powers <b>Section 01 Executive</b> (Funnel Conversion &amp; Stage Breakdown)</td>
+            </tr>
+            <tr>
+              <td><b>WF-03</b><br/>Onboarding Automation</td>
+              <td>Deal moves to Closed-Won acquisition stage</td>
+              <td>Auto-spawns Onboarding Project Ticket linked to Deal, Contact, and Company</td>
+              <td>Powers <b>Section 02 Operations</b> (Active Onboarding Queue)</td>
+            </tr>
+            <tr>
+              <td><b>WF-04</b><br/>Placement Health Check</td>
+              <td>Active placement deal reaches 30-day delivery milestone</td>
+              <td>Auto-spawns Placement Health Review Ticket for delivery ops</td>
+              <td>Powers <b>Section 02 Operations</b> (Delivery SLA &amp; Quality Control)</td>
+            </tr>
+            <tr>
+              <td><b>WF-05</b><br/>SLA Escalation</td>
+              <td>Open support/onboarding ticket &gt; 24h without update</td>
+              <td>Re-assigns owner to Manager, sets priority to <code>HIGH</code>, flags SLA breach</td>
+              <td>Powers <b>Section 02 Operations</b> (SLA Breached Tickets: 71 open)</td>
+            </tr>
+            <tr>
+              <td><b>WF-06</b><br/>Compliance Tracking</td>
+              <td>Credential or background check expiration date audit</td>
+              <td>Stamps <code>zia_compliance_status</code> (clear, expiring_soon, lapsed); holds lapsed off bench</td>
+              <td>Powers <b>Section 06 Capability</b> (Compliance Holds: 46 consultants)</td>
+            </tr>
+            <tr>
+              <td><b>WF-07</b><br/>Collections Engine</td>
+              <td>Unpaid invoice mirror &gt; 15 days past due</td>
+              <td>Calculates <code>zia_days_outstanding</code>, auto-spawns Collections Ticket</td>
+              <td>Powers <b>Section 04 Cash</b> (Aging Receivables &amp; $4.19M 90+ Day Delinquency)</td>
+            </tr>
+            <tr>
+              <td><b>WF-08</b><br/>Inbound Processing</td>
+              <td>Webform submission with domain match</td>
+              <td>Auto-links Contact to Company by domain, updates lead stage and owner</td>
+              <td>Powers <b>Section 07 Book of Business</b> (100% Relational Integrity)</td>
+            </tr>
+            <tr>
+              <td><b>WF-09</b><br/>Lead Scoring &amp; Territory</td>
+              <td>Contact profile update or firmographic signal</td>
+              <td>Calculates 0&ndash;100 score, stamps Grade (A/B/C/D), assigns Pod (West 1/2, Central 1, East 1/2)</td>
+              <td>Powers <b>Section 03 Revenue</b> (Lead Grade Distribution &amp; Win Rate Correlations)</td>
+            </tr>
+            <tr>
+              <td><b>WF-10</b><br/>Feedback Loop (NPS)</td>
+              <td>NPS survey submission received</td>
+              <td>Categorizes Promoter/Passive/Detractor, opens Recovery Ticket for Detractors</td>
+              <td>Powers <b>Section 02 Operations</b> (NPS Satisfaction &amp; Recovery Queue)</td>
+            </tr>
+            <tr>
+              <td><b>WF-11</b><br/>Engagement Health Model</td>
+              <td>Scheduled run across active placements</td>
+              <td>Multi-factor ML algorithm calculating 0&ndash;100 <code>zia_health_score</code> across 5 risk signals</td>
+              <td>Powers <b>Section 02 Operations &amp; 08 Improvements</b> (48 Health &lt;60 Discrepancy)</td>
+            </tr>
+            <tr>
+              <td><b>WF-12</b><br/>Bench Synchronisation</td>
+              <td>Placement status change (`active` &rarr; `ended`)</td>
+              <td>Updates <code>zia_bench_status</code> (`placed`, `bench_ready`, `in_assessment`)</td>
+              <td>Powers <b>Section 06 Capability</b> (Bench Readiness: 18 ready, 133 placed)</td>
+            </tr>
+            <tr>
+              <td><b>WF-13</b><br/>Consultant Matching</td>
+              <td>Unstaffed or new engagement proposal</td>
+              <td>100-point matching model scoring bench talent on sector, service line, and track record</td>
+              <td>Powers <b>Section 06 Capability</b> (Best Match Scores &amp; 3 Unservable Pursuits)</td>
+            </tr>
+            <tr>
+              <td><b>WF-14</b><br/>Deal Intelligence</td>
+              <td>Open acquisition pursuit update</td>
+              <td>Logistic regression ML model assigning close prob &amp; forecast category (Commit/Best case/Pipeline)</td>
+              <td>Powers <b>Section 03 Revenue &amp; Section 05 Why 30%</b> (Weighted Forecast Model)</td>
+            </tr>
+            <tr>
+              <td><b>WF-15</b><br/>Stripe Reconciliation</td>
+              <td>Stripe Payment Webhook event</td>
+              <td>Sets invoice <code>zia_invoice_status = 'paid'</code>, zeroes days outstanding</td>
+              <td>Powers <b>Section 04 Cash</b> (Real-Time Cash Collection Tracking: $17.03M)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+
+    Live extract from HubSpot portal 247000083 · generated <span id="genAt">—</span><br>
+    <span id="footCounts">—</span><br>
+    Rebuild with <code>node snapshot.js</code>. Palette validated for deuteranopia, protanopia and tritanopia.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const D = {"generatedAt":"2026-08-16T22:04:56.693Z","totals":{"companies":226,"contacts":354,"clients":167,"talent":187,"deals":659,"acquisition":441,"placements":218,"tickets":644,"openTickets":366},"revenue":{"wonTotal":25291992.75,"openPipeline":2024037.75,"lostValue":9043196,"avgWonDeal":76642.40227272727,"winRate":0.559322033898305,"acqWon":112,"acqLost":260,"acqOpen":69,"acqWinRate":0.3010752688172043,"acqWonValue":3406964.75,"acqAvgDeal":30419.328125,"deliveredValue":21885028},"discounting":{"lineItems":431,"discountedLineItems":168,"discountRate":0.38979118329466356,"byDepth":{"5%":48,"20%":24,"10%":52,"15%":44},"listValue":29094445,"netValue":27715160.75,"valueGivenAway":1379284.25,"avgDiscountPct":11.30952380952381,"byProduct":{"Consultant Hour — Momentum":123,"Consultant Hour — Core":75,"Consultant Hour — Summit":20,"ZIA Summit Program — Enterprise":27,"ZIA Core Program — Single Team":53,"ZIA Momentum Program — Multi-Team":133}},"funnel":[{"stage":"Lead","count":25,"value":647894.25},{"stage":"Qualified Lead","count":17,"value":503351},{"stage":"Proposal Sent","count":16,"value":511234},{"stage":"Negotiation","count":11,"value":361558.5},{"stage":"Closed Won","count":330,"value":25291992.75},{"stage":"Closed Lost","count":260,"value":9043196}],"salesEfficiency":{"avgCycleWonDays":79.93967251570767,"medianCycleWonDays":81,"avgCycleLostDays":69.22641548793622,"medianCycleLostDays":60.446623645833334,"openOpportunities":69,"velocityPerDay":7905.173866661428,"velocityPerMonth":237155.21599984285,"weightedForecast":717413.0499999999,"unweightedOpen":2024037.75,"openByStage":[{"stage":"Lead","count":25,"value":647894.25,"weight":0.1},{"stage":"Qualified Lead","count":17,"value":503351,"weight":0.25},{"stage":"Proposal Sent","count":16,"value":511234,"weight":0.5},{"stage":"Negotiation","count":11,"value":361558.5,"weight":0.75}]},"attribution":{"bySource":{"website_organic":119,"referral":162,"event_conference":23,"inbound_enquiry":22},"sourceRoi":[{"source":"website_organic","deals":140,"won":30,"winRate":0.21428571428571427,"revenue":874417,"avgDeal":29147.233333333334},{"source":"referral","deals":85,"won":23,"winRate":0.27058823529411763,"revenue":815795.25,"avgDeal":35469.358695652176},{"source":"event_conference","deals":71,"won":22,"winRate":0.30985915492957744,"revenue":611592,"avgDeal":27799.636363636364},{"source":"outbound","deals":45,"won":18,"winRate":0.4,"revenue":556543.5,"avgDeal":30919.083333333332},{"source":"inbound_enquiry","deals":62,"won":19,"winRate":0.3064516129032258,"revenue":548617,"avgDeal":28874.57894736842},{"source":"existing_client","deals":6,"won":0,"winRate":0,"revenue":0,"avgDeal":0},{"source":"linkedin","deals":31,"won":0,"winRate":0,"revenue":0,"avgDeal":0},{"source":"partner","deals":1,"won":0,"winRate":0,"revenue":0,"avgDeal":0}],"note":"first-touch, rolled from contact onto deal by P13 — HubSpot native attribution requires Marketing Hub"},"tierStats":[{"tier":"Core","deals":207,"won":114,"lost":76,"acqDeals":132,"acqWon":39,"acqLost":76,"winRate":0.3391304347826087,"acqRevenue":898842,"acqAvgDeal":23047.23076923077,"revenue":7210240.75,"avgDeal":63247.725877192985,"placements":75,"avgHealth":68.12},{"tier":"Momentum","deals":350,"won":187,"lost":119,"acqDeals":227,"acqWon":64,"acqLost":119,"winRate":0.34972677595628415,"acqRevenue":2045564,"acqAvgDeal":31961.9375,"revenue":15334174.5,"avgDeal":82000.93315508022,"placements":123,"avgHealth":68.27642276422765},{"tier":"Summit","deals":102,"won":29,"lost":65,"acqDeals":82,"acqWon":9,"acqLost":65,"winRate":0.12162162162162163,"acqRevenue":462558.75,"acqAvgDeal":51395.416666666664,"revenue":2747577.5,"avgDeal":94744.05172413793,"placements":20,"avgHealth":70.3}],"trend":[{"month":"2024-12","value":306013},{"month":"2025-01","value":2749104.5},{"month":"2025-02","value":2271664.75},{"month":"2025-03","value":2120092},{"month":"2025-04","value":1270714.75},{"month":"2025-05","value":3009520},{"month":"2025-06","value":1729430},{"month":"2025-07","value":2721454.5},{"month":"2025-08","value":1000146},{"month":"2025-09","value":1008275.25},{"month":"2025-10","value":1264666.75},{"month":"2025-11","value":883425},{"month":"2025-12","value":604554},{"month":"2026-01","value":406014.5},{"month":"2026-02","value":662353.5},{"month":"2026-03","value":808753.75},{"month":"2026-04","value":545379},{"month":"2026-05","value":727819.25},{"month":"2026-06","value":643766.5},{"month":"2026-07","value":489731.25},{"month":"2026-08","value":69114.5}],"placements":{"active":153,"ended":57,"atRisk":8,"avgHealth":68.40825688073394,"avgHours":28.026143790849673,"totalWeeklyHours":4288,"healthBuckets":{"Critical (<40)":41,"At risk (40-59)":17,"Watch (60-79)":97,"Healthy (80+)":63},"utilBuckets":{"1-15 hrs":0,"16-25 hrs":45,"26-35 hrs":93,"36+ hrs":15},"consultantBonus":{"eligibleCount":72,"bonusPct":10,"totalBonusPool":753339.8250000001,"avgBonus":10463.053125}},"intelligence":{"scored":69,"byCategory":{"Pipeline":{"deals":61,"value":1758745.75,"weighted":626518.6825000002},"Best case":{"deals":8,"value":265292,"weighted":124665.2}},"signals":{"Low-grade buyer (C)":3,"Stalled":33,"Aging":32,"Buyer not scored":5,"No contact attached":5,"Large deal":1},"weighted":751183.8825000003,"median":38,"clean":32},"outlook":{"winBy":{"grade":[{"key":"A","won":8,"lost":9,"n":17,"rate":0.47058823529411764},{"key":"B","won":60,"lost":88,"n":148,"rate":0.40540540540540543},{"key":"(not recorded)","won":39,"lost":73,"n":112,"rate":0.3482142857142857},{"key":"C","won":5,"lost":78,"n":83,"rate":0.060240963855421686},{"key":"D","won":0,"lost":12,"n":12,"rate":0}],"source":[{"key":"outbound","won":18,"lost":26,"n":44,"rate":0.4090909090909091},{"key":"inbound_enquiry","won":19,"lost":34,"n":53,"rate":0.3584905660377358},{"key":"event_conference","won":22,"lost":45,"n":67,"rate":0.3283582089552239},{"key":"referral","won":23,"lost":48,"n":71,"rate":0.323943661971831},{"key":"website_organic","won":30,"lost":72,"n":102,"rate":0.29411764705882354},{"key":"linkedin","won":0,"lost":31,"n":31,"rate":0}],"size":[{"key":"Under $20k","won":40,"lost":58,"n":98,"rate":0.40816326530612246},{"key":"$20k-40k","won":53,"lost":134,"n":187,"rate":0.28342245989304815},{"key":"$40k-70k","won":16,"lost":53,"n":69,"rate":0.2318840579710145},{"key":"$70k+","won":3,"lost":15,"n":18,"rate":0.16666666666666666}],"territory":[{"key":"Central","won":24,"lost":35,"n":59,"rate":0.4067796610169492},{"key":"(not recorded)","won":39,"lost":73,"n":112,"rate":0.3482142857142857},{"key":"West","won":34,"lost":84,"n":118,"rate":0.288135593220339},{"key":"East","won":15,"lost":68,"n":83,"rate":0.18072289156626506}]},"forecast":[{"grade":"A","deals":10,"value":317425,"rate":0.47058823529411764,"expected":149376.4705882353},{"grade":"B","deals":51,"value":1442430.75,"rate":0.40540540540540543,"expected":584769.222972973},{"grade":"Unscored","deals":5,"value":201900,"rate":0.3482142857142857,"expected":70304.46428571428},{"grade":"C","deals":3,"value":62282,"rate":0.060240963855421686,"expected":3751.9277108433735},{"grade":"D","deals":0,"value":0,"rate":0,"expected":0}],"expectedRevenue":808202.085557766,"openValue":2024037.75,"deliveryAtRisk":{"count":48,"of":153,"value":6091847.25},"collections":{"writeOffRate":0.05154639175257732,"over90Count":34,"over90Value":4192590.25,"projectedLoss":216112.89948453606}},"capability":{"sectorExpertise":{"technology":57,"nonprofit":36,"financial_services":41,"education":34,"logistics":31,"professional_services":68,"retail_consumer":40,"construction":34,"healthcare":50,"manufacturing":37},"serviceLines":{"Change Management":60,"Culture & Engagement":72,"Performance Consulting":55,"Leadership Development":57,"Training & Coaching":53,"Organizational Design":61,"Succession Planning":56,"Team Effectiveness":48,"Executive Coaching":62},"benchReadyLines":{"Organizational Design":5,"Team Effectiveness":6,"Training & Coaching":5,"Culture & Engagement":8,"Leadership Development":9,"Executive Coaching":9,"Performance Consulting":7,"Succession Planning":8,"Change Management":3},"certifications":{"SHRM-SCP":54,"Hogan Certified":38,"ICF ACC":35,"ICF PCC":45,"Prosci Change Practitioner":49,"ICF MCC":49,"Korn Ferry 360":30,"MBTI Certified":37},"grade":{"Consultant":73,"Senior Consultant":47,"Principal":14,"Associate":39,"Partner":14},"avgHealthByGrade":{"Consultant":63,"Principal":77,"Senior Consultant":64,"Associate":64,"Partner":68},"medianYears":10,"match":{"scored":153,"median":68,"min":29,"max":80,"unservable":3}},"talent":{"bench":{"placed":133,"in_assessment":36,"bench_ready":18},"compliance":{"clear":141,"lapsed":21,"not_started":8,"expiring_soon":17},"coverage":{"US Central / Mountain":51,"US Eastern":72,"US Pacific":43,"Overnight / Overflow":21},"tier":{"momentum":96,"core":63,"summit":28},"avgCostRate":59.1283422459893},"clients":{"lifecycle":{"customer":71,"opportunity":41,"lead":55},"leadStatus":{"OPEN_DEAL":71,"IN_PROGRESS":41,"UNQUALIFIED":55},"role":{"ceo_founder":25,"ld_manager":23,"department_head":16,"hr_manager":46,"coo_operations":16,"talent_director":22,"chro_people_leader":18}},"companies":{"book":{"clients":110,"prospects":41,"lost":73,"dormant":2},"industry":{"professional_services":39,"technology":38,"manufacturing":32,"logistics":17,"education":15,"retail_consumer":15,"nonprofit":9,"healthcare":31,"financial_services":21,"construction":8},"health":{"healthy":158,"at_risk":32,"watchlist":34},"byState":{"OH":10,"CA":46,"GA":6,"TN":8,"IN":8,"OK":6,"KY":2,"LA":2,"TX":31,"CO":12,"IL":8,"NC":9,"MD":4,"OR":7,"AZ":16,"WA":4,"NM":5,"MI":5,"NY":5,"MA":4,"NV":4,"FL":14,"PA":3,"WI":3,"MO":3}},"tickets":{"byType":{"onboarding":417,"offboarding":59,"health_check":60,"at_risk_escalation":18,"compliance_review":46,"collections":42,"nps_detractor":1},"byPriority":{"MEDIUM":485,"LOW":78,"HIGH":81},"openByType":{"health_check":60,"onboarding":198,"at_risk_escalation":18,"compliance_review":46,"collections":42,"nps_detractor":1},"slaBreached":71},"lossReasons":{"Client paused decision":28,"Learning platform gap":39,"Rate":26,"Specialty experience":45,"Communication style":29,"Coverage hours mismatch":27},"serviceDemand":{"Succession Planning":69,"Culture & Engagement":58,"Team Effectiveness":70,"Executive Coaching":70,"Change Management":62,"Performance Consulting":62,"Training & Coaching":35,"Organizational Design":73,"Leadership Development":57},"invoicing":{"total":258,"byStatus":{"paid":184,"written_off":10,"overdue":42,"draft":20,"sent":2},"collected":17029271.75,"outstanding":4493635.25,"overdueValue":4472215.25,"writtenOff":967510,"draft":576116,"agingBuckets":{"Current":2,"1–30 days":3,"31–60 days":5,"61–90 days":4,"90+ days":40},"agingValue":5461145.25,"avgDaysToPay":36.233695652173914,"terms":{"net_15":55,"net_45":34,"net_60":22,"net_30":147}}};
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const money = n => n >= 1e6 ? '$' + (n/1e6).toFixed(2) + 'M'
+                 : n >= 1e3 ? '$' + Math.round(n/1e3) + 'k' : '$' + n;
+const num = n => n.toLocaleString('en-US');
+const pct = n => (n*100).toFixed(1) + '%';
+const CAT = ['var(--c1)','var(--c2)','var(--c3)','var(--c4)'];
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+const tip = $('#tip');
+function bindTip(el, html) {
+  el.addEventListener('mousemove', e => {
+    tip.innerHTML = html;
+    tip.style.opacity = 1;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = e.clientX + 14, y = e.clientY - h - 10;
+    if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+    if (y < 8) y = e.clientY + 16;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  });
+  el.addEventListener('mouseleave', () => { tip.style.opacity = 0; });
+}
+
+/* ---------- meta ---------- */
+const gen = new Date(D.generatedAt);
+$('#genAt').textContent = gen.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+$('#meta').innerHTML = [
+  ['Organizations', num(D.totals.companies)],
+  ['Contacts', num(D.totals.contacts)],
+  ['Deals', num(D.totals.deals)],
+  ['Live engagements', num(D.placements.active)],
+  ['Open tickets', num(D.totals.openTickets)],
+  ['Seat constraint', 'Single-owner Free Tier (96903740)'],
+].map(([k,v]) => `${k} <b>${v}</b>`).join('');
+
+
+/* ---------- narrative counts ----------
+   Every count that used to be typed into the markup is filled from the snapshot.
+   Hardcoding them is how a dashboard ends up claiming 400 consultants next to a
+   chart showing 160 — the page contradicting itself in the same viewport. */
+const BOOK = (D.companies && D.companies.book) || null;
+const setText = (sel, text) => { const el = $(sel); if (el) el.textContent = text; };
+
+setText('#nEng', num(D.totals.placements));
+setText('#nConsultants', `${num(D.totals.talent)} consultants`);
+setText('#nConsultants2', num(D.totals.talent));
+setText('#nDeals', `${num(D.totals.deals)} deals`);
+
+if (BOOK) {
+  setText('#bookNote', `${num(BOOK.clients)} clients · ${num(BOOK.prospects)} prospects · ${num(D.totals.companies)} organizations`);
+  setText('#sectorNote',
+    `Ten sectors across all ${num(D.totals.companies)} organizations in the CRM. `
+    + `${num(BOOK.clients)} have bought or are in delivery; ${num(BOOK.prospects)} are live prospects, `
+    + `${num(BOOK.lost)} closed lost, ${num(BOOK.dormant)} untouched.`);
+}
+
+setText('#footCounts',
+  `${num(D.totals.companies)} companies · ${num(D.totals.contacts)} contacts · ${num(D.totals.deals)} deals · `
+  + `${num(D.totals.tickets)} tickets · ${num(D.discounting.lineItems)} line items · `
+  + `${num(D.invoicing.total)} invoices`);
+
+/* ---------- stat tiles ---------- */
+function tiles(sel, items) {
+  $(sel).innerHTML = items.map(t => `
+    <div class="tile ${t.tone ? 'is-'+t.tone : ''}">
+      <p class="tile-k">${t.k}</p>
+      <div class="tile-v">${t.v}</div>
+      <div class="tile-sub">${t.sub}</div>
+    </div>`).join('');
+}
+
+const atRiskShare = D.placements.atRisk / (D.placements.active + D.placements.atRisk);
+
+const R = D.revenue;
+tiles('#execTiles', [
+  { k:'New business won',   v: money(R.acqWonValue), sub:`${num(R.acqWon)} engagements sold` },
+  { k:'Delivered revenue',  v: money(R.deliveredValue), sub:`${num(D.totals.placements)} delivery engagements` },
+  { k:'Open pipeline',      v: money(R.openPipeline), sub:`${num(R.acqOpen)} live opportunities` },
+  { k:'Win rate',           v: pct(R.acqWinRate), sub:`new business · ${num(R.acqWon)} won / ${num(R.acqLost)} lost`,
+    tone: R.acqWinRate >= 0.35 ? 'good' : R.acqWinRate >= 0.25 ? 'warning' : 'critical' },
+  { k:'Live engagements',   v: num(D.placements.active), sub:`${num(D.placements.totalWeeklyHours)} hrs / week` },
+  { k:'At-risk',            v: num(D.placements.atRisk), sub:`${pct(atRiskShare)} of live book`, tone:'critical' },
+]);
+
+const blocked = (D.talent.compliance.lapsed||0) + (D.talent.compliance.not_started||0);
+tiles('#opsTiles', [
+  { k:'Bench-ready',      v: num(D.talent.bench.bench_ready||0), sub:'placeable now', tone:'good' },
+  { k:'Placed',           v: num(D.talent.bench.placed||0), sub:'currently on assignment' },
+  { k:'Compliance-blocked', v: num(blocked), sub:'lapsed or not started', tone:'critical' },
+  { k:'Avg health',       v: D.placements.avgHealth.toFixed(1), sub:'across all engagements', tone: D.placements.avgHealth < 60 ? 'warning' : 'good' },
+  { k:'Avg hours / week', v: D.placements.avgHours.toFixed(1), sub:'per live engagement' },
+  { k:'SLA breaches',     v: num(D.tickets.slaBreached), sub:'flagged on tickets', tone:'warning' },
+]);
+
+/* gap callout */
+const crit = D.placements.healthBuckets['Critical (<40)'];
+/* The gap is measured at the 60 threshold, not 40. P3 rebalanced health to a
+   realistic distribution, after which "below 40" (21) is SMALLER than the flagged
+   count (22) and the subtraction goes negative. Below 60 is the real governance
+   gap and the number the segment "Placements · scoring below 60" reproduces. */
+const belowSixty = crit + D.placements.healthBuckets['At risk (40-59)'];
+$('#gapCrit').textContent = num(belowSixty);
+$('#gapFlag').textContent = num(D.placements.atRisk);
+$('#gapDelta').textContent = num(belowSixty - D.placements.atRisk);
+
+/* ============================================================
+   Horizontal bar chart
+   ============================================================ */
+function hbar(sel, rows, opts = {}) {
+  const { colors, valueFmt = num, labelW = 200, showLegend = false, legendItems, W = 470 } = opts;
+  const rowH = 34, pad = 12;
+  const h = rows.length * rowH + pad;
+  const max = Math.max(...rows.map(r => r.value), 1);
+  const host = $(sel);
+
+  if (showLegend && legendItems) {
+    host.insertAdjacentHTML('beforebegin',
+      `<div class="legend">${legendItems.map((l,i)=>
+        `<span><i class="swatch" style="background:${colors[i%colors.length]}"></i>${esc(l)}</span>`).join('')}</div>`);
+  }
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','chart');
+  svg.setAttribute('viewBox', `0 0 ${W} ${h}`);
+  svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+  const barX = labelW, barMax = W - labelW - 56;
+
+  rows.forEach((r, i) => {
+    const y = i * rowH + 5;
+    const w = Math.max(2, (r.value / max) * barMax);
+    const fill = r.color || (colors ? colors[i % colors.length] : 'var(--c1)');
+
+    const maxChars = Math.max(8, Math.floor((labelW - 16) / 7.2));
+    let displayLbl = r.label || '';
+    if (displayLbl.length > maxChars) {
+      displayLbl = displayLbl.slice(0, maxChars - 1) + '…';
+    }
+
+    const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+    lbl.setAttribute('x', Math.max(10, labelW - 10)); lbl.setAttribute('y', y + 17);
+    lbl.setAttribute('text-anchor','end'); lbl.setAttribute('class','lbl');
+    lbl.textContent = displayLbl;
+    const titleEl = document.createElementNS('http://www.w3.org/2000/svg','title');
+    titleEl.textContent = r.label;
+    lbl.appendChild(titleEl);
+    svg.appendChild(lbl);
+
+
+    const track = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    track.setAttribute('x', barX); track.setAttribute('y', y + 4);
+    track.setAttribute('width', barMax); track.setAttribute('height', 17);
+    track.setAttribute('rx', 3); track.setAttribute('fill','var(--hairline-2)');
+    svg.appendChild(track);
+
+    const bar = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    bar.setAttribute('x', barX); bar.setAttribute('y', y + 4);
+    bar.setAttribute('width', w); bar.setAttribute('height', 17);
+    bar.setAttribute('rx', 3); bar.setAttribute('fill', fill);
+    bar.setAttribute('class','mark');
+    svg.appendChild(bar);
+    bindTip(bar, `<b>${esc(r.label)}</b><br>${valueFmt(r.value)}${r.note ? '<br>'+esc(r.note) : ''}`);
+
+    const v = document.createElementNS('http://www.w3.org/2000/svg','text');
+    v.setAttribute('x', W - 4); v.setAttribute('y', y + 17);
+    v.setAttribute('text-anchor','end'); v.setAttribute('class','val');
+    v.textContent = valueFmt(r.value);
+    svg.appendChild(v);
+  });
+
+  host.appendChild(svg);
+}
+
+/* ============================================================
+   Area + line trend with crosshair
+   ============================================================ */
+function trend(sel, series) {
+  const W = 640, H = 208, mL = 46, mR = 10, mT = 12, mB = 26;
+  const iw = W - mL - mR, ih = H - mT - mB;
+  const max = Math.max(...series.map(d => d.value));
+  const x = i => mL + (i / (series.length - 1)) * iw;
+  const y = v => mT + ih - (v / max) * ih;
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','chart');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  // gridlines
+  for (let g = 0; g <= 3; g++) {
+    const gy = mT + (ih / 3) * g;
+    const ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1', mL); ln.setAttribute('x2', W - mR);
+    ln.setAttribute('y1', gy); ln.setAttribute('y2', gy);
+    ln.setAttribute('class','gridline');
+    svg.appendChild(ln);
+
+    const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x', mL - 8); t.setAttribute('y', gy + 3.5);
+    t.setAttribute('text-anchor','end');
+    t.textContent = money(Math.round(max - (max/3)*g));
+    svg.appendChild(t);
+  }
+
+  const line = series.map((d,i) => `${i?'L':'M'}${x(i).toFixed(1)},${y(d.value).toFixed(1)}`).join(' ');
+
+  const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+  grad.setAttribute('id','tg'); grad.setAttribute('x1','0'); grad.setAttribute('y1','0');
+  grad.setAttribute('x2','0'); grad.setAttribute('y2','1');
+  grad.innerHTML = `<stop offset="0%" stop-color="var(--c1)" stop-opacity=".26"/>
+                    <stop offset="100%" stop-color="var(--c1)" stop-opacity="0"/>`;
+  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+  defs.appendChild(grad); svg.appendChild(defs);
+
+  const area = document.createElementNS('http://www.w3.org/2000/svg','path');
+  area.setAttribute('d', `${line} L${x(series.length-1)},${mT+ih} L${mL},${mT+ih} Z`);
+  area.setAttribute('fill','url(#tg)');
+  svg.appendChild(area);
+
+  const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d', line); p.setAttribute('fill','none');
+  p.setAttribute('stroke','var(--c1)'); p.setAttribute('stroke-width','2');
+  p.setAttribute('stroke-linejoin','round'); p.setAttribute('stroke-linecap','round');
+  svg.appendChild(p);
+
+  // endpoint emphasis
+  const last = series[series.length-1];
+  const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  dot.setAttribute('cx', x(series.length-1)); dot.setAttribute('cy', y(last.value));
+  dot.setAttribute('r','4'); dot.setAttribute('fill','var(--c1)');
+  dot.setAttribute('stroke','var(--surface)'); dot.setAttribute('stroke-width','2');
+  svg.appendChild(dot);
+
+  // x labels — first, middle, last
+  [0, Math.floor(series.length/2), series.length-1].forEach(i => {
+    const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x', x(i)); t.setAttribute('y', H - 7);
+    t.setAttribute('text-anchor', i === 0 ? 'start' : i === series.length-1 ? 'end' : 'middle');
+    t.textContent = series[i].month;
+    svg.appendChild(t);
+  });
+
+  // crosshair
+  const cross = document.createElementNS('http://www.w3.org/2000/svg','line');
+  cross.setAttribute('class','axis'); cross.setAttribute('y1', mT); cross.setAttribute('y2', mT+ih);
+  cross.setAttribute('opacity','0'); svg.appendChild(cross);
+  const marker = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  marker.setAttribute('r','4.5'); marker.setAttribute('fill','var(--c1)');
+  marker.setAttribute('stroke','var(--surface)'); marker.setAttribute('stroke-width','2');
+  marker.setAttribute('opacity','0'); svg.appendChild(marker);
+
+  const hit = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  hit.setAttribute('x', mL); hit.setAttribute('y', mT);
+  hit.setAttribute('width', iw); hit.setAttribute('height', ih);
+  hit.setAttribute('fill','transparent');
+  svg.appendChild(hit);
+
+  hit.addEventListener('mousemove', e => {
+    const box = svg.getBoundingClientRect();
+    const rel = (e.clientX - box.left) / box.width * W;
+    let i = Math.round((rel - mL) / iw * (series.length - 1));
+    i = Math.max(0, Math.min(series.length - 1, i));
+    const d = series[i];
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('opacity','1');
+    marker.setAttribute('cx', x(i)); marker.setAttribute('cy', y(d.value)); marker.setAttribute('opacity','1');
+    tip.innerHTML = `<b>${d.month}</b><br>${money(d.value)} booked`;
+    tip.style.opacity = 1;
+    let tx = e.clientX + 14, ty = e.clientY - tip.offsetHeight - 10;
+    if (tx + tip.offsetWidth > innerWidth - 8) tx = e.clientX - tip.offsetWidth - 14;
+    if (ty < 8) ty = e.clientY + 16;
+    tip.style.left = tx + 'px'; tip.style.top = ty + 'px';
+  });
+  hit.addEventListener('mouseleave', () => {
+    tip.style.opacity = 0; cross.setAttribute('opacity','0'); marker.setAttribute('opacity','0');
+  });
+
+  $(sel).appendChild(svg);
+}
+
+/* ============================================================
+   render
+   ============================================================ */
+trend('#trend', D.trend);
+
+const HB = D.placements.healthBuckets;
+hbar('#health', [
+  { label:'Healthy 80+',   value: HB['Healthy (80+)'],   color:'var(--good)' },
+  { label:'Watch 60–79',   value: HB['Watch (60-79)'],   color:'var(--warning)' },
+  { label:'At risk 40–59', value: HB['At risk (40-59)'], color:'var(--serious)' },
+  { label:'Critical <40',  value: HB['Critical (<40)'],  color:'var(--critical)' },
+], { labelW: 132, W: 560 });
+
+/* tier table */
+const tr = D.tierStats;
+$('#tierTbl').innerHTML = `
+  <thead><tr>
+    <th class="pad">Tier</th><th class="pad">Sales deals</th><th class="pad">Won</th>
+    <th class="pad">Win rate</th><th class="pad">Revenue</th><th class="pad">Avg sale</th>
+    <th class="pad">Placements</th><th>Avg health</th>
+  </tr></thead>
+  <tbody>${tr.map((t,i) => {
+    const tone = t.avgHealth >= 60 ? 'good' : t.avgHealth >= 55 ? 'warning' : 'critical';
+    return `<tr>
+      <td class="pad"><span class="swatch" style="display:inline-block;background:${CAT[i]};margin-right:8px"></span>${t.tier}</td>
+      <td class="pad">${num(t.acqDeals)}</td>
+      <td class="pad">${num(t.acqWon)}</td>
+      <td class="pad">${pct(t.winRate)}</td>
+      <td class="pad">${money(t.revenue)}</td>
+      <td class="pad">${money(Math.round(t.acqAvgDeal))}</td>
+      <td class="pad">${num(t.placements)}</td>
+      <td><span class="chip ${tone}">${t.avgHealth.toFixed(1)}</span></td>
+    </tr>`;
+  }).join('')}</tbody>`;
+
+/* operations */
+const BENCH_LBL = { bench_ready:'Bench-ready', placed:'Placed', in_assessment:'In assessment', inactive:'Inactive' };
+hbar('#bench', Object.entries(D.talent.bench)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label: BENCH_LBL[k]||k, value: v })), { colors: CAT, labelW: 118, W: 340 });
+
+const COMP = [
+  ['clear','Clear','var(--good)'], ['expiring_soon','Expiring soon','var(--warning)'],
+  ['not_started','Not started','var(--serious)'], ['lapsed','Lapsed','var(--critical)'],
+];
+hbar('#compliance', COMP.filter(([k])=>D.talent.compliance[k])
+  .map(([k,l,c]) => ({ label:l, value:D.talent.compliance[k], color:c })), { labelW: 118, W: 340 });
+
+hbar('#coverage', Object.entries(D.talent.coverage)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label:k, value:v })), { colors: CAT, labelW: 162, W: 340 });
+
+hbar('#util', Object.entries(D.placements.utilBuckets)
+  .map(([k,v]) => ({ label:k, value:v })), { colors: CAT, labelW: 110, W: 560 });
+
+/* Every ticket type the engine can raise needs an entry here. A missing one falls
+   through to the raw internal value and prints `nps_detractor` on an executive page. */
+const TK = {
+  onboarding:'Onboarding', health_check:'Health check', at_risk_escalation:'At-risk escalation',
+  compliance_review:'Compliance review', offboarding:'Offboarding', collections:'Collections',
+  nps_detractor:'Client recovery', inbound_lead:'Inbound lead',
+};
+const TK_COLOR = {
+  onboarding:'var(--c1)', health_check:'var(--warning)', at_risk_escalation:'var(--critical)',
+  compliance_review:'var(--serious)', offboarding:'var(--c3)', collections:'var(--c2)',
+  nps_detractor:'var(--c4)', inbound_lead:'var(--accent)',
+};
+hbar('#tickets', Object.entries(D.tickets.openByType)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label: TK[k]||k, value:v, color: TK_COLOR[k] })), { labelW: 158, W: 560 });
+
+/* revenue */
+const FUNNEL_COLOR = ['var(--c3)','var(--c3)','var(--c1)','var(--c1)','var(--good)','var(--critical)'];
+hbar('#funnel', D.funnel.map((f,i) => ({
+  label: f.stage, value: f.count, color: FUNNEL_COLOR[i], note: money(f.value) + ' in stage',
+})), { labelW: 150, W: 1150 });
+
+hbar('#loss', Object.entries(D.lossReasons)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label:k, value:v, color:'var(--c4)' })), { labelW: 186, W: 560 });
+
+hbar('#service', Object.entries(D.serviceDemand)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label:k, value:v, color:'var(--c1)' })), { labelW: 186, W: 560 });
+
+/* collections */
+const INV = D.invoicing;
+const collectionRate = INV.collected / Math.max(1, INV.collected + INV.outstanding + INV.writtenOff);
+tiles('#cashTiles', [
+  { k:'Collected',        v: money(INV.collected), sub:`${num(INV.byStatus.paid||0)} invoices paid`, tone:'good' },
+  { k:'Outstanding',      v: money(INV.outstanding), sub:`${num((INV.byStatus.sent||0)+(INV.byStatus.overdue||0))} unpaid` , tone:'warning' },
+  { k:'Overdue',          v: num(INV.byStatus.overdue||0), sub:'past due date', tone:'critical' },
+  { k:'Written off',      v: money(INV.writtenOff), sub:`${num(INV.byStatus.written_off||0)} invoices`, tone:'critical' },
+  { k:'Collection rate',  v: pct(collectionRate), sub:'of invoiced value', tone: collectionRate >= 0.85 ? 'good' : 'warning' },
+  { k:'Avg days to pay',  v: INV.avgDaysToPay.toFixed(0), sub:'from invoice sent' },
+]);
+$('#cashOverdueCount').textContent = num(INV.byStatus.overdue || 0);
+$('#cashOverdueValue').textContent = money(INV.overdueValue ?? INV.outstanding);
+
+const INV_COLOR = { paid:'var(--good)', sent:'var(--c3)', overdue:'var(--critical)', written_off:'var(--serious)', draft:'var(--ink-3)' };
+const INV_LBL = { paid:'Paid', sent:'Sent — not yet due', overdue:'Overdue', written_off:'Written off', draft:'Draft' };
+hbar('#invStatus', ['paid','sent','overdue','written_off','draft']
+  .filter(k => INV.byStatus[k])
+  .map(k => ({ label: INV_LBL[k], value: INV.byStatus[k], color: INV_COLOR[k] })), { labelW: 150, W: 560 });
+
+const AGE_COLOR = ['var(--good)','var(--warning)','var(--serious)','var(--critical)','var(--critical)'];
+hbar('#invAging', Object.entries(INV.agingBuckets)
+  .filter(([, v]) => v)
+  .map(([k, v], i) => ({ label:k, value:v, color: AGE_COLOR[i] })), { labelW: 110, W: 560 });
+
+/* book */
+const IND = {
+  technology:'Technology & SaaS', professional_services:'Professional Services',
+  healthcare:'Healthcare', manufacturing:'Manufacturing', financial_services:'Financial Services',
+  retail_consumer:'Retail & Consumer', logistics:'Logistics & Supply Chain',
+  nonprofit:'Nonprofit & Social Impact', education:'Education', construction:'Construction & Trades',
+};
+/* ---------- diagnosis + outlook ---------- */
+const OUT = D.outlook;
+if (OUT) {
+  const rateOf = (cut, key) => {
+    const r = cut.find(x => x.key === key);
+    return r ? pct(r.rate) : '—';
+  };
+  const gradeCut = OUT.winBy.grade;
+  const cd = gradeCut.filter(r => r.key === 'C' || r.key === 'D');
+  const ab = gradeCut.filter(r => r.key === 'A' || r.key === 'B');
+  const sum = (rows, f) => rows.reduce((a, r) => a + f(r), 0);
+  const abWon = sum(ab, r => r.won), abN = sum(ab, r => r.n);
+  const cdWon = sum(cd, r => r.won), cdN = sum(cd, r => r.n);
+
+  setText('#cRate', rateOf(gradeCut, 'C'));
+  setText('#dRate', rateOf(gradeCut, 'D'));
+  setText('#bRate', rateOf(gradeCut, 'B'));
+  setText('#cdDeals', num(cdN));
+  setText('#cdWins', num(cdWon));
+  setText('#nowRate', pct(D.revenue.acqWinRate));
+  setText('#abRate', abN ? pct(abWon / abN) : '—');
+  setText('#fcBasis', num(sum(gradeCut, r => r.n)));
+
+  tiles('#outlookTiles', [
+    { k:'Expected from pipeline', v: money(OUT.expectedRevenue),
+      sub:`of ${money(OUT.openValue)} open · measured conversion` },
+    { k:'Delivery at risk', v: money(OUT.deliveryAtRisk.value),
+      sub:`${num(OUT.deliveryAtRisk.count)} of ${num(OUT.deliveryAtRisk.of)} engagements below 60`,
+      tone:'critical' },
+    { k:'Receivables 90d+', v: money(OUT.collections.over90Value),
+      sub:`${num(OUT.collections.over90Count)} invoices`, tone:'warning' },
+    { k:'Projected write-off', v: money(OUT.collections.projectedLoss),
+      sub:`at the historical ${pct(OUT.collections.writeOffRate)} rate`, tone:'warning' },
+  ]);
+
+  // A win rate is a proportion, so colour it against the portfolio average rather
+  // than a fixed scale — the question is always "better or worse than we do overall".
+  const avg = D.revenue.acqWinRate;
+  const bars = cut => cut.map(r => ({
+    label: `${r.key}  (${r.won}/${r.n})`, value: +(r.rate * 100).toFixed(1),
+    color: r.rate >= avg * 1.15 ? 'var(--good)' : r.rate >= avg * 0.85 ? 'var(--warning)' : 'var(--critical)',
+    note: `${r.won} won of ${r.n} closed`,
+  }));
+  const asPct = v => v + '%';
+  hbar('#winGrade', bars(OUT.winBy.grade), { labelW: 150, W: 560, valueFmt: asPct });
+  hbar('#winSize', bars(OUT.winBy.size), { labelW: 170, W: 560, valueFmt: asPct });
+  hbar('#winSource', bars(OUT.winBy.source), { labelW: 196, W: 560, valueFmt: asPct });
+  hbar('#winTerritory', bars(OUT.winBy.territory), { labelW: 170, W: 560, valueFmt: asPct });
+
+  $('#fcTbl').innerHTML = `
+    <thead><tr>
+      <th class="pad">Grade</th><th class="pad">Open deals</th><th class="pad">Open value</th>
+      <th class="pad">Measured conversion</th><th>Expected</th>
+    </tr></thead>
+    <tbody>${OUT.forecast.map(f => `<tr>
+      <td class="pad">${esc(f.grade)}</td>
+      <td class="pad">${num(f.deals)}</td>
+      <td class="pad">${money(f.value)}</td>
+      <td class="pad">${pct(f.rate)}</td>
+      <td>${money(f.expected)}</td>
+    </tr>`).join('')}
+    <tr class="total">
+      <td class="pad"><b>Total</b></td>
+      <td class="pad"><b>${num(OUT.forecast.reduce((a,f)=>a+f.deals,0))}</b></td>
+      <td class="pad"><b>${money(OUT.openValue)}</b></td>
+      <td class="pad">—</td>
+      <td><b>${money(OUT.expectedRevenue)}</b></td>
+    </tr></tbody>`;
+}
+
+/* ---------- deal intelligence ---------- */
+const INTEL = D.intelligence;
+if (INTEL) {
+  const CAT_ORDER = ["Commit","Best case","Pipeline","Omitted"];
+  const CAT_COLOR = { "Commit":"var(--good)", "Best case":"var(--c1)", "Pipeline":"var(--warning)", "Omitted":"var(--critical)" };
+  hbar("#fcCat", CAT_ORDER.filter(c => INTEL.byCategory[c]).map(c => ({
+    label: c, value: INTEL.byCategory[c].deals, color: CAT_COLOR[c],
+    note: money(INTEL.byCategory[c].value) + " open · " + money(INTEL.byCategory[c].weighted) + " weighted",
+  })), { labelW: 120, W: 560 });
+
+  hbar("#fcSignals", Object.entries(INTEL.signals)
+    .map(([k,v]) => ({ label: k, value: v }))
+    .sort((a,b) => b.value - a.value).slice(0, 6), { colors: CAT, labelW: 160, W: 560 });
+
+}
+
+/* ---------- capability ---------- */
+const CAP = D.capability;
+if (CAP) {
+  setText('#capNote', `${num(D.totals.talent)} consultants · median ${CAP.medianYears} yrs`);
+  setText('#matchMin', CAP.match.min);
+  setText('#matchMax', CAP.match.max);
+  setText('#matchMed', CAP.match.median);
+  setText('#matchBad', CAP.match.unservable);
+
+  if (D.placements && D.placements.consultantBonus) {
+    const cb = D.placements.consultantBonus;
+    setText('#clientDiscVal', money(D.discounting ? D.discounting.valueGivenAway : 0));
+    setText('#bonusPoolVal', money(cb.totalBonusPool));
+    setText('#bonusEligible', num(cb.eligibleCount));
+    setText('#bonusAvgVal', money(cb.avgBonus));
+  }
+
+
+  const SECTOR_LABEL = {
+    technology:'Technology & SaaS', professional_services:'Professional Services',
+    healthcare:'Healthcare', manufacturing:'Manufacturing', logistics:'Logistics & Supply Chain',
+    financial_services:'Financial Services', nonprofit:'Nonprofit & Social Impact',
+    retail_consumer:'Retail & Consumer', education:'Education', construction:'Construction & Trades',
+  };
+  hbar('#sectorExp', Object.entries(CAP.sectorExpertise)
+    .map(([k,v]) => ({ label: SECTOR_LABEL[k] || k, value: v }))
+    .sort((a,b) => b.value - a.value), { colors: CAT, labelW: 186, W: 560 });
+
+  hbar('#benchLines', Object.entries(CAP.benchReadyLines)
+    .map(([k,v]) => ({ label: k, value: v }))
+    .sort((a,b) => b.value - a.value), { colors: CAT, labelW: 178, W: 560 });
+
+  // Grade is an ordered scale, so keep it in rank order rather than sorting by size —
+  // sorting a ranked axis by value destroys the thing the reader is looking for.
+  const GRADE_ORDER = ['Associate','Consultant','Senior Consultant','Principal','Partner'];
+  hbar('#grade', GRADE_ORDER.filter(g => CAP.grade[g])
+    .map(g => ({ label: g, value: CAP.grade[g] })), { colors: CAT, labelW: 150, W: 560 });
+
+  hbar('#gradeHealth', GRADE_ORDER.filter(g => CAP.avgHealthByGrade[g])
+    .map(g => ({ label: g, value: CAP.avgHealthByGrade[g],
+      color: CAP.avgHealthByGrade[g] >= 70 ? 'var(--good)'
+        : CAP.avgHealthByGrade[g] >= 60 ? 'var(--warning)' : 'var(--critical)' })),
+    { labelW: 150, W: 560 });
+}
+
+hbar('#industry', Object.entries(D.companies.industry)
+  .sort((a,b)=>b[1]-a[1])
+  .map(([k,v]) => ({ label: IND[k]||k, value:v })), { colors: CAT, labelW: 186, W: 560 });
+
+hbar('#geo', Object.entries(D.companies.byState)
+  .sort((a,b)=>b[1]-a[1]).slice(0,10)
+  .map(([k,v]) => ({ label:k, value:v, color:'var(--c3)' })), { labelW: 60, W: 560 });
+
+/* ---------- Architecture Diagram Inspector ---------- */
+(function(){
+  const inspectData = {
+    'forms': {
+      title: 'Inbound Web Forms & Lead Capture',
+      badge: 'HTTP / REST API',
+      desc: 'Inbound forms submit client inquiries directly into HubSpot. Rule <code>WF-08</code> identifies company domains, automatically creates or links company associations, and <code>WF-01</code> routes unassigned contacts to sales rep owners based on territory.'
+    },
+    'stripe': {
+      title: 'Stripe Backend Mock Server (Port 4001)',
+      badge: 'HMAC SHA-256 Webhooks',
+      desc: 'High-fidelity local Stripe server simulating customer creation, payment intents, and subscriptions. Dispatches signed webhook events (<code>payment_intent.succeeded</code>) to Rule <code>WF-15</code> which automatically reconciles CRM invoices, sets <code>zia_invoice_status = paid</code>, and zeroes <code>zia_days_outstanding</code>.'
+    },
+    'manual': {
+      title: 'Sales Operations & Rep Actions',
+      badge: 'HubSpot UI / CSV Import',
+      desc: 'Manual rep actions such as deal stage movement, consultant profile creation, or ticket updates trigger automated external reconciliation loops (<code>WF-02</code> opportunity lifecycle sync and <code>WF-12</code> bench readiness sync).'
+    },
+    'routing-pod': {
+      title: 'Lead Routing & Scoring Engine (WF-01, 08, 09)',
+      badge: 'Rules WF-01 · WF-08 · WF-09',
+      desc: 'Scans new or modified contacts. <code>WF-08</code> associates companies by domain, <code>WF-09</code> calculates lead grades (A–D) based on revenue and role, and <code>WF-01</code> assigns ownership and territory pods.'
+    },
+    'governance-pod': {
+      title: 'SLA Escalation & Governance Pod (WF-03, 05, 06, 10)',
+      badge: 'Rules WF-03 · WF-05 · WF-06 · WF-10',
+      desc: 'Enforces CRM operational SLAs. <code>WF-03</code> provisions placement onboarding tickets, <code>WF-05</code> escalates overdue tickets to manager owners, <code>WF-06</code> flags expiring consultant certifications, and <code>WF-10</code> generates detractor recovery tickets from NPS responses.'
+    },
+    'financial-pod': {
+      title: 'Financial & Delivery Health Pod (WF-04, 07, 11, 15)',
+      badge: 'Rules WF-04 · WF-07 · WF-11 · WF-15',
+      desc: '<code>WF-11</code> calculates a 5-signal weighted health score (0–100) saved to <code>zia_health_score</code>. <code>WF-04</code> triggers 30-day reviews, <code>WF-07</code> calculates overdue invoice days, and <code>WF-15</code> reconciles Stripe payments.'
+    },
+    'ml-pod': {
+      title: 'AI Deal Intelligence & Consultant Matching (WF-12, 13, 14)',
+      badge: 'Rules WF-12 · WF-13 · WF-14',
+      desc: '<code>WF-14</code> trains a Logistic Regression ML model on historical closed deals ($74.7\%$ baseline accuracy) to stamp win probabilities and forecast categories (Commit, Best case, Pipeline). <code>WF-13</code> calculates multi-attribute skill match scores between open engagements and bench-ready talent.'
+    },
+    'crm-v3': {
+      title: 'HubSpot Standard CRM Objects (v3 API)',
+      badge: '354 Contacts · 660 Deals',
+      desc: 'Standard CRM data structures stored natively on HubSpot Free Tier: Contacts, Companies, Deals, and Tickets, connected via v4 batch association definitions.'
+    },
+    'crm-props': {
+      title: '71 Custom Schema Properties',
+      badge: 'zia_ Custom Schema',
+      desc: '71 custom properties created via <code>hubspot_setup_properties.js</code> to hold calculated metrics like <code>zia_health_score</code>, <code>zia_lead_grade</code>, <code>zia_bench_status</code>, <code>zia_forecast_category</code>, and <code>zia_days_outstanding</code>.'
+    },
+    'crm-realism': {
+      title: 'Data Realism & Coherence Suite (p0–p26)',
+      badge: '26 Realism Scripts',
+      desc: '26 specialized realism scripts ensuring realistic activity timelines, rate cards, close dates, quote attachments, and zero data drift across all CRM objects.'
+    },
+    'snapshot-engine': {
+      title: 'Analytics Snapshot Engine (snapshot.js)',
+      badge: 'dashboard-data.json',
+      desc: 'Pulls CRM state, aggregates revenue totals, pipeline stage breakdowns, aging buckets, SLA breaches, and ML probabilities into <code>dashboard-data.json</code> for instant dashboard rendering.'
+    },
+    'validate-engine': {
+      title: 'Claim Audit & Drift Suite (validate.js)',
+      badge: '39/39 Claims Verified',
+      desc: 'Automated test suite verifying 39 narrative claims against live portal data with 0 drift.'
+    },
+    'server-deck': {
+      title: 'ZIA Command Deck Server (server.js @ :4000)',
+      badge: 'Port :4000',
+      desc: 'Lightweight Node HTTP server serving the live Command Deck operations dashboard, with auto-refresh and contact ceiling safety guards.'
+    },
+    'lead-sim': {
+      title: 'Interactive Single-Lead Simulator (zia-one-lead.html)',
+      badge: 'Interactive Flow',
+      desc: 'Interactive step-by-step simulator demonstrating how a single inbound lead flows through routing, scoring, deal creation, placement, health scoring, and payment reconciliation.'
+    }
+  };
+
+  const nameEl = document.getElementById('archInspectName');
+  const badgeEl = document.getElementById('archInspectBadge');
+  const descEl = document.getElementById('archInspectDesc');
+  const nodes = document.querySelectorAll('.arch-node-box');
+  const pills = document.querySelectorAll('.arch-pill-btn');
+
+  if (nameEl && nodes.length) {
+    nodes.forEach(n => {
+      n.addEventListener('click', () => {
+        nodes.forEach(x => x.classList.remove('active-node'));
+        n.classList.add('active-node');
+        const key = n.getAttribute('data-node');
+        const data = inspectData[key];
+        if (data) {
+          nameEl.textContent = data.title;
+          badgeEl.textContent = data.badge;
+          descEl.innerHTML = data.desc;
+        }
+      });
+    });
+
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        pills.forEach(x => x.classList.remove('active'));
+        p.classList.add('active');
+        const flow = p.getAttribute('data-flow');
+        nodes.forEach(n => {
+          const key = n.getAttribute('data-node');
+          if (flow === 'all') {
+            n.style.opacity = '1';
+          } else if (flow === 'inbound' && ['forms','stripe','routing-pod','crm-v3','snapshot-engine','server-deck'].includes(key)) {
+            n.style.opacity = '1';
+          } else if (flow === 'governance' && ['manual','governance-pod','crm-props','validate-engine','server-deck'].includes(key)) {
+            n.style.opacity = '1';
+          } else if (flow === 'financial' && ['stripe','financial-pod','crm-props','snapshot-engine','server-deck'].includes(key)) {
+            n.style.opacity = '1';
+          } else if (flow === 'intelligence' && ['manual','ml-pod','crm-realism','snapshot-engine','lead-sim'].includes(key)) {
+            n.style.opacity = '1';
+          } else {
+            n.style.opacity = '0.35';
+          }
+        });
+      });
+    });
+  }
+  /* ---------- Mermaid Toggle Handler ---------- */
+  const mBtn = document.getElementById('btnToggleMermaid');
+  const mWrap = document.getElementById('mermaidWrapper');
+  const grid = document.querySelector('.arch-diagram-grid');
+  const inspector = document.getElementById('archInspector');
+  if (mBtn && mWrap) {
+    mBtn.addEventListener('click', () => {
+      const isHidden = mWrap.style.display === 'none';
+      mWrap.style.display = isHidden ? 'block' : 'none';
+      if (grid) grid.style.display = isHidden ? 'none' : 'grid';
+      if (inspector) inspector.style.display = isHidden ? 'none' : 'block';
+      mBtn.textContent = isHidden ? 'View Interactive Console' : 'View Mermaid Diagram';
+      if (isHidden && typeof mermaid !== 'undefined') {
+        mermaid.contentLoaded();
+      }
+    });
+  }
+})();
+
+/* nav highlight */
+const links = [...document.querySelectorAll('nav.sections a')];
+const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+addEventListener('scroll', () => {
+  let idx = 0;
+  secs.forEach((s,i) => { if (s && s.getBoundingClientRect().top < 140) idx = i; });
+  links.forEach((a,i) => a.classList.toggle('on', i === idx));
+}, { passive: true });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+if (typeof mermaid !== 'undefined') {
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+}
+</script>
