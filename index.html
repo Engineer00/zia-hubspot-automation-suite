@@ -531,12 +531,14 @@ footer {
       <!-- Controls & Filter Strip -->
       <div class="arch-header-strip">
         <div class="arch-filter-pills">
+          <button class="arch-pill-btn active" data-view="console">5-Tier Interactive Console</button>
+          <button class="arch-pill-btn" data-view="mermaid" style="border-color:var(--c3);color:var(--c3)">Mermaid Vector Diagram</button>
+          <span style="border-left:1px solid var(--hairline);margin:0 4px;display:inline-block;height:24px;vertical-align:middle"></span>
           <button class="arch-pill-btn active" data-flow="all">All Pathways</button>
-          <button class="arch-pill-btn" data-flow="inbound">Inbound & Lead Pod (WF-01, 08, 09)</button>
-          <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod (WF-02, 03, 05, 06, 10)</button>
-          <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod (WF-04, 07, 11, 15)</button>
-          <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod (WF-12, 13, 14)</button>
-          <button class="arch-pill-btn" id="btnToggleMermaid" style="background:var(--c3);color:#fff;border-color:var(--c3)">View Mermaid Diagram</button>
+          <button class="arch-pill-btn" data-flow="inbound">Inbound & Lead Pod</button>
+          <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod</button>
+          <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod</button>
+          <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod</button>
         </div>
         <div class="arch-metrics-strip">
           <span class="arch-stat-badge"><span class="status-dot"></span> 15 Engine Rules</span>
@@ -2162,23 +2164,37 @@ hbar('#geo', Object.entries(D.companies.byState)
       });
     });
   }
-  /* ---------- Mermaid Toggle Handler ---------- */
-  const mBtn = document.getElementById('btnToggleMermaid');
+  /* ---------- View Switcher (Console vs Mermaid) ---------- */
+  const viewBtns = document.querySelectorAll('.arch-filter-pills button[data-view]');
   const mWrap = document.getElementById('mermaidWrapper');
   const grid = document.querySelector('.arch-diagram-grid');
   const inspector = document.getElementById('archInspector');
-  if (mBtn && mWrap) {
-    mBtn.addEventListener('click', () => {
-      const isHidden = mWrap.style.display === 'none';
-      mWrap.style.display = isHidden ? 'block' : 'none';
-      if (grid) grid.style.display = isHidden ? 'none' : 'grid';
-      if (inspector) inspector.style.display = isHidden ? 'none' : 'block';
-      mBtn.textContent = isHidden ? 'View Interactive Console' : 'View Mermaid Diagram';
-      if (isHidden && typeof mermaid !== 'undefined') {
-        mermaid.contentLoaded();
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      viewBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const view = btn.getAttribute('data-view');
+      if (view === 'mermaid') {
+        if (grid) grid.style.display = 'none';
+        if (inspector) inspector.style.display = 'none';
+        if (mWrap) {
+          mWrap.style.display = 'block';
+          if (window.mermaid) {
+            try {
+              await window.mermaid.run({ nodes: [document.getElementById('mermaidDiag')] });
+            } catch (e) {
+              console.warn('Mermaid render:', e);
+            }
+          }
+        }
+      } else {
+        if (mWrap) mWrap.style.display = 'none';
+        if (grid) grid.style.display = 'grid';
+        if (inspector) inspector.style.display = 'block';
       }
     });
-  }
+  });
 })();
 
 /* nav highlight */
