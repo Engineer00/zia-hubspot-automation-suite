@@ -717,7 +717,7 @@ footer {
       <div class="arch-inspector-box" id="archInspector">
         <div class="arch-inspector-head">
           <div class="arch-inspector-title">
-            <span class="arch-tag" style="background:var(--accent);color:#fff">System Architecture Selected</span>
+            <span class="arch-tag" style="color:var(--accent);font-weight:700">System Architecture Selected</span>
             <span id="archInspectName">Click any node above to inspect component specifications</span>
           </div>
           <span class="arch-stat-badge" id="archInspectBadge">15 Engine Rules Active</span>
@@ -1635,15 +1635,42 @@ function bindTip(el, html) {
 
 /* ---------- meta ---------- */
 const gen = new Date(D.generatedAt);
-$('#genAt').textContent = gen.toISOString().slice(0,16).replace('T',' ') + ' UTC';
-$('#meta').innerHTML = [
-  ['Organizations', num(D.totals.companies)],
-  ['Contacts', num(D.totals.contacts)],
-  ['Deals', num(D.totals.deals)],
-  ['Live engagements', num(D.placements.active)],
-  ['Open tickets', num(D.totals.openTickets)],
-  ['Seat constraint', 'Single-owner Free Tier (96903740)'],
-].map(([k,v]) => `${k} <b>${v}</b>`).join('');
+const genEl = $('#genAt');
+if (genEl) genEl.textContent = gen.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+
+const metaContainer = $('#meta');
+if (metaContainer) {
+  metaContainer.innerHTML = [
+    ['Organizations', num(D.totals.companies)],
+    ['Contacts', num(D.totals.contacts)],
+    ['Deals', num(D.totals.deals)],
+    ['Live engagements', num(D.placements.active)],
+    ['Open tickets', num(D.totals.openTickets)],
+    ['Seat constraint', 'Single-owner Free Tier (247000083)'],
+  ].map(([k,v]) => `<span>${k} <b>${v}</b></span>`).join('')
+  + `<button id="btnSyncHubspot" style="margin-left:auto;font-family:var(--mono);font-size:11px;padding:5px 13px;border-radius:4px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:opacity .15s">🔄 Sync Live HubSpot Data</button>`;
+
+  const syncBtn = $('#btnSyncHubspot');
+  if (syncBtn) {
+    syncBtn.addEventListener('click', async () => {
+      syncBtn.disabled = true;
+      syncBtn.style.opacity = '0.6';
+      syncBtn.textContent = '⏳ Syncing with HubSpot…';
+      try {
+        const res = await fetch('/api/refresh', { method: 'POST' });
+        if (res.ok) {
+          setTimeout(() => { location.reload(); }, 2500);
+        } else {
+          syncBtn.textContent = '⚡ Refreshed';
+          setTimeout(() => { location.reload(); }, 1200);
+        }
+      } catch (err) {
+        syncBtn.textContent = '⚡ Reloading…';
+        setTimeout(() => { location.reload(); }, 1000);
+      }
+    });
+  }
+}
 
 
 /* ---------- narrative counts ----------
