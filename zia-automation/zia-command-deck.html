@@ -730,160 +730,94 @@ footer {
       <!-- Native High-Res Vector Architecture Block Diagram -->
       <div id="mermaidWrapper" style="display:block;margin-top:16px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px;padding:24px;overflow-x:auto;position:relative;z-index:2">
 
-        <!-- Native High-Res Vector SVG Architecture Diagram -->
+        <!-- Professional 4-Stage System Architecture Block Diagram -->
         <div style="max-width:1100px;margin:0 auto">
-          <svg viewBox="0 0 1000 620" style="width:100%;height:auto;font-family:var(--sans)">
+          <svg viewBox="0 0 1000 240" style="width:100%;height:auto;font-family:var(--sans)">
             <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0A8F86" stop-opacity="0.15" />
-                <stop offset="100%" stop-color="#4152A3" stop-opacity="0.15" />
-              </linearGradient>
-              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+              <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)" />
               </marker>
+              <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--c1)" />
+                <stop offset="50%" stop-color="var(--c3)" />
+                <stop offset="100%" stop-color="var(--good)" />
+              </linearGradient>
             </defs>
 
-            <!-- Background Glass Grid -->
-            <rect x="10" y="10" width="980" height="600" rx="12" fill="var(--surface-2)" stroke="var(--hairline)" stroke-width="1" />
+            <!-- Background Card Frame -->
+            <rect x="5" y="5" width="990" height="230" rx="10" fill="var(--surface-2)" stroke="var(--hairline)" stroke-width="1" />
 
-            <!-- Tier 1: Inbound Signals -->
-            <g transform="translate(30, 40)">
-              <rect x="0" y="0" width="160" height="540" rx="8" fill="var(--surface)" stroke="var(--c1)" stroke-width="1.5" />
-              <rect x="0" y="0" width="160" height="32" rx="8" fill="var(--accent-soft)" />
-              <text x="80" y="21" text-anchor="middle" font-weight="700" font-size="12" fill="var(--c1)">TIER 1 · INBOUND</text>
+            <!-- BLOCK 1: INBOUND SIGNALS -->
+            <g transform="translate(20, 20)">
+              <rect x="0" y="0" width="215" height="200" rx="8" fill="var(--surface)" stroke="var(--c1)" stroke-width="1.5" />
+              <rect x="0" y="0" width="215" height="34" rx="8" fill="var(--accent-soft)" />
+              <text x="107" y="22" text-anchor="middle" font-weight="700" font-size="11.5" font-family="var(--mono)" letter-spacing="0.5" fill="var(--c1)">1 · INBOUND SIGNALS</text>
+              
+              <rect x="12" y="48" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="72" font-size="11" font-weight="600" fill="var(--ink)">Lead Forms & Web Capture</text>
+              
+              <rect x="12" y="96" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="120" font-size="11" font-weight="600" fill="var(--ink)">Stripe Webhook Events</text>
 
-              <g transform="translate(10, 50)">
-                <rect x="0" y="0" width="140" height="70" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="70" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">Web Lead Forms</text>
-                <text x="70" y="48" text-anchor="middle" font-size="10" fill="var(--ink-3)">HTTP / REST Post</text>
-              </g>
-
-              <g transform="translate(10, 140)">
-                <rect x="0" y="0" width="140" height="70" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="70" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">Stripe Engine</text>
-                <text x="70" y="48" text-anchor="middle" font-size="10" fill="var(--c4)">HMAC SHA-256 Webhook</text>
-              </g>
-
-              <g transform="translate(10, 230)">
-                <rect x="0" y="0" width="140" height="70" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="70" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">Sales Rep Actions</text>
-                <text x="70" y="48" text-anchor="middle" font-size="10" fill="var(--ink-3)">Stage & Bench Sync</text>
-              </g>
+              <rect x="12" y="144" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="168" font-size="11" font-weight="600" fill="var(--ink)">Sales Rep Stage Changes</text>
             </g>
 
-            <!-- Arrows Tier 1 -> Tier 2 -->
-            <path d="M 190 125 L 230 125" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)" />
-            <path d="M 190 215 L 230 215" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)" />
-            <path d="M 190 305 L 230 305" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)" />
+            <!-- Connector 1 -> 2 -->
+            <path d="M 235 120 L 265 120" stroke="var(--c1)" stroke-width="2.5" marker-end="url(#arrow)" />
 
-            <!-- Tier 2: ZIA Automation Engine -->
-            <g transform="translate(230, 40)">
-              <rect x="0" y="0" width="220" height="540" rx="8" fill="var(--surface)" stroke="var(--c3)" stroke-width="1.5" />
-              <rect x="0" y="0" width="220" height="32" rx="8" fill="rgba(65,82,163,0.1)" />
-              <text x="110" y="21" text-anchor="middle" font-weight="700" font-size="12" fill="var(--c3)">TIER 2 · ZIA ENGINE (15 RULES)</text>
+            <!-- BLOCK 2: ZIA AUTOMATION ENGINE -->
+            <g transform="translate(265, 20)">
+              <rect x="0" y="0" width="220" height="200" rx="8" fill="var(--surface)" stroke="var(--c3)" stroke-width="1.5" />
+              <rect x="0" y="0" width="220" height="34" rx="8" fill="rgba(65,82,163,0.12)" />
+              <text x="110" y="22" text-anchor="middle" font-weight="700" font-size="11.5" font-family="var(--mono)" letter-spacing="0.5" fill="var(--c3)">2 · ZIA AUTOMATION ENGINE</text>
+              
+              <rect x="12" y="48" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="72" font-size="11" font-weight="600" fill="var(--ink)">15 Idempotent Rules (WF01-15)</text>
 
-              <g transform="translate(15, 45)">
-                <rect x="0" y="0" width="190" height="105" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--c3)">Lead Pod (WF-01, 08, 09)</text>
-                <text x="95" y="42" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Territory & Owner Routing</text>
-                <text x="95" y="60" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Domain Company Match</text>
-                <text x="95" y="78" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Lead Score (0-100) & Grade</text>
-              </g>
+              <rect x="12" y="96" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="120" font-size="11" font-weight="600" fill="var(--ink)">5-Signal Delivery Health Score</text>
 
-              <g transform="translate(15, 165)">
-                <rect x="0" y="0" width="190" height="105" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--c2)">SLA Pod (WF-03, 05, 06, 10)</text>
-                <text x="95" y="42" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Onboarding Provisioning</text>
-                <text x="95" y="60" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Manager Escalation Rules</text>
-                <text x="95" y="78" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Compliance Expiration Audit</text>
-              </g>
-
-              <g transform="translate(15, 285)">
-                <rect x="0" y="0" width="190" height="105" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--c4)">Financial Pod (WF-04, 07, 11, 15)</text>
-                <text x="95" y="42" text-anchor="middle" font-size="10" fill="var(--ink-2)">• 5-Signal Delivery Health</text>
-                <text x="95" y="60" text-anchor="middle" font-size="10" fill="var(--ink-2)">• AR Aging & Stripe Sync</text>
-                <text x="95" y="78" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Placement Quality Review</text>
-              </g>
-
-              <g transform="translate(15, 405)">
-                <rect x="0" y="0" width="190" height="115" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">AI & ML Pod (WF-12, 13, 14)</text>
-                <text x="95" y="42" text-anchor="middle" font-size="10" fill="var(--ink-2)">• Bench Availability Sync</text>
-                <text x="95" y="60" text-anchor="middle" font-size="10" fill="var(--ink-2)">• 100-Pt Candidate Skill Match</text>
-                <text x="95" y="78" text-anchor="middle" font-size="10" fill="var(--ink-2)">• ML Win Probability Model</text>
-                <text x="95" y="96" text-anchor="middle" font-size="10" fill="var(--good)" font-weight="700">AUC: 0.781 · 74.7% Accuracy</text>
-              </g>
+              <rect x="12" y="144" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="168" font-size="11" font-weight="600" fill="var(--c3)">ML Win Model (74.7% Acc)</text>
             </g>
 
-            <!-- Arrows Tier 2 -> Tier 3 -->
-            <path d="M 450 310 L 490 310" stroke="var(--c3)" stroke-width="2.5" marker-end="url(#arrow)" />
+            <!-- Connector 2 -> 3 -->
+            <path d="M 485 120 L 515 120" stroke="var(--c3)" stroke-width="2.5" marker-end="url(#arrow)" />
 
-            <!-- Tier 3: HubSpot CRM & Schema -->
-            <g transform="translate(490, 40)">
-              <rect x="0" y="0" width="220" height="540" rx="8" fill="var(--surface)" stroke="var(--c2)" stroke-width="1.5" />
-              <rect x="0" y="0" width="220" height="32" rx="8" fill="rgba(168,93,0,0.1)" />
-              <text x="110" y="21" text-anchor="middle" font-weight="700" font-size="12" fill="var(--c2)">TIER 3 · HUBSPOT CRM & SCHEMA</text>
+            <!-- BLOCK 3: CRM & CLOUD STORAGE -->
+            <g transform="translate(515, 20)">
+              <rect x="0" y="0" width="220" height="200" rx="8" fill="var(--surface)" stroke="var(--c2)" stroke-width="1.5" />
+              <rect x="0" y="0" width="220" height="34" rx="8" fill="rgba(168,93,0,0.12)" />
+              <text x="110" y="22" text-anchor="middle" font-weight="700" font-size="11.5" font-family="var(--mono)" letter-spacing="0.5" fill="var(--c2)">3 · CRM & CLOUD STORAGE</text>
+              
+              <rect x="12" y="48" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="72" font-size="11" font-weight="600" fill="var(--ink)">HubSpot API (v3/v4 REST)</text>
 
-              <g transform="translate(15, 50)">
-                <rect x="0" y="0" width="190" height="110" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">HubSpot Standard API</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">354 Contacts · 226 Companies</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">660 Deals · 644 Tickets</text>
-                <text x="95" y="86" text-anchor="middle" font-size="10" fill="var(--c2)" font-weight="700">Portal ID: 247000083</text>
-              </g>
+              <rect x="12" y="96" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="120" font-size="11" font-weight="600" fill="var(--ink)">71 Custom CRM Schema Props</text>
 
-              <g transform="translate(15, 180)">
-                <rect x="0" y="0" width="190" height="110" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">71 Custom CRM Props</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_close_probability</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_forecast_category</text>
-                <text x="95" y="86" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_health_score & Insights</text>
-              </g>
-
-              <g transform="translate(15, 310)">
-                <rect x="0" y="0" width="190" height="195" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">Realism Suite (p0-p26)</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">26 Scripts Maintaining Data</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">Coherence & Timeline History</text>
-                <text x="95" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">0 Drift Guarantee</text>
-              </g>
+              <rect x="12" y="144" width="196" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="168" font-size="11" font-weight="600" fill="var(--c2)">Neon PostgreSQL Cloud DB</text>
             </g>
 
-            <!-- Arrows Tier 3 -> Tier 4 -->
-            <path d="M 710 310 L 750 310" stroke="var(--c2)" stroke-width="2.5" marker-end="url(#arrow)" />
+            <!-- Connector 3 -> 4 -->
+            <path d="M 735 120 L 765 120" stroke="var(--c2)" stroke-width="2.5" marker-end="url(#arrow)" />
 
-            <!-- Tier 4 & 5: Snapshot & Presentation -->
-            <g transform="translate(750, 40)">
-              <rect x="0" y="0" width="220" height="540" rx="8" fill="var(--surface)" stroke="var(--good)" stroke-width="1.5" />
-              <rect x="0" y="0" width="220" height="32" rx="8" fill="var(--good-bg)" />
-              <text x="110" y="21" text-anchor="middle" font-weight="700" font-size="12" fill="var(--good)">TIER 4 & 5 · ANALYTICS & EDGE</text>
+            <!-- BLOCK 4: COMMAND DECK & DEPLOYMENT -->
+            <g transform="translate(765, 20)">
+              <rect x="0" y="0" width="215" height="200" rx="8" fill="var(--surface)" stroke="var(--good)" stroke-width="1.5" />
+              <rect x="0" y="0" width="215" height="34" rx="8" fill="var(--good-bg)" />
+              <text x="107" y="22" text-anchor="middle" font-weight="700" font-size="11.5" font-family="var(--mono)" letter-spacing="0.5" fill="var(--good)">4 · COMMAND DECK</text>
+              
+              <rect x="12" y="48" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="72" font-size="11" font-weight="600" fill="var(--ink)">Vercel Edge Cloud Host</text>
 
-              <g transform="translate(15, 50)">
-                <rect x="0" y="0" width="190" height="110" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--c4)">snapshot.js & Audit</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">dashboard-data.json</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">validate.js Audit Suite</text>
-                <text x="95" y="86" text-anchor="middle" font-size="10" fill="var(--good)" font-weight="700">39 / 39 Claims Pass</text>
-              </g>
+              <rect x="12" y="96" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="120" font-size="11" font-weight="600" fill="var(--ink)">Serverless /api Endpoints</text>
 
-              <g transform="translate(15, 180)">
-                <rect x="0" y="0" width="190" height="150" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)">Neon PostgreSQL Cloud DB</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_snapshots</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_rule_logs</text>
-                <text x="95" y="82" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia_stripe_events</text>
-                <text x="95" y="110" text-anchor="middle" font-size="10" fill="var(--good)" font-weight="700">PostgreSQL Schema Ready</text>
-              </g>
-
-              <g transform="translate(15, 350)">
-                <rect x="0" y="0" width="190" height="155" rx="6" fill="var(--surface-2)" stroke="var(--hairline)" />
-                <text x="95" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="var(--c3)">Vercel Cloud Production</text>
-                <text x="95" y="46" text-anchor="middle" font-size="10" fill="var(--ink-2)">zia-hubspot-automation-suite</text>
-                <text x="95" y="64" text-anchor="middle" font-size="10" fill="var(--ink-2)">/api/health · /api/snapshot</text>
-                <text x="95" y="90" text-anchor="middle" font-size="10" fill="var(--c3)" font-weight="700">ZIA Command Deck Console</text>
-                <text x="95" y="110" text-anchor="middle" font-size="9" fill="var(--ink-3)">GitHub Auto-Deployment</text>
-              </g>
+              <rect x="12" y="144" width="191" height="40" rx="5" fill="var(--surface-2)" stroke="var(--hairline)" />
+              <text x="24" y="168" font-size="11" font-weight="600" fill="var(--good)">0 Drift · 39/39 Pass</text>
             </g>
 
           </svg>
