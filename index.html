@@ -531,14 +531,11 @@ footer {
       <!-- Controls & Filter Strip -->
       <div class="arch-header-strip">
         <div class="arch-filter-pills">
-          <button class="arch-pill-btn active" data-view="console">5-Tier Interactive Console</button>
-          <button class="arch-pill-btn" data-view="mermaid" style="border-color:var(--c3);color:var(--c3)">Mermaid Vector Diagram</button>
-          <span style="border-left:1px solid var(--hairline);margin:0 4px;display:inline-block;height:24px;vertical-align:middle"></span>
           <button class="arch-pill-btn active" data-flow="all">All Pathways</button>
-          <button class="arch-pill-btn" data-flow="inbound">Inbound & Lead Pod</button>
-          <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod</button>
-          <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod</button>
-          <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod</button>
+          <button class="arch-pill-btn" data-flow="inbound">Inbound & Lead Pod (WF-01, 08, 09)</button>
+          <button class="arch-pill-btn" data-flow="governance">Lifecycle & SLA Pod (WF-02, 03, 05, 06, 10)</button>
+          <button class="arch-pill-btn" data-flow="financial">Stripe & Revenue Pod (WF-04, 07, 11, 15)</button>
+          <button class="arch-pill-btn" data-flow="intelligence">AI & ML Pod (WF-12, 13, 14)</button>
         </div>
         <div class="arch-metrics-strip">
           <span class="arch-stat-badge"><span class="status-dot"></span> 15 Engine Rules</span>
@@ -730,8 +727,8 @@ footer {
         </div>
       </div>
 
-      <!-- Mermaid & Native Vector Architecture Diagram Block -->
-      <div id="mermaidWrapper" style="display:none;margin-top:16px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px;padding:24px;overflow-x:auto;position:relative;z-index:2">
+      <!-- Native High-Res Vector Architecture Block Diagram -->
+      <div id="mermaidWrapper" style="display:block;margin-top:16px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px;padding:24px;overflow-x:auto;position:relative;z-index:2">
 
         <!-- Native High-Res Vector SVG Architecture Diagram -->
         <div style="max-width:1100px;margin:0 auto">

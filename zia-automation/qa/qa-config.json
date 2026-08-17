@@ -1,0 +1,139 @@
+{
+  "qa": {
+    "suites": ["api", "rules", "data", "validation", "server", "performance"],
+    "timeouts": {
+      "api": 30000,
+      "rules": 600000,
+      "data": 300000,
+      "validation": 300000,
+      "server": 5000,
+      "performance": 600000,
+      "singleTest": 120000
+    },
+    "thresholds": {
+      "apiResponseTime": 1000,
+      "ruleExecutionTime": 120000,
+      "snapshotPullTime": 300000,
+      "computeTime": 5000,
+      "serverResponseTime": 1000,
+      "memoryUsage": 500,
+      "dataVolume": {
+        "deals": 50,
+        "contacts": 100,
+        "companies": 20
+      },
+      "dataStaleness": 86400000
+    },
+    "retries": {
+      "api": 3,
+      "dataFetch": 2
+    },
+    "sampling": {
+      "dataIntegrityCheckLimit": 100,
+      "dealAssociationSample": 50
+    },
+    "validation": {
+      "claims": {
+        "companies": 20,
+        "contacts": 100,
+        "deals": 50,
+        "arr": 0
+      },
+      "tolerances": {
+        "snapshotDrift": 0.05,
+        "metricDrift": 0.1
+      }
+    }
+  },
+  "performance": {
+    "apiRateLimitRetry": 60000,
+    "concurrentRequests": 5,
+    "pageSize": 100
+  },
+  "rules": {
+    "requiredRules": [
+      "01-lead-routing",
+      "02-opportunity-lifecycle",
+      "03-onboarding",
+      "04-health-monitoring",
+      "05-sla-escalation",
+      "06-compliance",
+      "07-collections",
+      "08-inbound",
+      "09-lead-scoring",
+      "10-feedback",
+      "11-health-model",
+      "12-bench-sync",
+      "13-consultant-match",
+      "14-deal-intelligence",
+      "15-stripe-reconciliation"
+    ],
+    "writeKeys": [
+      "changed",
+      "created",
+      "ticketed",
+      "scored",
+      "rescored",
+      "routed",
+      "accountsRolledUp",
+      "recoveryTickets",
+      "benched",
+      "reconciled",
+      "companiesCreated",
+      "associated",
+      "rewound"
+    ]
+  },
+  "api": {
+    "objectTypes": [
+      "contacts",
+      "deals",
+      "companies",
+      "tickets",
+      "line_items",
+      "quotes",
+      "products"
+    ],
+    "customProperties": {
+      "deals": [
+        "zia_deal_type",
+        "zia_placement_status",
+        "zia_health_score",
+        "zia_hours_per_week",
+        "zia_hourly_rate",
+        "zia_invoice_status",
+        "zia_days_outstanding"
+      ],
+      "contacts": [
+        "zia_contact_type",
+        "zia_tier",
+        "zia_bench_status",
+        "zia_compliance_status",
+        "zia_coverage_band",
+        "zia_role"
+      ],
+      "companies": [
+        "zia_industry",
+        "zia_company_tier",
+        "zia_health_score"
+      ]
+    }
+  },
+  "server": {
+    "port": 4000,
+    "defaultRefreshInterval": 30,
+    "maxResponseTime": 1000,
+    "requiredPages": [
+      "zia-command-deck.html",
+      "zia-one-lead.html",
+      "zia-system-document.html",
+      "zia-interview-pack.html"
+    ]
+  },
+  "reporting": {
+    "reportPath": "qa-report.json",
+    "logPath": "qa-run.log",
+    "archivePath": "qa-reports",
+    "retentionDays": 30
+  }
+}
