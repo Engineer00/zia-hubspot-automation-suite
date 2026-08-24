@@ -443,8 +443,41 @@ footer {
 .arch-inspector-title { font-size: 14px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 8px; }
 .arch-inspector-body { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
 .arch-inspector-body code { font-family: var(--mono); font-size: 11px; background: var(--surface); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--hairline); }
-#mermaidOutput { min-height: 720px; align-items: center; }
-#mermaidOutput svg { width: auto !important; min-width: 1700px; height: auto !important; min-height: 720px; }
+.mermaid-grid { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.mermaid-grid-tier { width: 100%; border: 1.5px solid var(--hairline); border-radius: 10px; padding: 12px 14px; background: var(--surface-2); position: relative; }
+.mermaid-grid-tier-head { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; }
+.mermaid-grid-tier-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; font-family: var(--mono); font-size: 10px; font-weight: 700; flex: none; }
+.mermaid-grid-tier-title { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.3px; margin: 0; }
+.mermaid-grid-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.mermaid-grid-row + .mermaid-grid-row { margin-top: 8px; }
+.mermaid-grid-node { border-radius: 6px; padding: 8px 10px; font-size: 11px; font-weight: 600; color: var(--ink); line-height: 1.3; border: 1px solid transparent; }
+.mermaid-grid-connector { display: flex; justify-content: center; padding: 4px 0; }
+.mermaid-grid-connector svg { display: block; }
+.mermaid-grid-tier.t1 { border-color: var(--c1); }
+.mermaid-grid-tier.t2 { border-color: var(--c3); }
+.mermaid-grid-tier.t3 { border-color: var(--c2); }
+.mermaid-grid-tier.t4 { border-color: var(--c4); }
+.mermaid-grid-tier.t5 { border-color: var(--good); }
+.mermaid-grid-tier.t1 .mermaid-grid-tier-num { background: rgba(10,143,134,0.15); color: var(--c1); border: 1px solid var(--c1); }
+.mermaid-grid-tier.t2 .mermaid-grid-tier-num { background: rgba(65,82,163,0.15); color: var(--c3); border: 1px solid var(--c3); }
+.mermaid-grid-tier.t3 .mermaid-grid-tier-num { background: rgba(168,93,0,0.15); color: var(--c2); border: 1px solid var(--c2); }
+.mermaid-grid-tier.t4 .mermaid-grid-tier-num { background: rgba(171,47,92,0.15); color: var(--c4); border: 1px solid var(--c4); }
+.mermaid-grid-tier.t5 .mermaid-grid-tier-num { background: rgba(46,125,82,0.15); color: var(--good); border: 1px solid var(--good); }
+.mermaid-grid-tier.t1 .mermaid-grid-tier-title { color: var(--c1); }
+.mermaid-grid-tier.t2 .mermaid-grid-tier-title { color: var(--c3); }
+.mermaid-grid-tier.t3 .mermaid-grid-tier-title { color: var(--c2); }
+.mermaid-grid-tier.t4 .mermaid-grid-tier-title { color: var(--c4); }
+.mermaid-grid-tier.t5 .mermaid-grid-tier-title { color: var(--good); }
+.mermaid-grid-tier.t1 .mermaid-grid-node { background: rgba(10,143,134,0.08); border-color: rgba(10,143,134,0.3); }
+.mermaid-grid-tier.t2 .mermaid-grid-node { background: rgba(65,82,163,0.08); border-color: rgba(65,82,163,0.3); }
+.mermaid-grid-tier.t3 .mermaid-grid-node { background: rgba(168,93,0,0.08); border-color: rgba(168,93,0,0.3); }
+.mermaid-grid-tier.t4 .mermaid-grid-node { background: rgba(171,47,92,0.08); border-color: rgba(171,47,92,0.3); }
+.mermaid-grid-tier.t5 .mermaid-grid-node { background: rgba(46,125,82,0.08); border-color: rgba(46,125,82,0.3); }
+.mermaid-grid-connector.c1 svg path { stroke: var(--c1); }
+.mermaid-grid-connector.c2 svg path { stroke: var(--c3); }
+.mermaid-grid-connector.c3 svg path { stroke: var(--c2); }
+.mermaid-grid-connector.c4 svg path { stroke: var(--c4); }
+@media (max-width: 700px) { .mermaid-grid-row { grid-template-columns: repeat(2, 1fr); } }
 </style>
 
 <div class="masthead">
@@ -831,81 +864,96 @@ footer {
             <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent)">Mermaid.js Flowchart</span>
             <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">Compatible with GitHub & Obsidian</span>
           </div>
-          <div id="mermaidOutput" class="mermaid" style="display:flex;justify-content:center">
-flowchart TD
-    subgraph T1["Tier 1: Inbound Signals and Event Triggers"]
-        T1_Forms["Inbound Web Forms and Lead Capture"]
-        T1_Stripe["Stripe Mock Server on Port 4001"]
-        T1_Manual["Sales Reps and Manual CRM Actions"]
-    end
+          <div class="mermaid-grid">
+            <div class="mermaid-grid-tier t1">
+              <div class="mermaid-grid-tier-head">
+                <span class="mermaid-grid-tier-num">1</span>
+                <p class="mermaid-grid-tier-title">Tier 1 &middot; Inbound Signals and Event Triggers</p>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">Inbound Web Forms and Lead Capture</div>
+                <div class="mermaid-grid-node">Stripe Mock Server on Port 4001</div>
+                <div class="mermaid-grid-node">Sales Reps and Manual CRM Actions</div>
+              </div>
+            </div>
 
-    subgraph T2["Tier 2: ZIA Automation Engine - 15 Backend Rules"]
-        WF01["WF-01: Lead Routing and Pod Assignment"]
-        WF02["WF-02: Opportunity Lifecycle Sync"]
-        WF03["WF-03: Onboarding Ticket Provisioning"]
-        WF04["WF-04: Placement Health Review Ticket"]
-        WF05["WF-05: SLA Escalation and Manager Assignment"]
-        WF06["WF-06: Consultant Compliance Expiration Audit"]
-        WF07["WF-07: Collections and Days Outstanding"]
-        WF08["WF-08: Inbound Domain and Company Association"]
-        WF09["WF-09: Lead Scoring 0-100 and Grade A-D"]
-        WF10["WF-10: NPS Detractor Recovery Loop"]
-        WF11["WF-11: 5-Signal Delivery Health Model"]
-        WF12["WF-12: Bench Availability Sync"]
-        WF13["WF-13: 100-Point Candidate Skill Match Engine"]
-        WF14["WF-14: Deal Intelligence ML Win Probability"]
-        WF15["WF-15: Stripe Payment Reconciliation"]
-    end
+            <div class="mermaid-grid-connector c1"><svg width="24" height="22" viewBox="0 0 24 22"><path d="M12 1 V17 M5 11 L12 19 L19 11" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
-    subgraph T3["Tier 3: Storage and State Layer"]
-        T3_HubSpot["HubSpot CRM Free Tier API v3 and v4"]
-        T3_Props["71 Custom Schema Properties"]
-        T3_Neon["Neon PostgreSQL Cloud Database"]
-        T3_Realism["Realism Suite p0 to p26"]
-    end
+            <div class="mermaid-grid-tier t2">
+              <div class="mermaid-grid-tier-head">
+                <span class="mermaid-grid-tier-num">2</span>
+                <p class="mermaid-grid-tier-title">Tier 2 &middot; ZIA Automation Engine &mdash; 15 Backend Rules</p>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">WF-01: Lead Routing and Pod Assignment</div>
+                <div class="mermaid-grid-node">WF-02: Opportunity Lifecycle Sync</div>
+                <div class="mermaid-grid-node">WF-03: Onboarding Ticket Provisioning</div>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">WF-04: Placement Health Review Ticket</div>
+                <div class="mermaid-grid-node">WF-05: SLA Escalation and Manager Assignment</div>
+                <div class="mermaid-grid-node">WF-06: Consultant Compliance Expiration Audit</div>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">WF-07: Collections and Days Outstanding</div>
+                <div class="mermaid-grid-node">WF-08: Inbound Domain and Company Association</div>
+                <div class="mermaid-grid-node">WF-09: Lead Scoring 0-100 and Grade A-D</div>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">WF-10: NPS Detractor Recovery Loop</div>
+                <div class="mermaid-grid-node">WF-11: 5-Signal Delivery Health Model</div>
+                <div class="mermaid-grid-node">WF-12: Bench Availability Sync</div>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">WF-13: 100-Point Candidate Skill Match Engine</div>
+                <div class="mermaid-grid-node">WF-14: Deal Intelligence ML Win Probability</div>
+                <div class="mermaid-grid-node">WF-15: Stripe Payment Reconciliation</div>
+              </div>
+            </div>
 
-    subgraph T4["Tier 4: Analytics Snapshot and Audit"]
-        T4_Snapshot["snapshot.js Analytics Engine"]
-        T4_Validate["validate.js Suite 39 Claims Pass"]
-    end
+            <div class="mermaid-grid-connector c2"><svg width="24" height="22" viewBox="0 0 24 22"><path d="M12 1 V17 M5 11 L12 19 L19 11" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
-    subgraph T5["Tier 5: Presentation and Cloud Deployment"]
-        T5_Vercel["Vercel Production Deployment"]
-        T5_Serverless["Vercel Serverless API Functions"]
-        T5_Deck["ZIA Command Deck Console"]
-    end
+            <div class="mermaid-grid-tier t3">
+              <div class="mermaid-grid-tier-head">
+                <span class="mermaid-grid-tier-num">3</span>
+                <p class="mermaid-grid-tier-title">Tier 3 &middot; Storage and State Layer</p>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">HubSpot CRM Free Tier API v3 and v4</div>
+                <div class="mermaid-grid-node">71 Custom Schema Properties</div>
+                <div class="mermaid-grid-node">Neon PostgreSQL Cloud Database</div>
+              </div>
+              <div class="mermaid-grid-row" style="grid-template-columns:repeat(3,1fr)">
+                <div class="mermaid-grid-node">Realism Suite p0 to p26</div>
+              </div>
+            </div>
 
-    T1_Forms --> WF08
-    T1_Forms --> WF01
-    T1_Stripe --> WF15
-    T1_Stripe --> WF07
-    T1_Manual --> WF02
-    T1_Manual --> WF12
+            <div class="mermaid-grid-connector c3"><svg width="24" height="22" viewBox="0 0 24 22"><path d="M12 1 V17 M5 11 L12 19 L19 11" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 
-    WF01 --> T3_HubSpot
-    WF02 --> T3_HubSpot
-    WF03 --> T3_HubSpot
-    WF04 --> T3_HubSpot
-    WF05 --> T3_HubSpot
-    WF06 --> T3_HubSpot
-    WF07 --> T3_HubSpot
-    WF08 --> T3_HubSpot
-    WF09 --> T3_HubSpot
-    WF10 --> T3_HubSpot
-    WF11 --> T3_HubSpot
-    WF12 --> T3_HubSpot
-    WF13 --> T3_HubSpot
-    WF14 --> T3_HubSpot
-    WF15 --> T3_HubSpot
+            <div class="mermaid-grid-tier t4">
+              <div class="mermaid-grid-tier-head">
+                <span class="mermaid-grid-tier-num">4</span>
+                <p class="mermaid-grid-tier-title">Tier 4 &middot; Analytics Snapshot and Audit</p>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">snapshot.js Analytics Engine</div>
+                <div class="mermaid-grid-node">validate.js Suite 39 Claims Pass</div>
+              </div>
+            </div>
 
-    T3_HubSpot --> T3_Props
-    T3_Realism --> T3_HubSpot
-    T3_HubSpot --> T4_Snapshot
-    T4_Snapshot --> T3_Neon
-    T4_Snapshot --> T4_Validate
-    T4_Snapshot --> T5_Serverless
-    T5_Serverless --> T5_Deck
-    T5_Vercel --> T5_Deck
+            <div class="mermaid-grid-connector c4"><svg width="24" height="22" viewBox="0 0 24 22"><path d="M12 1 V17 M5 11 L12 19 L19 11" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+            <div class="mermaid-grid-tier t5">
+              <div class="mermaid-grid-tier-head">
+                <span class="mermaid-grid-tier-num">5</span>
+                <p class="mermaid-grid-tier-title">Tier 5 &middot; Presentation and Cloud Deployment</p>
+              </div>
+              <div class="mermaid-grid-row">
+                <div class="mermaid-grid-node">Vercel Production Deployment</div>
+                <div class="mermaid-grid-node">Vercel Serverless API Functions</div>
+                <div class="mermaid-grid-node">ZIA Command Deck Console</div>
+              </div>
+            </div>
           </div>
           <details style="margin-top:12px">
             <summary style="cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--ink-3)">View raw Mermaid source</summary>
