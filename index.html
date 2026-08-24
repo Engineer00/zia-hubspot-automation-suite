@@ -823,14 +823,13 @@ footer {
           </svg>
         </div>
 
-        <!-- Raw Mermaid Code Block & Dynamic Render Output Container -->
+        <!-- Rendered Mermaid Flowchart + Collapsible Source -->
         <div style="margin-top:24px;border-top:1px dashed var(--hairline);padding-top:16px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-            <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent)">Mermaid.js Flowchart Source</span>
+            <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent)">Mermaid.js Flowchart</span>
             <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-3)">Compatible with GitHub & Obsidian</span>
           </div>
-          <div id="mermaidOutput"></div>
-          <pre id="mermaidSource" style="background:var(--surface-2);border:1px solid var(--hairline);border-radius:6px;padding:14px;font-family:var(--mono);font-size:11px;color:var(--ink-2);overflow-x:auto">
+          <div id="mermaidOutput" class="mermaid" style="display:flex;justify-content:center">
 flowchart TD
     subgraph T1["Tier 1: Inbound Signals and Event Triggers"]
         T1_Forms["Inbound Web Forms and Lead Capture"]
@@ -905,7 +904,84 @@ flowchart TD
     T4_Snapshot --> T5_Serverless
     T5_Serverless --> T5_Deck
     T5_Vercel --> T5_Deck
-          </pre>
+          </div>
+          <details style="margin-top:12px">
+            <summary style="cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--ink-3)">View raw Mermaid source</summary>
+            <pre style="margin-top:8px;background:var(--surface-2);border:1px solid var(--hairline);border-radius:6px;padding:14px;font-family:var(--mono);font-size:11px;color:var(--ink-2);overflow-x:auto">flowchart TD
+    subgraph T1["Tier 1: Inbound Signals and Event Triggers"]
+        T1_Forms["Inbound Web Forms and Lead Capture"]
+        T1_Stripe["Stripe Mock Server on Port 4001"]
+        T1_Manual["Sales Reps and Manual CRM Actions"]
+    end
+
+    subgraph T2["Tier 2: ZIA Automation Engine - 15 Backend Rules"]
+        WF01["WF-01: Lead Routing and Pod Assignment"]
+        WF02["WF-02: Opportunity Lifecycle Sync"]
+        WF03["WF-03: Onboarding Ticket Provisioning"]
+        WF04["WF-04: Placement Health Review Ticket"]
+        WF05["WF-05: SLA Escalation and Manager Assignment"]
+        WF06["WF-06: Consultant Compliance Expiration Audit"]
+        WF07["WF-07: Collections and Days Outstanding"]
+        WF08["WF-08: Inbound Domain and Company Association"]
+        WF09["WF-09: Lead Scoring 0-100 and Grade A-D"]
+        WF10["WF-10: NPS Detractor Recovery Loop"]
+        WF11["WF-11: 5-Signal Delivery Health Model"]
+        WF12["WF-12: Bench Availability Sync"]
+        WF13["WF-13: 100-Point Candidate Skill Match Engine"]
+        WF14["WF-14: Deal Intelligence ML Win Probability"]
+        WF15["WF-15: Stripe Payment Reconciliation"]
+    end
+
+    subgraph T3["Tier 3: Storage and State Layer"]
+        T3_HubSpot["HubSpot CRM Free Tier API v3 and v4"]
+        T3_Props["71 Custom Schema Properties"]
+        T3_Neon["Neon PostgreSQL Cloud Database"]
+        T3_Realism["Realism Suite p0 to p26"]
+    end
+
+    subgraph T4["Tier 4: Analytics Snapshot and Audit"]
+        T4_Snapshot["snapshot.js Analytics Engine"]
+        T4_Validate["validate.js Suite 39 Claims Pass"]
+    end
+
+    subgraph T5["Tier 5: Presentation and Cloud Deployment"]
+        T5_Vercel["Vercel Production Deployment"]
+        T5_Serverless["Vercel Serverless API Functions"]
+        T5_Deck["ZIA Command Deck Console"]
+    end
+
+    T1_Forms --> WF08
+    T1_Forms --> WF01
+    T1_Stripe --> WF15
+    T1_Stripe --> WF07
+    T1_Manual --> WF02
+    T1_Manual --> WF12
+
+    WF01 --> T3_HubSpot
+    WF02 --> T3_HubSpot
+    WF03 --> T3_HubSpot
+    WF04 --> T3_HubSpot
+    WF05 --> T3_HubSpot
+    WF06 --> T3_HubSpot
+    WF07 --> T3_HubSpot
+    WF08 --> T3_HubSpot
+    WF09 --> T3_HubSpot
+    WF10 --> T3_HubSpot
+    WF11 --> T3_HubSpot
+    WF12 --> T3_HubSpot
+    WF13 --> T3_HubSpot
+    WF14 --> T3_HubSpot
+    WF15 --> T3_HubSpot
+
+    T3_HubSpot --> T3_Props
+    T3_Realism --> T3_HubSpot
+    T3_HubSpot --> T4_Snapshot
+    T4_Snapshot --> T3_Neon
+    T4_Snapshot --> T4_Validate
+    T4_Snapshot --> T5_Serverless
+    T5_Serverless --> T5_Deck
+    T5_Vercel --> T5_Deck</pre>
+          </details>
         </div>
 
       </div>
@@ -2291,37 +2367,6 @@ hbar('#geo', Object.entries(D.companies.byState)
       });
     });
   }
-  /* ---------- View Switcher (Console vs Mermaid) ---------- */
-  const viewBtns = document.querySelectorAll('.arch-filter-pills button[data-view]');
-  const mWrap = document.getElementById('mermaidWrapper');
-  const grid = document.querySelector('.arch-diagram-grid');
-  const inspector = document.getElementById('archInspector');
-
-  viewBtns.forEach(btn => {
-    btn.addEventListener('click', async () => {
-      viewBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const view = btn.getAttribute('data-view');
-      if (view === 'mermaid') {
-        if (grid) grid.style.display = 'none';
-        if (inspector) inspector.style.display = 'none';
-        if (mWrap) {
-          mWrap.style.display = 'block';
-          if (window.mermaid) {
-            try {
-              await window.mermaid.run({ nodes: [document.getElementById('mermaidDiag')] });
-            } catch (e) {
-              console.warn('Mermaid render:', e);
-            }
-          }
-        }
-      } else {
-        if (mWrap) mWrap.style.display = 'none';
-        if (grid) grid.style.display = 'grid';
-        if (inspector) inspector.style.display = 'block';
-      }
-    });
-  });
 })();
 
 /* nav highlight */
